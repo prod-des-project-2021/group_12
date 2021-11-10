@@ -8,13 +8,22 @@ public class SpawnEnemy : MonoBehaviour
     private GameObject[] spawnPoints = new GameObject[3];
 
     private GameObject spawnPos;
-    public GameObject spawnee;
-    public float maxTime = 5;
-    public float minTime = 2;
+    public GameObject[] spawnee = new GameObject[3];
+    public float maxTime = 2f;
+    public float minTime = 0.2f;
     private float time;
-    bool waitingSpawn = false;
+    
     private float spawnTime;
     float timer = 0f;
+
+    private float timeBetweenWaves = 1.0f;
+    public float difficulty = 1.0f;
+    public int level = 1;
+    private int enemiesPerLevel = 5;
+    bool roundRunning = false;
+
+
+
     void Start()
     {
         spawnPoints[0] = GameObject.Find("Spawn");
@@ -26,33 +35,41 @@ public class SpawnEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        if(waitingSpawn == false)
+        if(!roundRunning)
         {
-            waitingSpawn = true;
-            spawnTime = Random.Range(minTime, maxTime);
-        }
-        else
+            roundRunning = true;
+            StartCoroutine(SpawnWave());
+        }          
+           
+               
+                   
+    }
+
+    IEnumerator SpawnWave()
+    {
+        enemiesPerLevel = enemiesPerLevel + level * 2;
+        Debug.Log("enemies: " +enemiesPerLevel);
+        Debug.Log("level: "+level);
+        for (int i = 0; i < enemiesPerLevel; i++)
         {
-            
-            if (timer < spawnTime)
-            {
-                timer += Time.deltaTime;
-            }
-            else
-            {
-                int randSpawn = Random.Range(0,3);
-                spawnPos = spawnPoints[randSpawn];
-                
-                waitingSpawn = false;
-                timer = 0;
-                Instantiate(spawnee, spawnPos.transform.position, spawnPos.transform.rotation);
-            }
+            SpawnSingleEnemy();
+            yield return new WaitForSeconds(1.0f);
         }
+        yield return new WaitForSeconds(timeBetweenWaves);
+        level += 1;
+        roundRunning = false;
         
-        
-        
-            
-        
+    }
+
+    void SpawnSingleEnemy()
+    {
+        int randSpawn = Random.Range(0, 3);
+        spawnPos = spawnPoints[randSpawn];
+
+        timer = 0;
+        Instantiate(spawnee[0], spawnPos.transform.position, spawnPos.transform.rotation);
+        //Instantiate(spawnee[1], spawnPos.transform.position, spawnPos.transform.rotation);
+        //Instantiate(spawnee[2], spawnPos.transform.position, spawnPos.transform.rotation);
 
     }
 }

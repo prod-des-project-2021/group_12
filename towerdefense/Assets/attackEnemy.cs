@@ -69,6 +69,7 @@ public class attackEnemy : MonoBehaviour
       Quaternion lookRotation = Quaternion.LookRotation(direction);
       Vector3 rotation = Quaternion.Lerp(rotatingPart.rotation,lookRotation, Time.deltaTime* turnSpeed).eulerAngles;
       rotatingPart.rotation = Quaternion.Euler(0f,rotation.y, 0f);
+      
 
        
         } 

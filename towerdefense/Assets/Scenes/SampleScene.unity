@@ -212,8 +212,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c9b2a2b36d7b33c40b696c0fff78e66c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   spawnee: {fileID: 6965862407821868398, guid: e4f6efd7b69499443975611a73088a2e, type: 3}
 
 --- !u!1001 &241845420
@@ -598,7 +598,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4190713276400074592, guid: e11158d04d863044792d3ec78ab6590a, type: 3}
       propertyPath: m_Materials.Array.data[0]
-      value: 
+      value:
       objectReference: {fileID: 2100000, guid: 4132d0b4737312742999cb57955f332e, type: 2}
     - target: {fileID: 4713005433982327032, guid: e11158d04d863044792d3ec78ab6590a, type: 3}
       propertyPath: m_RootOrder
@@ -858,11 +858,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8584718187205098403, guid: be8b125755e36844b91e53f4ef8f4ad7, type: 3}
       propertyPath: m_Materials.Array.data[0]
-      value: 
+      value:
       objectReference: {fileID: 2100000, guid: 4132d0b4737312742999cb57955f332e, type: 2}
     - target: {fileID: 8852244098789471929, guid: be8b125755e36844b91e53f4ef8f4ad7, type: 3}
       propertyPath: m_Materials.Array.data[0]
-      value: 
+      value:
       objectReference: {fileID: 2100000, guid: 4132d0b4737312742999cb57955f332e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be8b125755e36844b91e53f4ef8f4ad7, type: 3}
@@ -896,7 +896,7 @@ Transform:
   m_Father: {fileID: 218381440}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
+
 --- !u!1 &1371270722 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 790959258456189579, guid: 05050b1fa2d693562b5fb4d5478e2892, type: 3}
@@ -918,9 +918,9 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
-=======
 
->>>>>>> 693f133775ccdca53521d42c7d9b74d15baa9df2
+
+
 --- !u!1 &1734831341 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 790959259120407816, guid: 05050b1fa2d693562b5fb4d5478e2892, type: 3}
@@ -946,14 +946,14 @@ GameObject:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6685d9714b2f3fb4bb0c4e0be220daaf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-<<<<<<< HEAD
+  m_Name:
+  m_EditorClassIdentifier:
+
   attackRange: 50
   turnSpeed: 10
   rotatingPart: {fileID: 1734831342}
   enemyTag: mob
-=======
+
   enemyList: []
 --- !u!54 &1734831347
 Rigidbody:
@@ -996,7 +996,7 @@ Transform:
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 
->>>>>>> 693f133775ccdca53521d42c7d9b74d15baa9df2
+
 --- !u!1001 &1867588623
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1006,7 +1006,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4190713276400074592, guid: e11158d04d863044792d3ec78ab6590a, type: 3}
       propertyPath: m_Materials.Array.data[0]
-      value: 
+      value:
       objectReference: {fileID: 2100000, guid: 4132d0b4737312742999cb57955f332e, type: 2}
     - target: {fileID: 4713005433982327032, guid: e11158d04d863044792d3ec78ab6590a, type: 3}
       propertyPath: m_RootOrder
@@ -1235,11 +1235,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8584718187205098403, guid: be8b125755e36844b91e53f4ef8f4ad7, type: 3}
       propertyPath: m_Materials.Array.data[0]
-      value: 
+      value:
       objectReference: {fileID: 2100000, guid: 4132d0b4737312742999cb57955f332e, type: 2}
     - target: {fileID: 8852244098789471929, guid: be8b125755e36844b91e53f4ef8f4ad7, type: 3}
       propertyPath: m_Materials.Array.data[0]
-      value: 
+      value:
       objectReference: {fileID: 2100000, guid: 4132d0b4737312742999cb57955f332e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be8b125755e36844b91e53f4ef8f4ad7, type: 3}
@@ -1252,7 +1252,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4190713276400074592, guid: e11158d04d863044792d3ec78ab6590a, type: 3}
       propertyPath: m_Materials.Array.data[0]
-      value: 
+      value:
       objectReference: {fileID: 2100000, guid: 4132d0b4737312742999cb57955f332e, type: 2}
     - target: {fileID: 4713005433982327032, guid: e11158d04d863044792d3ec78ab6590a, type: 3}
       propertyPath: m_RootOrder

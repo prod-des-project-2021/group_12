@@ -48,7 +48,7 @@ public class SpawnEnemy : MonoBehaviour
 
             timer = 0;
             
-             Instantiate(spawnee, spawnPos.position, spawnPos.rotation);
+             //Instantiate(spawnee, spawnPos.transform.position, spawnPos.transform.rotation);
             
           
             
@@ -74,6 +74,6 @@ public class SpawnEnemy : MonoBehaviour
         
             
         
-
+    }
     }
 }

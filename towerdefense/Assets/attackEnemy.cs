@@ -12,6 +12,8 @@ public class attackEnemy : MonoBehaviour
     private Transform target;
     public Transform rotatingPart;
     public string enemyTag = "mob";
+    public float fireRate = 1f;
+    private float fireCountdown = 0f;
     
     GameObject g;
 
@@ -70,9 +72,19 @@ public class attackEnemy : MonoBehaviour
       Vector3 rotation = Quaternion.Lerp(rotatingPart.rotation,lookRotation, Time.deltaTime* turnSpeed).eulerAngles;
       rotatingPart.rotation = Quaternion.Euler(0f,rotation.y, 0f);
       
-
+        if(fireCountdown <= 0){
+            shoot();
+            fireCountdown = 1f/fireRate;
+        }
+        fireCountdown -= Time.deltaTime;
        
         } 
+
+        void shoot()
+        {
+            Debug.Log("SHOOT");
+
+        }
         
     
 }

@@ -39,7 +39,7 @@ public class SpawnEnemy : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-
+    {
 
         if(!roundRunning)
 
@@ -81,4 +81,5 @@ public class SpawnEnemy : MonoBehaviour
         //Instantiate(spawnee[2], spawnPos.transform.position, spawnPos.transform.rotation);
 
     }
+
 }

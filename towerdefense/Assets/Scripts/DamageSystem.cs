@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DamageSystem : MonoBehaviour
 {
-    int health = 100;
+    public int health = 100;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +16,7 @@ public class DamageSystem : MonoBehaviour
     {
         if(health <= 0)
         {
-            //Death.deathInstance.KillEnemy();
+           Destroy(gameObject);
         }
     }
 

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 
 public class SpawnEnemy : MonoBehaviour
@@ -10,12 +11,16 @@ public class SpawnEnemy : MonoBehaviour
     private GameObject[] spawnPoints = new GameObject[3];
 
     private GameObject spawnPos;
+
     public GameObject[] spawnee = new GameObject[3];
     public float maxTime = 2f;
     public float minTime = 0.2f;
+
+
     private float time;
     int vuoro = 0;
     private float spawnTime;
+
     float timer = 0f;
 
     private float timeBetweenWaves = 10.0f;
@@ -80,6 +85,7 @@ public class SpawnEnemy : MonoBehaviour
         enemiesHaveSpawned = false;
         for (int i = 0; i < enemiesPerLevel; i++)
         {
+
             SpawnSingleEnemy();
             yield return new WaitForSeconds(0.5f);
         }

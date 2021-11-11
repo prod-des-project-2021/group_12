@@ -66,11 +66,12 @@ public class DamageSystem : MonoBehaviour
     void OnMouseDown()
     {
         float attackDamage = 50f;
-        damageInstance = this;
-        Debug.Log("adgdasgas: "+damageInstance.gameObject.name);
+        Debug.Log("adgdasgas: "+this.gameObject.name);
         if(this.gameObject.name.Contains("Enemy 1"))
         {
+            Debug.Log("HP ennen: "+Enemy1Params.enemy1HitInstance.health);
             Enemy1Params.enemy1HitInstance.health -= attackDamage;
+            Debug.Log("HP jälkeen: " + Enemy1Params.enemy1HitInstance.health);
             if (Enemy1Params.enemy1HitInstance.health <= 0.0f)
             {
                 timeToDie = true;

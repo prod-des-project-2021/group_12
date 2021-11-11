@@ -7,8 +7,10 @@ public class Waypoints : MonoBehaviour
     public static Waypoints wPInstance;
     private GameObject[] waypoints = new GameObject[9];
     int current = 0;
-    [HideInInspector] public float speed;
+    [HideInInspector] public float speed, speed2, speed3;
+    [HideInInspector] public float stop = 1.0f;
     float WPradius = 1;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -25,12 +27,24 @@ public class Waypoints : MonoBehaviour
         waypoints[6] = GameObject.Find("Finish 1");
         waypoints[7] = GameObject.Find("Finish 2");
         waypoints[8] = GameObject.Find("Finish 3");
+        if(this.gameObject.name.Contains("Enemy 1"))
+        {
+            speed = Enemy1Params.enemy1ParamsInstance.speed;
+        }else if (this.gameObject.name.Contains("Enemy 2"))
+        {
+            speed = Enemy2Params.enemy2ParamsInstance.speed;
+        }
+        else if (this.gameObject.name.Contains("Enemy 3"))
+        {
+            speed = Enemy3Params.enemy3ParamsInstance.speed;
+        }
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        speed = EnemyParams.enemyParamsInstance.speed;
+        
 
         if (Vector3.Distance(waypoints[current].transform.position, transform.position) < WPradius)
         {
@@ -46,7 +60,7 @@ public class Waypoints : MonoBehaviour
             float singleStep = speed * Time.deltaTime;
             Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, singleStep, 0.0f);
 
-            transform.position = Vector3.MoveTowards(transform.position, waypoints[current].transform.position, Time.deltaTime * speed);
+            transform.position = Vector3.MoveTowards(transform.position, waypoints[current].transform.position, Time.deltaTime * speed * stop);
             float angle = Vector3.Angle(targetDir, transform.right);
             transform.rotation = Quaternion.LookRotation(newDir);
             

@@ -5,23 +5,26 @@ using UnityEngine;
 public class attackEnemy : MonoBehaviour
 {
    
-   
-   
-    public float attackRange = 50;
+   [Header("Attributes")]
+    public float fireRate = 1f;
+    private float fireCountdown = 0f;
+    public float attackRange = 50f;
     public float turnSpeed = 10f;
+
+    [Header("Unity setup")]
     private Transform target;
     public Transform rotatingPart;
     public string enemyTag = "mob";
+    public GameObject bullet;
+    public Transform firePoint;
     
-    GameObject g;
+    
+    
 
 
     
 
-     private void attackEnemyOnRange(){
-
-
-    }
+    
     private void updateTarget(){
         
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
@@ -35,6 +38,7 @@ public class attackEnemy : MonoBehaviour
             if(distanceToEnemy< shortestDistance){
                 shortestDistance = distanceToEnemy;
                 nearestEnemy = enemy;
+                
             }
         }
         if(nearestEnemy != null && shortestDistance <= attackRange) {
@@ -69,9 +73,28 @@ public class attackEnemy : MonoBehaviour
       Quaternion lookRotation = Quaternion.LookRotation(direction);
       Vector3 rotation = Quaternion.Lerp(rotatingPart.rotation,lookRotation, Time.deltaTime* turnSpeed).eulerAngles;
       rotatingPart.rotation = Quaternion.Euler(0f,rotation.y, 0f);
-
+      
+        if(fireCountdown <= 0f)
+        {
+            shoot();
+            fireCountdown = 1f/fireRate;
+        }
+        fireCountdown -= Time.deltaTime;
        
-        } 
+    } 
+
+    void shoot()
+    {
+        
+        GameObject bulletGo = (GameObject) Instantiate (bullet, firePoint.position, firePoint.rotation);
+        bullet paukku = bulletGo.GetComponent<bullet>();
+        
+        if(paukku != null)
+        {
+            paukku.chase(target);
+        }
+
+    }
         
     
 }

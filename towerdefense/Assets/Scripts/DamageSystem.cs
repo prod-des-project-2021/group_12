@@ -62,7 +62,10 @@ public class DamageSystem : MonoBehaviour
 
     }
 
-    //t�m� korvataan sitten kun turretti osuu
+    //tÃ¤mÃ¤ korvataan sitten kun turretti osuu
+
+    //tämä korvataan sitten kun turretti osuu
+
     void OnMouseDown()
     {
         float attackDamage = 50f;

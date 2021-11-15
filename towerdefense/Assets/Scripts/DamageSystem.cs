@@ -88,6 +88,7 @@ public class DamageSystem : MonoBehaviour
         else if (this.gameObject.name.Contains("Enemy 3"))
         {
             Enemy3Params.enemy3HitInstance.health -= attackDamage;
+            Debug.Log("HP jälkeen: " + Enemy3Params.enemy3HitInstance.health);
             if (Enemy3Params.enemy3HitInstance.health <= 0.0f)
             {
                 timeToDie = true;

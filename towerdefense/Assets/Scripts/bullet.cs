@@ -26,13 +26,10 @@ public class bullet : MonoBehaviour
     {
        
         
-       target.GetComponent<DamageSystem>().DamageEnemy((int) bulletDamage);
-       Debug.Log(target.GetComponent<DamageSystem>().health);
-        GameObject effectInstance = (GameObject) Instantiate(impactEffect, transform.position, transform.rotation);
-        Destroy(effectInstance, 2f);
-
-        
-        Destroy(gameObject);
+       target.GetComponent<DamageSystem>().DamageEnemy(bulletDamage);
+       //Debug.Log(target.GetComponent<DamageSystem>().health);
+       GameObject effectInstance = (GameObject) Instantiate(impactEffect, transform.position, transform.rotation);
+       Destroy(effectInstance, 2f);
         
 
     }

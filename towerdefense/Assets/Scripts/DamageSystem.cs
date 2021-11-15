@@ -63,9 +63,9 @@ public class DamageSystem : MonoBehaviour
     }
 
     //t�m� korvataan sitten kun turretti osuu
-    void OnMouseDown()
+    public void DamageEnemy(float attackDamage)
     {
-        float attackDamage = 50f;
+        attackDamage = 50f;
         Debug.Log("adgdasgas: "+this.gameObject.name);
         if(this.gameObject.name.Contains("Enemy 1"))
         {

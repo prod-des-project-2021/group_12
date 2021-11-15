@@ -51,113 +51,90 @@ public class SpawnEnemy : MonoBehaviour
             timeForNewRound = true;
         }
 
-    {
-        if (Input.GetKeyDown("space") && enemiesHaveSpawned)
-        {
-            NextRound();
-        }
-
         if (roundDone && enemiesHaveSpawned)
         {
             StartGame();
 
-        }          
-           
-               
-                   
-    }
-    void StartGame()
-    {
-        StartCoroutine(SpawnWave());
-    }
+        }
 
-    void NextRound()
-    {
-        level += 1;
-        difficulty = difficulty + 0.25f;
-        Enemy3Params.enemy3ParamsInstance.difficulty = difficulty;
-        StartGame();
-    }
+        
 
-    IEnumerator WaveStarter()
-    {
-        for (float i = timeBetweenWaves; i > 0; i--)
+    }
+        void StartGame()
         {
-            Debug.Log("next wave in: "+i);
-            if (timeForNewRound)
+            StartCoroutine(SpawnWave());
+        }
+
+        void NextRound()
+        {
+            level += 1;
+            difficulty = difficulty + 0.25f;
+            Enemy3Params.enemy3ParamsInstance.difficulty = difficulty;
+            StartGame();
+        }
+
+        IEnumerator WaveStarter()
+        {
+            for (float i = timeBetweenWaves; i > 0; i--)
             {
-                NextRound();
-                timeForNewRound = false;
-                i = 0;
-                StopCoroutine(ws);
+                Debug.Log("next wave in: " + i);
+                if (timeForNewRound)
+                {
+                    NextRound();
+                    timeForNewRound = false;
+                    i = 0;
+                    StopCoroutine(ws);
+                }
+                yield return new WaitForSeconds(1.0f);
             }
-            yield return new WaitForSeconds(1.0f);
+            NextRound();
+
+
+
         }
-        NextRound();
-        
+
+        IEnumerator SpawnWave()
+        {
+            roundDone = false;
+
+            enemiesPerLevel = enemiesPerLevel + level * 1;
+            Debug.Log("enemies: " + enemiesPerLevel);
+            Debug.Log("level: " + level);
+            Debug.Log("difficulty: " + difficulty);
+            enemiesHaveSpawned = false;
+            for (int i = 0; i < enemiesPerLevel; i++)
+            {
+
+                SpawnSingleEnemy();
+                yield return new WaitForSeconds(0.5f);
+            }
+            enemiesHaveSpawned = true;
+            ws = StartCoroutine(WaveStarter());
 
 
-    }
+        }
 
-    void StartRound()
-    {
-        roundRunning = true;
-        
-    }
-
-    void NextRound()
-    {
-        StartRound();
-        level += 1;
-        difficulty = difficulty + 0.25f;
-        Enemy3Params.enemy3ParamsInstance.difficulty = difficulty;
-    }
-
-    IEnumerator SpawnWave()
-    {
-        roundDone = false;
-
-        enemiesPerLevel = enemiesPerLevel + level * 1;
-        Debug.Log("enemies: " +enemiesPerLevel);
-        Debug.Log("level: "+level);
-        Debug.Log("difficulty: " + difficulty);
-        enemiesHaveSpawned = false;
-        for (int i = 0; i < enemiesPerLevel; i++)
+        void SpawnSingleEnemy()
         {
 
-            SpawnSingleEnemy();
-            yield return new WaitForSeconds(0.5f);
+            int randSpawn = Random.Range(0, 3);
+            spawnPos = spawnPoints[randSpawn];
+
+            timer = 0;
+            spawnEnemyInstance = this;
+            Instantiate(spawnee[vuoro], spawnPos.transform.position, spawnPos.transform.rotation);
+            if (vuoro == 0) vuoro++;
+            else if (vuoro == 1) vuoro++;
+            else if (vuoro == 2) vuoro = 0;
+
+
+
         }
-        enemiesHaveSpawned = true;
-        ws = StartCoroutine(WaveStarter());
 
+        private void OnMouseDown()
+        {
 
-    }
+        }
 
-    void SpawnSingleEnemy()
-    {
-        
-        int randSpawn = Random.Range(0, 3);
-        spawnPos = spawnPoints[randSpawn];
-
-        timer = 0;
-        spawnEnemyInstance = this;
-        Instantiate(spawnee[vuoro], spawnPos.transform.position, spawnPos.transform.rotation);
-        if (vuoro == 0) vuoro++;
-        else if (vuoro == 1) vuoro++;
-        else if (vuoro == 2) vuoro = 0;
-
-
-
-    }
-
-    private void OnMouseDown()
-    {
-        
-    }
-
-    private void OnMouseDown()
-    {
-        
-    }
+    
 }

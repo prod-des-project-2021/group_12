@@ -51,6 +51,10 @@ public class SpawnEnemy : MonoBehaviour
             timeForNewRound = true;
         }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 85cedddac178b7139ef9892f3aa434ff82cefe84
         if (roundDone && enemiesHaveSpawned)
         {
             StartGame();
@@ -91,7 +95,11 @@ public class SpawnEnemy : MonoBehaviour
 
 
 
+<<<<<<< HEAD
         }
+=======
+
+>>>>>>> 85cedddac178b7139ef9892f3aa434ff82cefe84
 
         IEnumerator SpawnWave()
         {
@@ -134,7 +142,10 @@ public class SpawnEnemy : MonoBehaviour
         private void OnMouseDown()
         {
 
+<<<<<<< HEAD
         }
+=======
+>>>>>>> 85cedddac178b7139ef9892f3aa434ff82cefe84
 
     
 }

@@ -51,10 +51,16 @@ public class SpawnEnemy : MonoBehaviour
             timeForNewRound = true;
         }
 
+    {
+        if (Input.GetKeyDown("space") && enemiesHaveSpawned)
+        {
+            NextRound();
+        }
 
         if (roundDone && enemiesHaveSpawned)
         {
             StartGame();
+
         }          
            
                
@@ -93,9 +99,24 @@ public class SpawnEnemy : MonoBehaviour
 
     }
 
+    void StartRound()
+    {
+        roundRunning = true;
+        
+    }
+
+    void NextRound()
+    {
+        StartRound();
+        level += 1;
+        difficulty = difficulty + 0.25f;
+        Enemy3Params.enemy3ParamsInstance.difficulty = difficulty;
+    }
+
     IEnumerator SpawnWave()
     {
         roundDone = false;
+
         enemiesPerLevel = enemiesPerLevel + level * 1;
         Debug.Log("enemies: " +enemiesPerLevel);
         Debug.Log("level: "+level);
@@ -109,6 +130,7 @@ public class SpawnEnemy : MonoBehaviour
         }
         enemiesHaveSpawned = true;
         ws = StartCoroutine(WaveStarter());
+
 
     }
 
@@ -126,6 +148,12 @@ public class SpawnEnemy : MonoBehaviour
         else if (vuoro == 2) vuoro = 0;
 
 
+
+    }
+
+    private void OnMouseDown()
+    {
+        
     }
 
     private void OnMouseDown()

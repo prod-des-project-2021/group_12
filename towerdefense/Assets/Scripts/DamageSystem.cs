@@ -62,7 +62,7 @@ public class DamageSystem : MonoBehaviour
 
     }
 
-    //tämä korvataan sitten kun turretti osuu
+    //tï¿½mï¿½ korvataan sitten kun turretti osuu
     void OnMouseDown()
     {
         float attackDamage = 50f;
@@ -71,7 +71,7 @@ public class DamageSystem : MonoBehaviour
         {
             Debug.Log("HP ennen: "+Enemy1Params.enemy1HitInstance.health);
             Enemy1Params.enemy1HitInstance.health -= attackDamage;
-            Debug.Log("HP jälkeen: " + Enemy1Params.enemy1HitInstance.health);
+            Debug.Log("HP jï¿½lkeen: " + Enemy1Params.enemy1HitInstance.health);
             if (Enemy1Params.enemy1HitInstance.health <= 0.0f)
             {
                 timeToDie = true;
@@ -88,7 +88,7 @@ public class DamageSystem : MonoBehaviour
         else if (this.gameObject.name.Contains("Enemy 3"))
         {
             Enemy3Params.enemy3HitInstance.health -= attackDamage;
-            Debug.Log("HP jälkeen: " + Enemy3Params.enemy3HitInstance.health);
+            Debug.Log("HP jï¿½lkeen: " + Enemy3Params.enemy3HitInstance.health);
             if (Enemy3Params.enemy3HitInstance.health <= 0.0f)
             {
                 timeToDie = true;

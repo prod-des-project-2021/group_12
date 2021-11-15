@@ -87,6 +87,7 @@ MeshRenderer:
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!136 &6965862407821868399
 CapsuleCollider:
+=======
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -142,3 +143,4 @@ MonoBehaviour:
   speed2: 0
   speed3: 0
   stop: 1
+

@@ -5,10 +5,17 @@ using UnityEngine;
 public class DamageSystem : MonoBehaviour
 {
     public static DamageSystem damageInstance;
+    
+    
     float timer = 0f;
     bool timeToDie;
     int i = 1;
     private GameObject[] deathpoints = new GameObject[9];
+
+    Enemy1Params enemy1params;
+    Enemy2Params enemy2params;
+    Enemy3Params enemy3params;
+    Waypoints wpInstance;
     // Start is called before the first frame update
     Enemy1Params enemy1params;
     Enemy2Params enemy2params;
@@ -17,6 +24,7 @@ public class DamageSystem : MonoBehaviour
 
     void Start()
     {
+
         enemy1params = gameObject.GetComponent<Enemy1Params>();
         enemy2params = gameObject.GetComponent<Enemy2Params>();
         enemy3params = gameObject.GetComponent<Enemy3Params>();
@@ -50,6 +58,7 @@ public class DamageSystem : MonoBehaviour
         if (timeToDie)
         {
             Waypoints.wPInstanceRunning.speedMultiplier = 0;
+
             if (timer < 0.01)
             {
                 timer += Time.deltaTime;
@@ -72,6 +81,7 @@ public class DamageSystem : MonoBehaviour
 
     }
 
+
     //t�m� korvataan sitten kun turretti osuu
     public void DamageEnemy(int damageAmount)
     {
@@ -84,6 +94,7 @@ public class DamageSystem : MonoBehaviour
             Debug.Log("HP enemy 1 ennen: "+Enemy1Params.enemy1HitInstance.health);
             Enemy1Params.enemy1HitInstance.health -= attackDamage;
             Debug.Log("HP enemy 1 jalkeen: " + Enemy1Params.enemy1HitInstance.health);
+
             if (Enemy1Params.enemy1HitInstance.health <= 0.0f)
             {
                 wpInstance.NewWPInstance();

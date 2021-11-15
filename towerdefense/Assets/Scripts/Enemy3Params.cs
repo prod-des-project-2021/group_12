@@ -27,6 +27,6 @@ public class Enemy3Params : MonoBehaviour
     }
     public void Enemy3NewInstance()
     {
-        enemy3HitInstance = this;
+        enemy3HitInstance =this;
     }
 }

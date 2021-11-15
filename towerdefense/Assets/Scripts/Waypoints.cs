@@ -46,6 +46,7 @@ public class Waypoints : MonoBehaviour
     void Update()
     {
 
+
         
         if (Vector3.Distance(waypoints[current].transform.position, transform.position) < WPradius)
         {
@@ -71,4 +72,5 @@ public class Waypoints : MonoBehaviour
     {
         wPInstanceRunning = this;
     }
+    
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy1Params : MonoBehaviour
 {
+   DamageSystem ds;
     [HideInInspector] public float speed = 35;
     public float health = 150;
     public float difficulty;
@@ -12,6 +13,7 @@ public class Enemy1Params : MonoBehaviour
 
     void Start()
     {
+          
         enemy1ParamsInstance = this;
         difficulty = SpawnEnemy.spawnEnemyInstance.difficulty;
         health = 75 * difficulty;
@@ -19,14 +21,18 @@ public class Enemy1Params : MonoBehaviour
 
     }
 
+    
     // Update is called once per frame
     void Update()
     {
+       
+ 
 
     }
+
     public void Enemy1NewInstance()
     {
-        enemy1HitInstance = this;
+        enemy1HitInstance =this;
     }
 
 }

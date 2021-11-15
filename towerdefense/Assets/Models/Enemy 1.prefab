@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 6965862407821868386}
   - component: {fileID: 6965862407821868385}
   - component: {fileID: 6965862407821868384}
+
   - component: {fileID: 6965862407821868399}
+
   - component: {fileID: -1444542745775297972}
   - component: {fileID: 6816422650423147142}
   - component: {fileID: 322104487048096013}
@@ -85,6 +87,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+
 --- !u!136 &6965862407821868399
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -99,6 +102,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+
 --- !u!114 &-1444542745775297972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,9 +116,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 35
+
+  health: 150
+  difficulty: 0
+--- !u!114 &3167856754384032331
+
   health: 100
   difficulty: 1
 --- !u!114 &6816422650423147142
+
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,10 +133,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 6965862407821868398}
   m_Enabled: 1
   m_EditorHideFlags: 0
+
+  m_Script: {fileID: 11500000, guid: bd426a9bef65ec2049e8a9e7eb843dbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  speed2: 0
+  speed3: 0
+  stop: 1
+--- !u!114 &6816422650423147142
+
   m_Script: {fileID: 11500000, guid: ec80482b49ebfe84cabd86e808006a76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &322104487048096013
+
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

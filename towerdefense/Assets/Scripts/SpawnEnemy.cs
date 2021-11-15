@@ -27,57 +27,79 @@ public class SpawnEnemy : MonoBehaviour
     [HideInInspector] public float difficulty = 1.0f;
     public int level = 1;
     private int enemiesPerLevel = 5;
-    bool roundRunning = false;
-    bool enemiesHaveSpawned = false;
-
+    bool roundDone = false;
+    bool enemiesHaveSpawned = true;
+    bool timeForNewRound = false;
+    Coroutine ws;
 
 
     void Start()
     {
-        StartRound();
+       // ws = StartCoroutine(WaveStarter());
         //difficulty = EnemyParams.enemyParamsInstance.difficulty;
         spawnPoints[0] = GameObject.Find("Spawn");
         spawnPoints[1] = GameObject.Find("Spawn 2");
         spawnPoints[2] = GameObject.Find("Spawn 3");
-
+        StartGame();
     }
 
     // Update is called once per frame
     void Update()
-
     {
         if (Input.GetKeyDown("space") && enemiesHaveSpawned)
         {
-            NextRound();
+            timeForNewRound = true;
         }
 
-        if (roundRunning)
+
+        if (roundDone && enemiesHaveSpawned)
         {
-            roundRunning = false;
-            StartCoroutine(SpawnWave());
+            StartGame();
+
         }          
            
                
                    
     }
-
-    void StartRound()
+    void StartGame()
     {
-        roundRunning = true;
-        
+        StartCoroutine(SpawnWave());
     }
 
     void NextRound()
     {
-        StartRound();
         level += 1;
         difficulty = difficulty + 0.25f;
         Enemy3Params.enemy3ParamsInstance.difficulty = difficulty;
+        StartGame();
     }
+
+    IEnumerator WaveStarter()
+    {
+        for (float i = timeBetweenWaves; i > 0; i--)
+        {
+            Debug.Log("next wave in: "+i);
+            if (timeForNewRound)
+            {
+                NextRound();
+                timeForNewRound = false;
+                i = 0;
+                StopCoroutine(ws);
+            }
+            yield return new WaitForSeconds(1.0f);
+        }
+        NextRound();
+        
+
+
+    }
+
+
 
     IEnumerator SpawnWave()
     {
-        
+        roundDone = false;
+
         enemiesPerLevel = enemiesPerLevel + level * 1;
         Debug.Log("enemies: " +enemiesPerLevel);
         Debug.Log("level: "+level);
@@ -87,15 +109,12 @@ public class SpawnEnemy : MonoBehaviour
         {
 
             SpawnSingleEnemy();
-            yield return new WaitForSeconds(1.0f);
-
+            yield return new WaitForSeconds(0.5f);
         }
         enemiesHaveSpawned = true;
-        yield return new WaitForSeconds(timeBetweenWaves);
-                
-        roundRunning = false;
-        NextRound();
-        
+        ws = StartCoroutine(WaveStarter());
+
+
     }
 
     void SpawnSingleEnemy()
@@ -112,7 +131,7 @@ public class SpawnEnemy : MonoBehaviour
         else if (vuoro == 2) vuoro = 0;
 
 
+
     }
 
-    
 }

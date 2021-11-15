@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5348838106515764718}
   - component: {fileID: -3534190554793794464}
   - component: {fileID: -4650822549010469694}
-  - component: {fileID: -8638956703039668013}
+  - component: {fileID: 7651473998994553618}
   m_Layer: 0
   m_Name: Enemy 3
   m_TagString: mob
@@ -125,7 +125,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec80482b49ebfe84cabd86e808006a76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+
 --- !u!114 &-8638956703039668013
+
+--- !u!114 &7651473998994553618
+
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

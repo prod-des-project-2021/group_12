@@ -75,7 +75,6 @@ public class DamageSystem : MonoBehaviour
 
     }
 
-    //tämä korvataan sitten kun turretti osuu
     public void damageEnemy(int attackDamage)
     {
         

@@ -12,10 +12,11 @@ public class Enemy3Params : MonoBehaviour
 
     void Start()
     {
+        enemy3HitInstance = this;
         enemy3ParamsInstance = this;
         difficulty = SpawnEnemy.spawnEnemyInstance.difficulty;
         health = 150 * difficulty;
-        speed = 30 * difficulty;
+        speed = 10 * difficulty;
 
     }
 
@@ -24,7 +25,7 @@ public class Enemy3Params : MonoBehaviour
     {
 
     }
-    void OnMouseDown()
+    public void Enemy3NewInstance()
     {
         enemy3HitInstance = this;
     }

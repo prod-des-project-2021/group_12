@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class Waypoints : MonoBehaviour
 {
-    public static Waypoints wPInstance;
+    public static Waypoints wPInstanceBirth;
+    public static Waypoints wPInstanceRunning;
     private GameObject[] waypoints = new GameObject[9];
     int current = 0;
     [HideInInspector] public float speed, speed2, speed3;
-    [HideInInspector] public float stop = 1.0f;
+    [HideInInspector] public float speedMultiplier = 1.0f;
     float WPradius = 1;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        wPInstanceBirth = this;
         current = Random.Range(0, 3);
         waypoints[0] = GameObject.Find("Turn 1 1");
         waypoints[1] = GameObject.Find("Turn 1 2");
@@ -44,8 +45,8 @@ public class Waypoints : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
 
+        
         if (Vector3.Distance(waypoints[current].transform.position, transform.position) < WPradius)
         {
             
@@ -60,14 +61,14 @@ public class Waypoints : MonoBehaviour
             float singleStep = speed * Time.deltaTime;
             Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, singleStep, 0.0f);
 
-            transform.position = Vector3.MoveTowards(transform.position, waypoints[current].transform.position, Time.deltaTime * speed * stop);
+            transform.position = Vector3.MoveTowards(transform.position, waypoints[current].transform.position, Time.deltaTime * speed * speedMultiplier);
             float angle = Vector3.Angle(targetDir, transform.right);
             transform.rotation = Quaternion.LookRotation(newDir);
             
         
     }
-    void OnMouseDown()
+    public void NewWPInstance()
     {
-        wPInstance = this;
+        wPInstanceRunning = this;
     }
 }

@@ -20,6 +20,7 @@ public class BuildManager : MonoBehaviour
 
     public GameObject autoTurretPrefab;
     public GameObject sniperTurretPrefab;
+    public GameObject tank;
 
 
     private GameObject turretToBuild;

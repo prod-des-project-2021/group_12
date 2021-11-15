@@ -5,13 +5,14 @@ using UnityEngine;
 public class SpawnTurrets : MonoBehaviour
 {
 
-    //figure out how to implement menu to this
     //turrets can stack fix that
     //turrets can go on the road fix that
+    //Mouse hover over plane and display the turret 
 
     public GameObject turret;
     private Camera cam = null;
     BuildManager buildManager;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -38,10 +39,11 @@ public class SpawnTurrets : MonoBehaviour
         {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
+            
 
-            if(Physics.Raycast(ray, out hit))
+            if (Physics.Raycast(ray, out hit))
             {
-               turret = Instantiate(turretToBuild, new Vector3(hit.point.x, hit.point.y + turret.transform.position.y, hit.point.z), Quaternion.identity);
+                turret = Instantiate(turretToBuild, new Vector3(hit.point.x, hit.point.y + turret.transform.position.y, hit.point.z), Quaternion.identity);
             }
         }
     }

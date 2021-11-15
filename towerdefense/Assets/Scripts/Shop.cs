@@ -24,4 +24,10 @@ public class Shop : MonoBehaviour
         buildManager.SetTurretToBuild(buildManager.sniperTurretPrefab);
     }
 
+    public void PurchaseTank()
+    {
+        Debug.Log("tank purchased");
+        buildManager.SetTurretToBuild(buildManager.tank);
+    }
+
 }

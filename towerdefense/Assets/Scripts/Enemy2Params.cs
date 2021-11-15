@@ -24,8 +24,8 @@ public class Enemy2Params : MonoBehaviour
     {
 
     }
-    void OnMouseDown()
+    public void Enemy2NewInstance()
     {
-        enemy2HitInstance = this;
+        enemy2HitInstance =this;
     }
 }

@@ -44,7 +44,7 @@ public class Waypoints : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        wPInstance = this;
+       
 
         if (Vector3.Distance(waypoints[current].transform.position, transform.position) < WPradius)
         {
@@ -65,6 +65,10 @@ public class Waypoints : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(newDir);
             
         
+    }
+    public void NewWPInstance()
+    {
+        wPInstance = this;
     }
     
 }

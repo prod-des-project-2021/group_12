@@ -26,7 +26,7 @@ public class bullet : MonoBehaviour
     {
        
         
-       target.GetComponent<DamageSystem>().damageEnemy(bulletDamage);
+       target.GetComponent<DamageSystem>().damageEnemy((int) bulletDamage);
        
         GameObject effectInstance = (GameObject) Instantiate(impactEffect, transform.position, transform.rotation);
         Destroy(effectInstance, 2f);

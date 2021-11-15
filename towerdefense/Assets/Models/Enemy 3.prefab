@@ -125,7 +125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec80482b49ebfe84cabd86e808006a76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyParams: {fileID: 0}
 --- !u!114 &-8638956703039668013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,8 +134,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6994729464161923968}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf7315a62db84a84b983dffc346ffd08, type: 3}
+  m_Script: {fileID: 11500000, guid: bd426a9bef65ec2049e8a9e7eb843dbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
+  speed2: 0
+  speed3: 0
   stop: 1

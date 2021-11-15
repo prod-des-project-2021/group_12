@@ -40,6 +40,7 @@ public class DamageSystem : MonoBehaviour
         if (timeToDie)
         {
             Waypoints.wPInstance.stop = 0;
+            
             if (timer < 0.01)
             {
                 timer += Time.deltaTime;
@@ -63,11 +64,11 @@ public class DamageSystem : MonoBehaviour
     }
 
     //tämä korvataan sitten kun turretti osuu
-    void OnMouseDown()
+    public void damageEnemy(float attackDamage)
     {
-        float attackDamage = 50f;
+       
         damageInstance = this;
-        Debug.Log("adgdasgas: "+damageInstance.gameObject.name);
+        
         if(this.gameObject.name.Contains("Enemy 1"))
         {
             Enemy1Params.enemy1HitInstance.health -= attackDamage;

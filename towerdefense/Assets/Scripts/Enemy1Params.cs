@@ -22,10 +22,7 @@ public class Enemy1Params : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+ enemy1HitInstance = this;
     }
-    void OnMouseDown()
-    {
-        enemy1HitInstance = this;
-    }
+    
 }

@@ -24,10 +24,8 @@ public class bullet : MonoBehaviour
   
     void hitTarget()
     {
-       
-        
-       target.GetComponent<DamageSystem>().damageEnemy((int) bulletDamage);
-       
+        Destroy(gameObject);
+        target.GetComponent<DamageSystem>().DamageEnemy((int) bulletDamage);
         GameObject effectInstance = (GameObject) Instantiate(impactEffect, transform.position, transform.rotation);
         Destroy(effectInstance, 2f);
 
@@ -49,6 +47,8 @@ public class bullet : MonoBehaviour
     if(suunta.magnitude <= distanceThisFrame)
     {
         hitTarget();
+        
+
     }
     transform.Translate(suunta.normalized * distanceThisFrame, Space.World);
 

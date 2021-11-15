@@ -93,7 +93,6 @@ public class DamageSystem : MonoBehaviour
         else if (this.gameObject.name.Contains("Enemy 2"))
         {
             enemy2params.Enemy2NewInstance();
-            wpInstance.NewWPInstance();
             Debug.Log("HP enemy 2 ennen: " + Enemy2Params.enemy2HitInstance.health);
             Enemy2Params.enemy2HitInstance.health -= attackDamage;
             Debug.Log("HP enemy 2 jalkeen: " + Enemy2Params.enemy2HitInstance.health);
@@ -106,7 +105,6 @@ public class DamageSystem : MonoBehaviour
         else if (this.gameObject.name.Contains("Enemy 3"))
         {
             enemy3params.Enemy3NewInstance();
-            wpInstance.NewWPInstance();
             Debug.Log("HP enemy 3 ennen: " + Enemy3Params.enemy3HitInstance.health);
             Enemy3Params.enemy3HitInstance.health -= attackDamage;
             Debug.Log("HP enemy 3 jalkeen: " + Enemy3Params.enemy3HitInstance.health);

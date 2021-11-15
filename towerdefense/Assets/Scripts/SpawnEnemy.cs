@@ -51,11 +51,6 @@ public class SpawnEnemy : MonoBehaviour
             timeForNewRound = true;
         }
 
-    {
-        if (Input.GetKeyDown("space") && enemiesHaveSpawned)
-        {
-            NextRound();
-        }
 
         if (roundDone && enemiesHaveSpawned)
         {
@@ -99,19 +94,7 @@ public class SpawnEnemy : MonoBehaviour
 
     }
 
-    void StartRound()
-    {
-        roundRunning = true;
-        
-    }
 
-    void NextRound()
-    {
-        StartRound();
-        level += 1;
-        difficulty = difficulty + 0.25f;
-        Enemy3Params.enemy3ParamsInstance.difficulty = difficulty;
-    }
 
     IEnumerator SpawnWave()
     {
@@ -151,10 +134,6 @@ public class SpawnEnemy : MonoBehaviour
 
     }
 
-    private void OnMouseDown()
-    {
-        
-    }
 
     private void OnMouseDown()
     {

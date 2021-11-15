@@ -62,18 +62,16 @@ public class DamageSystem : MonoBehaviour
 
     }
 
-    //tÃ¤mÃ¤ korvataan sitten kun turretti osuu
-
-    //tämä korvataan sitten kun turretti osuu
-
+    //t�m� korvataan sitten kun turretti osuu
     void OnMouseDown()
     {
         float attackDamage = 50f;
-        damageInstance = this;
-        Debug.Log("adgdasgas: "+damageInstance.gameObject.name);
+        Debug.Log("adgdasgas: "+this.gameObject.name);
         if(this.gameObject.name.Contains("Enemy 1"))
         {
+            Debug.Log("HP ennen: "+Enemy1Params.enemy1HitInstance.health);
             Enemy1Params.enemy1HitInstance.health -= attackDamage;
+            Debug.Log("HP j�lkeen: " + Enemy1Params.enemy1HitInstance.health);
             if (Enemy1Params.enemy1HitInstance.health <= 0.0f)
             {
                 timeToDie = true;
@@ -90,6 +88,7 @@ public class DamageSystem : MonoBehaviour
         else if (this.gameObject.name.Contains("Enemy 3"))
         {
             Enemy3Params.enemy3HitInstance.health -= attackDamage;
+            Debug.Log("HP j�lkeen: " + Enemy3Params.enemy3HitInstance.health);
             if (Enemy3Params.enemy3HitInstance.health <= 0.0f)
             {
                 timeToDie = true;

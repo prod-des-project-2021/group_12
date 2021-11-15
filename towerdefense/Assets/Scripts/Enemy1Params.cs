@@ -17,7 +17,7 @@ public class Enemy1Params : MonoBehaviour
         enemy1ParamsInstance = this;
         difficulty = SpawnEnemy.spawnEnemyInstance.difficulty;
         health = 75 * difficulty;
-        speed = 50 * difficulty;
+        speed = 30 * difficulty;
 
     }
 
@@ -34,5 +34,5 @@ public class Enemy1Params : MonoBehaviour
     {
         enemy1HitInstance =this;
     }
-    
+
 }

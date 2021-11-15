@@ -19,10 +19,6 @@ public class attackEnemy : MonoBehaviour
     public Transform firePoint;
     
     
-    
-
-
-    
 
     
     private void updateTarget(){

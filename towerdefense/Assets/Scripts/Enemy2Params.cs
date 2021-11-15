@@ -12,10 +12,11 @@ public class Enemy2Params : MonoBehaviour
 
     void Start()
     {
+        enemy2HitInstance = this;
         enemy2ParamsInstance = this;
         difficulty = SpawnEnemy.spawnEnemyInstance.difficulty;
         health = 100 * difficulty;
-        speed = 40 * difficulty;
+        speed = 25 * difficulty;
 
     }
 

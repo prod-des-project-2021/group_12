@@ -1,5 +1,17 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:towerdefense/Assets/Scripts/SliderMenuAnimation.cs.meta
 guid: ff1088e9e79fb9b4fa47e9570c4be11c
+=======
+<<<<<<< HEAD
+guid: e25b7611bfe5e754198ed9d034cffff0
+=======
+<<<<<<< HEAD:towerdefense/Assets/Scripts/Enemy3Params.cs.meta
+guid: 0732606749413f64183db33512390858
+=======
+guid: e25b7611bfe5e754198ed9d034cffff0
+>>>>>>> c8105d7b75eece7410ed584fb357e5d84b7d5e1b:towerdefense/Assets/Scripts/Enemy2Params.cs.meta
+>>>>>>> c8105d7b75eece7410ed584fb357e5d84b7d5e1b
+>>>>>>> d65d9a40c3609227bf335db425d3b9ec2e6b4fb5:towerdefense/Assets/Scripts/Enemy2Params.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

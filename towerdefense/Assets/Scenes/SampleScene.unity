@@ -320,7 +320,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+<<<<<<< HEAD
   m_RootOrder: 10
+=======
+  m_RootOrder: 5
+>>>>>>> d65d9a40c3609227bf335db425d3b9ec2e6b4fb5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &223926807
 GameObject:
@@ -545,8 +549,24 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+<<<<<<< HEAD
   - {fileID: 617335255}
   m_Father: {fileID: 223926808}
+=======
+  - {fileID: 1291918141}
+  - {fileID: 2128569842}
+  - {fileID: 1343326809}
+  - {fileID: 2093521775}
+  - {fileID: 1885266069}
+  - {fileID: 2038456644}
+  - {fileID: 1317175470}
+  - {fileID: 849876488}
+  - {fileID: 69996704}
+  - {fileID: 194777032}
+  - {fileID: 469853027}
+  - {fileID: 1726756328}
+  m_Father: {fileID: 0}
+>>>>>>> d65d9a40c3609227bf335db425d3b9ec2e6b4fb5
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -566,6 +586,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   m_Navigation:
     m_Mode: 3
     m_WrapAround: 0
@@ -649,6 +670,19 @@ CanvasRenderer:
   m_GameObject: {fileID: 523990419}
   m_CullTransparentMesh: 1
 --- !u!1 &617335254
+=======
+
+  spawnee:
+  - {fileID: 6965862407821868398, guid: e4f6efd7b69499443975611a73088a2e, type: 3}
+  - {fileID: 1275612834503282011, guid: c1f248612866d7c4faf15542f157f649, type: 3}
+  - {fileID: 6994729464161923968, guid: c9f9000b64e31bd4a883cc3481753f79, type: 3}
+  maxTime: 2
+  minTime: 0.2
+  difficulty: 1
+  level: 1
+
+--- !u!1 &469853026
+>>>>>>> d65d9a40c3609227bf335db425d3b9ec2e6b4fb5
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -818,7 +852,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+<<<<<<< HEAD
   m_RootOrder: 5
+=======
+  m_RootOrder: 2
+>>>>>>> d65d9a40c3609227bf335db425d3b9ec2e6b4fb5
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &754888879
 GameObject:
@@ -1127,7 +1165,11 @@ Transform:
   m_LocalScale: {x: 40, y: 0.1, z: 40}
   m_Children: []
   m_Father: {fileID: 0}
+<<<<<<< HEAD
   m_RootOrder: 7
+=======
+  m_RootOrder: 3
+>>>>>>> d65d9a40c3609227bf335db425d3b9ec2e6b4fb5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &843641360
 MonoBehaviour:
@@ -1630,6 +1672,7 @@ RectTransform:
   m_Father: {fileID: 1982579810}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -1678,6 +1721,10 @@ CanvasRenderer:
   m_GameObject: {fileID: 1413368081}
   m_CullTransparentMesh: 1
 --- !u!1 &1537709047
+=======
+
+--- !u!1 &1726756327
+>>>>>>> d65d9a40c3609227bf335db425d3b9ec2e6b4fb5
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1774,6 +1821,7 @@ RectTransform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -1806,6 +1854,9 @@ MonoBehaviour:
   autoTurretPrefab: {fileID: 5304588086134978516, guid: b99721ed3aa2fc24ebe844dc58c451ba, type: 3}
   sniperTurretPrefab: {fileID: 3666292362797015660, guid: 26dacd1c6771f394caaa22c7919d4ddb, type: 3}
   tank: {fileID: 1218101398774596223, guid: 0443cacc92fa8c84e8d15deb50fc7813, type: 3}
+=======
+
+>>>>>>> d65d9a40c3609227bf335db425d3b9ec2e6b4fb5
 --- !u!1001 &1867588623
 PrefabInstance:
   m_ObjectHideFlags: 0

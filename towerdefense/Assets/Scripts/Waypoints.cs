@@ -44,7 +44,7 @@ public class Waypoints : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       
 
         if (Vector3.Distance(waypoints[current].transform.position, transform.position) < WPradius)
         {
@@ -66,8 +66,9 @@ public class Waypoints : MonoBehaviour
             
         
     }
-    void OnMouseDown()
+    public void NewWPInstance()
     {
         wPInstance = this;
     }
+    
 }

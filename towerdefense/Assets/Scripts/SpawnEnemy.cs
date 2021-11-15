@@ -134,9 +134,4 @@ public class SpawnEnemy : MonoBehaviour
 
     }
 
-
-    private void OnMouseDown()
-    {
-        
-    }
 }

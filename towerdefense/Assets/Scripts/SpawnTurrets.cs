@@ -6,10 +6,6 @@ using UnityEngine.EventSystems;
 public class SpawnTurrets : MonoBehaviour
 {
 
-    //turrets can stack fix that
-    //turrets can go on the road fix that
-    //Mouse hover over plane and display the turret 
-
     public GameObject turret;
     private Camera cam = null;
     BuildManager buildManager;

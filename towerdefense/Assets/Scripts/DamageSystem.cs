@@ -16,10 +16,12 @@ public class DamageSystem : MonoBehaviour
     Enemy2Params enemy2params;
     Enemy3Params enemy3params;
     Waypoints wpInstance;
+
     private void Awake()
     {
         gameEngine = gameObject.GetComponent<GameEngine>();
     }
+
     void Start()
     {
 

@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - mob
+  - Tower
+  - Spawn area
   layers:
   - Default
   - TransparentFX

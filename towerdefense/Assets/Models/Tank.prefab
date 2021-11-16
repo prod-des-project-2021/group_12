@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 790959258456189579}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.54, y: 4.83, z: -11.61}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3.8016937, y: 1.8122724, z: 8.4337}
   m_Children: []
   m_Father: {fileID: 1319129034204219262}
@@ -220,7 +220,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 790959259120407816}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.61, y: 6.51, z: -12.75}
+  m_LocalPosition: {x: 0, y: 1.64, z: 0}
   m_LocalScale: {x: 2.2821164, y: 1.5412828, z: 3.6464}
   m_Children:
   - {fileID: 790959258740505311}
@@ -301,8 +301,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6685d9714b2f3fb4bb0c4e0be220daaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 1
-  attackRange: 50
+  fireRate: 2
+  attackRange: 100
   turnSpeed: 10
   rotatingPart: {fileID: 790959259120407820}
   enemyTag: mob

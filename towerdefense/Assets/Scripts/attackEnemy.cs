@@ -11,6 +11,9 @@ public class attackEnemy : MonoBehaviour
     public float attackRange = 50f;
     public float turnSpeed = 10f;
 
+    public float slowEnemiesAmount;
+    public float slowTime;
+
     [Header("Unity setup")]
     private Transform target;
     public Transform rotatingPart;
@@ -18,9 +21,7 @@ public class attackEnemy : MonoBehaviour
     public GameObject bullet;
     public Transform firePoint;
     
-    
 
-    
     private void updateTarget(){
         
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
@@ -63,8 +64,10 @@ public class attackEnemy : MonoBehaviour
         
         if(target == null)
         {
+           rotatingPart.rotation = Quaternion.Lerp(rotatingPart.rotation,Quaternion.Euler(0f, 0f, 0f), Time.deltaTime *turnSpeed);
             return;
         }
+
       Vector3 direction = target.position - transform.position;
       Quaternion lookRotation = Quaternion.LookRotation(direction);
       Vector3 rotation = Quaternion.Lerp(rotatingPart.rotation,lookRotation, Time.deltaTime* turnSpeed).eulerAngles;
@@ -87,7 +90,7 @@ public class attackEnemy : MonoBehaviour
         
         if(paukku != null)
         {
-            paukku.chase(target);
+            paukku.chase(target, slowEnemiesAmount,slowTime);
         }
 
     }

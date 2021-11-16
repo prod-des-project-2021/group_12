@@ -5,9 +5,8 @@ using UnityEngine;
 public class DamageSystem : MonoBehaviour
 {
     public static DamageSystem damageInstance;
-    
-    
     float timer = 0f;
+   
     bool timeToDie;
     int i = 1;
     private GameObject[] deathpoints = new GameObject[9];
@@ -16,6 +15,15 @@ public class DamageSystem : MonoBehaviour
     Enemy2Params enemy2params;
     Enemy3Params enemy3params;
     Waypoints wpInstance;
+
+
+    private float normalEnemySpeed;
+   
+    Enemy1Params enemy1params;
+    Enemy2Params enemy2params;
+    Enemy3Params enemy3params;
+    Waypoints wpInstance;
+
 
     void Start()
     {
@@ -63,6 +71,7 @@ public class DamageSystem : MonoBehaviour
                 this.gameObject.transform.localScale += new Vector3(i, 0, i);
 
                 timer = 0;
+
                 i++;
 
                 if (i >= 6)
@@ -77,7 +86,23 @@ public class DamageSystem : MonoBehaviour
     }
 
 
-    //t�m� korvataan sitten kun turretti osuu
+    public IEnumerator slowTimer(float slowTime,float slowAmount,Waypoints wpInstance)
+    {
+            
+
+            Debug.Log("slowTimer");
+            Debug.Log(wpInstance.stop+"noppeus enne");
+            wpInstance.stop += slowAmount;
+            Debug.Log(wpInstance.stop+"noppeus jälkee");
+            yield return new WaitForSeconds(slowTime);
+            wpInstance.stop = 1f;
+            
+    }
+   
+    public void damageEnemy(int attackDamage, float slowAmount, float slowTime)
+
+
+    
     public void DamageEnemy(int damageAmount)
     {
         
@@ -86,38 +111,62 @@ public class DamageSystem : MonoBehaviour
         if(this.gameObject.name.Contains("Enemy 1"))
         {          
             enemy1params.Enemy1NewInstance();
-            Debug.Log("HP enemy 1 ennen: "+Enemy1Params.enemy1HitInstance.health);
+            wpInstance.NewWPInstance();
+            float apu = wpInstance.stop;   
+            Enemy1Params.enemy1HitInstance.health -= attackDamage;            
             Enemy1Params.enemy1HitInstance.health -= attackDamage;
-            Debug.Log("HP enemy 1 jalkeen: " + Enemy1Params.enemy1HitInstance.health);
-
+            
             if (Enemy1Params.enemy1HitInstance.health <= 0.0f)
             {
                 wpInstance.NewWPInstance();
                 timeToDie = true;
             }
+            if(slowAmount < 0 && wpInstance.stop == apu)
+            {
+                
+                StartCoroutine(slowTimer(slowTime,slowAmount,wpInstance));
+               
+            }
         }
         else if (this.gameObject.name.Contains("Enemy 2"))
         {
             enemy2params.Enemy2NewInstance();
-            Debug.Log("HP enemy 2 ennen: " + Enemy2Params.enemy2HitInstance.health);
+
+            wpInstance.NewWPInstance();
+            float apu = wpInstance.stop;
+            
             Enemy2Params.enemy2HitInstance.health -= attackDamage;
-            Debug.Log("HP enemy 2 jalkeen: " + Enemy2Params.enemy2HitInstance.health);
             if (Enemy2Params.enemy2HitInstance.health <= 0.0f)
             {
                 wpInstance.NewWPInstance();
                 timeToDie = true;
             }
+             if(slowAmount < 0 && wpInstance.stop == apu)
+            {
+                
+                StartCoroutine(slowTimer(slowTime,slowAmount,wpInstance));
+               
+            }
         }
         else if (this.gameObject.name.Contains("Enemy 3"))
         {
             enemy3params.Enemy3NewInstance();
-            Debug.Log("HP enemy 3 ennen: " + Enemy3Params.enemy3HitInstance.health);
+
+            wpInstance.NewWPInstance();
+            float apu = wpInstance.stop;
+          
             Enemy3Params.enemy3HitInstance.health -= attackDamage;
-            Debug.Log("HP enemy 3 jalkeen: " + Enemy3Params.enemy3HitInstance.health);
+            
             if (Enemy3Params.enemy3HitInstance.health <= 0.0f)
             {
                 wpInstance.NewWPInstance();
                 timeToDie = true;
+            }
+            if(slowAmount < 0 && wpInstance.stop == apu)
+            {
+                
+                StartCoroutine(slowTimer(slowTime,slowAmount,wpInstance));
+               
             }
         }
 

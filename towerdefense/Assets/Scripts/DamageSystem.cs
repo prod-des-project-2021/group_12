@@ -16,12 +16,14 @@ public class DamageSystem : MonoBehaviour
     Enemy3Params enemy3params;
     Waypoints wpInstance;
 
+
     private float normalEnemySpeed;
-    // Start is called before the first frame update
+   
     Enemy1Params enemy1params;
     Enemy2Params enemy2params;
     Enemy3Params enemy3params;
     Waypoints wpInstance;
+
 
     void Start()
     {

@@ -349,6 +349,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1319129034204219262}
+  - component: {fileID: -5934897446343013013}
   m_Layer: 0
   m_Name: Tank
   m_TagString: Untagged
@@ -372,3 +373,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-5934897446343013013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8639163174591504851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6685d9714b2f3fb4bb0c4e0be220daaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireRate: 1
+  attackRange: 50
+  turnSpeed: 10
+  slowEnemiesAmount: 0
+  slowTime: 0
+  rotatingPart: {fileID: 790959259120407820}
+  enemyTag: mob
+  bullet: {fileID: 3368687015727259707, guid: 20953e685e16be6e1b50b9cb054af9af, type: 3}
+  firePoint: {fileID: 3917253027693399380}

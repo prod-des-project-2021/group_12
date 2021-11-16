@@ -31,6 +31,7 @@ public class bullet : MonoBehaviour
   
     void hitTarget()
     {
+
        
        target.GetComponent<DamageSystem>().damageEnemy((int) bulletDamage, slowEnemies, slowTime);
 
@@ -57,6 +58,7 @@ public class bullet : MonoBehaviour
     {
         hitTarget();
         
+
     }
     transform.Translate(suunta.normalized * distanceThisFrame, Space.World);
 

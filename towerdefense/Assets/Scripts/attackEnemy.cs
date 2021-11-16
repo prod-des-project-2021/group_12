@@ -21,6 +21,7 @@ public class attackEnemy : MonoBehaviour
     public GameObject bullet;
     public Transform firePoint;
     
+
     private void updateTarget(){
         
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);

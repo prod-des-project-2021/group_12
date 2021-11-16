@@ -301,8 +301,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6685d9714b2f3fb4bb0c4e0be220daaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 1
-  attackRange: 50
+  fireRate: 2
+  attackRange: 100
   turnSpeed: 10
   slowEnemiesAmount: 0
   slowTime: 0

@@ -10,19 +10,18 @@ public class DamageSystem : MonoBehaviour
     bool timeToDie;
     int i = 1;
     private GameObject[] deathpoints = new GameObject[9];
-
+    GameEngine gameEngine;
     Enemy1Params enemy1params;
     Enemy2Params enemy2params;
     Enemy3Params enemy3params;
     Waypoints wpInstance;
-
-
     private float normalEnemySpeed;
-   
-    Enemy1Params enemy1params;
-    Enemy2Params enemy2params;
-    Enemy3Params enemy3params;
-    Waypoints wpInstance;
+
+
+    private void Awake()
+    {
+        gameEngine = gameObject.GetComponent<GameEngine>();
+    }
 
 
     void Start()
@@ -32,6 +31,7 @@ public class DamageSystem : MonoBehaviour
         enemy2params = gameObject.GetComponent<Enemy2Params>();
         enemy3params = gameObject.GetComponent<Enemy3Params>();
         wpInstance = gameObject.GetComponent<Waypoints>();
+        
         deathpoints[0] = GameObject.Find("Finish 1");
         deathpoints[1] = GameObject.Find("Finish 2");
         deathpoints[2] = GameObject.Find("Finish 3");
@@ -41,17 +41,21 @@ public class DamageSystem : MonoBehaviour
     void Update()
     {
         if (Vector3.Distance(deathpoints[0].transform.position, transform.position) < 1)
-        {
+        {        
             Destroy(gameObject);
+            GameEngine.gameInstance.DamagePlayer(1);
+
         }
         if (Vector3.Distance(deathpoints[1].transform.position, transform.position) < 1)
-        {
+        {        
             Destroy(gameObject);
+            GameEngine.gameInstance.DamagePlayer(1);
         }
 
         if (Vector3.Distance(deathpoints[2].transform.position, transform.position) < 1)
         {
             Destroy(gameObject);
+            GameEngine.gameInstance.DamagePlayer(1);
         }
     }
 
@@ -61,7 +65,7 @@ public class DamageSystem : MonoBehaviour
         if (timeToDie)
         {
             Waypoints.wPInstanceRunning.speedMultiplier = 0;
-
+            Destroy(gameObject);
             if (timer < 0.01)
             {
                 timer += Time.deltaTime;
@@ -78,7 +82,7 @@ public class DamageSystem : MonoBehaviour
                 {
                     
                     timeToDie = false;
-                    Destroy(gameObject);
+                    
                 }
             }
         }
@@ -107,10 +111,10 @@ public class DamageSystem : MonoBehaviour
         if(this.gameObject.name.Contains("Enemy 1"))
         {          
             enemy1params.Enemy1NewInstance();
+
             wpInstance.NewWPInstance();
             float apu = wpInstance.stop;   
             Enemy1Params.enemy1HitInstance.health -= attackDamage;            
-            Enemy1Params.enemy1HitInstance.health -= attackDamage;
             
             if (Enemy1Params.enemy1HitInstance.health <= 0.0f)
             {
@@ -127,10 +131,9 @@ public class DamageSystem : MonoBehaviour
         else if (this.gameObject.name.Contains("Enemy 2"))
         {
             enemy2params.Enemy2NewInstance();
-
             wpInstance.NewWPInstance();
             float apu = wpInstance.stop;
-            
+
             Enemy2Params.enemy2HitInstance.health -= attackDamage;
             if (Enemy2Params.enemy2HitInstance.health <= 0.0f)
             {

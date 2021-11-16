@@ -100,10 +100,6 @@ public class DamageSystem : MonoBehaviour
     }
    
     public void damageEnemy(int attackDamage, float slowAmount, float slowTime)
-
-
-    
-    public void DamageEnemy(int damageAmount)
     {
         
         //Enemy1Params.enemy1HitInstance = this.gameObject;

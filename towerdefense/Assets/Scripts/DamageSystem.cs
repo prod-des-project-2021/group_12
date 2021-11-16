@@ -5,9 +5,8 @@ using UnityEngine;
 public class DamageSystem : MonoBehaviour
 {
     public static DamageSystem damageInstance;
-    
-    
     float timer = 0f;
+   
     bool timeToDie;
     int i = 1;
     private GameObject[] deathpoints = new GameObject[9];
@@ -16,6 +15,8 @@ public class DamageSystem : MonoBehaviour
     Enemy2Params enemy2params;
     Enemy3Params enemy3params;
     Waypoints wpInstance;
+
+    private float normalEnemySpeed;
     // Start is called before the first frame update
     void Start()
     {
@@ -62,7 +63,7 @@ public class DamageSystem : MonoBehaviour
                 this.gameObject.transform.localScale += new Vector3(i, 0, i);
 
                 timer = 0;
-                Debug.Log(this.gameObject);
+              
                 i++;
 
                 if (i >= 6)
@@ -75,8 +76,20 @@ public class DamageSystem : MonoBehaviour
 
     }
 
-    //tämä korvataan sitten kun turretti osuu
-    public void damageEnemy(int attackDamage)
+    public IEnumerator slowTimer(float slowTime,float slowAmount,Waypoints wpInstance)
+    {
+            
+
+            Debug.Log("slowTimer");
+            Debug.Log(wpInstance.stop+"noppeus enne");
+            wpInstance.stop += slowAmount;
+            Debug.Log(wpInstance.stop+"noppeus jälkee");
+            yield return new WaitForSeconds(slowTime);
+            wpInstance.stop = 1f;
+            
+    }
+   
+    public void damageEnemy(int attackDamage, float slowAmount, float slowTime)
     {
         
        
@@ -86,30 +99,53 @@ public class DamageSystem : MonoBehaviour
         {
             enemy1params.Enemy1NewInstance();
             wpInstance.NewWPInstance();
+            float apu = wpInstance.stop;
+            
             Enemy1Params.enemy1HitInstance.health -= attackDamage;
+            
             if (Enemy1Params.enemy1HitInstance.health <= 0.0f)
             {
                 timeToDie = true;
+            }
+            if(slowAmount < 0 && wpInstance.stop == apu)
+            {
+                
+                StartCoroutine(slowTimer(slowTime,slowAmount,wpInstance));
+               
             }
         }
         else if (this.gameObject.name.Contains("Enemy 2"))
         {
             enemy2params.Enemy2NewInstance();
             wpInstance.NewWPInstance();
+            float apu = wpInstance.stop;
             Enemy2Params.enemy2HitInstance.health -= attackDamage;
             if (Enemy2Params.enemy2HitInstance.health <= 0.0f)
             {
                 timeToDie = true;
+            }
+             if(slowAmount < 0 && wpInstance.stop == apu)
+            {
+                
+                StartCoroutine(slowTimer(slowTime,slowAmount,wpInstance));
+               
             }
         }
         else if (this.gameObject.name.Contains("Enemy 3"))
         {
             enemy3params.Enemy3NewInstance();
             wpInstance.NewWPInstance();
+            float apu = wpInstance.stop;
             Enemy3Params.enemy3HitInstance.health -= attackDamage;
             if (Enemy3Params.enemy3HitInstance.health <= 0.0f)
             {
                 timeToDie = true;
+            }
+            if(slowAmount < 0 && wpInstance.stop == apu)
+            {
+                
+                StartCoroutine(slowTimer(slowTime,slowAmount,wpInstance));
+               
             }
         }
 

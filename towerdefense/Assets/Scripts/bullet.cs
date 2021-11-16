@@ -5,6 +5,9 @@ public class bullet : MonoBehaviour
 {
     
     private Transform target;
+    private float slowEnemies;
+
+    private float slowTime;
 
     public GameObject impactEffect;
 
@@ -15,9 +18,13 @@ public class bullet : MonoBehaviour
     public float bulletDamage = 75f;
 
     
+
     
-    public void chase(Transform turretTarget) 
+    
+    public void chase(Transform turretTarget, float slowAmount, float SlowTime) 
     {
+        slowEnemies = slowAmount;
+        slowTime = SlowTime;
         target = turretTarget;
 
     }
@@ -25,11 +32,11 @@ public class bullet : MonoBehaviour
     void hitTarget()
     {
        
-        
-       target.GetComponent<DamageSystem>().damageEnemy((int) bulletDamage);
-       
+       target.GetComponent<DamageSystem>().damageEnemy((int) bulletDamage, slowEnemies, slowTime);
+
         GameObject effectInstance = (GameObject) Instantiate(impactEffect, transform.position, transform.rotation);
         Destroy(effectInstance, 2f);
+        Destroy(gameObject);
 
     }
 
@@ -39,7 +46,7 @@ public class bullet : MonoBehaviour
     {
         if(target == null)
         {
-            Destroy(gameObject);
+           Destroy(gameObject);
             return;
         }
 
@@ -49,6 +56,7 @@ public class bullet : MonoBehaviour
     if(suunta.magnitude <= distanceThisFrame)
     {
         hitTarget();
+        
     }
     transform.Translate(suunta.normalized * distanceThisFrame, Space.World);
 

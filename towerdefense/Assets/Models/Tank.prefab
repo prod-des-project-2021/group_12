@@ -128,7 +128,7 @@ Transform:
   - {fileID: 3917253027693399380}
   m_Father: {fileID: 790959259120407820}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90.14899, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &790959258740505310
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -304,6 +304,8 @@ MonoBehaviour:
   fireRate: 2
   attackRange: 100
   turnSpeed: 10
+  slowEnemiesAmount: 0
+  slowTime: 0
   rotatingPart: {fileID: 790959259120407820}
   enemyTag: mob
   bullet: {fileID: 3368687015727259707, guid: 20953e685e16be6e1b50b9cb054af9af, type: 3}

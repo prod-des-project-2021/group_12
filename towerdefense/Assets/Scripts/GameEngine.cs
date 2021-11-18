@@ -6,12 +6,17 @@ public class GameEngine : MonoBehaviour
 {
     public int playerHealth = 100;
     public int money = 100;
+    public float score = 0;
+    [HideInInspector] public float difficulty = 1.0f;
+    public int level = 1;
+    public float timeBetweenWaves = 10.0f;
+    public float timeBetweenEnemies = 0.5f;
+
     public static GameEngine gameInstance;
     // Start is called before the first frame update
     void Start()
     {
         gameInstance = this;
-        
     }
 
     // Update is called once per frame
@@ -26,21 +31,41 @@ public class GameEngine : MonoBehaviour
         Debug.Log("Player HP: " + playerHealth);
     }
 
-    string SpendMoney(int amount)
+    public bool SpendMoney(int amount)
     {
         if(money >= amount)
         {
             money -= amount;
-            return money.ToString();
+            return true;
         }
         else
         {
-            return "Not enough money :(";
+            return false;
         }
     }
 
-    void AddMoney(int amount)
+    public void AddMoney(int amount)
     {
         money += amount;
+        Debug.Log("money: " + money);
+    }
+
+    public int GetMoney()
+    {
+        return money;
+    }
+
+    public void IncreaseDifficultyAndLevel()
+    {
+        
+        level += 1;
+        difficulty = (level * 0.25f) + 0.75f;
+        Debug.Log("score: "+score);
+    }
+
+    public void IncreaseScore(float amount)
+    {
+        score += amount* difficulty;
+        
     }
 }

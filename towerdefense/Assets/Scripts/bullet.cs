@@ -15,17 +15,18 @@ public class bullet : MonoBehaviour
 
     public float bulletSpeed = 70f;
 
-    public float bulletDamage = 75f;
+    private float bulletDamage;
 
     
 
     
     
-    public void chase(Transform turretTarget, float slowAmount, float SlowTime) 
+    public void chase(Transform turretTarget, float slowAmount, float SlowTime, float damage) 
     {
         slowEnemies = slowAmount;
         slowTime = SlowTime;
         target = turretTarget;
+        bulletDamage = damage;
 
     }
   

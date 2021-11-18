@@ -141,4 +141,4 @@ MonoBehaviour:
   speed: 0
   speed2: 0
   speed3: 0
-  stop: 1
+  speedMultiplier: 1

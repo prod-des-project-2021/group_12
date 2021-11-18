@@ -94,26 +94,24 @@ public class DamageSystem : MonoBehaviour
     {
             
 
-            Debug.Log("slowTimer");
-            Debug.Log(wpInstance.stop+"noppeus enne");
-            wpInstance.stop += slowAmount;
-            Debug.Log(wpInstance.stop+"noppeus jälkee");
+            
+            wpInstance.speedMultiplier += slowAmount;
+            
             yield return new WaitForSeconds(slowTime);
-            wpInstance.stop = 1f;
+            wpInstance.speedMultiplier = 1f;
             
     }
    
     public void damageEnemy(int attackDamage, float slowAmount, float slowTime)
     {
+       float originalSpeedMultiplier = 1f;
         
-        //Enemy1Params.enemy1HitInstance = this.gameObject;
-        int attackDamage = damageAmount;
         if(this.gameObject.name.Contains("Enemy 1"))
         {          
             enemy1params.Enemy1NewInstance();
 
             wpInstance.NewWPInstance();
-            float apu = wpInstance.stop;   
+           
             Enemy1Params.enemy1HitInstance.health -= attackDamage;            
             
             if (Enemy1Params.enemy1HitInstance.health <= 0.0f)
@@ -121,7 +119,7 @@ public class DamageSystem : MonoBehaviour
                 wpInstance.NewWPInstance();
                 timeToDie = true;
             }
-            if(slowAmount < 0 && wpInstance.stop == apu)
+            if(slowAmount < 0 && wpInstance.speedMultiplier == originalSpeedMultiplier)
             {
                 
                 StartCoroutine(slowTimer(slowTime,slowAmount,wpInstance));
@@ -132,7 +130,7 @@ public class DamageSystem : MonoBehaviour
         {
             enemy2params.Enemy2NewInstance();
             wpInstance.NewWPInstance();
-            float apu = wpInstance.stop;
+            float originalEnemySpeed = wpInstance.speedMultiplier;
 
             Enemy2Params.enemy2HitInstance.health -= attackDamage;
             if (Enemy2Params.enemy2HitInstance.health <= 0.0f)
@@ -140,7 +138,7 @@ public class DamageSystem : MonoBehaviour
                 wpInstance.NewWPInstance();
                 timeToDie = true;
             }
-             if(slowAmount < 0 && wpInstance.stop == apu)
+             if(slowAmount < 0 && wpInstance.speedMultiplier == originalSpeedMultiplier)
             {
                 
                 StartCoroutine(slowTimer(slowTime,slowAmount,wpInstance));
@@ -152,7 +150,7 @@ public class DamageSystem : MonoBehaviour
             enemy3params.Enemy3NewInstance();
 
             wpInstance.NewWPInstance();
-            float apu = wpInstance.stop;
+            float originalEnemySpeed = wpInstance.speedMultiplier;
           
             Enemy3Params.enemy3HitInstance.health -= attackDamage;
             
@@ -161,7 +159,7 @@ public class DamageSystem : MonoBehaviour
                 wpInstance.NewWPInstance();
                 timeToDie = true;
             }
-            if(slowAmount < 0 && wpInstance.stop == apu)
+            if(slowAmount < 0 && wpInstance.speedMultiplier == originalSpeedMultiplier)
             {
                 
                 StartCoroutine(slowTimer(slowTime,slowAmount,wpInstance));

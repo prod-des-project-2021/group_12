@@ -6,7 +6,6 @@ public class Shop : MonoBehaviour
 {
 
     BuildManager buildManager;
-
     private void Start()
     {
         buildManager = BuildManager.instance;
@@ -14,20 +13,44 @@ public class Shop : MonoBehaviour
 
     public void PurchaseAutoTurret()
     {
-        Debug.Log("Standard turret purchased");
-        buildManager.SetTurretToBuild(buildManager.autoTurretPrefab);
+        if (GameEngine.gameInstance.SpendMoney(100))
+        {
+            Debug.Log("Standard turret purchased");
+            buildManager.SetTurretToBuild(buildManager.autoTurretPrefab);
+        }
+        else
+        {
+            Debug.Log("No Money :(");
+        }
+        
     }
 
     public void PurchaseSniperTower()
     {
-        Debug.Log("Sniper tower purchased");
-        buildManager.SetTurretToBuild(buildManager.sniperTurretPrefab);
+        if (GameEngine.gameInstance.SpendMoney(100))
+        {
+            Debug.Log("Sniper tower purchased");
+            buildManager.SetTurretToBuild(buildManager.sniperTurretPrefab);
+        }
+        else
+        {
+            Debug.Log("No Money :(");
+        }
+        
     }
 
     public void PurchaseTank()
     {
-        Debug.Log("tank purchased");
-        buildManager.SetTurretToBuild(buildManager.tank);
+        if (GameEngine.gameInstance.SpendMoney(100))
+        {
+            Debug.Log("tank purchased");
+            buildManager.SetTurretToBuild(buildManager.tank);
+        }
+        else
+        {
+            Debug.Log("No Money :(");
+        }
+            
     }
 
 }

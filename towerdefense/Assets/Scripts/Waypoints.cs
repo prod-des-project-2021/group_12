@@ -63,7 +63,6 @@ public class Waypoints : MonoBehaviour
             Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, singleStep, 0.0f);
 
             transform.position = Vector3.MoveTowards(transform.position, waypoints[current].transform.position, Time.deltaTime * speed * speedMultiplier);
-            float angle = Vector3.Angle(targetDir, transform.right);
             transform.rotation = Quaternion.LookRotation(newDir);
             
         

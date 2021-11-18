@@ -61,30 +61,11 @@ public class DamageSystem : MonoBehaviour
 
     void FixedUpdate()
     {
-        
+
         if (timeToDie)
         {
-            Waypoints.wPInstanceRunning.speedMultiplier = 0;
+
             Destroy(gameObject);
-            if (timer < 0.01)
-            {
-                timer += Time.deltaTime;
-            }
-            else
-            {
-                this.gameObject.transform.localScale += new Vector3(i, 0, i);
-
-                timer = 0;
-
-                i++;
-
-                if (i >= 6)
-                {
-                    
-                    timeToDie = false;
-                    
-                }
-            }
         }
 
     }
@@ -93,33 +74,33 @@ public class DamageSystem : MonoBehaviour
     public IEnumerator slowTimer(float slowTime,float slowAmount,Waypoints wpInstance)
     {
             
-
-            
             wpInstance.speedMultiplier += slowAmount;
-            
             yield return new WaitForSeconds(slowTime);
-            wpInstance.speedMultiplier = 1f;
-            
+            wpInstance.speedMultiplier = 1f;        
     }
    
     public void damageEnemy(int attackDamage, float slowAmount, float slowTime)
     {
        float originalSpeedMultiplier = 1f;
         
+        //Enemy1Params.enemy1HitInstance = this.gameObject;
         if(this.gameObject.name.Contains("Enemy 1"))
         {          
             enemy1params.Enemy1NewInstance();
 
             wpInstance.NewWPInstance();
-           
+            float apu = wpInstance.speedMultiplier;   
             Enemy1Params.enemy1HitInstance.health -= attackDamage;            
             
             if (Enemy1Params.enemy1HitInstance.health <= 0.0f)
             {
                 wpInstance.NewWPInstance();
+                Waypoints.wPInstanceRunning.speedMultiplier = 0;
                 timeToDie = true;
+                GameEngine.gameInstance.AddMoney(25);
+                GameEngine.gameInstance.IncreaseScore(1f);
             }
-            if(slowAmount < 0 && wpInstance.speedMultiplier == originalSpeedMultiplier)
+            if(slowAmount < 0 && wpInstance.speedMultiplier == apu)
             {
                 
                 StartCoroutine(slowTimer(slowTime,slowAmount,wpInstance));
@@ -130,15 +111,18 @@ public class DamageSystem : MonoBehaviour
         {
             enemy2params.Enemy2NewInstance();
             wpInstance.NewWPInstance();
-            float originalEnemySpeed = wpInstance.speedMultiplier;
+            float apu = wpInstance.speedMultiplier;
 
             Enemy2Params.enemy2HitInstance.health -= attackDamage;
             if (Enemy2Params.enemy2HitInstance.health <= 0.0f)
             {
                 wpInstance.NewWPInstance();
+                Waypoints.wPInstanceRunning.speedMultiplier = 0;
                 timeToDie = true;
+                GameEngine.gameInstance.AddMoney(30);
+                GameEngine.gameInstance.IncreaseScore(1.25f);
             }
-             if(slowAmount < 0 && wpInstance.speedMultiplier == originalSpeedMultiplier)
+             if(slowAmount < 0 && wpInstance.speedMultiplier == apu)
             {
                 
                 StartCoroutine(slowTimer(slowTime,slowAmount,wpInstance));
@@ -150,16 +134,19 @@ public class DamageSystem : MonoBehaviour
             enemy3params.Enemy3NewInstance();
 
             wpInstance.NewWPInstance();
-            float originalEnemySpeed = wpInstance.speedMultiplier;
+            float apu = wpInstance.speedMultiplier;
           
             Enemy3Params.enemy3HitInstance.health -= attackDamage;
             
             if (Enemy3Params.enemy3HitInstance.health <= 0.0f)
             {
                 wpInstance.NewWPInstance();
+                Waypoints.wPInstanceRunning.speedMultiplier = 0;
                 timeToDie = true;
+                GameEngine.gameInstance.AddMoney(35);
+                GameEngine.gameInstance.IncreaseScore(1.5f);
             }
-            if(slowAmount < 0 && wpInstance.speedMultiplier == originalSpeedMultiplier)
+            if(slowAmount < 0 && wpInstance.speedMultiplier == apu)
             {
                 
                 StartCoroutine(slowTimer(slowTime,slowAmount,wpInstance));

@@ -46,30 +46,24 @@ public class attackEnemy : MonoBehaviour
         
         GameObject nearestEnemy = null;
         GameObject FurthestEnemyInRange = null;
+        GameObject mostHpEnemy;
         
-        
-        
-
-       
-        
-
         foreach(GameObject enemy in enemies)
         {
             
-           GameObject mostHpEnemy;
+           
+           
           
             float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
             float distanceToSpawn = Vector3.Distance(enemy.transform.position,spawnPoint.transform.position);
            float distanceToFinish = Vector3.Distance(enemy.transform.position, finishPoint.transform.position);
-
+                    
                   
                   
                     if(distanceToEnemy < shortestDistance){
                     shortestDistance = distanceToEnemy;
                     nearestEnemy = enemy;
-                   
-                   
-                    
+                     
                 }
 
            /*         if(distanceToFinish > distanceToSpawn)
@@ -83,7 +77,7 @@ public class attackEnemy : MonoBehaviour
             
             if(nearestEnemy != null && shortestDistance <= attackRange)
             {
-                
+              
                 target = nearestEnemy.transform;
                 
             }

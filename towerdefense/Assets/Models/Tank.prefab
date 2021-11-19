@@ -364,7 +364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireRate: 5
-  attackRange: 50
+  attackRange: 75
   turnSpeed: 10
   slowEnemiesAmount: 0
   slowTime: 0

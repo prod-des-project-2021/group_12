@@ -20,7 +20,10 @@ public class attackEnemy : MonoBehaviour
     public string enemyTag = "mob";
     public GameObject bullet;
     public Transform firePoint;
-    
+    public Transform spinner;
+    float SpinUpTime = 2;
+    float SpinUpTimer;
+    float MaxSpinRate = 360;
 
     private void updateTarget(){
         
@@ -54,29 +57,65 @@ public class attackEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-     InvokeRepeating("updateTarget",0f,0.5f);
+        InvokeRepeating("updateTarget",0f,0.25f);
+        if(spinner != null)
+        {
+
+        }
         
     }
-
+    void SpinBarrel()
+    {
+            float theta = (SpinUpTimer / SpinUpTime) *
+             MaxSpinRate * Time.deltaTime;
+            spinner.RotateAroundLocal(Vector3.back, theta);
+        
+    }
     // Update is called once per frame
     void Update()
-    {   
-        
-        if(target == null)
+    {
+        if (target == null)
         {
-           rotatingPart.rotation = Quaternion.Lerp(rotatingPart.rotation,Quaternion.Euler(0f, 0f, 0f), Time.deltaTime *turnSpeed);
-            return;
+            SpinUpTimer = Mathf.Clamp(
+            SpinUpTimer - Time.deltaTime,
+            0, SpinUpTime);
+            rotatingPart.rotation = Quaternion.Lerp(rotatingPart.rotation,Quaternion.Euler(0f, 0f, 0f), Time.deltaTime *turnSpeed);
+            
+        }
+        else
+        {
+            SpinUpTimer = Mathf.Clamp(
+            SpinUpTimer + Time.deltaTime,
+            0, SpinUpTime);
+            Vector3 direction = target.position - transform.position;
+            Quaternion lookRotation = Quaternion.LookRotation(direction);
+            Vector3 rotation = Quaternion.Lerp(rotatingPart.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
+            rotatingPart.rotation = Quaternion.Euler(0f, rotation.y, 0f);
         }
 
-      Vector3 direction = target.position - transform.position;
-      Quaternion lookRotation = Quaternion.LookRotation(direction);
-      Vector3 rotation = Quaternion.Lerp(rotatingPart.rotation,lookRotation, Time.deltaTime* turnSpeed).eulerAngles;
-      rotatingPart.rotation = Quaternion.Euler(0f,rotation.y, 0f);
+
+        
       
         if(fireCountdown <= 0f)
         {
-            shoot();
-            fireCountdown = 1f/fireRate;
+            
+            if (spinner != null)
+            {
+                SpinBarrel();
+                if (SpinUpTimer >= SpinUpTime)
+                {
+                    shoot();
+                    fireCountdown = 1f / fireRate;
+                }
+                
+            }
+            else
+            {
+                
+                shoot();
+                fireCountdown = 1f / fireRate;
+            }
+            
         }
         fireCountdown -= Time.deltaTime;
        
@@ -86,12 +125,23 @@ public class attackEnemy : MonoBehaviour
     {
         
         GameObject bulletGo = (GameObject) Instantiate (bullet, firePoint.position, firePoint.rotation);
-        bullet paukku = bulletGo.GetComponent<bullet>();
+        if (bullet.name.Contains("Bullet"))
+        {
+            bullet paukku = bulletGo.GetComponent<bullet>();
+
+            if (paukku != null)
+            {
+                paukku.chase(target, slowEnemiesAmount, slowTime);
+            }
+        }else if(bullet.name.Contains("Missile")){
+            Missile paukku = bulletGo.GetComponent<Missile>();
         
         if(paukku != null)
         {
             paukku.chase(target, slowEnemiesAmount,slowTime);
         }
+        }
+        
 
     }
         

@@ -18,6 +18,7 @@ public class BuildManager : MonoBehaviour
         instance = this;
     }
 
+
     public GameObject autoTurretPrefab;
     public GameObject sniperTurretPrefab;
     public GameObject tank;
@@ -25,7 +26,7 @@ public class BuildManager : MonoBehaviour
 
     private GameObject turretToBuild;
 
-    public GameObject getTurretToBuild()
+    public GameObject GetTurretToBuild()
     {
         return turretToBuild;
     }

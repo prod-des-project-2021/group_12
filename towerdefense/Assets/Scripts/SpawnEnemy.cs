@@ -78,7 +78,7 @@ public class SpawnEnemy : MonoBehaviour
     {
         for (float i = timeBetweenWaves; i > 0; i--)
         {
-            Debug.Log("next wave in: "+i);
+            //Debug.Log("next wave in: "+i);
             if (timeForNewRound)
             {
                 NextRound();
@@ -101,9 +101,9 @@ public class SpawnEnemy : MonoBehaviour
         roundDone = false;
 
         enemiesPerLevel = enemiesPerLevel + level * 1;
-        Debug.Log("enemies: " +enemiesPerLevel);
-        Debug.Log("level: "+level);
-        Debug.Log("difficulty: " + difficulty);
+        //Debug.Log("enemies: " +enemiesPerLevel);
+        //Debug.Log("level: "+level);
+        //Debug.Log("difficulty: " + difficulty);
         enemiesHaveSpawned = false;
         for (int i = 0; i < enemiesPerLevel; i++)
         {

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 790959258456189576}
   m_Layer: 0
   m_Name: tankBody
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,7 +128,7 @@ Transform:
   - {fileID: 3917253027693399380}
   m_Father: {fileID: 790959259120407820}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90.14899, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &790959258740505310
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 7927607297259978871}
   m_Layer: 0
   m_Name: tankTower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -301,9 +301,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6685d9714b2f3fb4bb0c4e0be220daaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 1
-  attackRange: 50
+  fireRate: 2
+  attackRange: 100
   turnSpeed: 10
+  slowEnemiesAmount: 0
+  slowTime: 0
   rotatingPart: {fileID: 790959259120407820}
   enemyTag: mob
   bullet: {fileID: 3368687015727259707, guid: 20953e685e16be6e1b50b9cb054af9af, type: 3}
@@ -349,7 +351,7 @@ GameObject:
   - component: {fileID: 1319129034204219262}
   m_Layer: 0
   m_Name: Tank
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -25,12 +25,15 @@ public class SpawnTurrets : MonoBehaviour
     }
 
 
+    //figure out how to click turret and spawn a upgrade menu above it
+    //use tag maybe?
+
 
     private void SpawnAtMousePos()
     {
-        GameObject turretToBuild = BuildManager.instance.getTurretToBuild();
+        GameObject turretToBuild = BuildManager.instance.GetTurretToBuild();
 
-        if (buildManager.getTurretToBuild() == null)
+        if (buildManager.GetTurretToBuild() == null)
         {
             return;
         }
@@ -43,21 +46,19 @@ public class SpawnTurrets : MonoBehaviour
                 return;
             }
                 
-            
-
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            
+           
 
             if (Physics.Raycast(ray, out hit) && hit.transform.tag == "Spawn area")
             {
                 Debug.Log(hit.transform.tag);
-                Debug.Log(hit.collider);
                 turret = Instantiate(turretToBuild, new Vector3(hit.point.x, hit.point.y + turret.transform.position.y, hit.point.z), Quaternion.identity);
             }
 
-            else 
+            else
             {
+                Debug.Log(hit.transform.tag);
                 Debug.Log("Cant spawn tower here");
             }
         }

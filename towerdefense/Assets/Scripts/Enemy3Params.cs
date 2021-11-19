@@ -22,11 +22,6 @@ public class Enemy3Params : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     public void Enemy3NewInstance()
     {
         enemy3HitInstance =this;

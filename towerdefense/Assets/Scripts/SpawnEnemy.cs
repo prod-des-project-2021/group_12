@@ -13,24 +13,17 @@ public class SpawnEnemy : MonoBehaviour
     private GameObject spawnPos;
 
     public GameObject[] spawnee = new GameObject[3];
-    public float maxTime = 2f;
-    public float minTime = 0.2f;
 
 
-    private float time;
     int vuoro = 0;
     private float spawnTime;
 
-    float timer = 0f;
 
-    private float timeBetweenWaves = 10.0f;
-    [HideInInspector] public float difficulty = 1.0f;
-    public int level = 1;
     private int enemiesPerLevel = 5;
     bool roundDone = false;
     bool enemiesHaveSpawned = true;
     bool timeForNewRound = false;
-    Coroutine ws;
+    Coroutine ws, ld;
 
 
     void Start()
@@ -68,15 +61,13 @@ public class SpawnEnemy : MonoBehaviour
 
     void NextRound()
     {
-        level += 1;
-        difficulty = difficulty + 0.25f;
-        Enemy3Params.enemy3ParamsInstance.difficulty = difficulty;
+        GameEngine.gameInstance.IncreaseDifficultyAndLevel();
         StartGame();
     }
 
     IEnumerator WaveStarter()
     {
-        for (float i = timeBetweenWaves; i > 0; i--)
+        for (float i = GameEngine.gameInstance.timeBetweenWaves; i > 0; i--)
         {
             //Debug.Log("next wave in: "+i);
             if (timeForNewRound)
@@ -99,36 +90,55 @@ public class SpawnEnemy : MonoBehaviour
     IEnumerator SpawnWave()
     {
         roundDone = false;
+<<<<<<< HEAD
 
         enemiesPerLevel = enemiesPerLevel + level * 1;
         //Debug.Log("enemies: " +enemiesPerLevel);
         //Debug.Log("level: "+level);
         //Debug.Log("difficulty: " + difficulty);
+=======
+        //ld = StartCoroutine(LevelDuration());
+        enemiesPerLevel = enemiesPerLevel + GameEngine.gameInstance.level * 1;
+        Debug.Log("enemies: " +enemiesPerLevel);
+        Debug.Log("level: "+ GameEngine.gameInstance.level);
+        Debug.Log("difficulty: " + GameEngine.gameInstance.difficulty);
+>>>>>>> 78c7e80a818625f056e4c58e4528f9d3f8f4d054
         enemiesHaveSpawned = false;
         for (int i = 0; i < enemiesPerLevel; i++)
         {
 
             SpawnSingleEnemy();
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(GameEngine.gameInstance.timeBetweenEnemies);
         }
         enemiesHaveSpawned = true;
+       // StopCoroutine(ld);
         ws = StartCoroutine(WaveStarter());
 
 
     }
 
+    /*IEnumerator LevelDuration()
+    {
+        float waveDuration = 0;
+        while(enemiesHaveSpawned == false)
+        {          
+            yield return new WaitForSeconds(0.1f);
+            waveDuration += 0.1f;
+            
+        }
+        float durationScore = waveDuration * 10;
+}*/
+
     void SpawnSingleEnemy()
     {
-        
         int randSpawn = Random.Range(0, 3);
         spawnPos = spawnPoints[randSpawn];
-
-        timer = 0;
         spawnEnemyInstance = this;
         Instantiate(spawnee[vuoro], spawnPos.transform.position, spawnPos.transform.rotation);
         if (vuoro == 0) vuoro++;
         else if (vuoro == 1) vuoro++;
         else if (vuoro == 2) vuoro = 0;
+        
 
 
 

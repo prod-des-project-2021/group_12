@@ -61,30 +61,11 @@ public class DamageSystem : MonoBehaviour
 
     void FixedUpdate()
     {
-        
+
         if (timeToDie)
         {
-            Waypoints.wPInstanceRunning.speedMultiplier = 0;
+
             Destroy(gameObject);
-            if (timer < 0.01)
-            {
-                timer += Time.deltaTime;
-            }
-            else
-            {
-                this.gameObject.transform.localScale += new Vector3(i, 0, i);
-
-                timer = 0;
-
-                i++;
-
-                if (i >= 6)
-                {
-                    
-                    timeToDie = false;
-                    
-                }
-            }
         }
 
     }
@@ -93,6 +74,7 @@ public class DamageSystem : MonoBehaviour
     public IEnumerator slowTimer(float slowTime,float slowAmount,Waypoints wpInstance)
     {
             
+<<<<<<< HEAD
 
             Debug.Log("slowTimer");
             Debug.Log(wpInstance.speedMultiplier + "noppeus enne");
@@ -101,6 +83,11 @@ public class DamageSystem : MonoBehaviour
             yield return new WaitForSeconds(slowTime);
             wpInstance.speedMultiplier = 1f;
             
+=======
+            wpInstance.speedMultiplier += slowAmount;
+            yield return new WaitForSeconds(slowTime);
+            wpInstance.speedMultiplier = 1f;        
+>>>>>>> 78c7e80a818625f056e4c58e4528f9d3f8f4d054
     }
    
     public void damageEnemy(int attackDamage, float slowAmount, float slowTime)
@@ -118,7 +105,10 @@ public class DamageSystem : MonoBehaviour
             if (Enemy1Params.enemy1HitInstance.health <= 0.0f)
             {
                 wpInstance.NewWPInstance();
+                Waypoints.wPInstanceRunning.speedMultiplier = 0;
                 timeToDie = true;
+                GameEngine.gameInstance.AddMoney(25);
+                GameEngine.gameInstance.IncreaseScore(1f);
             }
             if(slowAmount < 0 && wpInstance.speedMultiplier == apu)
             {
@@ -137,7 +127,10 @@ public class DamageSystem : MonoBehaviour
             if (Enemy2Params.enemy2HitInstance.health <= 0.0f)
             {
                 wpInstance.NewWPInstance();
+                Waypoints.wPInstanceRunning.speedMultiplier = 0;
                 timeToDie = true;
+                GameEngine.gameInstance.AddMoney(30);
+                GameEngine.gameInstance.IncreaseScore(1.25f);
             }
              if(slowAmount < 0 && wpInstance.speedMultiplier == apu)
             {
@@ -158,7 +151,10 @@ public class DamageSystem : MonoBehaviour
             if (Enemy3Params.enemy3HitInstance.health <= 0.0f)
             {
                 wpInstance.NewWPInstance();
+                Waypoints.wPInstanceRunning.speedMultiplier = 0;
                 timeToDie = true;
+                GameEngine.gameInstance.AddMoney(35);
+                GameEngine.gameInstance.IncreaseScore(1.5f);
             }
             if(slowAmount < 0 && wpInstance.speedMultiplier == apu)
             {

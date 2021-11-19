@@ -54,6 +54,7 @@ public class SpawnTurrets : MonoBehaviour
             {
                 Debug.Log(hit.transform.tag);
                 turret = Instantiate(turretToBuild, new Vector3(hit.point.x, hit.point.y + turret.transform.position.y, hit.point.z), Quaternion.identity);
+                BuildManager.instance.SetTurretToBuild(null);
             }
 
             else

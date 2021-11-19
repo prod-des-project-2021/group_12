@@ -4,20 +4,21 @@ using UnityEngine;
 
 public class Enemy1Params : MonoBehaviour
 {
-   DamageSystem ds;
+    DamageSystem ds;
     [HideInInspector] public float speed = 35;
-    public float health = 150;
-    public float difficulty;
+    [HideInInspector] public float health;
+    public float startHealth = 75;
     public static Enemy1Params enemy1ParamsInstance;
     public static Enemy1Params enemy1HitInstance;
 
     void Start()
     {
-          
         enemy1ParamsInstance = this;
-        difficulty = SpawnEnemy.spawnEnemyInstance.difficulty;
-        health = 75 * difficulty;
-        speed = 30 * difficulty;
+        health = startHealth * GameEngine.gameInstance.difficulty;
+        if(speed < 150)
+        {
+            speed = 30 * GameEngine.gameInstance.difficulty;
+        }
 
     }
 

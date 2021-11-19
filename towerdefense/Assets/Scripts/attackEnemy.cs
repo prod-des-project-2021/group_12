@@ -28,11 +28,10 @@ public class attackEnemy : MonoBehaviour
     private string enemyNumber3 = "Enemy 3";
     public GameObject bullet;
     public Transform firePoint;
-
-    Enemy1Params enemy1params;
-    Enemy2Params enemy2params;
-    Enemy3Params enemy3params;
-    
+    public Transform spinner;
+    float SpinUpTime = 2;
+    float SpinUpTimer;
+    float MaxSpinRate = 360;
 
     private void updateTarget(){
         
@@ -43,10 +42,12 @@ public class attackEnemy : MonoBehaviour
      
         float shortestDistance = Mathf.Infinity;
         float longestDistance = Mathf.Infinity;
+        float distanceToMaxHpEnemy = Mathf.Infinity;
         
         GameObject nearestEnemy = null;
         GameObject FurthestEnemyInRange = null;
-        GameObject mostHpEnemy;
+        GameObject mostHpEnemy = null;
+        GameObject compareEnemy = null;
         
         foreach(GameObject enemy in enemies)
         {
@@ -55,16 +56,30 @@ public class attackEnemy : MonoBehaviour
            
           
             float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
+            
             float distanceToSpawn = Vector3.Distance(enemy.transform.position,spawnPoint.transform.position);
            float distanceToFinish = Vector3.Distance(enemy.transform.position, finishPoint.transform.position);
                     
                   
-                  
+                  //turrettia lähinnä
                     if(distanceToEnemy < shortestDistance){
                     shortestDistance = distanceToEnemy;
                     nearestEnemy = enemy;
-                     
+                    
+                    
+                    }
+
+                    compareEnemy = enemies[enemies.Length-1];
+                    //hp:n määrän mukaan target
+                    if(nearestEnemy.GetComponent<EnemyParams>().startHealth > compareEnemy.GetComponent<EnemyParams>().startHealth)
+                    {
+                        mostHpEnemy = nearestEnemy;                     
+                    }else
+                    { 
+                        distanceToMaxHpEnemy = distanceToMostHPenemy;
+                        mostHpEnemy = compareEnemy;
                 }
+        
 
            /*         if(distanceToFinish > distanceToSpawn)
                 {
@@ -74,13 +89,17 @@ public class attackEnemy : MonoBehaviour
 
                           
                 } */
-            
-            if(nearestEnemy != null && shortestDistance <= attackRange)
+            /*if(mostHpEnemy != null && distanceToMaxHpEnemy <= attackRange){
+                Debug.Log("oujeah");
+                target = mostHpEnemy.transform;
+            }*/
+            if(mostHpEnemy != null && shortestDistance <= attackRange)
             {
               
                 target = nearestEnemy.transform;
                 
             }
+            
           /*  if(FurthestEnemyInRange != null && longestDistance <= attackRange){
             target = FurthestEnemyInRange.transform;
             }
@@ -99,32 +118,62 @@ public class attackEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        enemy1params = gameObject.GetComponent<Enemy1Params>();
-        enemy2params = gameObject.GetComponent<Enemy2Params>();
-        enemy3params = gameObject.GetComponent<Enemy3Params>();
-     InvokeRepeating("updateTarget",0f,0.5f);
+        InvokeRepeating("updateTarget",0f,0.25f);
+        
         
     }
-
+    void SpinBarrel()
+    {
+            float theta = (SpinUpTimer / SpinUpTime) *
+             MaxSpinRate * Time.deltaTime;
+            spinner.RotateAroundLocal(Vector3.back, theta);
+        
+    }
     // Update is called once per frame
     void Update()
-    {   
-        
-        if(target == null)
+    {
+        if (target == null)
         {
-          
-            return;
+            SpinUpTimer = Mathf.Clamp(
+            SpinUpTimer - Time.deltaTime,
+            0, SpinUpTime);
+            rotatingPart.rotation = Quaternion.Lerp(rotatingPart.rotation,Quaternion.Euler(0f, 0f, 0f), Time.deltaTime *turnSpeed);
+            
+        }
+        else
+        {
+            SpinUpTimer = Mathf.Clamp(
+            SpinUpTimer + Time.deltaTime,
+            0, SpinUpTime);
+            Vector3 direction = target.position - transform.position;
+            Quaternion lookRotation = Quaternion.LookRotation(direction);
+            Vector3 rotation = Quaternion.Lerp(rotatingPart.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
+            rotatingPart.rotation = Quaternion.Euler(0f, rotation.y, 0f);
         }
 
-      Vector3 direction = target.position - transform.position;
-      Quaternion lookRotation = Quaternion.LookRotation(direction);
-      Vector3 rotation = Quaternion.Lerp(rotatingPart.rotation,lookRotation, Time.deltaTime* turnSpeed).eulerAngles;
-      rotatingPart.rotation = Quaternion.Euler(0f,rotation.y, 0f);
+
+        
       
         if(fireCountdown <= 0f)
         {
-            shoot();
-            fireCountdown = 1f/fireRate;
+            
+            if (spinner != null)
+            {
+                SpinBarrel();
+                if (SpinUpTimer >= SpinUpTime)
+                {
+                    shoot();
+                    fireCountdown = 1f / fireRate;
+                }
+                
+            }
+            else
+            {
+                
+                shoot();
+                fireCountdown = 1f / fireRate;
+            }
+            
         }
         fireCountdown -= Time.deltaTime;
        
@@ -134,12 +183,29 @@ public class attackEnemy : MonoBehaviour
     {
         
         GameObject bulletGo = (GameObject) Instantiate (bullet, firePoint.position, firePoint.rotation);
-        bullet paukku = bulletGo.GetComponent<bullet>();
+         
+        if (bullet.name.Contains("Bullet"))
+        {
+            
+        
+           bullet paukku = bulletGo.GetComponent<bullet>();
+
+            if (paukku != null)
+            {
+                paukku.chase(target, slowEnemiesAmount,slowTime,damage);
+            }
+
+        }
+        else if(bullet.name.Contains("Missile")){
+           
+            Missile paukku = bulletGo.GetComponent<Missile>();
         
         if(paukku != null)
         {
             paukku.chase(target, slowEnemiesAmount,slowTime,damage);
         }
+        }
+        
 
     }
         

@@ -81,6 +81,7 @@ public class DamageSystem : MonoBehaviour
    
     public void damageEnemy(int attackDamage, float slowAmount, float slowTime)
     {
+       float originalSpeedMultiplier = 1f;
         
         //Enemy1Params.enemy1HitInstance = this.gameObject;
         if(this.gameObject.name.Contains("Enemy 1"))

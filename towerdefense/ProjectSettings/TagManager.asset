@@ -7,6 +7,8 @@ TagManager:
   - mob
   - Tower
   - Spawn area
+  - finishLine
+  - spawnLine
   layers:
   - Default
   - TransparentFX

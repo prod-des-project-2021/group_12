@@ -18,7 +18,7 @@ public class Missile : MonoBehaviour
     public float bulletDamage = 75f;
 
 
-    public void chase(Transform turretTarget, float slowAmount, float SlowTime)
+    public void chase(Transform turretTarget, float slowAmount, float SlowTime,float damage)
     {
         slowEnemies = slowAmount;
         slowTime = SlowTime;
@@ -33,7 +33,7 @@ public class Missile : MonoBehaviour
         //target.GetComponent<DamageSystem>().damageEnemy((int)bulletDamage, slowEnemies, slowTime);
 
         GameObject effectInstance = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
-        Destroy(effectInstance, 2f);
+        Destroy(effectInstance, 0.4f);
         Destroy(gameObject);
         Collider[] exColliders = Physics.OverlapSphere(transform.position, 20);
         for (int i = 0; i < exColliders.Length; i++)

@@ -11,12 +11,9 @@ public class Waypoints : MonoBehaviour
     [HideInInspector] public float speed, speed2, speed3;
     [HideInInspector] public float speedMultiplier = 1.0f;
     float WPradius = 1;
-    
-    // Start is called before the first frame update
-    void Start()
+
+    private void Awake()
     {
-        wPInstanceBirth = this;
-        current = Random.Range(0, 3);
         waypoints[0] = GameObject.Find("Turn 1 1");
         waypoints[1] = GameObject.Find("Turn 1 2");
         waypoints[2] = GameObject.Find("Turn 1 3");
@@ -28,17 +25,13 @@ public class Waypoints : MonoBehaviour
         waypoints[6] = GameObject.Find("Finish 1");
         waypoints[7] = GameObject.Find("Finish 2");
         waypoints[8] = GameObject.Find("Finish 3");
-        if(this.gameObject.name.Contains("Enemy 1"))
-        {
-            speed = Enemy1Params.enemy1ParamsInstance.speed;
-        }else if (this.gameObject.name.Contains("Enemy 2"))
-        {
-            speed = Enemy2Params.enemy2ParamsInstance.speed;
-        }
-        else if (this.gameObject.name.Contains("Enemy 3"))
-        {
-            speed = Enemy3Params.enemy3ParamsInstance.speed;
-        }
+    }
+    void Start()
+    {
+        wPInstanceBirth = this;
+        current = Random.Range(0, 3);
+        speed = EnemyParams.enemyParamsInstance.speed;
+
         
     }
 

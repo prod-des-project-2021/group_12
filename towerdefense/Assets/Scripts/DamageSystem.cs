@@ -11,9 +11,9 @@ public class DamageSystem : MonoBehaviour
     int i = 1;
     private GameObject[] deathpoints = new GameObject[9];
     GameEngine gameEngine;
-    Enemy1Params enemy1params;
-    Enemy2Params enemy2params;
-    Enemy3Params enemy3params;
+    EnemyParams enemyparams;
+    //Enemy2Params enemy2params;
+    //Enemy3Params enemy3params;
     Waypoints wpInstance;
     private float normalEnemySpeed;
 
@@ -27,9 +27,9 @@ public class DamageSystem : MonoBehaviour
     void Start()
     {
 
-        enemy1params = gameObject.GetComponent<Enemy1Params>();
-        enemy2params = gameObject.GetComponent<Enemy2Params>();
-        enemy3params = gameObject.GetComponent<Enemy3Params>();
+        enemyparams = gameObject.GetComponent<EnemyParams>();
+        //enemy2params = gameObject.GetComponent<Enemy2Params>();
+        //enemy3params = gameObject.GetComponent<Enemy3Params>();
         wpInstance = gameObject.GetComponent<Waypoints>();
         
         deathpoints[0] = GameObject.Find("Finish 1");
@@ -81,17 +81,18 @@ public class DamageSystem : MonoBehaviour
    
     public void damageEnemy(int attackDamage, float slowAmount, float slowTime)
     {
+       float originalSpeedMultiplier = 1f;
         
         //Enemy1Params.enemy1HitInstance = this.gameObject;
         if(this.gameObject.name.Contains("Enemy 1"))
         {          
-            enemy1params.Enemy1NewInstance();
+            enemyparams.EnemyNewInstance();
 
             wpInstance.NewWPInstance();
             float apu = wpInstance.speedMultiplier;   
-            Enemy1Params.enemy1HitInstance.health -= attackDamage;            
+            EnemyParams.enemyHitInstance.health -= attackDamage;            
             
-            if (Enemy1Params.enemy1HitInstance.health <= 0.0f)
+            if (EnemyParams.enemyHitInstance.health <= 0.0f)
             {
                 wpInstance.NewWPInstance();
                 Waypoints.wPInstanceRunning.speedMultiplier = 0;
@@ -108,12 +109,12 @@ public class DamageSystem : MonoBehaviour
         }
         else if (this.gameObject.name.Contains("Enemy 2"))
         {
-            enemy2params.Enemy2NewInstance();
+            enemyparams.EnemyNewInstance();
             wpInstance.NewWPInstance();
             float apu = wpInstance.speedMultiplier;
 
-            Enemy2Params.enemy2HitInstance.health -= attackDamage;
-            if (Enemy2Params.enemy2HitInstance.health <= 0.0f)
+            EnemyParams.enemyHitInstance.health -= attackDamage;
+            if (EnemyParams.enemyHitInstance.health <= 0.0f)
             {
                 wpInstance.NewWPInstance();
                 Waypoints.wPInstanceRunning.speedMultiplier = 0;
@@ -130,14 +131,14 @@ public class DamageSystem : MonoBehaviour
         }
         else if (this.gameObject.name.Contains("Enemy 3"))
         {
-            enemy3params.Enemy3NewInstance();
+            enemyparams.EnemyNewInstance();
 
             wpInstance.NewWPInstance();
             float apu = wpInstance.speedMultiplier;
           
-            Enemy3Params.enemy3HitInstance.health -= attackDamage;
+            EnemyParams.enemyHitInstance.health -= attackDamage;
             
-            if (Enemy3Params.enemy3HitInstance.health <= 0.0f)
+            if (EnemyParams.enemyHitInstance.health <= 0.0f)
             {
                 wpInstance.NewWPInstance();
                 Waypoints.wPInstanceRunning.speedMultiplier = 0;

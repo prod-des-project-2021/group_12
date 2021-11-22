@@ -28,7 +28,7 @@ public class GameEngine : MonoBehaviour
     public void DamagePlayer(int damage)
     {
         playerHealth -= damage;
-        Debug.Log("Player HP: " + playerHealth);
+        
     }
 
     public bool SpendMoney(int amount)
@@ -47,7 +47,7 @@ public class GameEngine : MonoBehaviour
     public void AddMoney(int amount)
     {
         money += amount;
-        Debug.Log("money: " + money);
+        
     }
 
     public int GetMoney()
@@ -60,7 +60,7 @@ public class GameEngine : MonoBehaviour
         
         level += 1;
         difficulty = (level * 0.25f) + 0.75f;
-        Debug.Log("score: "+score);
+        
     }
 
     public void IncreaseScore(float amount)

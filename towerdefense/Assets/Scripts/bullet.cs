@@ -15,14 +15,15 @@ public class bullet : MonoBehaviour
 
     public float bulletSpeed = 70f;
 
-    public float bulletDamage = 75f;
+    private float bulletDamage;
 
        
-    public void chase(Transform turretTarget, float slowAmount, float SlowTime) 
+    public void chase(Transform turretTarget, float slowAmount, float SlowTime, float damage) 
     {
         slowEnemies = slowAmount;
         slowTime = SlowTime;
         target = turretTarget;
+        bulletDamage = damage;
 
     }
   
@@ -30,10 +31,12 @@ public class bullet : MonoBehaviour
     {
 
        
-       target.GetComponent<DamageSystem>().damageEnemy((int) bulletDamage, slowEnemies, slowTime);
-
-        GameObject effectInstance = (GameObject) Instantiate(impactEffect, transform.position, transform.rotation);
-        Destroy(effectInstance, 2f);
+        target.GetComponent<DamageSystem>().damageEnemy((int) bulletDamage, slowEnemies, slowTime);
+        if(impactEffect != null)
+        {
+            GameObject effectInstance = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
+            Destroy(effectInstance, 2f);
+        }     
         Destroy(gameObject);
 
     }
@@ -51,13 +54,6 @@ public class bullet : MonoBehaviour
         Vector3 suunta = target.position - transform.position;
         float distanceThisFrame = bulletSpeed * Time.deltaTime;
 
-        /*Vector3 targetDir = target.position - transform.position;
-        float singleStep = bulletSpeed * Time.deltaTime;
-        Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, singleStep, 0.0f);
-
-        transform.position = Vector3.MoveTowards(transform.position, target.position, Time.deltaTime * bulletSpeed);
-        float angle = Vector3.Angle(targetDir, transform.right);
-        transform.rotation = Quaternion.LookRotation(newDir);*/
 
         if (suunta.magnitude <= distanceThisFrame)
     {

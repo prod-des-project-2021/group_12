@@ -28,10 +28,14 @@ public class attackEnemy : MonoBehaviour
     private string enemyNumber3 = "Enemy 3";
     public GameObject bullet;
     public Transform firePoint;
+    public static attackEnemy attackInstance;
+    
+
     public Transform spinner;
     float SpinUpTime = 2;
     float SpinUpTimer;
     float MaxSpinRate = 360;
+
 
     private void updateTarget(){
         

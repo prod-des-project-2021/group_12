@@ -74,20 +74,9 @@ public class DamageSystem : MonoBehaviour
     public IEnumerator slowTimer(float slowTime,float slowAmount,Waypoints wpInstance)
     {
             
-<<<<<<< HEAD
-
-            Debug.Log("slowTimer");
-            Debug.Log(wpInstance.speedMultiplier + "noppeus enne");
-            wpInstance.speedMultiplier += slowAmount;
-            Debug.Log(wpInstance.speedMultiplier + "noppeus jälkee");
-            yield return new WaitForSeconds(slowTime);
-            wpInstance.speedMultiplier = 1f;
-            
-=======
             wpInstance.speedMultiplier += slowAmount;
             yield return new WaitForSeconds(slowTime);
             wpInstance.speedMultiplier = 1f;        
->>>>>>> 78c7e80a818625f056e4c58e4528f9d3f8f4d054
     }
    
     public void damageEnemy(int attackDamage, float slowAmount, float slowTime)

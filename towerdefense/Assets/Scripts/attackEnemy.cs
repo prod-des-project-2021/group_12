@@ -20,6 +20,7 @@ public class attackEnemy : MonoBehaviour
     public string enemyTag = "mob";
     public GameObject bullet;
     public Transform firePoint;
+    public static attackEnemy attackInstance;
     
 
     private void updateTarget(){

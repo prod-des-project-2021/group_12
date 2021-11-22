@@ -90,19 +90,13 @@ public class SpawnEnemy : MonoBehaviour
     IEnumerator SpawnWave()
     {
         roundDone = false;
-<<<<<<< HEAD
-
-        enemiesPerLevel = enemiesPerLevel + level * 1;
-        //Debug.Log("enemies: " +enemiesPerLevel);
-        //Debug.Log("level: "+level);
-        //Debug.Log("difficulty: " + difficulty);
-=======
         //ld = StartCoroutine(LevelDuration());
         enemiesPerLevel = enemiesPerLevel + GameEngine.gameInstance.level * 1;
+        /*
         Debug.Log("enemies: " +enemiesPerLevel);
         Debug.Log("level: "+ GameEngine.gameInstance.level);
         Debug.Log("difficulty: " + GameEngine.gameInstance.difficulty);
->>>>>>> 78c7e80a818625f056e4c58e4528f9d3f8f4d054
+        */
         enemiesHaveSpawned = false;
         for (int i = 0; i < enemiesPerLevel; i++)
         {

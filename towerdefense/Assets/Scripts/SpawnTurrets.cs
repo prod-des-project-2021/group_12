@@ -9,13 +9,15 @@ public class SpawnTurrets : MonoBehaviour
     public GameObject turret;
     private Camera cam = null;
     BuildManager buildManager;
+    public static GameEngine spawnTurretInstance;
     
+
 
     // Start is called before the first frame update
     void Start()
     {
         cam = Camera.main;
-        buildManager = BuildManager.instance;
+        buildManager = BuildManager.buildInstance;
     }
 
     // Update is called once per frame
@@ -24,14 +26,15 @@ public class SpawnTurrets : MonoBehaviour
         SpawnAtMousePos();
     }
 
-
-    //figure out how to click turret and spawn a upgrade menu above it
-    //use tag maybe?
+    public void UpgradeTurret()
+    {
+        
+    }
 
 
     private void SpawnAtMousePos()
     {
-        GameObject turretToBuild = BuildManager.instance.GetTurretToBuild();
+        GameObject turretToBuild = BuildManager.buildInstance.GetTurretToBuild();
 
         if (buildManager.GetTurretToBuild() == null)
         {
@@ -54,7 +57,7 @@ public class SpawnTurrets : MonoBehaviour
             {
                 Debug.Log(hit.transform.tag);
                 turret = Instantiate(turretToBuild, new Vector3(hit.point.x, hit.point.y + turret.transform.position.y, hit.point.z), Quaternion.identity);
-                BuildManager.instance.SetTurretToBuild(null);
+                BuildManager.buildInstance.SetTurretToBuild(null);
             }
 
             else

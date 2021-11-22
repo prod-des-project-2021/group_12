@@ -6,6 +6,8 @@ public class UpgradeUI : MonoBehaviour
 {
     public GameObject ui;
     private Camera cam = null;
+    Collider tankCollider;
+    int turretLvl;
 
     //public static UpgradeUI instance;
 
@@ -21,10 +23,32 @@ public class UpgradeUI : MonoBehaviour
         TurretClicked();
     }
 
+
+    //fix bug where all upgrades go to one turret
     public void Upgrade()
     {
-        Debug.Log("hello upgrade");
+        if (GameEngine.gameInstance.SpendMoney(100))
+        {  
+            turretLvl++;
+            GameObject tank = GameObject.Find("tankTower");
+            attackEnemy upgradeFirerate = tank.GetComponent<attackEnemy>();
+            upgradeFirerate.fireRate += 5;
+            Debug.Log("turret upgraded");
+            Debug.Log("trtlvl " + turretLvl);
+            Debug.Log("upgraded fire rate " + upgradeFirerate);
+
+            if (turretLvl >= 5)
+            {
+                //Destroy(turret);
+            }
+        }
+        else
+        {
+            Debug.Log("No Money :(");
+        }
+
     }
+
 
 
     private void TurretClicked()
@@ -36,22 +60,20 @@ public class UpgradeUI : MonoBehaviour
         //jos mousea painetaan turretin kohdalta näytä menu
         if (Input.GetMouseButtonDown(0))
         {
-            //do upgrade to one tower first and then do the rest....
-            //SUBSTITUTE THIS FOR SWITCH/CASE BECAUSE WE WILL ADD MORE TAGS FOR TOWERS
             if (Physics.Raycast(ray, out hit) && hit.transform.tag == "Tower")
             {
                 //implement menu opening here 
                 transform.position = hit.transform.position;
                 ui.SetActive(true);
                 
+                
                 //Debug.Log(hit.transform.tag);
                 Debug.Log("Open menu");
             }
 
-            //try to use canvas raycast tag for this
-            //Fix the menu closing when trying to interact with it
             else if (hit.transform.tag == "Untagged" | hit.transform.tag == "Spawn area")
             {
+                tankCollider.isTrigger = false;
                 ui.SetActive(false);
             }
         }

@@ -8,6 +8,7 @@ public class UpgradeUI : MonoBehaviour
     private Camera cam = null;
     Collider tankCollider;
     int turretLvl;
+    public GameObject selectedTower = null;
 
     //public static UpgradeUI instance;
 
@@ -24,13 +25,13 @@ public class UpgradeUI : MonoBehaviour
     }
 
 
-    //fix bug where all upgrades go to one turret
+    //Implement this to the missile launcher and minigun
     public void Upgrade()
     {
         if (GameEngine.gameInstance.SpendMoney(100))
         {  
             turretLvl++;
-            GameObject tank = GameObject.Find("tankTower");
+            GameObject tank = selectedTower;
             attackEnemy upgradeFirerate = tank.GetComponent<attackEnemy>();
             upgradeFirerate.fireRate += 5;
             Debug.Log("turret upgraded");
@@ -39,19 +40,20 @@ public class UpgradeUI : MonoBehaviour
 
             if (turretLvl >= 5)
             {
-                //Destroy(turret);
+                //Destroy(selectedTower);
+                //Instatiate
             }
         }
         else
         {
-            Debug.Log("No Money :(");
+            Debug.Log("No enough money for upgrade :(");
         }
 
     }
 
 
 
-    private void TurretClicked()
+    public void TurretClicked()
     {
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
@@ -65,15 +67,16 @@ public class UpgradeUI : MonoBehaviour
                 //implement menu opening here 
                 transform.position = hit.transform.position;
                 ui.SetActive(true);
-                
+                selectedTower = hit.transform.gameObject;
                 
                 //Debug.Log(hit.transform.tag);
                 Debug.Log("Open menu");
+                Debug.Log("selected tower " + selectedTower);
             }
 
             else if (hit.transform.tag == "Untagged" | hit.transform.tag == "Spawn area")
             {
-                tankCollider.isTrigger = false;
+                //tankCollider.isTrigger = false;
                 ui.SetActive(false);
             }
         }

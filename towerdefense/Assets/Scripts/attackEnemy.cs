@@ -95,10 +95,10 @@ public class attackEnemy : MonoBehaviour
                 } */
             if(mostHpEnemy != null && distance <= attackRange | shortestDistance <=attackRange)
             {
-              Debug.Log("distance"+longestDistance);
+              //Debug.Log("distance"+longestDistance);
                 target = mostHpEnemy.transform;
-                Debug.Log("mostHp"+target.name);
-                Debug.Log("compareENemy positio"+distance);     
+               // Debug.Log("mostHp"+target.name);
+               // Debug.Log("compareENemy positio"+distance);     
                 
             }else {
                 target = null;

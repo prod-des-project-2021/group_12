@@ -52,35 +52,35 @@ public class attackEnemy : MonoBehaviour
         foreach(GameObject enemy in enemies)
         {
             
-           
-           
-          
-            float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
-            
+            float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);          
             float distanceToSpawn = Vector3.Distance(enemy.transform.position,spawnPoint.transform.position);
            float distanceToFinish = Vector3.Distance(enemy.transform.position, finishPoint.transform.position);
+           
+           
+           compareEnemy = enemy;
+            
+            
+           float distance = Vector3.Distance(transform.position, compareEnemy.transform.position);
                     
-                  
-                  //turrettia lähinnä
+                    //turrettia lähinnä
                     if(distanceToEnemy < shortestDistance){
                     shortestDistance = distanceToEnemy;
                     nearestEnemy = enemy;
-                    
-                    
                     }
-
-                    compareEnemy = enemies[enemies.Length-1];
+                                      
                     //hp:n määrän mukaan target
-                    if(nearestEnemy.GetComponent<EnemyParams>().startHealth > compareEnemy.GetComponent<EnemyParams>().startHealth)
+                    if(nearestEnemy.GetComponent<EnemyParams>().startHealth < compareEnemy.GetComponent<EnemyParams>().startHealth)
                     {
-                        mostHpEnemy = nearestEnemy;                     
-                    }else
-                    { 
-                        distanceToMaxHpEnemy = distanceToMostHPenemy;
-                        mostHpEnemy = compareEnemy;
-                }
-        
-
+                       
+                        if(distance < longestDistance){
+                        longestDistance = distance;
+                          mostHpEnemy = compareEnemy;
+                          }
+                                                          
+                    }else{
+                        mostHpEnemy = nearestEnemy;
+                    }
+                
            /*         if(distanceToFinish > distanceToSpawn)
                 {
                     
@@ -89,16 +89,17 @@ public class attackEnemy : MonoBehaviour
 
                           
                 } */
-            /*if(mostHpEnemy != null && distanceToMaxHpEnemy <= attackRange){
-                Debug.Log("oujeah");
-                target = mostHpEnemy.transform;
-            }*/
-            if(mostHpEnemy != null && shortestDistance <= attackRange)
+            if(mostHpEnemy != null && distance <= attackRange | shortestDistance <=attackRange)
             {
-              
-                target = nearestEnemy.transform;
+              Debug.Log("distance"+longestDistance);
+                target = mostHpEnemy.transform;
+                Debug.Log("mostHp"+target.name);
+                Debug.Log("compareENemy positio"+distance);     
                 
+            }else {
+                target = null;
             }
+           
             
           /*  if(FurthestEnemyInRange != null && longestDistance <= attackRange){
             target = FurthestEnemyInRange.transform;
@@ -137,6 +138,7 @@ public class attackEnemy : MonoBehaviour
             SpinUpTimer = Mathf.Clamp(
             SpinUpTimer - Time.deltaTime,
             0, SpinUpTime);
+            //tykki kääntyy default-asentoon
             rotatingPart.rotation = Quaternion.Lerp(rotatingPart.rotation,Quaternion.Euler(0f, 0f, 0f), Time.deltaTime *turnSpeed);
             
         }

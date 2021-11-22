@@ -6,20 +6,18 @@ using UnityEngine.EventSystems;
 public class SpawnTurrets : MonoBehaviour
 {
 
-    //turrets can stack fix that
-    //turrets can go on the road fix that
-    //Mouse hover over plane and display the turret 
-
     public GameObject turret;
     private Camera cam = null;
     BuildManager buildManager;
+    public static GameEngine spawnTurretInstance;
     
+
 
     // Start is called before the first frame update
     void Start()
     {
         cam = Camera.main;
-        buildManager = BuildManager.instance;
+        buildManager = BuildManager.buildInstance;
     }
 
     // Update is called once per frame
@@ -28,13 +26,17 @@ public class SpawnTurrets : MonoBehaviour
         SpawnAtMousePos();
     }
 
+    public void UpgradeTurret()
+    {
+        
+    }
 
 
     private void SpawnAtMousePos()
     {
-        GameObject turretToBuild = BuildManager.instance.getTurretToBuild();
+        GameObject turretToBuild = BuildManager.buildInstance.GetTurretToBuild();
 
-        if (buildManager.getTurretToBuild() == null)
+        if (buildManager.GetTurretToBuild() == null)
         {
             return;
         }
@@ -47,22 +49,20 @@ public class SpawnTurrets : MonoBehaviour
                 return;
             }
                 
-            
-
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            
+           
 
             if (Physics.Raycast(ray, out hit) && hit.transform.tag == "Spawn area")
             {
                 Debug.Log(hit.transform.tag);
-                Debug.Log(hit.collider);
                 turret = Instantiate(turretToBuild, new Vector3(hit.point.x, hit.point.y + turret.transform.position.y, hit.point.z), Quaternion.identity);
-                BuildManager.instance.SetTurretToBuild(null);
+                BuildManager.buildInstance.SetTurretToBuild(null);
             }
 
-            else 
+            else
             {
+                Debug.Log(hit.transform.tag);
                 Debug.Log("Cant spawn tower here");
             }
         }

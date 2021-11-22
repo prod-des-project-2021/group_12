@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 790959258456189576}
   m_Layer: 0
   m_Name: tankBody
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 790959259120407817}
   m_Layer: 0
   m_Name: tankTower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -327,10 +327,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1319129034204219262}
+
+  - component: {fileID: 7553050178296150280}
+
   - component: {fileID: 5149358349522632401}
+
   m_Layer: 0
   m_Name: Tank
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -351,13 +355,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+
+--- !u!65 &7553050178296150280
+BoxCollider:
+
 --- !u!114 &5149358349522632401
 MonoBehaviour:
+
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8639163174591504851}
+
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 7, z: 9}
+  m_Center: {x: 0, y: 0, z: 0}
+
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6685d9714b2f3fb4bb0c4e0be220daaf, type: 3}
@@ -373,3 +390,4 @@ MonoBehaviour:
   bullet: {fileID: 3368687015727259707, guid: 20953e685e16be6e1b50b9cb054af9af, type: 3}
   firePoint: {fileID: 3917253027693399380}
   spinner: {fileID: 0}
+

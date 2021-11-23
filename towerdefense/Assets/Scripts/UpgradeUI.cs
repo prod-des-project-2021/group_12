@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine; 
+using UnityEngine.UI;
 
 public class UpgradeUI : MonoBehaviour
 {
@@ -8,18 +9,19 @@ public class UpgradeUI : MonoBehaviour
     private Camera cam = null;
     Collider tankCollider;
     int turretLvl;
-
+  
     //public static UpgradeUI instance;
-
+    
     // Start is called before the first frame update
     void Start()
-    {
+    {     
         cam = Camera.main;
     }
-
+    
     // Update is called once per frame
     void Update()
     {
+       
         TurretClicked();
     }
 
@@ -51,13 +53,14 @@ public class UpgradeUI : MonoBehaviour
 
 
 
+
     private void TurretClicked()
     {
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         
 
-        //jos mousea painetaan turretin kohdalta näytä menu
+        //jos mousea painetaan turretin kohdalta nï¿½ytï¿½ menu
         if (Input.GetMouseButtonDown(0))
         {
             if (Physics.Raycast(ray, out hit) && hit.transform.tag == "Tower")
@@ -78,5 +81,5 @@ public class UpgradeUI : MonoBehaviour
             }
         }
     }
-
+    
 }

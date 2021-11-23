@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameEngine : MonoBehaviour
 {
     public int playerHealth = 100;
-    public int money = 100;
+    public int money = 1000;
     public float score = 0;
     [HideInInspector] public float difficulty = 1.0f;
     public int level = 1;

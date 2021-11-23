@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class UpgradeUI : MonoBehaviour
 {
-    public GameObject ui;
+    public GameObject tankUI;
+    public GameObject missileUI;
     private Camera cam = null;
-    Collider tankCollider;
     int turretLvl;
+    string turretTag;
     public GameObject selectedTower = null;
 
     //public static UpgradeUI instance;
@@ -26,17 +27,16 @@ public class UpgradeUI : MonoBehaviour
 
 
     //Implement this to the missile launcher and minigun
-    public void Upgrade()
+    public void TankUpgrade()
     {
         if (GameEngine.gameInstance.SpendMoney(100))
         {  
             turretLvl++;
-            GameObject tank = selectedTower;
-            attackEnemy upgradeFirerate = tank.GetComponent<attackEnemy>();
+            attackEnemy upgradeFirerate = selectedTower.GetComponent<attackEnemy>();
             upgradeFirerate.fireRate += 5;
             Debug.Log("turret upgraded");
             Debug.Log("trtlvl " + turretLvl);
-            Debug.Log("upgraded fire rate " + upgradeFirerate);
+            Debug.Log("upgraded tank fire rate " + upgradeFirerate);
 
             if (turretLvl >= 5)
             {
@@ -51,6 +51,29 @@ public class UpgradeUI : MonoBehaviour
 
     }
 
+    public void MissileUpgrade()
+    {
+        if (GameEngine.gameInstance.SpendMoney(150))
+        {
+            turretLvl++;
+            attackEnemy upgradeFirerate = selectedTower.GetComponent<attackEnemy>();
+            upgradeFirerate.fireRate += 5;
+            Debug.Log("turret upgraded");
+            Debug.Log("trtlvl " + turretLvl);
+            Debug.Log("upgraded missilelauncher fire rate " + upgradeFirerate);
+
+            if (turretLvl >= 5)
+            {
+                //Destroy(selectedTower);
+                //Instatiate
+            }
+        }
+        else
+        {
+            Debug.Log("No enough money for upgrade :(");
+        }
+    }
+
 
 
     public void TurretClicked()
@@ -62,22 +85,41 @@ public class UpgradeUI : MonoBehaviour
         //jos mousea painetaan turretin kohdalta näytä menu
         if (Input.GetMouseButtonDown(0))
         {
-            if (Physics.Raycast(ray, out hit) && hit.transform.tag == "Tower")
+            if (Physics.Raycast(ray, out hit))
             {
-                //implement menu opening here 
-                transform.position = hit.transform.position;
-                ui.SetActive(true);
-                selectedTower = hit.transform.gameObject;
-                
-                //Debug.Log(hit.transform.tag);
+
+                turretTag = hit.transform.tag;
+
+                switch(turretTag)
+                {
+                    case "Tank":
+                        tankUI.SetActive(true);
+                        missileUI.SetActive(false);
+                        transform.position = hit.transform.position;
+                        selectedTower = hit.transform.gameObject;
+                        break;
+
+                    case "MissileLauncher":
+                        missileUI.SetActive(true);
+                        tankUI.SetActive(false);
+                        transform.position = hit.transform.position;
+                        selectedTower = hit.transform.gameObject;
+                        break;
+
+                    case "Spawn area":
+                        tankUI.SetActive(false);
+                        missileUI.SetActive(false);
+                        break;
+
+                    case "Untagged":
+                        tankUI.SetActive(false);
+                        missileUI.SetActive(false);
+                        break;
+
+                }
+
                 Debug.Log("Open menu");
                 Debug.Log("selected tower " + selectedTower);
-            }
-
-            else if (hit.transform.tag == "Untagged" | hit.transform.tag == "Spawn area")
-            {
-                //tankCollider.isTrigger = false;
-                ui.SetActive(false);
             }
         }
     }

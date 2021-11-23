@@ -10,7 +10,8 @@ TagManager:
   - uiArea
   - finishLine
   - spawnLine
-
+  - Tank
+  - MissileLauncher
   layers:
   - Default
   - TransparentFX

@@ -67,7 +67,7 @@ public class SpawnEnemy : MonoBehaviour
         for (float i = GameEngine.gameInstance.timeBetweenWaves; i > 0; i--)
         {
 
-            Debug.Log("next wave in: "+i);
+           // Debug.Log("next wave in: "+i);
 
            
 

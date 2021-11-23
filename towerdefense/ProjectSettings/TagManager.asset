@@ -10,7 +10,7 @@ TagManager:
   - uiArea
   - finishLine
   - spawnLine
-
+  - testi
   layers:
   - Default
   - TransparentFX

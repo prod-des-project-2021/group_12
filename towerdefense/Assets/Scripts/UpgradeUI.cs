@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine; 
+using UnityEngine.UI;
 
 public class UpgradeUI : MonoBehaviour
 {
@@ -8,20 +9,25 @@ public class UpgradeUI : MonoBehaviour
     public GameObject missileUI;
     private Camera cam = null;
     int turretLvl;
+<<<<<<< HEAD
     string turretTag;
     public GameObject selectedTower = null;
 
+=======
+  
+>>>>>>> 079ab5470773b196818f111b0312ad24aa5701d9
     //public static UpgradeUI instance;
-
+    
     // Start is called before the first frame update
     void Start()
-    {
+    {     
         cam = Camera.main;
     }
-
+    
     // Update is called once per frame
     void Update()
     {
+       
         TurretClicked();
     }
 
@@ -76,13 +82,17 @@ public class UpgradeUI : MonoBehaviour
 
 
 
+<<<<<<< HEAD
     public void TurretClicked()
+=======
+    private void TurretClicked()
+>>>>>>> 079ab5470773b196818f111b0312ad24aa5701d9
     {
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         
 
-        //jos mousea painetaan turretin kohdalta näytä menu
+        //jos mousea painetaan turretin kohdalta nï¿½ytï¿½ menu
         if (Input.GetMouseButtonDown(0))
         {
             if (Physics.Raycast(ray, out hit))
@@ -123,5 +133,5 @@ public class UpgradeUI : MonoBehaviour
             }
         }
     }
-
+    
 }

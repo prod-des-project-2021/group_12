@@ -26,11 +26,6 @@ public class SpawnTurrets : MonoBehaviour
         SpawnAtMousePos();
     }
 
-    public void UpgradeTurret()
-    {
-        
-    }
-
 
     private void SpawnAtMousePos()
     {
@@ -51,7 +46,7 @@ public class SpawnTurrets : MonoBehaviour
                 
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-           
+
 
             if (Physics.Raycast(ray, out hit) && hit.transform.tag == "Spawn area")
             {

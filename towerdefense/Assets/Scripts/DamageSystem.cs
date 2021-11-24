@@ -28,7 +28,8 @@ public class DamageSystem : MonoBehaviour
     {
 
         enemyparams = gameObject.GetComponent<EnemyParams>();
-        
+        //enemy2params = gameObject.GetComponent<Enemy2Params>();
+        //enemy3params = gameObject.GetComponent<Enemy3Params>();
         wpInstance = gameObject.GetComponent<Waypoints>();
         
         deathpoints[0] = GameObject.Find("Finish 1");

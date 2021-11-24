@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+
 public class attackEnemy : MonoBehaviour
 {
    
@@ -28,34 +28,22 @@ public class attackEnemy : MonoBehaviour
     private string enemyNumber3 = "Enemy 3";
     public GameObject bullet;
     public Transform firePoint;
+    public static attackEnemy attackInstance;
+    
+
     public Transform spinner;
     float SpinUpTime = 2;
     float SpinUpTimer;
     float MaxSpinRate = 360;
 
-   public Button strongestTarget;
-   public Button nearestTarget;
-   
-    private bool attackNearestEnemy = true;
-    private bool attackStrongestEnemy = false;
 
-    void strongestButtonWasClicked(){
-        attackNearestEnemy = false;
-        attackStrongestEnemy = true;
-        Debug.Log("stronk");
-    }
-    void nearestButtonWasClicked(){
-        attackStrongestEnemy = false;
-        attackStrongestEnemy = true;
-        Debug.Log("near");
-    }
- 
     private void updateTarget(){
         
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
         GameObject finishPoint = GameObject.FindGameObjectWithTag(enemyPathFinishTag);
         GameObject spawnPoint = GameObject.FindGameObjectWithTag(enemyPathSpawnTag);
 
+     
         float shortestDistance = Mathf.Infinity;
         float longestDistance = Mathf.Infinity;
         float distanceToMaxHpEnemy = Mathf.Infinity;
@@ -74,22 +62,17 @@ public class attackEnemy : MonoBehaviour
            
            
            compareEnemy = enemy;
+            
+            
            float distance = Vector3.Distance(transform.position, compareEnemy.transform.position);
-                  
-                   if(distanceToEnemy < shortestDistance){
+                    
+                    //turrettia lähinnä
+                    if(distanceToEnemy < shortestDistance){
                     shortestDistance = distanceToEnemy;
                     nearestEnemy = enemy;
-                    //turrettia lähinnä
-                   if(attackNearestEnemy){
-                      // Debug.Log("near valittu");
                     }
-                    if(nearestEnemy != null && shortestDistance <= attackRange){
-                        target = nearestEnemy.transform;
-                    }
-                   }
-                   // hp:n määrän mukaan target
-                    if(attackStrongestEnemy){
-                       // Debug.Log("stronk valittu");
+                                      
+                    //hp:n määrän mukaan target
                     if(nearestEnemy.GetComponent<EnemyParams>().startHealth < compareEnemy.GetComponent<EnemyParams>().startHealth)
                     {
                        
@@ -101,16 +84,6 @@ public class attackEnemy : MonoBehaviour
                     }else{
                         mostHpEnemy = nearestEnemy;
                     }
-                    if(mostHpEnemy != null && distance <= attackRange | shortestDistance <=attackRange)
-            {
-             
-                target = mostHpEnemy.transform;
-               
-                
-            }else {
-                target = null;
-            }
-                    }
                 
            /*         if(distanceToFinish > distanceToSpawn)
                 {
@@ -120,7 +93,6 @@ public class attackEnemy : MonoBehaviour
 
                           
                 } */
-<<<<<<< HEAD
             if(mostHpEnemy != null && distance <= attackRange | shortestDistance <=attackRange)
             {
               //Debug.Log("distance"+longestDistance);
@@ -131,9 +103,6 @@ public class attackEnemy : MonoBehaviour
             }else {
                 target = null;
             }
-=======
-            
->>>>>>> 079ab5470773b196818f111b0312ad24aa5701d9
            
             
           /*  if(FurthestEnemyInRange != null && longestDistance <= attackRange){
@@ -154,10 +123,8 @@ public class attackEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-         strongestTarget.onClick.AddListener(strongestButtonWasClicked);
-        nearestTarget.onClick.AddListener(nearestButtonWasClicked);
         InvokeRepeating("updateTarget",0f,0.25f);
-             
+        
         
     }
     void SpinBarrel()
@@ -247,9 +214,6 @@ public class attackEnemy : MonoBehaviour
         
 
     }
-    
-   void derp(){
-       Debug.Log("terve!");
-   }    
+        
     
 }

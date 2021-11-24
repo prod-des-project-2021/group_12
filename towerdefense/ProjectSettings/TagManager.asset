@@ -10,12 +10,8 @@ TagManager:
   - uiArea
   - finishLine
   - spawnLine
-<<<<<<< HEAD
   - Tank
   - MissileLauncher
-=======
-  - testi
->>>>>>> 079ab5470773b196818f111b0312ad24aa5701d9
   layers:
   - Default
   - TransparentFX

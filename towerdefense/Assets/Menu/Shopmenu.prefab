@@ -165,7 +165,6 @@ GameObject:
   - component: {fileID: 742642516563059017}
   - component: {fileID: 742642516563059018}
   - component: {fileID: 742642516563059019}
-  - component: {fileID: 742642516563059023}
   - component: {fileID: 742642516563059022}
   m_Layer: 5
   m_Name: Shopmenu
@@ -255,18 +254,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &742642516563059023
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 742642516563059012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdb53095d2fecbc4187cd51399ea03af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &742642516563059022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,8 +266,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e99d3dfec03094d8b49e33dda24bce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoTurretPrefab: {fileID: 5304588086134978516, guid: b99721ed3aa2fc24ebe844dc58c451ba, type: 3}
-  sniperTurretPrefab: {fileID: 2104137448090914849, guid: 36e19c6ea6f8e9e46bc591015f3c5c27, type: 3}
+  autoTurretPrefab: {fileID: 7869216624107413444, guid: 75317a2282af71e4381d3ee56b6ae88b, type: 3}
+  missileTurretPrefab: {fileID: 2104137448090914849, guid: 36e19c6ea6f8e9e46bc591015f3c5c27, type: 3}
   tank: {fileID: 8639163174591504851, guid: 05050b1fa2d693562b5fb4d5478e2892, type: 3}
 --- !u!1 &742642516738587554
 GameObject:
@@ -562,7 +549,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 742642516563059023}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Shop, Assembly-CSharp
         m_MethodName: PurchaseSniperTower
         m_Mode: 1
@@ -933,7 +920,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 742642516563059023}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Shop, Assembly-CSharp
         m_MethodName: PurchaseTank
         m_Mode: 1
@@ -1066,7 +1053,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 742642516563059023}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Shop, Assembly-CSharp
         m_MethodName: PurchaseAutoTurret
         m_Mode: 1

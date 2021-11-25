@@ -18,7 +18,7 @@ public class Missile : MonoBehaviour
     public float bulletDamage = 75f;
 
 
-    public void chase(Transform turretTarget, float slowAmount, float SlowTime)
+    public void chase(Transform turretTarget, float slowAmount, float SlowTime,float damage)
     {
         slowEnemies = slowAmount;
         slowTime = SlowTime;

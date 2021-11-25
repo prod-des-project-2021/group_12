@@ -28,8 +28,7 @@ public class DamageSystem : MonoBehaviour
     {
 
         enemyparams = gameObject.GetComponent<EnemyParams>();
-        //enemy2params = gameObject.GetComponent<Enemy2Params>();
-        //enemy3params = gameObject.GetComponent<Enemy3Params>();
+        
         wpInstance = gameObject.GetComponent<Waypoints>();
         
         deathpoints[0] = GameObject.Find("Finish 1");
@@ -81,6 +80,7 @@ public class DamageSystem : MonoBehaviour
    
     public void damageEnemy(int attackDamage, float slowAmount, float slowTime)
     {
+       float originalSpeedMultiplier = 1f;
         
         //Enemy1Params.enemy1HitInstance = this.gameObject;
         if(this.gameObject.name.Contains("Enemy 1"))

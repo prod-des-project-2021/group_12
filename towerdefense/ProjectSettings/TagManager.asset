@@ -7,6 +7,10 @@ TagManager:
   - mob
   - Tower
   - Spawn area
+  - uiArea
+  - finishLine
+  - spawnLine
+  - testi
   layers:
   - Default
   - TransparentFX

@@ -86,9 +86,11 @@ public class SpawnEnemy : MonoBehaviour
     {
         roundDone = false;
         enemiesPerLevel = enemiesPerLevel + GameEngine.gameInstance.level * 1;
+        
         Debug.Log("enemies: " +enemiesPerLevel);
         Debug.Log("level: "+ GameEngine.gameInstance.level);
         Debug.Log("difficulty: " + GameEngine.gameInstance.difficulty);
+        
         enemiesHaveSpawned = false;
         if(GameEngine.gameInstance.level % 10 == 0)
         {

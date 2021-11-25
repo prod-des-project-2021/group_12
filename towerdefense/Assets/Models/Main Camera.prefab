@@ -90,8 +90,8 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 126.2
-  orthographic: 0
-  orthographic size: 5
+  orthographic: 1
+  orthographic size: 200
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -129,3 +129,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: 100
   money: 100
+  score: 0
+  difficulty: 1
+  level: 1
+  timeBetweenWaves: 10
+  timeBetweenEnemies: 0.5
+  bossWaveDifficulty: 1

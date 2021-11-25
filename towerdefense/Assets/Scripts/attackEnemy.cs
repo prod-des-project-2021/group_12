@@ -32,19 +32,15 @@ public class attackEnemy : MonoBehaviour
     float SpinUpTime = 2;
     float SpinUpTimer;
     float MaxSpinRate = 360;
-
-   public Button strongestTarget;
-   public Button nearestTarget;
-   
     private bool attackNearestEnemy = true;
     private bool attackStrongestEnemy = false;
 
-    void strongestButtonWasClicked(){
+    public void strongestButtonWasClicked(){
         attackNearestEnemy = false;
         attackStrongestEnemy = true;
         Debug.Log("stronk");
     }
-    void nearestButtonWasClicked(){
+   public void nearestButtonWasClicked(){
         attackStrongestEnemy = false;
         attackStrongestEnemy = true;
         Debug.Log("near");
@@ -142,8 +138,8 @@ public class attackEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-         strongestTarget.onClick.AddListener(strongestButtonWasClicked);
-        nearestTarget.onClick.AddListener(nearestButtonWasClicked);
+
+        
         InvokeRepeating("updateTarget",0f,0.25f);
              
         

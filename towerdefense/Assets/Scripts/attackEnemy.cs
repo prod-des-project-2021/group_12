@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class attackEnemy : MonoBehaviour
 {
    
@@ -28,22 +28,34 @@ public class attackEnemy : MonoBehaviour
     private string enemyNumber3 = "Enemy 3";
     public GameObject bullet;
     public Transform firePoint;
-    public static attackEnemy attackInstance;
-    
-
     public Transform spinner;
     float SpinUpTime = 2;
     float SpinUpTimer;
     float MaxSpinRate = 360;
 
+   public Button strongestTarget;
+   public Button nearestTarget;
+   
+    private bool attackNearestEnemy = true;
+    private bool attackStrongestEnemy = false;
 
+    void strongestButtonWasClicked(){
+        attackNearestEnemy = false;
+        attackStrongestEnemy = true;
+        Debug.Log("stronk");
+    }
+    void nearestButtonWasClicked(){
+        attackStrongestEnemy = false;
+        attackStrongestEnemy = true;
+        Debug.Log("near");
+    }
+ 
     private void updateTarget(){
         
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
         GameObject finishPoint = GameObject.FindGameObjectWithTag(enemyPathFinishTag);
         GameObject spawnPoint = GameObject.FindGameObjectWithTag(enemyPathSpawnTag);
 
-     
         float shortestDistance = Mathf.Infinity;
         float longestDistance = Mathf.Infinity;
         float distanceToMaxHpEnemy = Mathf.Infinity;
@@ -62,17 +74,22 @@ public class attackEnemy : MonoBehaviour
            
            
            compareEnemy = enemy;
-            
-            
            float distance = Vector3.Distance(transform.position, compareEnemy.transform.position);
-                    
-                    //turrettia lähinnä
-                    if(distanceToEnemy < shortestDistance){
+                  
+                   if(distanceToEnemy < shortestDistance){
                     shortestDistance = distanceToEnemy;
                     nearestEnemy = enemy;
+                    //turrettia lähinnä
+                   if(attackNearestEnemy){
+                      // Debug.Log("near valittu");
                     }
-                                      
-                    //hp:n määrän mukaan target
+                    if(nearestEnemy != null && shortestDistance <= attackRange){
+                        target = nearestEnemy.transform;
+                    }
+                   }
+                   // hp:n määrän mukaan target
+                    if(attackStrongestEnemy){
+                       // Debug.Log("stronk valittu");
                     if(nearestEnemy.GetComponent<EnemyParams>().startHealth < compareEnemy.GetComponent<EnemyParams>().startHealth)
                     {
                        
@@ -84,6 +101,16 @@ public class attackEnemy : MonoBehaviour
                     }else{
                         mostHpEnemy = nearestEnemy;
                     }
+                    if(mostHpEnemy != null && distance <= attackRange | shortestDistance <=attackRange)
+            {
+             
+                target = mostHpEnemy.transform;
+               
+                
+            }else {
+                target = null;
+            }
+                    }
                 
            /*         if(distanceToFinish > distanceToSpawn)
                 {
@@ -93,16 +120,7 @@ public class attackEnemy : MonoBehaviour
 
                           
                 } */
-            if(mostHpEnemy != null && distance <= attackRange | shortestDistance <=attackRange)
-            {
-              //Debug.Log("distance"+longestDistance);
-                target = mostHpEnemy.transform;
-               // Debug.Log("mostHp"+target.name);
-               // Debug.Log("compareENemy positio"+distance);     
-                
-            }else {
-                target = null;
-            }
+            
            
             
           /*  if(FurthestEnemyInRange != null && longestDistance <= attackRange){
@@ -118,16 +136,16 @@ public class attackEnemy : MonoBehaviour
     }
 
      private void OnDrawGizmosSelected() {
+         
         Gizmos.DrawWireSphere(transform.position, attackRange);
     }
     // Start is called before the first frame update
     void Start()
     {
-
          strongestTarget.onClick.AddListener(strongestButtonWasClicked);
         nearestTarget.onClick.AddListener(nearestButtonWasClicked);
-        InvokeRepeating("updateTarget",0f,0.05f);
-
+        InvokeRepeating("updateTarget",0f,0.25f);
+             
         
     }
     void SpinBarrel()
@@ -217,6 +235,6 @@ public class attackEnemy : MonoBehaviour
         
 
     }
-        
+  
     
 }

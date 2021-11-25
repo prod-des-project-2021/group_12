@@ -97,4 +97,3 @@ MonoBehaviour:
   impactEffect: {fileID: 529401864801078356, guid: c1301386554702912a93f290fbadce4e, type: 3}
   enemyToDamage: {fileID: 6965862407821868398, guid: e4f6efd7b69499443975611a73088a2e, type: 3}
   bulletSpeed: 150
-  bulletDamage: 1

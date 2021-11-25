@@ -141,9 +141,10 @@ public class attackEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
          strongestTarget.onClick.AddListener(strongestButtonWasClicked);
         nearestTarget.onClick.AddListener(nearestButtonWasClicked);
-        InvokeRepeating("updateTarget",0f,0.25f);
+        InvokeRepeating("updateTarget",0f,0.05f);
              
         
     }

@@ -16,6 +16,7 @@ public class SpawnEnemy : MonoBehaviour
 
 
     int vuoro = 0;
+    int bossTurn = 0;
     private float spawnTime;
 
 
@@ -66,11 +67,6 @@ public class SpawnEnemy : MonoBehaviour
     {
         for (float i = GameEngine.gameInstance.timeBetweenWaves; i > 0; i--)
         {
-
-            Debug.Log("next wave in: "+i);
-
-           
-
             if (timeForNewRound)
             {
                 NextRound();
@@ -96,28 +92,48 @@ public class SpawnEnemy : MonoBehaviour
         Debug.Log("difficulty: " + GameEngine.gameInstance.difficulty);
         
         enemiesHaveSpawned = false;
-        for (int i = 0; i < enemiesPerLevel; i++)
+        if(GameEngine.gameInstance.level % 10 == 0)
         {
-
-            SpawnSingleEnemy();
-            yield return new WaitForSeconds(GameEngine.gameInstance.timeBetweenEnemies);
+            float normalDifficulty = GameEngine.gameInstance.difficulty;
+            GameEngine.gameInstance.difficulty = normalDifficulty * GameEngine.gameInstance.bossWaveDifficulty;
+            for (int i = 0; i < enemiesPerLevel; i++)
+            {
+                SpawnSingleEnemy(bossTurn);
+                yield return new WaitForSeconds(GameEngine.gameInstance.timeBetweenEnemies);
+            }
+            GameEngine.gameInstance.difficulty = normalDifficulty;
+            if (bossTurn == 0) bossTurn++;
+            else if (bossTurn == 1) bossTurn++;
+            else if (bossTurn == 2) bossTurn = 0;
+            
         }
+        else
+        {
+            for (int i = 0; i < enemiesPerLevel; i++)
+            {
+
+                SpawnSingleEnemy(vuoro);
+                if (vuoro == 0) vuoro++;
+                else if (vuoro == 1) vuoro++;
+                else if (vuoro == 2) vuoro = 0;
+                yield return new WaitForSeconds(GameEngine.gameInstance.timeBetweenEnemies);
+
+            }
+        }
+        
         enemiesHaveSpawned = true;
         ws = StartCoroutine(WaveStarter());
-
 
     }
 
 
 
-    void SpawnSingleEnemy()
+    void SpawnSingleEnemy(int enemyType)
     {
         spawnPos = spawnPoints[Random.Range(0, 3)];
         spawnEnemyInstance = this;
-        Instantiate(spawnee[vuoro], spawnPos.transform.position, spawnPos.transform.rotation);
-        if (vuoro == 0) vuoro++;
-        else if (vuoro == 1) vuoro++;
-        else if (vuoro == 2) vuoro = 0;
+        Instantiate(spawnee[enemyType], spawnPos.transform.position, spawnPos.transform.rotation);
+        
 
         
         

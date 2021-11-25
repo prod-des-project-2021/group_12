@@ -141,5 +141,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   impactEffect: {fileID: 289602369578494825, guid: 50d3c1d3cd1362042974458993fb8c73, type: 3}
   enemyToDamage: {fileID: 6965862407821868398, guid: e4f6efd7b69499443975611a73088a2e, type: 3}
-  bulletSpeed: 200
+  bulletSpeed: 70
   bulletDamage: 200

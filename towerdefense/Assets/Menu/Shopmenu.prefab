@@ -280,8 +280,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoTurretPrefab: {fileID: 5304588086134978516, guid: b99721ed3aa2fc24ebe844dc58c451ba, type: 3}
-  sniperTurretPrefab: {fileID: 3666292362797015660, guid: 26dacd1c6771f394caaa22c7919d4ddb, type: 3}
-  tank: {fileID: 1218101398774596223, guid: 0443cacc92fa8c84e8d15deb50fc7813, type: 3}
+  sniperTurretPrefab: {fileID: 2104137448090914849, guid: 36e19c6ea6f8e9e46bc591015f3c5c27, type: 3}
+  tank: {fileID: 8639163174591504851, guid: 05050b1fa2d693562b5fb4d5478e2892, type: 3}
 --- !u!1 &742642516738587554
 GameObject:
   m_ObjectHideFlags: 0

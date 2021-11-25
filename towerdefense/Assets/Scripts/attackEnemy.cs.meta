@@ -3,13 +3,7 @@ guid: 6685d9714b2f3fb4bb0c4e0be220daaf
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - rotatingPart: {instanceID: 0}
-  - bullet: {instanceID: 0}
-  - firePoint: {instanceID: 0}
-  - nearestButton: {fileID: 6279363769229457673, guid: 440456cd8c4b9c5409a2cb09235c2c19, type: 3}
-  - strongestButton: {instanceID: 0}
-  - spinner: {instanceID: 0}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

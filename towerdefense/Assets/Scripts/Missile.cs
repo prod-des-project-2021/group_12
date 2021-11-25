@@ -39,7 +39,9 @@ public class Missile : MonoBehaviour
         for (int i = 0; i < exColliders.Length; i++)
         {
             if (exColliders[i].name.Contains("Enemy")){
+
                 Debug.Log(exColliders[i]);
+
                 exColliders[i].GetComponent<DamageSystem>().damageEnemy((int)bulletDamage, slowEnemies, slowTime);
             }
         }

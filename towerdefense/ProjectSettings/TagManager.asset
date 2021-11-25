@@ -3,16 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - mob
-  - Tower
-  - Spawn area
-  - uiArea
-  - finishLine
-  - spawnLine
-  - testi
-  - strongButton
-  - nearButton
+  tags: []
   layers:
   - Default
   - TransparentFX

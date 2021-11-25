@@ -136,6 +136,7 @@ public class attackEnemy : MonoBehaviour
     }
 
      private void OnDrawGizmosSelected() {
+         
         Gizmos.DrawWireSphere(transform.position, attackRange);
     }
     // Start is called before the first frame update
@@ -234,9 +235,6 @@ public class attackEnemy : MonoBehaviour
         
 
     }
-    
-   void derp(){
-       Debug.Log("terve!");
-   }    
+  
     
 }

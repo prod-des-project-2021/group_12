@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6847169971617675916}
   m_Layer: 0
   m_Name: Sphere (1)
-  m_TagString: Untagged
+  m_TagString: MissileLauncher
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,9 +105,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7503303804454245971}
   - component: {fileID: 5639519688344176122}
+  - component: {fileID: -1138387256104032088}
   m_Layer: 0
   m_Name: MissileLauncher
-  m_TagString: Untagged
+  m_TagString: MissileLauncher
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141,15 +142,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireRate: 1
+  damage: 75
   attackRange: 50
   turnSpeed: 10
   slowEnemiesAmount: 0
   slowTime: 0
   rotatingPart: {fileID: 3278891438363350166}
   enemyTag: mob
+  enemyPathFinishTag: finishLine
+  enemyPathSpawnTag: spawnLine
   bullet: {fileID: 7117870107000225448, guid: f9b0b1fbf4f5fda47ad4f3d5c8e16b73, type: 3}
   firePoint: {fileID: 2533473182382477614}
   spinner: {fileID: 0}
+--- !u!65 &-1138387256104032088
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2104137448090914849}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 3.0000012, z: 1.3271935}
+  m_Center: {x: 0, y: 0, z: 0.086403444}
 --- !u!1 &2214997465302010449
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,7 +181,7 @@ GameObject:
   - component: {fileID: 4719999559969317752}
   m_Layer: 0
   m_Name: Sphere (2)
-  m_TagString: Untagged
+  m_TagString: MissileLauncher
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -259,7 +276,7 @@ GameObject:
   - component: {fileID: 4982638124154391011}
   m_Layer: 0
   m_Name: Platform
-  m_TagString: Tower
+  m_TagString: MissileLauncher
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -354,7 +371,7 @@ GameObject:
   - component: {fileID: 3972500297490538546}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: MissileLauncher
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -446,7 +463,7 @@ GameObject:
   - component: {fileID: 2533473182382477614}
   m_Layer: 0
   m_Name: FirePoint
-  m_TagString: Untagged
+  m_TagString: MissileLauncher
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -479,7 +496,7 @@ GameObject:
   - component: {fileID: 2302924484244098776}
   m_Layer: 0
   m_Name: Cylinder
-  m_TagString: Untagged
+  m_TagString: MissileLauncher
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -579,7 +596,7 @@ GameObject:
   - component: {fileID: 8582348725736006149}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: MissileLauncher
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -674,7 +691,7 @@ GameObject:
   - component: {fileID: 2586314498349656393}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: MissileLauncher
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -769,7 +786,7 @@ GameObject:
   - component: {fileID: 4128527053517086039}
   m_Layer: 0
   m_Name: Rotator
-  m_TagString: Tower
+  m_TagString: MissileLauncher
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -869,7 +886,7 @@ GameObject:
   - component: {fileID: 6469280386205999400}
   m_Layer: 0
   m_Name: Sphere (3)
-  m_TagString: Untagged
+  m_TagString: MissileLauncher
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

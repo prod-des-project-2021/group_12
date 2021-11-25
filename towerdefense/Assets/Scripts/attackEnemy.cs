@@ -33,6 +33,7 @@ public class attackEnemy : MonoBehaviour
     float SpinUpTimer;
     float MaxSpinRate = 360;
 
+<<<<<<< HEAD
     public Button strongestTarget;
     public Button nearestTarget;
 
@@ -55,6 +56,27 @@ public class attackEnemy : MonoBehaviour
     private void updateTarget()
     {
 
+=======
+   public Button strongestTarget;
+   public Button nearestTarget;
+   
+    private bool attackNearestEnemy = true;
+    private bool attackStrongestEnemy = false;
+
+    void strongestButtonWasClicked(){
+        attackNearestEnemy = false;
+        attackStrongestEnemy = true;
+        Debug.Log("stronk");
+    }
+    void nearestButtonWasClicked(){
+        attackStrongestEnemy = false;
+        attackStrongestEnemy = true;
+        Debug.Log("near");
+    }
+ 
+    private void updateTarget(){
+        
+>>>>>>> cc164c078848d85ac813fca1a6f353b449654512
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
         GameObject finishPoint = GameObject.FindGameObjectWithTag(enemyPathFinishTag);
         GameObject spawnPoint = GameObject.FindGameObjectWithTag(enemyPathSpawnTag);
@@ -70,6 +92,7 @@ public class attackEnemy : MonoBehaviour
 
         foreach (GameObject enemy in enemies)
         {
+<<<<<<< HEAD
 
             float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
             float distanceToSpawn = Vector3.Distance(enemy.transform.position, spawnPoint.transform.position);
@@ -101,10 +124,37 @@ public class attackEnemy : MonoBehaviour
                 {
 
                     if (distance < longestDistance)
+=======
+            
+            float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);          
+            float distanceToSpawn = Vector3.Distance(enemy.transform.position,spawnPoint.transform.position);
+           float distanceToFinish = Vector3.Distance(enemy.transform.position, finishPoint.transform.position);
+           
+           
+           compareEnemy = enemy;
+           float distance = Vector3.Distance(transform.position, compareEnemy.transform.position);
+                  
+                   if(distanceToEnemy < shortestDistance){
+                    shortestDistance = distanceToEnemy;
+                    nearestEnemy = enemy;
+                    //turrettia lähinnä
+                   if(attackNearestEnemy){
+                      // Debug.Log("near valittu");
+                    }
+                    if(nearestEnemy != null && shortestDistance <= attackRange){
+                        target = nearestEnemy.transform;
+                    }
+                   }
+                   // hp:n määrän mukaan target
+                    if(attackStrongestEnemy){
+                       // Debug.Log("stronk valittu");
+                    if(nearestEnemy.GetComponent<EnemyParams>().startHealth < compareEnemy.GetComponent<EnemyParams>().startHealth)
+>>>>>>> cc164c078848d85ac813fca1a6f353b449654512
                     {
                         longestDistance = distance;
                         mostHpEnemy = compareEnemy;
                     }
+<<<<<<< HEAD
 
                 }
                 else
@@ -112,8 +162,23 @@ public class attackEnemy : MonoBehaviour
                     mostHpEnemy = nearestEnemy;
                 }
                 if (mostHpEnemy != null && distance <= attackRange | shortestDistance <= attackRange)
+=======
+                    if(mostHpEnemy != null && distance <= attackRange | shortestDistance <=attackRange)
+            {
+             
+                target = mostHpEnemy.transform;
+               
+                
+            }else {
+                target = null;
+            }
+                    }
+                
+           /*         if(distanceToFinish > distanceToSpawn)
+>>>>>>> cc164c078848d85ac813fca1a6f353b449654512
                 {
 
+<<<<<<< HEAD
                     target = mostHpEnemy.transform;
 
 
@@ -122,6 +187,15 @@ public class attackEnemy : MonoBehaviour
                 {
                     target = null;
                 }
+=======
+                          
+                } */
+            
+           
+            
+          /*  if(FurthestEnemyInRange != null && longestDistance <= attackRange){
+            target = FurthestEnemyInRange.transform;
+>>>>>>> cc164c078848d85ac813fca1a6f353b449654512
             }
 
             /*         if(distanceToFinish > distanceToSpawn)
@@ -146,18 +220,31 @@ public class attackEnemy : MonoBehaviour
         }
     }
 
+<<<<<<< HEAD
     private void OnDrawGizmosSelected()
     {
+=======
+     private void OnDrawGizmosSelected() {
+         
+>>>>>>> cc164c078848d85ac813fca1a6f353b449654512
         Gizmos.DrawWireSphere(transform.position, attackRange);
     }
     // Start is called before the first frame update
     void Start()
     {
+<<<<<<< HEAD
         strongestTarget.onClick.AddListener(strongestButtonWasClicked);
         nearestTarget.onClick.AddListener(nearestButtonWasClicked);
         InvokeRepeating("updateTarget", 0f, 0.25f);
 
 
+=======
+         strongestTarget.onClick.AddListener(strongestButtonWasClicked);
+        nearestTarget.onClick.AddListener(nearestButtonWasClicked);
+        InvokeRepeating("updateTarget",0f,0.25f);
+             
+        
+>>>>>>> cc164c078848d85ac813fca1a6f353b449654512
     }
     void SpinBarrel()
     {
@@ -247,6 +334,7 @@ public class attackEnemy : MonoBehaviour
 
 
     }
+<<<<<<< HEAD
 
     void derp()
     {
@@ -254,3 +342,8 @@ public class attackEnemy : MonoBehaviour
     }
 
 }
+=======
+  
+    
+}
+>>>>>>> cc164c078848d85ac813fca1a6f353b449654512

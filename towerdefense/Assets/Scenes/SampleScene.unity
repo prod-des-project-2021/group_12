@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &307947591 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4811379283642283018, guid: 440456cd8c4b9c5409a2cb09235c2c19, type: 3}
+  m_PrefabInstance: {fileID: 2053689035}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &352771316
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -175,19 +186,42 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5149358349522632401, guid: 05050b1fa2d693562b5fb4d5478e2892, type: 3}
+      propertyPath: attackTarget
+      value: 
+      objectReference: {fileID: 681097076}
+    - target: {fileID: 5149358349522632401, guid: 05050b1fa2d693562b5fb4d5478e2892, type: 3}
       propertyPath: nearestButton
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5149358349522632401, guid: 05050b1fa2d693562b5fb4d5478e2892, type: 3}
+      propertyPath: nearestTarget
+      value: 
+      objectReference: {fileID: 307947591}
+    - target: {fileID: 5149358349522632401, guid: 05050b1fa2d693562b5fb4d5478e2892, type: 3}
       propertyPath: strongestButton
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5149358349522632401, guid: 05050b1fa2d693562b5fb4d5478e2892, type: 3}
+      propertyPath: strongestTarget
+      value: 
+      objectReference: {fileID: 681097076}
     - target: {fileID: 8639163174591504851, guid: 05050b1fa2d693562b5fb4d5478e2892, type: 3}
       propertyPath: m_Name
       value: Tank
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05050b1fa2d693562b5fb4d5478e2892, type: 3}
+--- !u!114 &681097076 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6411658043528224000, guid: 440456cd8c4b9c5409a2cb09235c2c19, type: 3}
+  m_PrefabInstance: {fileID: 2053689035}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -787,6 +821,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 286685681541848875, guid: 440456cd8c4b9c5409a2cb09235c2c19, type: 3}
+      propertyPath: m_TagString
+      value: strongButton
+      objectReference: {fileID: 0}
     - target: {fileID: 6279363769229457672, guid: 440456cd8c4b9c5409a2cb09235c2c19, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -838,6 +876,10 @@ PrefabInstance:
     - target: {fileID: 6279363769229457673, guid: 440456cd8c4b9c5409a2cb09235c2c19, type: 3}
       propertyPath: m_TagString
       value: uiArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 8384511344581824762, guid: 440456cd8c4b9c5409a2cb09235c2c19, type: 3}
+      propertyPath: m_TagString
+      value: nearButton
       objectReference: {fileID: 0}
     - target: {fileID: 8598877442113501346, guid: 440456cd8c4b9c5409a2cb09235c2c19, type: 3}
       propertyPath: m_TagString

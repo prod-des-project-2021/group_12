@@ -11,6 +11,8 @@ TagManager:
   - finishLine
   - spawnLine
   - testi
+  - strongButton
+  - nearButton
   layers:
   - Default
   - TransparentFX

@@ -20,7 +20,7 @@ public class BuildManager : MonoBehaviour
 
 
     public GameObject autoTurretPrefab;
-    public GameObject sniperTurretPrefab;
+    public GameObject missileTurretPrefab;
     public GameObject tank;
 
 
@@ -35,5 +35,49 @@ public class BuildManager : MonoBehaviour
     {
         turretToBuild = turret;
     }
+
+
+    public void PurchaseAutoTurret()
+    {
+        if (GameEngine.gameInstance.SpendMoney(100))
+        {
+            Debug.Log("Standard turret purchased");
+            SetTurretToBuild(autoTurretPrefab);
+        }
+        else
+        {
+            Debug.Log("No Money :(");
+        }
+
+    }
+
+    public void PurchaseMissileTower()
+    {
+        if (GameEngine.gameInstance.SpendMoney(100))
+        {
+            Debug.Log("Missile launcher purchased");
+            SetTurretToBuild(missileTurretPrefab);
+        }
+        else
+        {
+            Debug.Log("No Money :(");
+        }
+
+    }
+
+    public void PurchaseTank()
+    {
+        if (GameEngine.gameInstance.SpendMoney(100))
+        {
+            Debug.Log("tank purchased");
+            SetTurretToBuild(tank);
+        }
+        else
+        {
+            Debug.Log("No Money :(");
+        }
+
+    }
+
 
 }

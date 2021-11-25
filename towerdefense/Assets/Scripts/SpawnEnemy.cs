@@ -67,6 +67,10 @@ public class SpawnEnemy : MonoBehaviour
     {
         for (float i = GameEngine.gameInstance.timeBetweenWaves; i > 0; i--)
         {
+
+            Debug.Log("next wave in: "+i);
+
+          
             if (timeForNewRound)
             {
                 NextRound();
@@ -87,9 +91,9 @@ public class SpawnEnemy : MonoBehaviour
         roundDone = false;
         enemiesPerLevel = enemiesPerLevel + GameEngine.gameInstance.level * 1;
         
-        Debug.Log("enemies: " +enemiesPerLevel);
-        Debug.Log("level: "+ GameEngine.gameInstance.level);
-        Debug.Log("difficulty: " + GameEngine.gameInstance.difficulty);
+       // Debug.Log("enemies: " +enemiesPerLevel);
+       // Debug.Log("level: "+ GameEngine.gameInstance.level);
+       // Debug.Log("difficulty: " + GameEngine.gameInstance.difficulty);
         
         enemiesHaveSpawned = false;
         if(GameEngine.gameInstance.level % 10 == 0)

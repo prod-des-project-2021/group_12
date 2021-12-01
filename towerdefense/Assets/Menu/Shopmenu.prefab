@@ -521,7 +521,7 @@ GameObject:
   - component: {fileID: 742642517413904897}
   - component: {fileID: 742642517413904898}
   m_Layer: 5
-  m_Name: Buy Button
+  m_Name: Buy missile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -892,7 +892,7 @@ GameObject:
   - component: {fileID: 742642517694678821}
   - component: {fileID: 742642517694678822}
   m_Layer: 5
-  m_Name: Buy Button
+  m_Name: Buy tank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1525,7 +1525,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5059890061172691453}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -269.11224, y: 171.96973, z: -76.138176}
+  m_LocalPosition: {x: -269.11224, y: 136, z: -76.138176}
   m_LocalScale: {x: 1.1625794, y: 1.1625794, z: 1.1625794}
   m_Children:
   - {fileID: 341309384452267323}

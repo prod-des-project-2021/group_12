@@ -38,6 +38,7 @@ public class CreatePlaceholder : MonoBehaviour
         {
             placeHolder.SetActive(false);
             placeHolder.transform.position = spawnPos;
+            
         }
     }
 }

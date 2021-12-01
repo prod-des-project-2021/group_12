@@ -379,7 +379,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 1
   damage: 75
-  attackRange: 100
+  attackRange: 500
   turnSpeed: 10
   slowEnemiesAmount: 0
   slowTime: 0

@@ -10,8 +10,12 @@ public class UpgradeUI : MonoBehaviour
     private Camera cam = null;
     int turretLvl;
     string turretTag;
+   
+    
     public GameObject selectedTower = null;
 
+
+    //public static UpgradeUI instance;
 
     // Start is called before the first frame update
     void Start()
@@ -24,14 +28,29 @@ public class UpgradeUI : MonoBehaviour
     void Update()
     {
         TurretClicked();
+     
+        
     }
-
+    public void strongButton()
+     {
+       attackEnemy shootStrongest = selectedTower.GetComponent<attackEnemy>();
+       shootStrongest.attackNearestEnemy = false;
+       shootStrongest.attackStrongestEnemy = true;     
+     }
+     
+     public void nearButton()
+     {         
+       attackEnemy shootNearest = selectedTower.GetComponent<attackEnemy>();
+       shootNearest.attackStrongestEnemy = false;
+       shootNearest.attackNearestEnemy = true;
+     }
 
     public void TankUpgrade()
     {
         if (GameEngine.gameInstance.SpendMoney(100))
         {  
             turretLvl++;
+          
             attackEnemy upgradeFirerate = selectedTower.GetComponent<attackEnemy>();
             upgradeFirerate.fireRate += 5;
             Debug.Log("turret upgraded");
@@ -50,7 +69,7 @@ public class UpgradeUI : MonoBehaviour
         }
 
     }
-
+  
     public void MissileUpgrade()
     {
         if (GameEngine.gameInstance.SpendMoney(150))
@@ -73,9 +92,7 @@ public class UpgradeUI : MonoBehaviour
             Debug.Log("No enough money for upgrade :(");
         }
     }
-
-    //UI ei mene kiinni vaikka turretin myy
-    public void sellTurret()
+public void sellTurret()
     {
         turretTag = selectedTower.transform.tag;
         switch (turretTag)
@@ -83,33 +100,28 @@ public class UpgradeUI : MonoBehaviour
             case "Tank":
                 Debug.Log("tank sell" + selectedTower);
                 GameEngine.gameInstance.AddMoney(50);
-               // tankUI.SetActive(false);
+                tankUI.SetActive(false);
                 Destroy(selectedTower);
                 break;
 
             case "MissileLauncher":
                 GameEngine.gameInstance.AddMoney(100);
-                //missileUI.SetActive(false);
+                missileUI.SetActive(false);
                 Destroy(selectedTower);
                 break;
-        }
-
-        if(selectedTower == null)
-        {
-            tankUI.SetActive(false);
-            missileUI.SetActive(false);
         }
     }
 
 
-
     public void TurretClicked()
     {
-        //jos mousea painetaan turretin kohdalta näytä menu
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        
+
+        //jos mousea painetaan turretin kohdalta nï¿½ytï¿½ menu
         if (Input.GetMouseButtonDown(0))
         {
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
                 turretTag = hit.transform.tag;
@@ -120,7 +132,7 @@ public class UpgradeUI : MonoBehaviour
                         tankUI.SetActive(true);
                         missileUI.SetActive(false);
                         transform.position = hit.transform.position;
-                        selectedTower = hit.transform.gameObject;
+                        selectedTower = hit.transform.gameObject;           
                         break;
 
                     case "MissileLauncher":
@@ -140,7 +152,9 @@ public class UpgradeUI : MonoBehaviour
                         missileUI.SetActive(false);
                         break;
                 }
-                Debug.Log("selected tower " + selectedTower);
+
+                Debug.Log("Open menu");
+               
             }
         }
     }

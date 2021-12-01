@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine; 
+using UnityEngine;
+using UnityEngine.UI;
 
 public class UpgradeUI : MonoBehaviour
 {
@@ -9,14 +10,14 @@ public class UpgradeUI : MonoBehaviour
     private Camera cam = null;
     int turretLvl;
     string turretTag;
-    public GameObject selectedTower = null;
+    public GameObject selectedTower;
 
-    //public static UpgradeUI instance;
 
     // Start is called before the first frame update
     void Start()
     {
         cam = Camera.main;
+        
     }
 
     // Update is called once per frame
@@ -74,44 +75,36 @@ public class UpgradeUI : MonoBehaviour
         }
     }
 
-
+    //UI ei mene kiinni vaikka turretin myy
     public void sellTurret()
     {
-        string selectedTowerTag = selectedTower.transform.tag;
-        Debug.Log("sellturret " + selectedTowerTag);
-
-        switch (selectedTowerTag)
+        turretTag = selectedTower.transform.tag;
+        switch (turretTag)
         {
             case "Tank":
-                Destroy(selectedTower);
-
+                Debug.Log("tank sell" + selectedTower);
                 GameEngine.gameInstance.AddMoney(50);
                 tankUI.SetActive(false);
+                Destroy(selectedTower);
                 break;
 
             case "MissileLauncher":
-                Destroy(selectedTower);
-                selectedTower = null;
-                GameEngine.gameInstance.AddMoney(50);
+                GameEngine.gameInstance.AddMoney(100);
                 missileUI.SetActive(false);
+                Destroy(selectedTower);
                 break;
-
         }
-
     }
 
     public void TurretClicked()
     {
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        
-
         //jos mousea painetaan turretin kohdalta näytä menu
         if (Input.GetMouseButtonDown(0))
         {
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-
                 turretTag = hit.transform.tag;
 
                 switch(turretTag)
@@ -140,9 +133,8 @@ public class UpgradeUI : MonoBehaviour
                         missileUI.SetActive(false);
                         break;
 
-                }
 
-                Debug.Log("Open menu");
+                }
                 Debug.Log("selected tower " + selectedTower);
             }
         }

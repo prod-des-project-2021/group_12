@@ -6,6 +6,8 @@ public class attackEnemy : MonoBehaviour
 {
 
     [Header("Attributes")]
+    public bool attackNearestEnemy = true;
+    public bool attackStrongestEnemy = false;
     public float fireRate = 1f;
 
     public float damage = 75f;
@@ -31,55 +33,29 @@ public class attackEnemy : MonoBehaviour
     float SpinUpTimer;
     float MaxSpinRate = 360;
 
-   
-    private bool attackNearestEnemy;
-    private bool attackStrongestEnemy;
-    
-       public void strongestButtonWasClicked()
-    {
-        attackNearestEnemy = false;
-        attackStrongestEnemy = true;
-        Debug.Log("stronk");
-        Debug.Log("nearest " +attackNearestEnemy);
-    }
-   public void nearestButtonWasClicked()
-    {
-         attackStrongestEnemy =false;   
-        attackNearestEnemy = true;
-       
-        Debug.Log("near");
-        Debug.Log("nearest " +attackNearestEnemy);
-    
-    }
 
     private void updateTarget()
     {
-   
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
+       
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);  
         GameObject finishPoint = GameObject.FindGameObjectWithTag(enemyPathFinishTag);
         GameObject spawnPoint = GameObject.FindGameObjectWithTag(enemyPathSpawnTag);
 
         float shortestDistance = Mathf.Infinity;
        float longestDistance = Mathf.Infinity;
-        //float distanceToMaxHpEnemy = Mathf.Infinity;
+        float distance = Mathf.Infinity;
 
         GameObject nearestEnemy = null;
        // GameObject FurthestEnemyInRange = null;
         GameObject mostHpEnemy = null;
-        GameObject compareEnemy = null;
+        double maxHpEnemy = 0;       
 
         foreach(GameObject enemy in enemies)
-        {
-  
-              Debug.Log("nearest " +attackNearestEnemy + "strongest " +attackStrongestEnemy);
+        {            
             float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
             float distanceToSpawn = Vector3.Distance(enemy.transform.position, spawnPoint.transform.position);
             float distanceToFinish = Vector3.Distance(enemy.transform.position, finishPoint.transform.position);
-
-
-            compareEnemy = enemy;
-            float distance = Vector3.Distance(transform.position, compareEnemy.transform.position);
-
+            
             if (distanceToEnemy < shortestDistance)
             {
                 shortestDistance = distanceToEnemy;
@@ -89,67 +65,31 @@ public class attackEnemy : MonoBehaviour
                 //turrettia lähinnä
                 if (attackNearestEnemy)
                 {
+                   // Debug.Log("attack nearest enemy");
                      if (nearestEnemy != null && shortestDistance <= attackRange)
                 {
                     target = nearestEnemy.transform;
                 }
                      
                 }
+                
                  // hp:n määrän mukaan target
-                else if(attackStrongestEnemy){
+                 if(attackStrongestEnemy){
                      Debug.Log("stronk valittu");
-                if (nearestEnemy.GetComponent<EnemyParams>().startHealth < compareEnemy.GetComponent<EnemyParams>().startHealth)
-                {
-                    longestDistance = distance;
-                    mostHpEnemy = compareEnemy;
-                }
-                if (mostHpEnemy != null && distance <= attackRange)
-                {
-                    target = mostHpEnemy.transform;
-                     if(mostHpEnemy.GetComponent<EnemyParams>().health == 0){
-                    target = null;
-                    }
-                }else {
-                    target = nearestEnemy.transform;                  
+
+                if(maxHpEnemy < enemy.GetComponent<EnemyParams>().startHealth){
+                    mostHpEnemy = enemy;
+                    distance =Vector3.Distance(transform.position, mostHpEnemy.transform.position);
+                    maxHpEnemy = enemy.GetComponent<EnemyParams>().startHealth;
                 }
                 
-                }
-              
-           
-           
-          
-
-            /*         if(distanceToFinish > distanceToSpawn)
-                 {
-
-
-                 } */
-
-
-
-            /*  if(FurthestEnemyInRange != null && longestDistance <= attackRange){
-              target = FurthestEnemyInRange.transform;
-              }
-
-              /*         if(distanceToFinish > distanceToSpawn)
-                   {
-
-                       longestDistance = distanceToEnemy;
-                       FurthestEnemyInRange = enemy;
-
-                   } */
-
-
-
-            /*  if(FurthestEnemyInRange != null && longestDistance <= attackRange){
-              target = FurthestEnemyInRange.transform;
-              }
-              else if(FurthestEnemyInRange != null && longestDistance > attackRange && shortestDistance <= attackRange){
-                  target = nearestEnemy.transform;
-              }*/
-
-
-
+                if(mostHpEnemy != null && distance <= attackRange){
+                    target = mostHpEnemy.transform;
+                }else if(shortestDistance <= attackRange){
+                    target = nearestEnemy.transform;
+                }              
+             }
+                                                            
         }
     }
 

@@ -9,7 +9,10 @@ public class UpgradeUI : MonoBehaviour
     private Camera cam = null;
     int turretLvl;
     string turretTag;
+   
+    
     public GameObject selectedTower = null;
+
 
     //public static UpgradeUI instance;
 
@@ -23,8 +26,22 @@ public class UpgradeUI : MonoBehaviour
     void Update()
     {
         TurretClicked();
+     
+        
     }
-
+    public void strongButton()
+     {
+       attackEnemy shootStrongest = selectedTower.GetComponent<attackEnemy>();
+       shootStrongest.attackNearestEnemy = false;
+       shootStrongest.attackStrongestEnemy = true;     
+     }
+     
+     public void nearButton()
+     {         
+       attackEnemy shootNearest = selectedTower.GetComponent<attackEnemy>();
+       shootNearest.attackStrongestEnemy = false;
+       shootNearest.attackNearestEnemy = true;
+     }
 
     //Implement this to the missile launcher and minigun
     public void TankUpgrade()
@@ -32,6 +49,7 @@ public class UpgradeUI : MonoBehaviour
         if (GameEngine.gameInstance.SpendMoney(100))
         {  
             turretLvl++;
+          
             attackEnemy upgradeFirerate = selectedTower.GetComponent<attackEnemy>();
             upgradeFirerate.fireRate += 5;
             Debug.Log("turret upgraded");
@@ -50,7 +68,7 @@ public class UpgradeUI : MonoBehaviour
         }
 
     }
-
+  
     public void MissileUpgrade()
     {
         if (GameEngine.gameInstance.SpendMoney(150))
@@ -79,10 +97,10 @@ public class UpgradeUI : MonoBehaviour
     public void TurretClicked()
     {
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
+         RaycastHit hit;
         
 
-        //jos mousea painetaan turretin kohdalta näytä menu
+        //jos mousea painetaan turretin kohdalta nï¿½ytï¿½ menu
         if (Input.GetMouseButtonDown(0))
         {
             if (Physics.Raycast(ray, out hit))
@@ -96,7 +114,7 @@ public class UpgradeUI : MonoBehaviour
                         tankUI.SetActive(true);
                         missileUI.SetActive(false);
                         transform.position = hit.transform.position;
-                        selectedTower = hit.transform.gameObject;
+                        selectedTower = hit.transform.gameObject;           
                         break;
 
                     case "MissileLauncher":
@@ -119,7 +137,7 @@ public class UpgradeUI : MonoBehaviour
                 }
 
                 Debug.Log("Open menu");
-                Debug.Log("selected tower " + selectedTower);
+               
             }
         }
     }

@@ -16,6 +16,7 @@ public class SpawnTurrets : MonoBehaviour
     void Start()
     {
         cam = Camera.main;
+
         
     }
 
@@ -23,7 +24,7 @@ public class SpawnTurrets : MonoBehaviour
     void Update()
     {
         SpawnAtMousePos();
-        if(turret != null)
+        if (turret != null)
         {
             turret = BuildManager.buildInstance.tank;
         }
@@ -54,7 +55,7 @@ public class SpawnTurrets : MonoBehaviour
             if (Physics.Raycast(ray, out hit) && hit.transform.tag == "Spawn area")
             {
                 Debug.Log(hit.transform.tag);
-                turret = (GameObject)Instantiate(turretToBuild, new Vector3(hit.point.x, hit.point.y + turret.transform.position.y, hit.point.z), Quaternion.identity);
+                turret = Instantiate(turretToBuild, new Vector3(hit.point.x, hit.point.y + turret.transform.position.y, hit.point.z), Quaternion.identity);
                 BuildManager.buildInstance.SetTurretToBuild(null);
             }
 

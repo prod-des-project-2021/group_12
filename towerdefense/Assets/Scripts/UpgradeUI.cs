@@ -10,7 +10,7 @@ public class UpgradeUI : MonoBehaviour
     private Camera cam = null;
     int turretLvl;
     string turretTag;
-    public GameObject selectedTower;
+    public GameObject selectedTower = null;
 
 
     // Start is called before the first frame update
@@ -27,7 +27,6 @@ public class UpgradeUI : MonoBehaviour
     }
 
 
-    //Implement this to the missile launcher and minigun
     public void TankUpgrade()
     {
         if (GameEngine.gameInstance.SpendMoney(100))
@@ -84,17 +83,25 @@ public class UpgradeUI : MonoBehaviour
             case "Tank":
                 Debug.Log("tank sell" + selectedTower);
                 GameEngine.gameInstance.AddMoney(50);
-                tankUI.SetActive(false);
+               // tankUI.SetActive(false);
                 Destroy(selectedTower);
                 break;
 
             case "MissileLauncher":
                 GameEngine.gameInstance.AddMoney(100);
-                missileUI.SetActive(false);
+                //missileUI.SetActive(false);
                 Destroy(selectedTower);
                 break;
         }
+
+        if(selectedTower == null)
+        {
+            tankUI.SetActive(false);
+            missileUI.SetActive(false);
+        }
     }
+
+
 
     public void TurretClicked()
     {
@@ -132,8 +139,6 @@ public class UpgradeUI : MonoBehaviour
                         tankUI.SetActive(false);
                         missileUI.SetActive(false);
                         break;
-
-
                 }
                 Debug.Log("selected tower " + selectedTower);
             }

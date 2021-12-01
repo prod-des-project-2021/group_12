@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+//using UnityEngine.UI;
 public class attackEnemy : MonoBehaviour
 {
 
@@ -33,11 +33,111 @@ public class attackEnemy : MonoBehaviour
     float SpinUpTimer;
     float MaxSpinRate = 360;
 
-    //public Button strongestTarget;
-    //public Button nearestTarget;
 
     private bool attackNearestEnemy = true;
     private bool attackStrongestEnemy = false;
+
+
+
+    private void OnDrawGizmosSelected()
+    {
+
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+    }
+    // Start is called before the first frame update
+    void Start()
+    {
+        InvokeRepeating("updateTarget",0f,0.25f);
+                  
+    }
+    void SpinBarrel()
+    {
+        float theta = (SpinUpTimer / SpinUpTime) *
+         MaxSpinRate * Time.deltaTime;
+        spinner.RotateAroundLocal(Vector3.back, theta);
+
+    }
+    // Update is called once per frame
+    void Update()
+    {
+        if (target == null)
+        {
+            SpinUpTimer = Mathf.Clamp(
+            SpinUpTimer - Time.deltaTime,
+            0, SpinUpTime);
+            //tykki kääntyy default-asentoon
+            rotatingPart.rotation = Quaternion.Lerp(rotatingPart.rotation, Quaternion.Euler(0f, 0f, 0f), Time.deltaTime * turnSpeed);
+
+        }
+        else
+        {
+            SpinUpTimer = Mathf.Clamp(
+            SpinUpTimer + Time.deltaTime,
+            0, SpinUpTime);
+            Vector3 direction = target.position - transform.position;
+            Quaternion lookRotation = Quaternion.LookRotation(direction);
+            Vector3 rotation = Quaternion.Lerp(rotatingPart.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
+            rotatingPart.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+        }
+
+
+
+
+        if (fireCountdown <= 0f)
+        {
+
+            if (spinner != null)
+            {
+                SpinBarrel();
+                if (SpinUpTimer >= SpinUpTime)
+                {
+                    shoot();
+                    fireCountdown = 1f / fireRate;
+                }
+
+            }
+            else
+            {
+
+                shoot();
+                fireCountdown = 1f / fireRate;
+            }
+
+        }
+        fireCountdown -= Time.deltaTime;
+
+    }
+
+    void shoot()
+    {
+
+        GameObject bulletGo = (GameObject)Instantiate(bullet, firePoint.position, firePoint.rotation);
+
+        if (bullet.name.Contains("Bullet"))
+        {
+
+
+            bullet paukku = bulletGo.GetComponent<bullet>();
+
+            if (paukku != null)
+            {
+                paukku.chase(target, slowEnemiesAmount, slowTime, damage);
+            }
+
+        }
+        else if (bullet.name.Contains("Missile"))
+        {
+
+            Missile paukku = bulletGo.GetComponent<Missile>();
+
+            if (paukku != null)
+            {
+                paukku.chase(target, slowEnemiesAmount, slowTime, damage);
+            }
+        }
+
+
+    }
 
     public void strongestButtonWasClicked()
     {
@@ -48,7 +148,7 @@ public class attackEnemy : MonoBehaviour
     public void nearestButtonWasClicked()
     {
         attackStrongestEnemy = false;
-        attackStrongestEnemy = true;
+        attackNearestEnemy = true;
         Debug.Log("near");
     }
 
@@ -147,108 +247,6 @@ public class attackEnemy : MonoBehaviour
 
 
         }
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-
-        Gizmos.DrawWireSphere(transform.position, attackRange);
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        strongestTarget.onClick.AddListener(strongestButtonWasClicked);        
-        nearestTarget.onClick.AddListener(nearestButtonWasClicked);
-        InvokeRepeating("updateTarget",0f,0.25f);
-                  
-    }
-    void SpinBarrel()
-    {
-        float theta = (SpinUpTimer / SpinUpTime) *
-         MaxSpinRate * Time.deltaTime;
-        spinner.RotateAroundLocal(Vector3.back, theta);
-
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        if (target == null)
-        {
-            SpinUpTimer = Mathf.Clamp(
-            SpinUpTimer - Time.deltaTime,
-            0, SpinUpTime);
-            //tykki kääntyy default-asentoon
-            rotatingPart.rotation = Quaternion.Lerp(rotatingPart.rotation, Quaternion.Euler(0f, 0f, 0f), Time.deltaTime * turnSpeed);
-
-        }
-        else
-        {
-            SpinUpTimer = Mathf.Clamp(
-            SpinUpTimer + Time.deltaTime,
-            0, SpinUpTime);
-            Vector3 direction = target.position - transform.position;
-            Quaternion lookRotation = Quaternion.LookRotation(direction);
-            Vector3 rotation = Quaternion.Lerp(rotatingPart.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
-            rotatingPart.rotation = Quaternion.Euler(0f, rotation.y, 0f);
-        }
-
-
-
-
-        if (fireCountdown <= 0f)
-        {
-
-            if (spinner != null)
-            {
-                SpinBarrel();
-                if (SpinUpTimer >= SpinUpTime)
-                {
-                    shoot();
-                    fireCountdown = 1f / fireRate;
-                }
-
-            }
-            else
-            {
-
-                shoot();
-                fireCountdown = 1f / fireRate;
-            }
-
-        }
-        fireCountdown -= Time.deltaTime;
-
-    }
-
-    void shoot()
-    {
-
-        GameObject bulletGo = (GameObject)Instantiate(bullet, firePoint.position, firePoint.rotation);
-
-        if (bullet.name.Contains("Bullet"))
-        {
-
-
-            bullet paukku = bulletGo.GetComponent<bullet>();
-
-            if (paukku != null)
-            {
-                paukku.chase(target, slowEnemiesAmount, slowTime, damage);
-            }
-
-        }
-        else if (bullet.name.Contains("Missile"))
-        {
-
-            Missile paukku = bulletGo.GetComponent<Missile>();
-
-            if (paukku != null)
-            {
-                paukku.chase(target, slowEnemiesAmount, slowTime, damage);
-            }
-        }
-
-
     }
 
 

@@ -23,7 +23,6 @@ public class BuildManager : MonoBehaviour
     public GameObject missileTurretPrefab;
     public GameObject tank;
 
-
     private GameObject turretToBuild;
 
     public GameObject GetTurretToBuild()

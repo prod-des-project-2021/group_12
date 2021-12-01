@@ -1,16 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameEngine : MonoBehaviour
 {
     public int playerHealth = 100;
-    public int money = 1000;
+    public int money = 100;
     public float score = 0;
     [HideInInspector] public float difficulty = 1.0f;
     public int level = 1;
     public float timeBetweenWaves = 10.0f;
     public float timeBetweenEnemies = 0.5f;
+
+    public Text currentHealth;
+    public Text currentScore;
+    public Text currentMoney;
 
     public static GameEngine gameInstance;
     // Start is called before the first frame update
@@ -22,7 +27,9 @@ public class GameEngine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        currentHealth.text = playerHealth.ToString();
+        currentScore.text = score.ToString();
+        currentMoney.text = money.ToString();
     }
 
     public void DamagePlayer(int damage)

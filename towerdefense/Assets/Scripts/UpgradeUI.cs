@@ -75,6 +75,30 @@ public class UpgradeUI : MonoBehaviour
     }
 
 
+    public void sellTurret()
+    {
+        string selectedTowerTag = selectedTower.transform.tag;
+        Debug.Log("sellturret " + selectedTowerTag);
+
+        switch (selectedTowerTag)
+        {
+            case "Tank":
+                Destroy(selectedTower);
+
+                GameEngine.gameInstance.AddMoney(50);
+                tankUI.SetActive(false);
+                break;
+
+            case "MissileLauncher":
+                Destroy(selectedTower);
+                selectedTower = null;
+                GameEngine.gameInstance.AddMoney(50);
+                missileUI.SetActive(false);
+                break;
+
+        }
+
+    }
 
     public void TurretClicked()
     {

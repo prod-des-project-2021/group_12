@@ -24,6 +24,7 @@ public class attackEnemy : MonoBehaviour
     public string enemyTag = "mob";
     public string enemyPathFinishTag = "finishLine";
     public string enemyPathSpawnTag = "spawnLine";
+    public string sentryTag = "sentry";
 
 
     public GameObject bullet;
@@ -32,6 +33,8 @@ public class attackEnemy : MonoBehaviour
     float SpinUpTime = 2;
     float SpinUpTimer;
     float MaxSpinRate = 360;
+
+    
 
 
     private void updateTarget()
@@ -48,10 +51,15 @@ public class attackEnemy : MonoBehaviour
         GameObject nearestEnemy = null;
        // GameObject FurthestEnemyInRange = null;
         GameObject mostHpEnemy = null;
+        
         double maxHpEnemy = 0;       
 
         foreach(GameObject enemy in enemies)
-        {            
+        { 
+              GameObject sentry = GameObject.FindGameObjectWithTag(sentryTag);
+
+       
+
             float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
             float distanceToSpawn = Vector3.Distance(enemy.transform.position, spawnPoint.transform.position);
             float distanceToFinish = Vector3.Distance(enemy.transform.position, finishPoint.transform.position);
@@ -89,6 +97,7 @@ public class attackEnemy : MonoBehaviour
                     target = nearestEnemy.transform;
                 }              
              }
+            
                                                             
         }
     }
@@ -194,6 +203,7 @@ public class attackEnemy : MonoBehaviour
 
 
     }
+   
 
 
 }

@@ -11,10 +11,11 @@ public class GameEngine : MonoBehaviour
     public int level = 1;
     public float timeBetweenWaves = 10.0f;
     public float timeBetweenEnemies = 0.5f;
+    public float bossWaveDifficulty = 2.0f;
 
     public static GameEngine gameInstance;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         gameInstance = this;
     }

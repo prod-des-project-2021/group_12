@@ -1,10 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 public class attackEnemy : MonoBehaviour
 {
-
+    public static attackEnemy attackEnemyInstance;
     [Header("Attributes")]
     public float fireRate = 1f;
 
@@ -31,10 +30,8 @@ public class attackEnemy : MonoBehaviour
     public Transform spinner;
     float SpinUpTime = 2;
     float SpinUpTimer;
-    float MaxSpinRate = 360;
-
-    //public Button strongestTarget;
-    //public Button nearestTarget;
+    float MaxSpinRate = 1000;
+    float currentspin;
 
     private bool attackNearestEnemy = true;
     private bool attackStrongestEnemy = false;
@@ -48,7 +45,7 @@ public class attackEnemy : MonoBehaviour
     public void nearestButtonWasClicked()
     {
         attackStrongestEnemy = false;
-        attackStrongestEnemy = true;
+        attackNearestEnemy = true;
         Debug.Log("near");
     }
 
@@ -86,12 +83,13 @@ public class attackEnemy : MonoBehaviour
                 //turrettia lähinnä
                 if (attackNearestEnemy)
                 {
+                    if (nearestEnemy != null && shortestDistance <= attackRange)
+                    {
+                        target = nearestEnemy.transform;
+                    }
                     // Debug.Log("near valittu");
                 }
-                if (nearestEnemy != null && shortestDistance <= attackRange)
-                {
-                    target = nearestEnemy.transform;
-                }
+                
             }
             // hp:n määrän mukaan target
             if (attackStrongestEnemy)
@@ -151,34 +149,39 @@ public class attackEnemy : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-
         Gizmos.DrawWireSphere(transform.position, attackRange);
     }
     // Start is called before the first frame update
     void Start()
     {
-        strongestTarget.onClick.AddListener(strongestButtonWasClicked);        
-        nearestTarget.onClick.AddListener(nearestButtonWasClicked);
-        InvokeRepeating("updateTarget",0f,0.25f);
+        InvokeRepeating("updateTarget",0f,0.05f);
+        //attackEnemyInstance = this;
                   
     }
     void SpinBarrel()
     {
-        float theta = (SpinUpTimer / SpinUpTime) *
-         MaxSpinRate * Time.deltaTime;
-        spinner.RotateAroundLocal(Vector3.back, theta);
-
+        float theta = (SpinUpTimer / SpinUpTime) * MaxSpinRate * Time.deltaTime;
+        spinner.Rotate(Vector3.right, theta);
     }
     // Update is called once per frame
     void Update()
     {
+        if(spinner != null)
+        {
+            SpinBarrel();
+        }
+        
         if (target == null)
         {
             SpinUpTimer = Mathf.Clamp(
             SpinUpTimer - Time.deltaTime,
             0, SpinUpTime);
             //tykki kääntyy default-asentoon
-            rotatingPart.rotation = Quaternion.Lerp(rotatingPart.rotation, Quaternion.Euler(0f, 0f, 0f), Time.deltaTime * turnSpeed);
+            if(rotatingPart != null)
+            {
+                rotatingPart.rotation = Quaternion.Lerp(rotatingPart.rotation, Quaternion.Euler(0f, 0f, 0f), Time.deltaTime * turnSpeed);
+            }
+            
 
         }
         else
@@ -186,12 +189,16 @@ public class attackEnemy : MonoBehaviour
             SpinUpTimer = Mathf.Clamp(
             SpinUpTimer + Time.deltaTime,
             0, SpinUpTime);
-            Vector3 direction = target.position - transform.position;
-            Quaternion lookRotation = Quaternion.LookRotation(direction);
-            Vector3 rotation = Quaternion.Lerp(rotatingPart.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
-            rotatingPart.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+            if(rotatingPart != null)
+            {
+                Vector3 direction = target.position - transform.position;
+                Quaternion lookRotation = Quaternion.LookRotation(direction);
+                Vector3 rotation = Quaternion.Lerp(rotatingPart.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
+                rotatingPart.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+            }
+            
         }
-
+        
 
 
 
@@ -199,13 +206,13 @@ public class attackEnemy : MonoBehaviour
         {
 
             if (spinner != null)
-            {
-                SpinBarrel();
+            {   
                 if (SpinUpTimer >= SpinUpTime)
                 {
                     shoot();
                     fireCountdown = 1f / fireRate;
                 }
+                
 
             }
             else
@@ -222,31 +229,44 @@ public class attackEnemy : MonoBehaviour
 
     void shoot()
     {
-
-        GameObject bulletGo = (GameObject)Instantiate(bullet, firePoint.position, firePoint.rotation);
-
-        if (bullet.name.Contains("Bullet"))
+        if (target == null) return;
+        if (attackRange >= Vector3.Distance(firePoint.position, target.position))
         {
+            GameObject bulletGo = (GameObject)Instantiate(bullet, firePoint.position, firePoint.rotation);
 
-
-            bullet paukku = bulletGo.GetComponent<bullet>();
-
-            if (paukku != null)
+            if (bullet.name.Contains("Bullet"))
             {
-                paukku.chase(target, slowEnemiesAmount, slowTime, damage);
+
+
+                bullet paukku = bulletGo.GetComponent<bullet>();
+
+                if (paukku != null)
+                {
+                    paukku.chase(target, slowEnemiesAmount, slowTime, damage);
+                }
+
             }
-
-        }
-        else if (bullet.name.Contains("Missile"))
-        {
-
-            Missile paukku = bulletGo.GetComponent<Missile>();
-
-            if (paukku != null)
+            else if (bullet.name.Contains("Missile"))
             {
-                paukku.chase(target, slowEnemiesAmount, slowTime, damage);
+
+                Missile paukku = bulletGo.GetComponent<Missile>();
+
+                if (paukku != null)
+                {
+                    paukku.chase(target, slowEnemiesAmount, slowTime, damage);
+                }
+            }
+            else if (bullet.name.Contains("Zap"))
+            {
+                Zap zap = bulletGo.GetComponent<Zap>();
+
+                if (zap != null)
+                {
+                    StartCoroutine(zap.hitTarget(damage));
+                }
             }
         }
+        
 
 
     }

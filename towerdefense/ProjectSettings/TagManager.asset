@@ -12,6 +12,8 @@ TagManager:
   - spawnLine
   - Tank
   - MissileLauncher
+  - Minigun
+  - ZapTower
   layers:
   - Default
   - TransparentFX

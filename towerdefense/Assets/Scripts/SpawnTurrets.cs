@@ -25,7 +25,7 @@ public class SpawnTurrets : MonoBehaviour
     {
         SpawnAtMousePos();
         if(turret != null){
-            turret = BuildManager.buildInstance.tank;
+            turret = BuildManager.buildInstance.sentry;
         }
     }
 

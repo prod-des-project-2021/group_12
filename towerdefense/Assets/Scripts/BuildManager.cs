@@ -10,10 +10,12 @@ public class BuildManager : MonoBehaviour
    
 
 
-    public GameObject autoTurretPrefab;
+    public GameObject minigunPrefab;
     public GameObject missileTurretPrefab;
     public GameObject tank;
     public GameObject sentry;
+    public GameObject zapPrefab;
+    public GameObject buffPrefab;
 
 
     private GameObject turretToBuild;
@@ -39,12 +41,40 @@ public class BuildManager : MonoBehaviour
     }
 
 
-    public void PurchaseAutoTurret()
+    public void PurchaseMinigun()
     {
         if (GameEngine.gameInstance.SpendMoney(100))
         {
-            Debug.Log("Standard turret purchased");
-            SetTurretToBuild(autoTurretPrefab);
+            Debug.Log("Minigun purchased");
+            SetTurretToBuild(minigunPrefab);
+        }
+        else
+        {
+            Debug.Log("No Money :(");
+        }
+
+    }
+
+    public void PurchaseZapTower()
+    {
+        if (GameEngine.gameInstance.SpendMoney(100))
+        {
+            Debug.Log("Minigun purchased");
+            SetTurretToBuild(zapPrefab);
+        }
+        else
+        {
+            Debug.Log("No Money :(");
+        }
+
+    }
+
+    public void PurchaseBuffTower()
+    {
+        if (GameEngine.gameInstance.SpendMoney(100))
+        {
+            Debug.Log("Minigun purchased");
+            SetTurretToBuild(buffPrefab);
         }
         else
         {
@@ -69,6 +99,7 @@ public class BuildManager : MonoBehaviour
 
     public void PurchaseTank()
     {
+        Debug.Log("try tank");
         if (GameEngine.gameInstance.SpendMoney(100))
         {
             Debug.Log("tank purchased");

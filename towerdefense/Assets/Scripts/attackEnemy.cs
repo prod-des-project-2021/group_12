@@ -73,8 +73,8 @@ public class attackEnemy : MonoBehaviour
                 if (attackNearestEnemy)
                 {
 
-                   // Debug.Log("attack nearest enemy");
-                     if (nearestEnemy != null && shortestDistance <= attackRange)
+                // Debug.Log("attack nearest enemy");
+                if (nearestEnemy != null && shortestDistance <= attackRange && nearestEnemy.GetComponent<MeshRenderer>().enabled)
                 {
                     target = nearestEnemy.transform;
                 }
@@ -91,7 +91,8 @@ public class attackEnemy : MonoBehaviour
                     maxHpEnemy = enemy.GetComponent<EnemyParams>().startHealth;
                 }
                 
-                if(mostHpEnemy != null && distance <= attackRange){
+                if(mostHpEnemy != null && distance <= attackRange && mostHpEnemy.GetComponent<MeshRenderer>().enabled)
+                {
                     target = mostHpEnemy.transform;
                 }else if(shortestDistance <= attackRange){
                     target = nearestEnemy.transform;

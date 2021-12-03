@@ -12,6 +12,7 @@ TagManager:
   - spawnLine
   - Tank
   - MissileLauncher
+  - sentry
   layers:
   - Default
   - TransparentFX

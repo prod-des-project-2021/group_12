@@ -110,9 +110,9 @@ public class attackEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
        
         InvokeRepeating("updateTarget", 0f, 0.25f);
-
 
     }
     void SpinBarrel()

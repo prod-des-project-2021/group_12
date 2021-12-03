@@ -256,6 +256,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
 --- !u!114 &742642516563059022
+
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -271,6 +272,7 @@ MonoBehaviour:
   missileTurretPrefab: {fileID: 2104137448090914849, guid: 36e19c6ea6f8e9e46bc591015f3c5c27, type: 3}
   tank: {fileID: 8639163174591504851, guid: 05050b1fa2d693562b5fb4d5478e2892, type: 3}
 --- !u!114 &742642516563059023
+
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -282,6 +284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6685d9714b2f3fb4bb0c4e0be220daaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+
   attackNearestEnemy: 1
   attackStrongestEnemy: 0
   fireRate: 1
@@ -297,6 +300,7 @@ MonoBehaviour:
   bullet: {fileID: 0}
   firePoint: {fileID: 0}
   spinner: {fileID: 0}
+
 --- !u!1 &742642516738587554
 GameObject:
   m_ObjectHideFlags: 0
@@ -577,7 +581,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 742642516563059023}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Shop, Assembly-CSharp
         m_MethodName: PurchaseSniperTower
         m_Mode: 1
@@ -948,7 +952,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 742642516563059023}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Shop, Assembly-CSharp
         m_MethodName: PurchaseTank
         m_Mode: 1
@@ -1081,7 +1085,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 742642516563059023}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Shop, Assembly-CSharp
         m_MethodName: PurchaseAutoTurret
         m_Mode: 1

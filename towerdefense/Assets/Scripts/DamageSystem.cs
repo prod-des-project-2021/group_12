@@ -153,6 +153,30 @@ public class DamageSystem : MonoBehaviour
                
             }
         }
+        else if (this.gameObject.name.Contains("Enemy 4"))
+        {
+            enemyparams.EnemyNewInstance();
+
+            wpInstance.NewWPInstance();
+            float apu = wpInstance.speedMultiplier;
+          
+            EnemyParams.enemyHitInstance.health -= attackDamage;
+            
+            if (EnemyParams.enemyHitInstance.health <= 0.0f)
+            {
+                wpInstance.NewWPInstance();
+                Waypoints.wPInstanceRunning.speedMultiplier = 0;
+                timeToDie = true;
+                GameEngine.gameInstance.AddMoney(35);
+                GameEngine.gameInstance.IncreaseScore(1.5f);
+            }
+            if(slowAmount < 0 && wpInstance.speedMultiplier == apu)
+            {
+                
+                StartCoroutine(slowTimer(slowTime,slowAmount,wpInstance));
+               
+            }
+        }
 
 
 

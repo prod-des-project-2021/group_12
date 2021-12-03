@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2573626329177284200}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7574622995890996674}
@@ -816,9 +816,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6523490266744003353}
   - component: {fileID: 5137925430654776974}
+  - component: {fileID: 6921289117505561873}
   m_Layer: 0
   m_Name: Minigun
-  m_TagString: Untagged
+  m_TagString: Minigun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -831,7 +832,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6331067392944389412}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 7.62, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 6720067949768408298}
@@ -850,16 +851,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6685d9714b2f3fb4bb0c4e0be220daaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 100
+  fireRate: 50
+  damage: 5
   attackRange: 100
   turnSpeed: 10
   slowEnemiesAmount: 0
   slowTime: 0
   rotatingPart: {fileID: 6720067949768408298}
   enemyTag: mob
+  enemyPathFinishTag: finishLine
+  enemyPathSpawnTag: spawnLine
   bullet: {fileID: 3368687015727259707, guid: 20953e685e16be6e1b50b9cb054af9af, type: 3}
   firePoint: {fileID: 8460082152276573634}
   spinner: {fileID: 7574622995890996674}
+--- !u!136 &6921289117505561873
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6331067392944389412}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.9
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8637939042624057746
 GameObject:
   m_ObjectHideFlags: 0

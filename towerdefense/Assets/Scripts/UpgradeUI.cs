@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine; 
 
 public class UpgradeUI : MonoBehaviour
 {
@@ -21,7 +20,6 @@ public class UpgradeUI : MonoBehaviour
     void Start()
     {
         cam = Camera.main;
-        
     }
 
     // Update is called once per frame
@@ -45,6 +43,7 @@ public class UpgradeUI : MonoBehaviour
        shootNearest.attackNearestEnemy = true;
      }
 
+    //Implement this to the missile launcher and minigun
     public void TankUpgrade()
     {
         if (GameEngine.gameInstance.SpendMoney(100))
@@ -116,7 +115,7 @@ public void sellTurret()
     public void TurretClicked()
     {
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
+         RaycastHit hit;
         
 
         //jos mousea painetaan turretin kohdalta n�yt� menu
@@ -124,6 +123,7 @@ public void sellTurret()
         {
             if (Physics.Raycast(ray, out hit))
             {
+
                 turretTag = hit.transform.tag;
 
                 switch(turretTag)
@@ -151,6 +151,7 @@ public void sellTurret()
                         tankUI.SetActive(false);
                         missileUI.SetActive(false);
                         break;
+
                 }
 
                 Debug.Log("Open menu");

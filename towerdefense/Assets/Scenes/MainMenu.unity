@@ -316,7 +316,7 @@ GameObject:
   - component: {fileID: 271980111}
   - component: {fileID: 271980110}
   m_Layer: 5
-  m_Name: EPIC TTD
+  m_Name: TITLE IMAGE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1198,7 +1198,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1861106741}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a77433e5dd970884998aa9e4de86fdf5, type: 3}
+  m_Script: {fileID: 11500000, guid: d42a352b42b95f348ad6c7539166199f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1903970401
@@ -1362,7 +1362,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1931728715}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1861106746}
+        m_TargetAssemblyTypeName: SceneSwitcher, Assembly-CSharp
+        m_MethodName: ChangeScene
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1931728715
 MonoBehaviour:
   m_ObjectHideFlags: 0

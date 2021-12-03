@@ -8,6 +8,7 @@ public class SpawnTurrets : MonoBehaviour
 
     public GameObject turret;
     private Camera cam = null;
+    BuildManager buildManager;
     public static GameEngine spawnTurretInstance;
     
 
@@ -16,8 +17,7 @@ public class SpawnTurrets : MonoBehaviour
     void Start()
     {
         cam = Camera.main;
-
-        
+        buildManager = BuildManager.buildInstance;
     }
 
     // Update is called once per frame
@@ -25,7 +25,7 @@ public class SpawnTurrets : MonoBehaviour
     {
         SpawnAtMousePos();
         if(turret != null){
-            turret = BuildManager.buildInstance.tank;
+            turret = BuildManager.buildInstance.sentry;
         }
     }
 
@@ -34,7 +34,7 @@ public class SpawnTurrets : MonoBehaviour
     {
         GameObject turretToBuild = BuildManager.buildInstance.GetTurretToBuild();
 
-        if (BuildManager.buildInstance.GetTurretToBuild() == null)
+        if (buildManager.GetTurretToBuild() == null)
         {
             return;
         }

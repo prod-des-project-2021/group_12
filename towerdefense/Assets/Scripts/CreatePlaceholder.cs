@@ -30,6 +30,7 @@ public class CreatePlaceholder : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit))
         {
+            
             Vector3 newPos = hit.point;
             placeHolder.transform.position = newPos;
         }
@@ -38,7 +39,6 @@ public class CreatePlaceholder : MonoBehaviour
         {
             placeHolder.SetActive(false);
             placeHolder.transform.position = spawnPos;
-            
         }
     }
 }

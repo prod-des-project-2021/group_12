@@ -144,12 +144,6 @@ public class SpawnEnemy : MonoBehaviour
         spawnPos = spawnPoints[Random.Range(0, 3)];
         Instantiate(spawnee[enemyType], spawnPos.transform.position, spawnPos.transform.rotation);
 
-
-        
-        
-
-
-
     }
 
 }

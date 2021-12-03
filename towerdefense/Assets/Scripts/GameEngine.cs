@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameEngine : MonoBehaviour
 {
@@ -13,6 +14,11 @@ public class GameEngine : MonoBehaviour
     public float timeBetweenEnemies = 0.5f;
     public float bossWaveDifficulty = 2.0f;
 
+    public Text currentHealth;
+    public Text currentMoney;
+    public Text currentScore;
+    
+
     public static GameEngine gameInstance;
     // Start is called before the first frame update
     void Awake()
@@ -23,6 +29,9 @@ public class GameEngine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        currentHealth.text = playerHealth.ToString();
+        currentMoney.text = money.ToString();
+        currentScore.text = score.ToString();
         
     }
 

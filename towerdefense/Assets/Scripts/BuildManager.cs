@@ -7,7 +7,17 @@ public class BuildManager : MonoBehaviour
     
     public static BuildManager buildInstance;
 
-    private void Awake()
+   
+
+
+    public GameObject autoTurretPrefab;
+    public GameObject missileTurretPrefab;
+    public GameObject tank;
+    public GameObject sentry;
+
+
+    private GameObject turretToBuild;
+        private void Awake()
     {
 
         if(buildInstance != null)
@@ -17,15 +27,6 @@ public class BuildManager : MonoBehaviour
         }
         buildInstance = this;
     }
-
-
-    public GameObject autoTurretPrefab;
-    public GameObject missileTurretPrefab;
-    public GameObject tank;
-
-
-    private GameObject turretToBuild;
-
     public GameObject GetTurretToBuild()
     {
         return turretToBuild;
@@ -33,6 +34,7 @@ public class BuildManager : MonoBehaviour
 
     public void SetTurretToBuild(GameObject turret)
     {
+        Debug.Log("noniin" +turret);
         turretToBuild = turret;
     }
 
@@ -71,6 +73,19 @@ public class BuildManager : MonoBehaviour
         {
             Debug.Log("tank purchased");
             SetTurretToBuild(tank);
+        }
+        else
+        {
+            Debug.Log("No Money :(");
+        }
+
+    }
+    public void PurchaseSentry()
+    {
+        if (GameEngine.gameInstance.SpendMoney(100))
+        {
+            Debug.Log("sentry purchased");
+            SetTurretToBuild(sentry);
         }
         else
         {

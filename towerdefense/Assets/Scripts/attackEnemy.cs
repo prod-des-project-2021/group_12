@@ -5,6 +5,8 @@ public class attackEnemy : MonoBehaviour
 {
     public static attackEnemy attackEnemyInstance;
     [Header("Attributes")]
+    public bool attackNearestEnemy = true;
+    public bool attackStrongestEnemy = false;
     public float fireRate = 1f;
 
     public float damage = 75f;
@@ -21,129 +23,82 @@ public class attackEnemy : MonoBehaviour
     public string enemyTag = "mob";
     public string enemyPathFinishTag = "finishLine";
     public string enemyPathSpawnTag = "spawnLine";
+    public string sentryTag = "sentry";
 
-    private string enemyNumber1 = "Enemy 1";
-    private string enemyNumber2 = "Enemy 2";
-    private string enemyNumber3 = "Enemy 3";
+
     public GameObject bullet;
     public Transform firePoint;
     public Transform spinner;
     float SpinUpTime = 2;
     float SpinUpTimer;
-    float MaxSpinRate = 1000;
     float currentspin;
+    float MaxSpinRate = 360;
 
-    private bool attackNearestEnemy = true;
-    private bool attackStrongestEnemy = false;
-
-    public void strongestButtonWasClicked()
-    {
-        attackNearestEnemy = false;
-        attackStrongestEnemy = true;
-        Debug.Log("stronk");
-    }
-    public void nearestButtonWasClicked()
-    {
-        attackStrongestEnemy = false;
-        attackNearestEnemy = true;
-        Debug.Log("near");
-    }
+    
 
     private void updateTarget()
     {
-
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
+       
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);  
         GameObject finishPoint = GameObject.FindGameObjectWithTag(enemyPathFinishTag);
         GameObject spawnPoint = GameObject.FindGameObjectWithTag(enemyPathSpawnTag);
 
         float shortestDistance = Mathf.Infinity;
-        float longestDistance = Mathf.Infinity;
-        float distanceToMaxHpEnemy = Mathf.Infinity;
+       float longestDistance = Mathf.Infinity;
+        float distance = Mathf.Infinity;
 
         GameObject nearestEnemy = null;
-        GameObject FurthestEnemyInRange = null;
+       // GameObject FurthestEnemyInRange = null;
         GameObject mostHpEnemy = null;
-        GameObject compareEnemy = null;
+        
+        double maxHpEnemy = 0;       
 
-        foreach (GameObject enemy in enemies)
-        {
+        foreach(GameObject enemy in enemies)
+        { 
+              GameObject sentry = GameObject.FindGameObjectWithTag(sentryTag);
+
+       
 
             float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
             float distanceToSpawn = Vector3.Distance(enemy.transform.position, spawnPoint.transform.position);
             float distanceToFinish = Vector3.Distance(enemy.transform.position, finishPoint.transform.position);
-
-
-            compareEnemy = enemy;
-            float distance = Vector3.Distance(transform.position, compareEnemy.transform.position);
-
+            
             if (distanceToEnemy < shortestDistance)
             {
                 shortestDistance = distanceToEnemy;
                 nearestEnemy = enemy;
+                
+                 }
                 //turrettia lähinnä
                 if (attackNearestEnemy)
                 {
-                    if (nearestEnemy != null && shortestDistance <= attackRange)
-                    {
-                        target = nearestEnemy.transform;
-                    }
-                    // Debug.Log("near valittu");
+
+                   // Debug.Log("attack nearest enemy");
+                     if (nearestEnemy != null && shortestDistance <= attackRange)
+                {
+                    target = nearestEnemy.transform;
+                }
+
                 }
                 
-            }
-            // hp:n määrän mukaan target
-            if (attackStrongestEnemy)
-            {
-                // Debug.Log("stronk valittu");
-                if (nearestEnemy.GetComponent<EnemyParams>().startHealth < compareEnemy.GetComponent<EnemyParams>().startHealth)
-                {
-                    longestDistance = distance;
-                    mostHpEnemy = compareEnemy;
-                }
-                if (mostHpEnemy != null && distance <= attackRange | shortestDistance <= attackRange)
-                {
+                 // hp:n määrän mukaan target
+                 if(attackStrongestEnemy){
+                     Debug.Log("stronk valittu");
 
+                if(maxHpEnemy < enemy.GetComponent<EnemyParams>().startHealth){
+                    mostHpEnemy = enemy;
+                    distance =Vector3.Distance(transform.position, mostHpEnemy.transform.position);
+                    maxHpEnemy = enemy.GetComponent<EnemyParams>().startHealth;
+                }
+                
+                if(mostHpEnemy != null && distance <= attackRange){
                     target = mostHpEnemy.transform;
-
-
-                }
-                else
-                {
-                    target = null;
-                }
-            }
-
-            /*         if(distanceToFinish > distanceToSpawn)
-                 {
-
-
-                 } */
-
-
-
-            /*  if(FurthestEnemyInRange != null && longestDistance <= attackRange){
-              target = FurthestEnemyInRange.transform;
-              }
-
-              /*         if(distanceToFinish > distanceToSpawn)
-                   {
-
-                       longestDistance = distanceToEnemy;
-                       FurthestEnemyInRange = enemy;
-
-                   } */
-
-
-
-            /*  if(FurthestEnemyInRange != null && longestDistance <= attackRange){
-              target = FurthestEnemyInRange.transform;
-              }
-              else if(FurthestEnemyInRange != null && longestDistance > attackRange && shortestDistance <= attackRange){
-                  target = nearestEnemy.transform;
-              }*/
-
-
-
+                }else if(shortestDistance <= attackRange){
+                    target = nearestEnemy.transform;
+                }              
+             }
+            
+                                                            
         }
     }
 
@@ -155,8 +110,6 @@ public class attackEnemy : MonoBehaviour
     void Start()
     {
         InvokeRepeating("updateTarget",0f,0.05f);
-        //attackEnemyInstance = this;
-                  
     }
     void SpinBarrel()
     {
@@ -270,6 +223,7 @@ public class attackEnemy : MonoBehaviour
 
 
     }
+   
 
 
 }

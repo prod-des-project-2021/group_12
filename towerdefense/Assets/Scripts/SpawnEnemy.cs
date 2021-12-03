@@ -49,8 +49,6 @@ public class SpawnEnemy : MonoBehaviour
             }
             
         }
-   
-           
                
                    
     }
@@ -136,8 +134,13 @@ public class SpawnEnemy : MonoBehaviour
 
     void SpawnSingleEnemy(int enemyType)
     {
+        foreach(GameObject enemy in spawnee){        
+         
+         if(enemy.name.Contains("Enemy 4")){
+             enemy.GetComponent<MeshRenderer>().enabled = false;
+         }
+        }  
         spawnPos = spawnPoints[Random.Range(0, 3)];
-        spawnEnemyInstance = this;
         Instantiate(spawnee[enemyType], spawnPos.transform.position, spawnPos.transform.rotation);
 
 

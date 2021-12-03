@@ -201,6 +201,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3541089593460349587}
   - component: {fileID: 814139642162792761}
+  - component: {fileID: 4490996362996925263}
   m_Layer: 0
   m_Name: BuffTower
   m_TagString: Untagged
@@ -236,5 +237,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: becc126574f8ebf468c2738d426fda03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagebuff: 70
-  attackRangeBuff: 70
+  buffTowerRange: 50
+  damageBuffPercent: 1.1
+  rangeBuffPercent: 1.1
+--- !u!136 &4490996362996925263
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6662130691485510126}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}

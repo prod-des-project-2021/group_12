@@ -119,7 +119,8 @@ public class SpawnEnemy : MonoBehaviour
                 SpawnSingleEnemy(vuoro);
                 if (vuoro == 0) vuoro++;
                 else if (vuoro == 1) vuoro++;
-                else if (vuoro == 2) vuoro = 0;
+                else if (vuoro == 2) vuoro++;
+                else if (vuoro == 3) vuoro = 0;
                 yield return new WaitForSeconds(GameEngine.gameInstance.timeBetweenEnemies);
 
             }
@@ -142,12 +143,6 @@ public class SpawnEnemy : MonoBehaviour
         }  
         spawnPos = spawnPoints[Random.Range(0, 3)];
         Instantiate(spawnee[enemyType], spawnPos.transform.position, spawnPos.transform.rotation);
-
-
-        
-        
-
-
 
     }
 

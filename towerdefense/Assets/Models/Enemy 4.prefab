@@ -115,7 +115,6 @@ MonoBehaviour:
   speed: 0
   startHealth: 200
   startSpeed: 20
-  maxSpeed: 120
 --- !u!114 &-4580812135691173742
 MonoBehaviour:
   m_ObjectHideFlags: 0

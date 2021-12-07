@@ -1380,7 +1380,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6279363768850034036}
         m_TargetAssemblyTypeName: UpgradeUI, Assembly-CSharp
-        m_MethodName: UpgradeTurret
+        m_MethodName: TankUpgrade
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

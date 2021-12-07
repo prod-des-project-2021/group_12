@@ -134,3 +134,4 @@ MonoBehaviour:
   level: 1
   timeBetweenWaves: 10
   timeBetweenEnemies: 0.5
+  bossWaveDifficulty: 1

@@ -115,7 +115,7 @@ public void sellTurret()
     public void TurretClicked()
     {
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-         RaycastHit hit;
+        RaycastHit hit;
         
 
         //jos mousea painetaan turretin kohdalta n�yt� menu
@@ -154,7 +154,6 @@ public void sellTurret()
 
                 }
 
-                Debug.Log("Open menu");
                
             }
         }

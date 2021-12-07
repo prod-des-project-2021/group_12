@@ -377,9 +377,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6685d9714b2f3fb4bb0c4e0be220daaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackNearestEnemy: 1
+  attackStrongestEnemy: 0
   fireRate: 1
   damage: 75
-  attackRange: 500
+  attackRange: 125
   turnSpeed: 10
   slowEnemiesAmount: 0
   slowTime: 0
@@ -387,6 +389,7 @@ MonoBehaviour:
   enemyTag: mob
   enemyPathFinishTag: finishLine
   enemyPathSpawnTag: spawnLine
+  sentryTag: sentry
   bullet: {fileID: 3368687015727259707, guid: 20953e685e16be6e1b50b9cb054af9af, type: 3}
   firePoint: {fileID: 3917253027693399380}
   spinner: {fileID: 0}

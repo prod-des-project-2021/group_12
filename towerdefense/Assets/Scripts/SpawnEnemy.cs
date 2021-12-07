@@ -124,7 +124,7 @@ int bossTurn = 0;
                 if (vuoro == 0) vuoro++;
                 else if (vuoro == 1) vuoro++;
                 else if (vuoro == 2) vuoro++;
-                 else if (vuoro == 3) vuoro = 0;
+                else if (vuoro == 3) vuoro = 0;
                 yield return new WaitForSeconds(GameEngine.gameInstance.timeBetweenEnemies);
 
             }
@@ -143,13 +143,9 @@ int bossTurn = 0;
          if(enemy.name.Contains("Enemy 4")){
              enemy.GetComponent<MeshRenderer>().enabled = false;
          }
-        }
-
+        }  
         spawnPos = spawnPoints[Random.Range(0, 3)];
-         Instantiate(spawnee[enemyType], spawnPos.transform.position, spawnPos.transform.rotation);
-        
-
-
+        Instantiate(spawnee[enemyType], spawnPos.transform.position, spawnPos.transform.rotation);
 
     }
 

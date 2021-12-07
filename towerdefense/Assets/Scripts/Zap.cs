@@ -29,10 +29,14 @@ public class Zap : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
         for (int i = 0; i < exColliders.Length; i++)
         {
-            if (exColliders[i].name.Contains("Enemy"))
-            {                
-                exColliders[i].GetComponent<DamageSystem>().damageEnemy((int)bulletDamage, slowEnemies, slowTime);
+            if (exColliders[i] != null)
+            {
+                if (exColliders[i].name.Contains("Enemy"))
+                {
+                    exColliders[i].GetComponent<DamageSystem>().damageEnemy((int)bulletDamage, slowEnemies, slowTime);
+                }
             }
+            
         }
 
 

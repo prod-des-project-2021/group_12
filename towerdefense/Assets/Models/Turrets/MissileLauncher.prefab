@@ -145,7 +145,7 @@ MonoBehaviour:
   attackStrongestEnemy: 0
   fireRate: 1
   damage: 75
-  attackRange: 50
+  attackRange: 100
   turnSpeed: 10
   slowEnemiesAmount: 0
   slowTime: 0
@@ -153,6 +153,7 @@ MonoBehaviour:
   enemyTag: mob
   enemyPathFinishTag: finishLine
   enemyPathSpawnTag: spawnLine
+  sentryTag: sentry
   bullet: {fileID: 7117870107000225448, guid: f9b0b1fbf4f5fda47ad4f3d5c8e16b73, type: 3}
   firePoint: {fileID: 2533473182382477614}
   spinner: {fileID: 0}

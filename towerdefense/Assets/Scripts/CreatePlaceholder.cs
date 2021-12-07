@@ -6,12 +6,11 @@ public class CreatePlaceholder : MonoBehaviour
 {
     public GameObject placeHolder;
     private Vector3 spawnPos;
-  
+
     // Start is called before the first frame update
     void Start()
     {
-        spawnPos = placeHolder.transform.position;
-
+        spawnPos = placeHolder.transform.position;   
     }
 
 

@@ -11,7 +11,7 @@ public class attackEnemy : MonoBehaviour
 
     public float damage = 75f;
     private float fireCountdown = 0f;
-    public float attackRange = 100f;
+    public float attackRange = 50f;
     public float turnSpeed = 10f;
 
     public float slowEnemiesAmount;
@@ -34,6 +34,9 @@ public class attackEnemy : MonoBehaviour
     float currentspin;
     float MaxSpinRate = 360;
 
+    public int turretLvl = 1;
+    //public GameObject turretRange;
+
     
 
     private void updateTarget()
@@ -44,7 +47,7 @@ public class attackEnemy : MonoBehaviour
         GameObject spawnPoint = GameObject.FindGameObjectWithTag(enemyPathSpawnTag);
 
         float shortestDistance = Mathf.Infinity;
-       float longestDistance = Mathf.Infinity;
+      // float longestDistance = Mathf.Infinity;
         float distance = Mathf.Infinity;
 
         GameObject nearestEnemy = null;
@@ -111,6 +114,7 @@ public class attackEnemy : MonoBehaviour
     void Start()
     {
         InvokeRepeating("updateTarget",0f,0.05f);
+        
     }
     void SpinBarrel()
     {
@@ -120,7 +124,8 @@ public class attackEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(spinner != null)
+        //changeTurretRangeScale();
+        if (spinner != null)
         {
             SpinBarrel();
         }
@@ -224,7 +229,7 @@ public class attackEnemy : MonoBehaviour
 
 
     }
-   
+
 
 
 }

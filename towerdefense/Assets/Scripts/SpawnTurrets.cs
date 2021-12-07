@@ -60,8 +60,7 @@ public class SpawnTurrets : MonoBehaviour
 
             else
             {
-                Debug.Log(hit.transform.tag);
-                Debug.Log("Cant spawn tower here");
+                BuildManager.buildInstance.SetTurretToBuild(null);
             }
         }
     }

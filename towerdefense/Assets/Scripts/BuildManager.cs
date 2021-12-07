@@ -19,7 +19,7 @@ public class BuildManager : MonoBehaviour
 
 
     private GameObject turretToBuild;
-        private void Awake()
+    private void Awake()
     {
 
         if(buildInstance != null)
@@ -29,6 +29,7 @@ public class BuildManager : MonoBehaviour
         }
         buildInstance = this;
     }
+
     public GameObject GetTurretToBuild()
     {
         return turretToBuild;
@@ -36,7 +37,7 @@ public class BuildManager : MonoBehaviour
 
     public void SetTurretToBuild(GameObject turret)
     {
-        Debug.Log("noniin" +turret);
+        //Debug.Log("noniin" +turret);
         turretToBuild = turret;
     }
 

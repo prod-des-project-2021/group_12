@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine; 
+using UnityEngine;
 
 public class UpgradeUI : MonoBehaviour
 {
@@ -10,8 +10,7 @@ public class UpgradeUI : MonoBehaviour
     string turretTag;
     public GameObject upgradedTank;
     public GameObject turretRange;
-   
-    
+
     public GameObject selectedTower = null;
 
     //public static UpgradeUI instance;
@@ -26,22 +25,26 @@ public class UpgradeUI : MonoBehaviour
     void Update()
     {
         TurretClicked();
-        attackEnemy upgrade = selectedTower.GetComponent<attackEnemy>();
-        turretRange.gameObject.transform.localScale = new Vector3(upgrade.attackRange, 0.2f, upgrade.attackRange);
+        if(selectedTower !=null)
+        {
+            attackEnemy upgrade = selectedTower.GetComponent<attackEnemy>();
+            turretRange.gameObject.transform.localScale = new Vector3(upgrade.attackRange * 2, 0.2f, upgrade.attackRange * 2);
+        }
+        
     }
 
     public void strongButton()
     {
-       attackEnemy shootStrongest = selectedTower.GetComponent<attackEnemy>();
-       shootStrongest.attackNearestEnemy = false;
-       shootStrongest.attackStrongestEnemy = true;     
+        attackEnemy shootStrongest = selectedTower.GetComponent<attackEnemy>();
+        shootStrongest.attackNearestEnemy = false;
+        shootStrongest.attackStrongestEnemy = true;
     }
-     
+
     public void nearButton()
-    {         
-       attackEnemy shootNearest = selectedTower.GetComponent<attackEnemy>();
-       shootNearest.attackStrongestEnemy = false;
-       shootNearest.attackNearestEnemy = true;
+    {
+        attackEnemy shootNearest = selectedTower.GetComponent<attackEnemy>();
+        shootNearest.attackStrongestEnemy = false;
+        shootNearest.attackNearestEnemy = true;
     }
 
     //Implement this to the missile launcher and minigun
@@ -52,7 +55,7 @@ public class UpgradeUI : MonoBehaviour
 
         if (GameEngine.gameInstance.SpendMoney(100))
         {
-            
+
             upgrade.fireRate += 5;
             upgrade.attackRange += 25;
             Debug.Log("turret upgraded");
@@ -71,7 +74,7 @@ public class UpgradeUI : MonoBehaviour
         }
 
     }
-  
+
     public void MissileUpgrade()
     {
         attackEnemy upgrade = selectedTower.GetComponent<attackEnemy>();
@@ -88,7 +91,7 @@ public class UpgradeUI : MonoBehaviour
             if (upgrade.turretLvl == 5)
             {
                 Destroy(selectedTower);
-                
+
             }
         }
         else
@@ -121,7 +124,7 @@ public class UpgradeUI : MonoBehaviour
     {
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-    
+
 
         //jos mousea painetaan turretin kohdalta n�yt� menu
         if (Input.GetMouseButtonDown(0))
@@ -130,7 +133,7 @@ public class UpgradeUI : MonoBehaviour
             {
 
                 turretTag = hit.transform.tag;
-                
+
                 switch (turretTag)
                 {
                     case "Tank":
@@ -172,5 +175,5 @@ public class UpgradeUI : MonoBehaviour
             }
         }
     }
- 
+
 }

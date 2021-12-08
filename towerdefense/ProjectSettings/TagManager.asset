@@ -14,6 +14,8 @@ TagManager:
   - MissileLauncher
   - Minigun
   - ZapTower
+  - sentry
+  - placeholder
   layers:
   - Default
   - TransparentFX

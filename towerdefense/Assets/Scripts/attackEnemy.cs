@@ -35,7 +35,7 @@ public class attackEnemy : MonoBehaviour
     float MaxSpinRate = 360;
 
     public int turretLvl = 1;
-    //public GameObject turretRange;
+    
 
     
 
@@ -124,7 +124,7 @@ public class attackEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //changeTurretRangeScale();
+        
         if (spinner != null)
         {
             SpinBarrel();

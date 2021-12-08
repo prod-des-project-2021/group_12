@@ -1,19 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DamageSystem : MonoBehaviour
 {
     public static DamageSystem damageInstance;
     float timer = 0f;
+
+    public Image healthBar;
+    private float health;
    
     bool timeToDie;
     int i = 1;
     private GameObject[] deathpoints = new GameObject[9];
     GameEngine gameEngine;
     EnemyParams enemyparams;
-    //Enemy2Params enemy2params;
-    //Enemy3Params enemy3params;
+    
     Waypoints wpInstance;
     private float normalEnemySpeed;
 
@@ -28,13 +31,13 @@ public class DamageSystem : MonoBehaviour
     {
 
         enemyparams = gameObject.GetComponent<EnemyParams>();
-        //enemy2params = gameObject.GetComponent<Enemy2Params>();
-        //enemy3params = gameObject.GetComponent<Enemy3Params>();
+       
         wpInstance = gameObject.GetComponent<Waypoints>();
-        
+        health = enemyparams.startHealth;
         deathpoints[0] = GameObject.Find("Finish 1");
         deathpoints[1] = GameObject.Find("Finish 2");
         deathpoints[2] = GameObject.Find("Finish 3");
+       
     }
 
     // Update is called once per frame
@@ -91,7 +94,9 @@ public class DamageSystem : MonoBehaviour
 
             wpInstance.NewWPInstance();
             float apu = wpInstance.speedMultiplier;   
-            EnemyParams.enemyHitInstance.health -= attackDamage;            
+            EnemyParams.enemyHitInstance.health -= attackDamage;
+            
+              healthBar.fillAmount =  EnemyParams.enemyHitInstance.health/EnemyParams.enemyHitInstance.startHealth;             
             
             if (EnemyParams.enemyHitInstance.health <= 0.0f)
             {
@@ -115,6 +120,12 @@ public class DamageSystem : MonoBehaviour
             float apu = wpInstance.speedMultiplier;
 
             EnemyParams.enemyHitInstance.health -= attackDamage;
+           
+            GameObject enemy2 = GameObject.Find("Enemy 2(Clone)");
+            Debug.Log("fill amouintti " +enemy2.GetComponent<DamageSystem>().healthBar.fillAmount);
+          
+            healthBar.fillAmount =  EnemyParams.enemyHitInstance.health/EnemyParams.enemyHitInstance.startHealth;
+            
             if (EnemyParams.enemyHitInstance.health <= 0.0f)
             {
                 wpInstance.NewWPInstance();
@@ -137,8 +148,9 @@ public class DamageSystem : MonoBehaviour
             wpInstance.NewWPInstance();
             float apu = wpInstance.speedMultiplier;
           
-            EnemyParams.enemyHitInstance.health -= attackDamage;
-            
+            EnemyParams.enemyHitInstance.health -= attackDamage;            
+             healthBar.fillAmount =  EnemyParams.enemyHitInstance.health/EnemyParams.enemyHitInstance.startHealth;
+
             if (EnemyParams.enemyHitInstance.health <= 0.0f)
             {
                 wpInstance.NewWPInstance();
@@ -162,6 +174,7 @@ public class DamageSystem : MonoBehaviour
             float apu = wpInstance.speedMultiplier;
           
             EnemyParams.enemyHitInstance.health -= attackDamage;
+              healthBar.fillAmount =  EnemyParams.enemyHitInstance.health/EnemyParams.enemyHitInstance.startHealth;
             
             if (EnemyParams.enemyHitInstance.health <= 0.0f)
             {

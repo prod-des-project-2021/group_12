@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 public class attackEnemy : MonoBehaviour
 {
     
@@ -8,12 +9,10 @@ public class attackEnemy : MonoBehaviour
     public bool attackNearestEnemy = true;
     public bool attackStrongestEnemy = false;
     public float fireRate = 1f;
-
     public float damage = 75f;
     private float fireCountdown = 0f;
     public float attackRange = 100f;
     public float turnSpeed = 10f;
-
     public float slowEnemiesAmount;
     public float slowTime;
 
@@ -31,6 +30,8 @@ public class attackEnemy : MonoBehaviour
     float SpinUpTimer;
     float currentspin;
     float MaxSpinRate = 360;
+
+    
 
     private void updateTarget()
     {

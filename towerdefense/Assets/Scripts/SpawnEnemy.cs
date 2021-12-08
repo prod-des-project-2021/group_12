@@ -142,6 +142,8 @@ int bossTurn = 0;
          
          if(enemy.name.Contains("Enemy 4")){
              enemy.GetComponent<MeshRenderer>().enabled = false;
+           enemy.transform.GetChild(0).GetComponent<Canvas>().enabled = false;
+          
          }
         }  
         spawnPos = spawnPoints[Random.Range(0, 3)];

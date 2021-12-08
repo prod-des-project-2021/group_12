@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class attackEnemy : MonoBehaviour
 {
-    public static attackEnemy attackEnemyInstance;
+    
     [Header("Attributes")]
     public bool attackNearestEnemy = true;
     public bool attackStrongestEnemy = false;
@@ -24,8 +24,6 @@ public class attackEnemy : MonoBehaviour
     public string enemyPathFinishTag = "finishLine";
     public string enemyPathSpawnTag = "spawnLine";
     public string sentryTag = "sentry";
-
-
     public GameObject bullet;
     public Transform firePoint;
     public Transform spinner;
@@ -33,8 +31,6 @@ public class attackEnemy : MonoBehaviour
     float SpinUpTimer;
     float currentspin;
     float MaxSpinRate = 360;
-
-    
 
     private void updateTarget()
     {
@@ -55,10 +51,6 @@ public class attackEnemy : MonoBehaviour
 
         foreach(GameObject enemy in enemies)
         { 
-             
-
-       
-
             float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
             float distanceToSpawn = Vector3.Distance(enemy.transform.position, spawnPoint.transform.position);
             float distanceToFinish = Vector3.Distance(enemy.transform.position, finishPoint.transform.position);
@@ -118,6 +110,7 @@ public class attackEnemy : MonoBehaviour
     {
         float theta = (SpinUpTimer / SpinUpTime) * MaxSpinRate * Time.deltaTime;
         spinner.Rotate(Vector3.right, theta);
+         
     }
     // Update is called once per frame
     void Update()
@@ -161,8 +154,10 @@ public class attackEnemy : MonoBehaviour
 
             if (spinner != null)
             {   
+               
                 if (SpinUpTimer >= SpinUpTime)
                 {
+                   
                     shoot();
                     fireCountdown = 1f / fireRate;
                 }
@@ -171,7 +166,7 @@ public class attackEnemy : MonoBehaviour
             }
             else
             {
-              
+                
                          shoot();
              
                
@@ -185,9 +180,9 @@ public class attackEnemy : MonoBehaviour
 
     void shoot()
     {
-       
+     GameObject fireSound = GameObject.FindGameObjectWithTag("turretSounds"); 
         if (target == null) return;
-        if(!target.GetComponent<MeshRenderer>().enabled) return;
+       // if(!target.GetComponent<MeshRenderer>().enabled) return;
         if (attackRange >= Vector3.Distance(firePoint.position, target.position))
         {
             GameObject bulletGo = (GameObject)Instantiate(bullet, firePoint.position, firePoint.rotation);
@@ -201,8 +196,22 @@ public class attackEnemy : MonoBehaviour
                 if (paukku != null)
                 {
                     paukku.chase(target, slowEnemiesAmount, slowTime, damage);
-                }
+                  
+                   switch(transform.name)
+                   {
+                       case "Tank(Clone)":
+                        
+                         fireSound.GetComponent<sounds>().playTankFireSound();
+                         break;
 
+                       case "Minigun(Clone)":
+                         if(!fireSound.GetComponent<sounds>().minigunFireSound.isPlaying){
+                         fireSound.GetComponent<sounds>().playMinigunFireSound();
+                         }
+                                          
+                       break;
+                   }                  
+                }
             }
             else if (bullet.name.Contains("Missile"))
             {
@@ -212,6 +221,10 @@ public class attackEnemy : MonoBehaviour
                 if (paukku != null)
                 {
                     paukku.chase(target, slowEnemiesAmount, slowTime, damage);
+                  
+                 
+                    fireSound.GetComponent<sounds>().playMissileFireSound();
+                    
                 }
             }
             else if (bullet.name.Contains("Zap"))
@@ -221,6 +234,8 @@ public class attackEnemy : MonoBehaviour
                 if (zap != null)
                 {
                     StartCoroutine(zap.hitTarget(damage));
+                        fireSound.GetComponent<sounds>().playZapTowerFireSound();
+                   
                 }
             }
         }

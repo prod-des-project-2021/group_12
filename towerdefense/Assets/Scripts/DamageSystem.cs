@@ -64,7 +64,8 @@ public class DamageSystem : MonoBehaviour
 
         if (timeToDie)
         {
-
+            GameObject deathSound = GameObject.FindGameObjectWithTag("turretSounds");
+            deathSound.GetComponent<sounds>().playEnemyDeathSound();
             Destroy(gameObject);
         }
 

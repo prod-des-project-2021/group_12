@@ -88,6 +88,8 @@ public class Missile : MonoBehaviour
         if (targetDir.magnitude <= 1)
         {     
             hitTarget();
+            GameObject hitSound = GameObject.FindGameObjectWithTag("turretSounds");
+            hitSound.GetComponent<sounds>().playMissileExplosionSound();
         }
         
     }

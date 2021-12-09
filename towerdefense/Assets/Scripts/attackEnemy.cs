@@ -1,19 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 public class attackEnemy : MonoBehaviour
 {
-    public static attackEnemy attackEnemyInstance;
+    
     [Header("Attributes")]
     public bool attackNearestEnemy = true;
     public bool attackStrongestEnemy = false;
     public float fireRate = 1f;
-
     public float damage = 75f;
     private float fireCountdown = 0f;
     public float attackRange = 100f;
     public float turnSpeed = 10f;
-
     public float slowEnemiesAmount;
     public float slowTime;
 
@@ -24,8 +23,6 @@ public class attackEnemy : MonoBehaviour
     public string enemyPathFinishTag = "finishLine";
     public string enemyPathSpawnTag = "spawnLine";
     public string sentryTag = "sentry";
-
-
     public GameObject bullet;
     public Transform firePoint;
     public Transform spinner;
@@ -55,10 +52,6 @@ public class attackEnemy : MonoBehaviour
 
         foreach(GameObject enemy in enemies)
         { 
-              GameObject sentry = GameObject.FindGameObjectWithTag(sentryTag);
-
-       
-
             float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
             float distanceToSpawn = Vector3.Distance(enemy.transform.position, spawnPoint.transform.position);
             float distanceToFinish = Vector3.Distance(enemy.transform.position, finishPoint.transform.position);
@@ -73,10 +66,13 @@ public class attackEnemy : MonoBehaviour
                 if (attackNearestEnemy)
                 {
 
-                // Debug.Log("attack nearest enemy");
-                if (nearestEnemy != null && shortestDistance <= attackRange && nearestEnemy.GetComponent<MeshRenderer>().enabled)
-                {
-                    target = nearestEnemy.transform;
+                   // Debug.Log("attack nearest enemy");
+                     if (nearestEnemy != null && shortestDistance <= attackRange && nearestEnemy.GetComponent<MeshRenderer>().enabled)
+                {                  
+                         target = nearestEnemy.transform; 
+                                          
+                }if(nearestEnemy != null && shortestDistance> attackRange){
+                    target =null;
                 }
 
                 }
@@ -91,8 +87,7 @@ public class attackEnemy : MonoBehaviour
                     maxHpEnemy = enemy.GetComponent<EnemyParams>().startHealth;
                 }
                 
-                if(mostHpEnemy != null && distance <= attackRange && mostHpEnemy.GetComponent<MeshRenderer>().enabled)
-                {
+                if(mostHpEnemy != null && distance <= attackRange && mostHpEnemy.GetComponent<MeshRenderer>().enabled){
                     target = mostHpEnemy.transform;
                 }else if(shortestDistance <= attackRange){
                     target = nearestEnemy.transform;
@@ -116,15 +111,17 @@ public class attackEnemy : MonoBehaviour
     {
         float theta = (SpinUpTimer / SpinUpTime) * MaxSpinRate * Time.deltaTime;
         spinner.Rotate(Vector3.right, theta);
+         
     }
     // Update is called once per frame
     void Update()
     {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);  
+         
         if(spinner != null)
         {
             SpinBarrel();
-        }
-        
+        }       
         if (target == null)
         {
             SpinUpTimer = Mathf.Clamp(
@@ -135,34 +132,33 @@ public class attackEnemy : MonoBehaviour
             {
                 rotatingPart.rotation = Quaternion.Lerp(rotatingPart.rotation, Quaternion.Euler(0f, 0f, 0f), Time.deltaTime * turnSpeed);
             }
-            
-
         }
         else
         {
             SpinUpTimer = Mathf.Clamp(
             SpinUpTimer + Time.deltaTime,
             0, SpinUpTime);
+
             if(rotatingPart != null)
             {
+               
                 Vector3 direction = target.position - transform.position;
                 Quaternion lookRotation = Quaternion.LookRotation(direction);
                 Vector3 rotation = Quaternion.Lerp(rotatingPart.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
                 rotatingPart.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+               
             }
             
         }
-        
-
-
-
         if (fireCountdown <= 0f)
         {
 
             if (spinner != null)
             {   
+               
                 if (SpinUpTimer >= SpinUpTime)
                 {
+                   
                     shoot();
                     fireCountdown = 1f / fireRate;
                 }
@@ -171,8 +167,10 @@ public class attackEnemy : MonoBehaviour
             }
             else
             {
-
-                shoot();
+                
+                         shoot();
+             
+               
                 fireCountdown = 1f / fireRate;
             }
 
@@ -183,7 +181,9 @@ public class attackEnemy : MonoBehaviour
 
     void shoot()
     {
+     GameObject fireSound = GameObject.FindGameObjectWithTag("turretSounds"); 
         if (target == null) return;
+       // if(!target.GetComponent<MeshRenderer>().enabled) return;
         if (attackRange >= Vector3.Distance(firePoint.position, target.position))
         {
             GameObject bulletGo = (GameObject)Instantiate(bullet, firePoint.position, firePoint.rotation);
@@ -197,8 +197,22 @@ public class attackEnemy : MonoBehaviour
                 if (paukku != null)
                 {
                     paukku.chase(target, slowEnemiesAmount, slowTime, damage);
-                }
+                  
+                   switch(transform.name)
+                   {
+                       case "Tank(Clone)":
+                        
+                         fireSound.GetComponent<sounds>().playTankFireSound();
+                         break;
 
+                       case "Minigun(Clone)":
+                         if(!fireSound.GetComponent<sounds>().minigunFireSound.isPlaying){
+                         fireSound.GetComponent<sounds>().playMinigunFireSound();
+                         }
+                                          
+                       break;
+                   }                  
+                }
             }
             else if (bullet.name.Contains("Missile"))
             {
@@ -208,6 +222,10 @@ public class attackEnemy : MonoBehaviour
                 if (paukku != null)
                 {
                     paukku.chase(target, slowEnemiesAmount, slowTime, damage);
+                  
+                 
+                    fireSound.GetComponent<sounds>().playMissileFireSound();
+                    
                 }
             }
             else if (bullet.name.Contains("Zap"))
@@ -217,6 +235,8 @@ public class attackEnemy : MonoBehaviour
                 if (zap != null)
                 {
                     StartCoroutine(zap.hitTarget(damage));
+                        fireSound.GetComponent<sounds>().playZapTowerFireSound();
+                   
                 }
             }
         }

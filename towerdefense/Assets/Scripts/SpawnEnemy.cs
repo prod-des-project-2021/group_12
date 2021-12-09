@@ -14,13 +14,14 @@ public class SpawnEnemy : MonoBehaviour
 
     public GameObject[] spawnee = new GameObject[3];
 
-    bool gameHasStarted = false;
+bool gameHasStarted = false;
     int vuoro = 0;
-    int bossTurn = 0;
+int bossTurn = 0;
     private float spawnTime;
 
 
     private int enemiesPerLevel = 5;
+    
     bool enemiesHaveSpawned = true;
     bool timeForNewRound = false;
     Coroutine ws, ld;
@@ -38,7 +39,7 @@ public class SpawnEnemy : MonoBehaviour
     {
         if (Input.GetKeyDown("space") && enemiesHaveSpawned)
         {
-            if (!gameHasStarted)
+             if (!gameHasStarted)
             {
                 StartGame();
                 gameHasStarted = true;
@@ -49,6 +50,8 @@ public class SpawnEnemy : MonoBehaviour
             }
             
         }
+          
+       
                
                    
     }
@@ -89,6 +92,7 @@ public class SpawnEnemy : MonoBehaviour
 
     IEnumerator SpawnWave()
     {
+       
         enemiesPerLevel = enemiesPerLevel + GameEngine.gameInstance.level * 1;
         
        // Debug.Log("enemies: " +enemiesPerLevel);
@@ -96,11 +100,13 @@ public class SpawnEnemy : MonoBehaviour
        // Debug.Log("difficulty: " + GameEngine.gameInstance.difficulty);
         
         enemiesHaveSpawned = false;
-        if (GameEngine.gameInstance.level % 10 == 0)
+         if (GameEngine.gameInstance.level % 10 == 0)
         {
             float normalDifficulty = GameEngine.gameInstance.difficulty;
             GameEngine.gameInstance.difficulty = normalDifficulty * GameEngine.gameInstance.bossWaveDifficulty;
-            for (int i = 0; i < enemiesPerLevel; i++)
+   
+        
+             for (int i = 0; i < enemiesPerLevel; i++)
             {
                 SpawnSingleEnemy(bossTurn);
                 yield return new WaitForSeconds(GameEngine.gameInstance.timeBetweenEnemies);
@@ -109,14 +115,12 @@ public class SpawnEnemy : MonoBehaviour
             if (bossTurn == 0) bossTurn++;
             else if (bossTurn == 1) bossTurn++;
             else if (bossTurn == 2) bossTurn = 0;
-
-        }
+            }
         else
         {
             for (int i = 0; i < enemiesPerLevel; i++)
             {
-
-                SpawnSingleEnemy(vuoro);
+         SpawnSingleEnemy(vuoro);
                 if (vuoro == 0) vuoro++;
                 else if (vuoro == 1) vuoro++;
                 else if (vuoro == 2) vuoro++;
@@ -130,8 +134,7 @@ public class SpawnEnemy : MonoBehaviour
 
 
     }
-
-
+    
 
     void SpawnSingleEnemy(int enemyType)
     {
@@ -139,6 +142,8 @@ public class SpawnEnemy : MonoBehaviour
          
          if(enemy.name.Contains("Enemy 4")){
              enemy.GetComponent<MeshRenderer>().enabled = false;
+           enemy.transform.GetChild(0).GetComponent<Canvas>().enabled = false;
+          
          }
         }  
         spawnPos = spawnPoints[Random.Range(0, 3)];
@@ -147,3 +152,4 @@ public class SpawnEnemy : MonoBehaviour
     }
 
 }
+

@@ -1,17 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UpgradeUI : MonoBehaviour
 {
     public GameObject tankUI;
-    public GameObject missileUI;
     private Camera cam = null;
     string turretTag;
     public GameObject upgradedTank;
     public GameObject turretRange;
 
     public GameObject selectedTower = null;
+
+    public Text upgradeCost;
+    public Text sellAmount;
+
+    int cost = 50;
 
     //public static UpgradeUI instance;
 
@@ -30,7 +35,6 @@ public class UpgradeUI : MonoBehaviour
             attackEnemy upgrade = selectedTower.GetComponent<attackEnemy>();
             turretRange.gameObject.transform.localScale = new Vector3(upgrade.attackRange * 2, 0.2f, upgrade.attackRange * 2);
         }
-        
     }
 
     public void strongButton()
@@ -53,9 +57,8 @@ public class UpgradeUI : MonoBehaviour
         attackEnemy upgrade = selectedTower.GetComponent<attackEnemy>();
         upgrade.turretLvl += 1;
 
-        if (GameEngine.gameInstance.SpendMoney(100))
+        if (GameEngine.gameInstance.SpendMoney((cost / 2) * upgrade.turretLvl))
         {
-
             upgrade.fireRate += 5;
             upgrade.attackRange += 25;
             Debug.Log("turret upgraded");
@@ -68,11 +71,11 @@ public class UpgradeUI : MonoBehaviour
                 Instantiate(upgradedTank, selectedTower.transform.position, Quaternion.identity);
             }
         }
+
         else
         {
             Debug.Log("No enough money for upgrade :(");
         }
-
     }
 
     public void MissileUpgrade()
@@ -80,7 +83,7 @@ public class UpgradeUI : MonoBehaviour
         attackEnemy upgrade = selectedTower.GetComponent<attackEnemy>();
         upgrade.turretLvl += 1;
 
-        if (GameEngine.gameInstance.SpendMoney(150))
+        if (GameEngine.gameInstance.SpendMoney(cost))
         {
             upgrade.fireRate += 5;
             upgrade.attackRange += 25;
@@ -114,8 +117,27 @@ public class UpgradeUI : MonoBehaviour
 
             case "MissileLauncher":
                 GameEngine.gameInstance.AddMoney(100);
-                missileUI.SetActive(false);
+                //missileUI.SetActive(false);
                 Destroy(selectedTower);
+                break;
+        }
+    }
+
+    public void upgradeTurret()
+    {
+        attackEnemy lvl = selectedTower.GetComponent<attackEnemy>();
+
+        turretTag = selectedTower.transform.tag;
+        switch (turretTag)
+        {
+            case "Tank":
+                TankUpgrade();
+                upgradeCost.text = "<b>$" + ((cost / 2) * lvl.turretLvl).ToString() + "</b>";
+                break;
+
+            case "MissileLauncher":
+                MissileUpgrade();
+                upgradeCost.text = "<b>$" + (cost * lvl.turretLvl).ToString() + "</b>";
                 break;
         }
     }
@@ -131,49 +153,47 @@ public class UpgradeUI : MonoBehaviour
         {
             if (Physics.Raycast(ray, out hit))
             {
-
                 turretTag = hit.transform.tag;
 
                 switch (turretTag)
                 {
                     case "Tank":
                         tankUI.SetActive(true);
-                        missileUI.SetActive(false);
 
-                        turretRange.SetActive(false);
                         turretRange.transform.position = hit.transform.position;
                         turretRange.SetActive(true);
 
                         transform.position = hit.transform.position;
                         selectedTower = hit.transform.gameObject;
+
+                        upgradeCost.text = "<b>$" + ((cost / 2) * selectedTower.GetComponent<attackEnemy>().turretLvl).ToString() +"</b>";
+                        sellAmount.text = "<b>$" + (cost / 2).ToString() + "</b>";
                         break;
 
                     case "MissileLauncher":
-                        missileUI.SetActive(true);
-                        tankUI.SetActive(false);
+                        tankUI.SetActive(true);
 
-                        turretRange.SetActive(false);
                         turretRange.transform.position = hit.transform.position;
                         turretRange.SetActive(true);
 
                         transform.position = hit.transform.position;
                         selectedTower = hit.transform.gameObject;
+
+                        upgradeCost.text = "<b>$" + (cost * selectedTower.GetComponent<attackEnemy>().turretLvl).ToString() + "</b>";
+                        sellAmount.text = "<b>$" + (cost / 2).ToString() + "</b>";
                         break;
 
                     case "Spawn area":
                         tankUI.SetActive(false);
-                        missileUI.SetActive(false);
                         turretRange.SetActive(false);
                         break;
 
                     case "Untagged":
                         tankUI.SetActive(false);
-                        missileUI.SetActive(false);
                         turretRange.SetActive(false);
                         break;
                 }
             }
         }
     }
-
 }

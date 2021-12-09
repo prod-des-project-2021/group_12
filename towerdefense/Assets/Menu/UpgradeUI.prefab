@@ -1077,7 +1077,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tankUI: {fileID: 6279363770572691463}
   missileUI: {fileID: 1428590924478254249}
+  upgradedTank: {fileID: 0}
+  turretRange: {fileID: 0}
   selectedTower: {fileID: 0}
+  level: {fileID: 0}
 --- !u!1 &6279363769615692258
 GameObject:
   m_ObjectHideFlags: 0

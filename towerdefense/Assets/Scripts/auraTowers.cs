@@ -33,9 +33,9 @@ foreach(GameObject enemy in enemies)
 distanceToEnemy = Vector3.Distance(transform.position, invisEnemy.transform.position);
 
    
-Debug.Log("attakcrange" +attackRange);
-Debug.Log("näkymätön" +invisEnemy.GetComponent<Renderer>().enabled);
-Debug.Log("shortestdistance" +distanceToEnemy);
+Debug.Log("attakcrange " +attackRange);
+Debug.Log("näkymätön " +invisEnemy.GetComponent<Renderer>().enabled);
+Debug.Log("shortestdistance " +distanceToEnemy);
 
   if(sentry != null &&  distanceToEnemy <= attackRange)
     {

@@ -32,7 +32,17 @@ public class GameEngine : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        LoadData();
+        string path = Application.persistentDataPath + "/player.SaveData";
+
+        if (System.IO.File.Exists(path))
+        {
+            LoadData();
+        }
+        else
+        {
+            SaveData();
+            LoadData();
+        }
         gameInstance = this;
     }
 

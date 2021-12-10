@@ -7,19 +7,16 @@ public class BuildManager : MonoBehaviour
     
     public static BuildManager buildInstance;
 
-   
-
-
     public GameObject minigunPrefab;
     public GameObject missileTurretPrefab;
     public GameObject tank;
     public GameObject sentry;
     public GameObject zapPrefab;
     public GameObject buffPrefab;
-
-
     private GameObject turretToBuild;
-        private void Awake()
+
+    
+    private void Awake()
     {
 
         if(buildInstance != null)
@@ -29,6 +26,7 @@ public class BuildManager : MonoBehaviour
         }
         buildInstance = this;
     }
+
     public GameObject GetTurretToBuild()
     {
         return turretToBuild;
@@ -38,7 +36,6 @@ public class BuildManager : MonoBehaviour
     {
         turretToBuild = turret;
     }
-
 
     public void PurchaseMinigun()
     {

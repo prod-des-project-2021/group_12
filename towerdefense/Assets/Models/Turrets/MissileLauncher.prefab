@@ -122,7 +122,7 @@ Transform:
   m_GameObject: {fileID: 2104137448090914849}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 7, z: 10}
+  m_LocalScale: {x: 2, y: 1.2, z: 2}
   m_Children:
   - {fileID: 3511422244444079378}
   - {fileID: 3278891438363350166}
@@ -145,7 +145,7 @@ MonoBehaviour:
   attackStrongestEnemy: 0
   fireRate: 1
   damage: 75
-  attackRange: 100
+  attackRange: 50
   turnSpeed: 10
   slowEnemiesAmount: 0
   slowTime: 0
@@ -157,6 +157,7 @@ MonoBehaviour:
   bullet: {fileID: 7117870107000225448, guid: f9b0b1fbf4f5fda47ad4f3d5c8e16b73, type: 3}
   firePoint: {fileID: 2533473182382477614}
   spinner: {fileID: 0}
+  turretLvl: 1
 --- !u!65 &-1138387256104032088
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -168,8 +169,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.5983591, y: 3.5700598, z: 1.7165295}
-  m_Center: {x: 0.06774302, y: 0.24197239, z: 0.18371199}
+  m_Size: {x: 5.848892, y: 13.24141, z: 6.0153723}
+  m_Center: {x: -0.05524254, y: 1.6206939, z: 0.50768614}
 --- !u!1 &2214997465302010449
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,7 +294,7 @@ Transform:
   m_GameObject: {fileID: 2288372169082507705}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.02, z: 1}
+  m_LocalScale: {x: 4.4757056, y: 0.08951411, z: 4.4757056}
   m_Children: []
   m_Father: {fileID: 7503303804454245971}
   m_RootOrder: 0
@@ -803,7 +804,7 @@ Transform:
   m_GameObject: {fileID: 8500939948224982303}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.05, z: 0}
-  m_LocalScale: {x: 1, y: 0.05, z: 1}
+  m_LocalScale: {x: 4.4757056, y: 0.22378528, z: 4.4757056}
   m_Children:
   - {fileID: 2763906926586216522}
   - {fileID: 2298409602269269156}

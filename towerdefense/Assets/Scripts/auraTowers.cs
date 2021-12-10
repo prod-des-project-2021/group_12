@@ -38,7 +38,8 @@ distanceToEnemy = Vector3.Distance(transform.position, invisEnemy.transform.posi
        invisEnemy.transform.GetChild(0).GetComponent<Canvas>().enabled = true; 
                     
     }
-     if(sentry != null && distanceToEnemy > attackRange){
+     if(sentry != null && distanceToEnemy > attackRange)
+     {
         
        invisEnemy.GetComponent<Renderer>().enabled = false;
        invisEnemy.transform.GetChild(0).GetComponent<Canvas>().enabled = false;

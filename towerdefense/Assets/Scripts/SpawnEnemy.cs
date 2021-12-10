@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-
+using UnityEngine.UI;
 using UnityEngine;
 
 public class SpawnEnemy : MonoBehaviour
@@ -13,6 +13,10 @@ public class SpawnEnemy : MonoBehaviour
     private GameObject spawnPos;
 
     public GameObject[] spawnee = new GameObject[3];
+
+    private Button startGameButton;
+    private GameObject findShopMenu;
+    bool startGameButtonClicked = false;
 
 bool gameHasStarted = false;
     int vuoro = 0;
@@ -29,16 +33,19 @@ bool gameHasStarted = false;
 
     void Start()
     {
+        findShopMenu = GameObject.Find("Shopmenu");
+        findShopMenu.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(StartGameButtonClicked);
+       
         spawnPoints[0] = GameObject.Find("Spawn 1");
         spawnPoints[1] = GameObject.Find("Spawn 2");
         spawnPoints[2] = GameObject.Find("Spawn 3");
         //StartGame();
     }
 
-    // Update is called once per frame
+ 
     void Update()
     {
-        if (Input.GetKeyDown("space") && enemiesHaveSpawned)
+        if (startGameButtonClicked && enemiesHaveSpawned)
         {
              if (!gameHasStarted)
             {
@@ -50,6 +57,7 @@ bool gameHasStarted = false;
             {
                 timeForNewRound = true;
             }
+            startGameButtonClicked = false;
             
         }
         if (GameObject.FindGameObjectsWithTag("mob") == null || GameObject.FindGameObjectsWithTag("mob").Length == 0)
@@ -65,6 +73,9 @@ bool gameHasStarted = false;
             GameEngine.gameInstance.StopGameTimer();      
         }
 
+    }
+    public void StartGameButtonClicked(){
+      startGameButtonClicked = true;
     }
     void StartGame()
     {

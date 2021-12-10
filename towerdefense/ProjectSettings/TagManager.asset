@@ -17,6 +17,7 @@ TagManager:
   - ZapTower
   - tankSound
   - turretSounds
+  - startGameButton
   layers:
   - Default
   - TransparentFX

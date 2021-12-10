@@ -381,7 +381,7 @@ MonoBehaviour:
   attackStrongestEnemy: 0
   fireRate: 1
   damage: 75
-  attackRange: 125
+  attackRange: 50
   turnSpeed: 10
   slowEnemiesAmount: 0
   slowTime: 0
@@ -393,3 +393,4 @@ MonoBehaviour:
   bullet: {fileID: 3368687015727259707, guid: 20953e685e16be6e1b50b9cb054af9af, type: 3}
   firePoint: {fileID: 3917253027693399380}
   spinner: {fileID: 0}
+  turretLvl: 1

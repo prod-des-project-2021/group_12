@@ -6,12 +6,18 @@ public class CreatePlaceholder : MonoBehaviour
 {
     public GameObject placeHolder;
     private Vector3 spawnPos;
-  
+
+    public Component[] switchColor;
+
+    public Color CantPlaceHere;
+    private Renderer rend;
+    private Color originalColor;
+
     // Start is called before the first frame update
     void Start()
     {
         spawnPos = placeHolder.transform.position;
-
+        //rend = GetComponent<Renderer>();
     }
 
 
@@ -23,6 +29,7 @@ public class CreatePlaceholder : MonoBehaviour
 
     public void PlaceHolder()
     {
+        
         placeHolder.SetActive(true);
 
         Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1.0f));
@@ -30,7 +37,14 @@ public class CreatePlaceholder : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit))
         {
-            
+            if (hit.transform.tag != "Spawn area")
+            {
+                switchColor[0].GetComponent<Renderer>().material.color = CantPlaceHere;
+            }
+            else 
+            {
+                switchColor[0].GetComponent<Renderer>().material.color = originalColor;
+            }
             Vector3 newPos = hit.point;
             placeHolder.transform.position = newPos;
         }
@@ -40,5 +54,7 @@ public class CreatePlaceholder : MonoBehaviour
             placeHolder.SetActive(false);
             placeHolder.transform.position = spawnPos;
         }
+
+
     }
 }

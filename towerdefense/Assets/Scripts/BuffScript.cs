@@ -27,7 +27,7 @@ public class BuffScript : MonoBehaviour
         for (int i = 0; i < exColliders.Length; i++)
         {
             
-            if (exColliders[i].name.Contains("Minigun"))
+            if (exColliders[i].name.Contains("Minigun") && !exColliders[i].name.Contains("MinigunUpgradeMenu"))
             {
                 Debug.Log(exColliders[i]);
                 Debug.Log(this.name);
@@ -36,19 +36,19 @@ public class BuffScript : MonoBehaviour
                 exColliders[i].gameObject.GetComponent<attackEnemy>().attackRange *= rangeBuffPercent;
 
             }
-            if (exColliders[i].name.Contains("Tank"))
+            if (exColliders[i].name.Contains("Tank") && !exColliders[i].name.Contains("TankUpgradeMenu"))
             {
                 Debug.Log(exColliders[i]);
                 exColliders[i].gameObject.GetComponent<attackEnemy>().damage *= damageBuffPercent;
                 exColliders[i].gameObject.GetComponent<attackEnemy>().attackRange *= rangeBuffPercent;
             }
-            if (exColliders[i].name.Contains("MissileLauncher"))
+            if (exColliders[i].name.Contains("MissileLauncher") && !exColliders[i].name.Contains("MissileLauncherMenu"))
             {
                 Debug.Log(exColliders[i]);
                 exColliders[i].gameObject.GetComponent<attackEnemy>().damage *= damageBuffPercent;
                 exColliders[i].gameObject.GetComponent<attackEnemy>().attackRange *= rangeBuffPercent;
             }
-            if (exColliders[i].name.Contains("ZapTower"))
+            if (exColliders[i].name.Contains("ZapTower") && !exColliders[i].name.Contains("ZapTowerUpgradeMenu"))
             {
                 Debug.Log(exColliders[i]);
                 exColliders[i].gameObject.GetComponent<attackEnemy>().damage *= damageBuffPercent;

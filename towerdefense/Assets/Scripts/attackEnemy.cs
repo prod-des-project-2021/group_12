@@ -41,7 +41,7 @@ public class attackEnemy : MonoBehaviour
         GameObject spawnPoint = GameObject.FindGameObjectWithTag(enemyPathSpawnTag);
 
         float shortestDistance = Mathf.Infinity;
-       float longestDistance = Mathf.Infinity;
+        float longestDistance = Mathf.Infinity;
         float distance = Mathf.Infinity;
 
         GameObject nearestEnemy = null;

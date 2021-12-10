@@ -36,14 +36,13 @@ public class BuildManager : MonoBehaviour
 
     public void SetTurretToBuild(GameObject turret)
     {
-        Debug.Log("noniin" +turret);
         turretToBuild = turret;
     }
 
 
     public void PurchaseMinigun()
     {
-        if (GameEngine.gameInstance.SpendMoney(100))
+        if (GameEngine.gameInstance.SpendMoney(GameEngine.gameInstance.minigunPrice))
         {
             Debug.Log("Minigun purchased");
             SetTurretToBuild(minigunPrefab);
@@ -57,7 +56,7 @@ public class BuildManager : MonoBehaviour
 
     public void PurchaseZapTower()
     {
-        if (GameEngine.gameInstance.SpendMoney(100))
+        if (GameEngine.gameInstance.SpendMoney(GameEngine.gameInstance.zapTowerPrice))
         {
             Debug.Log("Minigun purchased");
             SetTurretToBuild(zapPrefab);
@@ -71,7 +70,7 @@ public class BuildManager : MonoBehaviour
 
     public void PurchaseBuffTower()
     {
-        if (GameEngine.gameInstance.SpendMoney(100))
+        if (GameEngine.gameInstance.SpendMoney(GameEngine.gameInstance.buffTowerPrice))
         {
             Debug.Log("Minigun purchased");
             SetTurretToBuild(buffPrefab);
@@ -85,7 +84,7 @@ public class BuildManager : MonoBehaviour
 
     public void PurchaseMissileTower()
     {
-        if (GameEngine.gameInstance.SpendMoney(100))
+        if (GameEngine.gameInstance.SpendMoney(GameEngine.gameInstance.missileLauncherPrice))
         {
             Debug.Log("Missile launcher purchased");
             SetTurretToBuild(missileTurretPrefab);
@@ -100,7 +99,7 @@ public class BuildManager : MonoBehaviour
     public void PurchaseTank()
     {
         Debug.Log("try tank");
-        if (GameEngine.gameInstance.SpendMoney(100))
+        if (GameEngine.gameInstance.SpendMoney(GameEngine.gameInstance.tankPrice))
         {
             Debug.Log("tank purchased");
             SetTurretToBuild(tank);
@@ -113,7 +112,7 @@ public class BuildManager : MonoBehaviour
     }
     public void PurchaseSentry()
     {
-        if (GameEngine.gameInstance.SpendMoney(100))
+        if (GameEngine.gameInstance.SpendMoney(GameEngine.gameInstance.sentryPrice))
         {
             Debug.Log("sentry purchased");
             SetTurretToBuild(sentry);

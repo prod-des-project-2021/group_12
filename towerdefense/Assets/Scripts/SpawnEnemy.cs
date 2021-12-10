@@ -17,7 +17,8 @@ public class SpawnEnemy : MonoBehaviour
     bool gameHasStarted = false;
     int vuoro = 0;
     int bossTurn = 0;
-    private float spawnTime;
+    private bool enemiesDead;
+    private bool gameOver = false;
 
 
     private int enemiesPerLevel = 5;
@@ -42,6 +43,7 @@ public class SpawnEnemy : MonoBehaviour
             {
                 StartGame();
                 gameHasStarted = true;
+                GameEngine.gameInstance.StartGameTimer();
             }
             else
             {
@@ -49,8 +51,19 @@ public class SpawnEnemy : MonoBehaviour
             }
             
         }
-               
-                   
+        if (GameObject.FindGameObjectsWithTag("mob") == null || GameObject.FindGameObjectsWithTag("mob").Length == 0)
+        {
+            enemiesDead = true;
+        }
+        else
+        {
+            enemiesDead = false;
+        }
+        if(enemiesDead && gameOver)
+        {
+            GameEngine.gameInstance.StopGameTimer();      
+        }
+
     }
     void StartGame()
     {
@@ -59,8 +72,17 @@ public class SpawnEnemy : MonoBehaviour
 
     void NextRound()
     {
-        GameEngine.gameInstance.IncreaseDifficultyAndLevel();
-        StartGame();
+        
+        if(GameEngine.gameInstance.maxLevels > GameEngine.gameInstance.level)
+        {
+            GameEngine.gameInstance.IncreaseDifficultyAndLevel();
+            StartGame();
+        }
+        else
+        {
+            gameOver = true;             
+        }
+        
     }
 
     IEnumerator WaveStarter()
@@ -89,6 +111,7 @@ public class SpawnEnemy : MonoBehaviour
 
     IEnumerator SpawnWave()
     {
+        Debug.Log("gameTime: "+GameEngine.gameInstance.gameTime);
         enemiesPerLevel = enemiesPerLevel + GameEngine.gameInstance.level * 1;
         
        // Debug.Log("enemies: " +enemiesPerLevel);

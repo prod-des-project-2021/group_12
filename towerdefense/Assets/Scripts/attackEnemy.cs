@@ -120,19 +120,19 @@ public class attackEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);  
-         
-        if(spinner != null)
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
+
+        if (spinner != null)
         {
             SpinBarrel();
-        }       
+        }
         if (target == null)
         {
             SpinUpTimer = Mathf.Clamp(
             SpinUpTimer - Time.deltaTime,
             0, SpinUpTime);
             //tykki kääntyy default-asentoon
-            if(rotatingPart != null)
+            if (rotatingPart != null)
             {
                 rotatingPart.rotation = Quaternion.Lerp(rotatingPart.rotation, Quaternion.Euler(0f, 0f, 0f), Time.deltaTime * turnSpeed);
             }
@@ -143,38 +143,41 @@ public class attackEnemy : MonoBehaviour
             SpinUpTimer + Time.deltaTime,
             0, SpinUpTime);
 
-            if(rotatingPart != null)
+            if (rotatingPart != null)
             {
-               
+
                 Vector3 direction = target.position - transform.position;
+                float range = Vector3.Distance(transform.position, target.transform.position);
                 Quaternion lookRotation = Quaternion.LookRotation(direction);
-                Vector3 rotation = Quaternion.Lerp(rotatingPart.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
-                rotatingPart.rotation = Quaternion.Euler(0f, rotation.y, 0f);
-               
+                if (range <= attackRange)
+                {
+                    Vector3 rotation = Quaternion.Lerp(rotatingPart.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
+                    rotatingPart.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+
+                }
             }
-            
         }
         if (fireCountdown <= 0f)
         {
 
             if (spinner != null)
-            {   
-               
+            {
+
                 if (SpinUpTimer >= SpinUpTime)
                 {
-                   
+
                     shoot();
                     fireCountdown = 1f / fireRate;
                 }
-                
+
 
             }
             else
             {
-                
-                         shoot();
-             
-               
+
+                shoot();
+
+
                 fireCountdown = 1f / fireRate;
             }
 

@@ -32,19 +32,17 @@ foreach(GameObject enemy in enemies)
      invisEnemy = enemy;
 distanceToEnemy = Vector3.Distance(transform.position, invisEnemy.transform.position);
 
-   
-Debug.Log("attakcrange " +attackRange);
-Debug.Log("näkymätön " +invisEnemy.GetComponent<Renderer>().enabled);
-Debug.Log("shortestdistance " +distanceToEnemy);
-
   if(sentry != null &&  distanceToEnemy <= attackRange)
     {
-       invisEnemy.GetComponent<Renderer>().enabled = true;  
+       invisEnemy.GetComponent<Renderer>().enabled = true; 
+       invisEnemy.transform.GetChild(0).GetComponent<Canvas>().enabled = true; 
                     
     }
-     if(sentry != null && distanceToEnemy > attackRange){
+     if(sentry != null && distanceToEnemy > attackRange)
+     {
         
-       invisEnemy.GetComponent<Renderer>().enabled = false;  
+       invisEnemy.GetComponent<Renderer>().enabled = false;
+       invisEnemy.transform.GetChild(0).GetComponent<Canvas>().enabled = false;
     }
 
 }

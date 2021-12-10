@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: af8cf7395b542274fa43a097ea8ea0d1, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &171281094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -782,7 +782,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1327727279
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1015,6 +1015,7 @@ GameObject:
   - component: {fileID: 1798538721}
   - component: {fileID: 1798538720}
   - component: {fileID: 1798538719}
+  - component: {fileID: 1798538722}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1087,6 +1088,42 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1798538722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1798538718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac6b67f123284764eba674a4887deedf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: 100
+  money: 1000
+  score: 0
+  highScore: 0
+  difficulty: 1
+  map1HighScore: 0
+  sampleHighScore: 0
+  map1HighLevel: 0
+  sampleHighLevel: 0
+  level: 1
+  maxLevels: 30
+  timeBetweenWaves: 10
+  timeBetweenEnemies: 0.5
+  bossWaveDifficulty: 2
+  gameTime: 0
+  minigunPrice: 0
+  missileLauncherPrice: 0
+  tankPrice: 0
+  sentryPrice: 0
+  zapTowerPrice: 0
+  buffTowerPrice: 0
+  currentHealth: {fileID: 0}
+  currentMoney: {fileID: 0}
+  currentScore: {fileID: 0}
 --- !u!1 &1861106741
 GameObject:
   m_ObjectHideFlags: 0

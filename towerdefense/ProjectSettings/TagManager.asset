@@ -13,9 +13,13 @@ TagManager:
   - Tank
   - MissileLauncher
   - Minigun
+  - sentry
   - ZapTower
   - sentry
   - placeholder
+  - tankSound
+  - turretSounds
+  - startGameButton
   layers:
   - Default
   - TransparentFX

@@ -60,6 +60,12 @@ public class SpawnTurrets : MonoBehaviour
 
             else
             {
+                if (turretToBuild.name.Contains("Tank")) GameEngine.gameInstance.AddMoney(GameEngine.gameInstance.tankPrice);
+                else if (turretToBuild.name.Contains("Minigun")) GameEngine.gameInstance.AddMoney(GameEngine.gameInstance.minigunPrice);
+                else if (turretToBuild.name.Contains("MissileLauncher")) GameEngine.gameInstance.AddMoney(GameEngine.gameInstance.missileLauncherPrice);
+                else if (turretToBuild.name.Contains("sentry")) GameEngine.gameInstance.AddMoney(GameEngine.gameInstance.sentryPrice);
+                else if (turretToBuild.name.Contains("ZapTower")) GameEngine.gameInstance.AddMoney(GameEngine.gameInstance.zapTowerPrice);
+                else if (turretToBuild.name.Contains("BuffTower")) GameEngine.gameInstance.AddMoney(GameEngine.gameInstance.buffTowerPrice);
                 BuildManager.buildInstance.SetTurretToBuild(null);
             }
         }

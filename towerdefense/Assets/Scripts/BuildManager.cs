@@ -7,32 +7,15 @@ public class BuildManager : MonoBehaviour
     
     public static BuildManager buildInstance;
 
-    [Header("Minigun")]
     public GameObject minigunPrefab;
-    public int minigunCost = 50;
-
-    [Header("Missile")]
     public GameObject missileTurretPrefab;
-    public int missileCost = 150;
-
-    [Header("Tank")]
     public GameObject tank;
-    public int tankCost = 100;
-
-    [Header("Sentry")]
     public GameObject sentry;
-    public int sentryCost = 200;
-
-    [Header("Zap")]
     public GameObject zapPrefab;
-    public int zapCost = 250;
-
-    [Header("Buff")]
     public GameObject buffPrefab;
-    public int buffCost = 300;
-
-
     private GameObject turretToBuild;
+
+    
     private void Awake()
     {
 
@@ -51,13 +34,12 @@ public class BuildManager : MonoBehaviour
 
     public void SetTurretToBuild(GameObject turret)
     {
-        //Debug.Log("noniin" +turret);
         turretToBuild = turret;
     }
 
     public void PurchaseMinigun()
     {
-        if (GameEngine.gameInstance.SpendMoney(minigunCost))
+        if (GameEngine.gameInstance.SpendMoney(GameEngine.gameInstance.minigunPrice))
         {
             Debug.Log("Minigun purchased");
             SetTurretToBuild(minigunPrefab);
@@ -71,7 +53,7 @@ public class BuildManager : MonoBehaviour
 
     public void PurchaseZapTower()
     {
-        if (GameEngine.gameInstance.SpendMoney(zapCost))
+        if (GameEngine.gameInstance.SpendMoney(GameEngine.gameInstance.zapTowerPrice))
         {
             Debug.Log("Minigun purchased");
             SetTurretToBuild(zapPrefab);
@@ -85,7 +67,7 @@ public class BuildManager : MonoBehaviour
 
     public void PurchaseBuffTower()
     {
-        if (GameEngine.gameInstance.SpendMoney(buffCost))
+        if (GameEngine.gameInstance.SpendMoney(GameEngine.gameInstance.buffTowerPrice))
         {
             Debug.Log("Minigun purchased");
             SetTurretToBuild(buffPrefab);
@@ -99,7 +81,7 @@ public class BuildManager : MonoBehaviour
 
     public void PurchaseMissileTower()
     {
-        if (GameEngine.gameInstance.SpendMoney(missileCost))
+        if (GameEngine.gameInstance.SpendMoney(GameEngine.gameInstance.missileLauncherPrice))
         {
             Debug.Log("Missile launcher purchased");
             SetTurretToBuild(missileTurretPrefab);
@@ -114,7 +96,7 @@ public class BuildManager : MonoBehaviour
     public void PurchaseTank()
     {
         Debug.Log("try tank");
-        if (GameEngine.gameInstance.SpendMoney(tankCost))
+        if (GameEngine.gameInstance.SpendMoney(GameEngine.gameInstance.tankPrice))
         {
             Debug.Log("tank purchased");
             SetTurretToBuild(tank);
@@ -127,7 +109,7 @@ public class BuildManager : MonoBehaviour
     }
     public void PurchaseSentry()
     {
-        if (GameEngine.gameInstance.SpendMoney(sentryCost))
+        if (GameEngine.gameInstance.SpendMoney(GameEngine.gameInstance.sentryPrice))
         {
             Debug.Log("sentry purchased");
             SetTurretToBuild(sentry);

@@ -175,6 +175,7 @@ public class DamageSystem : MonoBehaviour
           
             EnemyParams.enemyHitInstance.health -= attackDamage;
               healthBar.fillAmount =  EnemyParams.enemyHitInstance.health/EnemyParams.enemyHitInstance.startHealth;
+              Debug.Log("enemy 4 hp fill amount "+healthBar.fillAmount);
             
             if (EnemyParams.enemyHitInstance.health <= 0.0f)
             {

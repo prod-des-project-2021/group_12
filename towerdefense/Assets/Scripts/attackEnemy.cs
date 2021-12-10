@@ -73,8 +73,9 @@ public class attackEnemy : MonoBehaviour
                                           
                 }if(nearestEnemy != null && shortestDistance> attackRange){
                     target =null;
+                }if(nearestEnemy!= null && !nearestEnemy.GetComponent<MeshRenderer>().enabled && enemy.GetComponent<MeshRenderer>().enabled){
+                    target = enemy.transform;
                 }
-
                 }
                 
                  // hp:n määrän mukaan target

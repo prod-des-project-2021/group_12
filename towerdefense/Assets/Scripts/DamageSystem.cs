@@ -122,7 +122,6 @@ public class DamageSystem : MonoBehaviour
             EnemyParams.enemyHitInstance.health -= attackDamage;
            
             GameObject enemy2 = GameObject.Find("Enemy 2(Clone)");
-            Debug.Log("fill amouintti " +enemy2.GetComponent<DamageSystem>().healthBar.fillAmount);
           
             healthBar.fillAmount =  EnemyParams.enemyHitInstance.health/EnemyParams.enemyHitInstance.startHealth;
             

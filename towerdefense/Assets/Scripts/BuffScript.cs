@@ -1,56 +1,58 @@
-
 using UnityEngine;
 public class BuffScript : MonoBehaviour
 {
     public float buffTowerRange = 50f;
-
     public float damageBuffPercent = 1.1f;
     public float rangeBuffPercent = 1.1f;
 
-
+    Collider[] exColliders;
+    int collidersLenght;
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(transform.position, buffTowerRange);
     }
 
-    private void Start()
+    void Update()
     {
         
+        exColliders = Physics.OverlapSphere(transform.position, buffTowerRange);
+        Debug.Log("ex Lenght: " + exColliders.Length);
+        Debug.Log("coll length: " + collidersLenght);
+        if (exColliders.Length > collidersLenght)
+        {
+            BuffTowers(exColliders.Length-1);
+        }
     }
-    void BuffTowers()
+    void BuffTowers(int lenght)
     {
-
-        //target.GetComponent<DamageSystem>().damageEnemy((int)bulletDamage, slowEnemies, slowTime);
-
-        Collider[] exColliders = Physics.OverlapSphere(transform.position, buffTowerRange);
-        for (int i = 0; i < exColliders.Length; i++)
+        exColliders = Physics.OverlapSphere(transform.position, buffTowerRange);
+        collidersLenght = exColliders.Length;
+        for(int i = 0; i < exColliders.Length; i++)
+        {
+            Debug.Log("exColliders: " + exColliders[i].name);
+        }
+        for (int i = lenght; i < exColliders.Length; i++)
         {
             
-            if (exColliders[i].name.Contains("Minigun") && !exColliders[i].name.Contains("MinigunUpgradeMenu"))
+            if (exColliders[i].name.Contains("Minigun(Clone)"))
             {
-                Debug.Log(exColliders[i]);
-                Debug.Log(this.name);
-                Debug.Log(Vector3.Distance(exColliders[i].transform.position, transform.position));
                 exColliders[i].gameObject.GetComponent<attackEnemy>().damage *= damageBuffPercent;
                 exColliders[i].gameObject.GetComponent<attackEnemy>().attackRange *= rangeBuffPercent;
 
             }
-            if (exColliders[i].name.Contains("Tank") && !exColliders[i].name.Contains("TankUpgradeMenu"))
+            if (exColliders[i].name.Contains("Tank(Clone)"))
             {
-                Debug.Log(exColliders[i]);
                 exColliders[i].gameObject.GetComponent<attackEnemy>().damage *= damageBuffPercent;
                 exColliders[i].gameObject.GetComponent<attackEnemy>().attackRange *= rangeBuffPercent;
             }
-            if (exColliders[i].name.Contains("MissileLauncher") && !exColliders[i].name.Contains("MissileLauncherMenu"))
+            if (exColliders[i].name.Contains("MissileLauncher(Clone)"))
             {
-                Debug.Log(exColliders[i]);
                 exColliders[i].gameObject.GetComponent<attackEnemy>().damage *= damageBuffPercent;
                 exColliders[i].gameObject.GetComponent<attackEnemy>().attackRange *= rangeBuffPercent;
             }
-            if (exColliders[i].name.Contains("ZapTower") && !exColliders[i].name.Contains("ZapTowerUpgradeMenu"))
+            if (exColliders[i].name.Contains("ZapTower(Clone)"))
             {
-                Debug.Log(exColliders[i]);
                 exColliders[i].gameObject.GetComponent<attackEnemy>().damage *= damageBuffPercent;
             }
         }
@@ -58,10 +60,9 @@ public class BuffScript : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Awake()
     {
-        BuffTowers();
+        BuffTowers(0);
     }
 
 }

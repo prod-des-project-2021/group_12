@@ -34,7 +34,7 @@ bool gameHasStarted = false;
     void Start()
     {
         findShopMenu = GameObject.Find("Shopmenu");
-        findShopMenu.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(StartGameButtonClicked);
+        findShopMenu.transform.GetChild(0).GetChild(0).GetComponent<Button>().onClick.AddListener(StartGameButtonClicked);
        
         spawnPoints[0] = GameObject.Find("Spawn 1");
         spawnPoints[1] = GameObject.Find("Spawn 2");

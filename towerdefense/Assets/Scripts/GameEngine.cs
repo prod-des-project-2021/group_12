@@ -26,12 +26,16 @@ public class GameEngine : MonoBehaviour
     public Text currentHealth;
     public Text currentMoney;
     public Text currentScore;
+
+    public Text Map1Score, Map2Score;
+    public Text Map1Level, Map2Level;
     SaveData data;
 
     public static GameEngine gameInstance;
     // Start is called before the first frame update
     void Awake()
     {
+        Time.timeScale = 1f;
         string path = Application.persistentDataPath + "/player.SaveData";
 
         if (System.IO.File.Exists(path))
@@ -43,6 +47,10 @@ public class GameEngine : MonoBehaviour
             SaveData();
             LoadData();
         }
+        if (Map1Score != null) Map1Score.text = map1HighScore.ToString();
+        if (Map1Level != null) Map1Level.text = map1HighLevel.ToString();
+        if (Map2Score != null) Map2Score.text = sampleHighScore.ToString();
+        if (Map2Level != null) Map2Level.text = sampleHighLevel.ToString();
         gameInstance = this;
     }
 
@@ -120,7 +128,8 @@ public class GameEngine : MonoBehaviour
         {          
             highScore = sampleHighScore;     
         }
-        
+
+
 
     }
 

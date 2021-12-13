@@ -20,6 +20,7 @@ TagManager:
   - tankSound
   - turretSounds
   - startGameButton
+  - buffTower
   layers:
   - Default
   - TransparentFX

@@ -41,7 +41,6 @@ public class BuildManager : MonoBehaviour
     {
         if (GameEngine.gameInstance.SpendMoney(GameEngine.gameInstance.minigunPrice))
         {
-            Debug.Log("Minigun purchased");
             SetTurretToBuild(minigunPrefab);
         }
         else
@@ -55,7 +54,6 @@ public class BuildManager : MonoBehaviour
     {
         if (GameEngine.gameInstance.SpendMoney(GameEngine.gameInstance.zapTowerPrice))
         {
-            Debug.Log("Minigun purchased");
             SetTurretToBuild(zapPrefab);
         }
         else
@@ -69,7 +67,6 @@ public class BuildManager : MonoBehaviour
     {
         if (GameEngine.gameInstance.SpendMoney(GameEngine.gameInstance.buffTowerPrice))
         {
-            Debug.Log("Minigun purchased");
             SetTurretToBuild(buffPrefab);
         }
         else
@@ -83,7 +80,6 @@ public class BuildManager : MonoBehaviour
     {
         if (GameEngine.gameInstance.SpendMoney(GameEngine.gameInstance.missileLauncherPrice))
         {
-            Debug.Log("Missile launcher purchased");
             SetTurretToBuild(missileTurretPrefab);
         }
         else
@@ -95,10 +91,8 @@ public class BuildManager : MonoBehaviour
 
     public void PurchaseTank()
     {
-        Debug.Log("try tank");
         if (GameEngine.gameInstance.SpendMoney(GameEngine.gameInstance.tankPrice))
         {
-            Debug.Log("tank purchased");
             SetTurretToBuild(tank);
         }
         else
@@ -111,7 +105,6 @@ public class BuildManager : MonoBehaviour
     {
         if (GameEngine.gameInstance.SpendMoney(GameEngine.gameInstance.sentryPrice))
         {
-            Debug.Log("sentry purchased");
             SetTurretToBuild(sentry);
         }
         else

@@ -17,8 +17,6 @@ public class BuffScript : MonoBehaviour
     {
         
         exColliders = Physics.OverlapSphere(transform.position, buffTowerRange);
-        Debug.Log("ex Lenght: " + exColliders.Length);
-        Debug.Log("coll length: " + collidersLenght);
         if (exColliders.Length > collidersLenght)
         {
             BuffTowers(exColliders.Length-1);
@@ -28,10 +26,6 @@ public class BuffScript : MonoBehaviour
     {
         exColliders = Physics.OverlapSphere(transform.position, buffTowerRange);
         collidersLenght = exColliders.Length;
-        for(int i = 0; i < exColliders.Length; i++)
-        {
-            Debug.Log("exColliders: " + exColliders[i].name);
-        }
         for (int i = lenght; i < exColliders.Length; i++)
         {
             

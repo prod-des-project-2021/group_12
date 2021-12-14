@@ -8,7 +8,7 @@ public class UpgradeUI : MonoBehaviour
     public GameObject tankUI;
     private Camera cam = null;
     string turretTag;
-    public GameObject upgradedTank;
+
     public GameObject turretRange;
 
     public GameObject selectedTower = null;
@@ -17,6 +17,11 @@ public class UpgradeUI : MonoBehaviour
     public Text sellAmount;
 
     public Button upgradeButton;
+
+    public GameObject upgradedTank;
+    public GameObject upgradedMissile;
+    public GameObject upgradedMinigun;
+    public GameObject upgradedZap;
 
 
     // Start is called before the first frame update
@@ -80,6 +85,7 @@ public class UpgradeUI : MonoBehaviour
             upgrade.fireRate += 1;
             upgrade.attackRange += 5;
             Debug.Log("tank upgraded");
+            upgradeCost.text = "<b>$" + (GameEngine.gameInstance.tankPrice * upgrade.turretLvl).ToString() + "</b>";
 
             if (upgrade.turretLvl == 5)
             {
@@ -108,10 +114,15 @@ public class UpgradeUI : MonoBehaviour
             upgrade.attackRange += 5;
             upgrade.damage += 10;
             Debug.Log("missile upgraded");
+            upgradeCost.text = "<b>$" + (GameEngine.gameInstance.missileLauncherPrice * upgrade.turretLvl).ToString() + "</b>";
 
             if (upgrade.turretLvl == 5)
             {
-                //Destroy(selectedTower);
+                tankUI.SetActive(false);
+                turretRange.SetActive(false);
+                Destroy(selectedTower);
+                Instantiate(upgradedMissile, selectedTower.transform.position, Quaternion.identity);
+                selectedTower = null;
 
             }
         }
@@ -130,13 +141,17 @@ public class UpgradeUI : MonoBehaviour
             upgrade.turretLvl += 1;
             upgrade.fireRate += 2;
             upgrade.attackRange += 5;
-            upgrade.attackRange += 5;
             //Debug.Log("trtlvl " + turretLvl);
             Debug.Log("upgraded minigun firerate " + upgrade);
+            upgradeCost.text = "<b>$" + (GameEngine.gameInstance.minigunPrice * upgrade.turretLvl).ToString() + "</b>";
 
             if (upgrade.turretLvl == 5)
             {
-                //Destroy(selectedTower);
+                tankUI.SetActive(false);
+                turretRange.SetActive(false);
+                Destroy(selectedTower);
+                Instantiate(upgradedMinigun, selectedTower.transform.position, Quaternion.identity);
+                selectedTower = null;
 
             }
         }
@@ -156,11 +171,14 @@ public class UpgradeUI : MonoBehaviour
             upgrade.fireRate += 1;
             upgrade.damage += 5;
             Debug.Log("upgraded zap firerate " + upgrade);
-
+            upgradeCost.text = "<b>$" + (GameEngine.gameInstance.zapTowerPrice * upgrade.turretLvl).ToString() + "</b>";
             if (upgrade.turretLvl == 5)
             {
-               // Destroy(selectedTower);
-
+                tankUI.SetActive(false);
+                turretRange.SetActive(false);
+                Destroy(selectedTower);
+                Instantiate(upgradedZap, selectedTower.transform.position, Quaternion.identity);
+                selectedTower = null;
             }
         }
         else
@@ -178,6 +196,7 @@ public class UpgradeUI : MonoBehaviour
             auraUpgrade.auraTurretLvl += 1;
             auraUpgrade.attackRange += 5;
             Debug.Log("upgraded sentry range " + auraUpgrade);
+            upgradeCost.text = "<b>$" + (GameEngine.gameInstance.missileLauncherPrice * auraUpgrade.auraTurretLvl).ToString() + "</b>";
 
             if (auraUpgrade.auraTurretLvl == 5)
             {
@@ -256,31 +275,26 @@ public class UpgradeUI : MonoBehaviour
         {
             case "Tank":
                 TankUpgrade();
-                upgradeCost.text = "<b>$" + (GameEngine.gameInstance.tankPrice * lvl.turretLvl).ToString() + "</b>";
                 sellAmount.text = "<b>$" + (GameEngine.gameInstance.tankPrice * lvl.turretLvl / 2).ToString() + "</b>";
                 break;
 
             case "MissileLauncher":
                 MissileUpgrade();
-                upgradeCost.text = "<b>$" + (GameEngine.gameInstance.missileLauncherPrice * lvl.turretLvl).ToString() + "</b>";
                 sellAmount.text = "<b>$" + (GameEngine.gameInstance.missileLauncherPrice * lvl.turretLvl / 2).ToString() + "</b>";
                 break;
 
             case "ZapTower":
                 ZapUpgrade();
-                upgradeCost.text = "<b>$" + (GameEngine.gameInstance.zapTowerPrice * lvl.turretLvl).ToString() + "</b>";
                 sellAmount.text = "<b>$" + (GameEngine.gameInstance.zapTowerPrice * lvl.turretLvl / 2).ToString() + "</b>";
                 break;
 
             case "sentry":
                 SentryUpgrade();
-                upgradeCost.text = "<b>$" + (GameEngine.gameInstance.sentryPrice * lvl.turretLvl).ToString() + "</b>";
                 sellAmount.text = "<b>$" + (GameEngine.gameInstance.sentryPrice * lvl.turretLvl / 2).ToString() + "</b>";
                 break;
 
             case "Minigun":
                 MinigunUpgrade();
-                upgradeCost.text = "<b>$" + (GameEngine.gameInstance.minigunPrice * lvl.turretLvl).ToString() + "</b>";
                 sellAmount.text = "<b>$" + (GameEngine.gameInstance.minigunPrice * lvl.turretLvl / 2).ToString() + "</b>";
                 break;
 

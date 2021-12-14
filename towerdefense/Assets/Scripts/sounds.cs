@@ -14,9 +14,13 @@ public class sounds : MonoBehaviour
     public AudioSource sniperFireSound;
     public AudioSource zapTowerSound;
 
+
+
 public AudioSource enemyDeathSound;
 
-public void playTankFireSound()
+    public AudioSource buildingSound;
+
+    public void playTankFireSound()
 {
 tankFireSound.Play();
 }
@@ -46,6 +50,11 @@ public void playEnemyDeathSound()
 {
     enemyDeathSound.Play();
 }
+
+public void playBuildingSound()
+    {
+        buildingSound.Play();
+    }
 
 
 

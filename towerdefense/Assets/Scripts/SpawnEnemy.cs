@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SpawnEnemy : MonoBehaviour
 {
@@ -34,9 +35,16 @@ bool gameHasStarted = false;
     void Start()
     {
         findShopMenu = GameObject.Find("Shopmenu");
-        findShopMenu.transform.GetChild(0).GetChild(0).GetComponent<Button>().onClick.AddListener(StartGameButtonClicked);
-       
-        spawnPoints[0] = GameObject.Find("Spawn 1");
+        if(findShopMenu != null)
+        {
+            findShopMenu.transform.GetChild(0).GetChild(0).GetComponent<Button>().onClick.AddListener(StartGameButtonClicked);
+        }
+        if (SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            startGameButtonClicked = true;
+        }
+
+            spawnPoints[0] = GameObject.Find("Spawn 1");
         spawnPoints[1] = GameObject.Find("Spawn 2");
         spawnPoints[2] = GameObject.Find("Spawn 3");
         //StartGame();
@@ -45,6 +53,7 @@ bool gameHasStarted = false;
  
     void Update()
     {
+        
         if (startGameButtonClicked && enemiesHaveSpawned)
         {
              if (!gameHasStarted)
@@ -70,7 +79,9 @@ bool gameHasStarted = false;
         }
         if(enemiesDead && gameOver)
         {
-            GameEngine.gameInstance.StopGameTimer();      
+            GameEngine.gameInstance.gameWon = true;
+            GameEngine.gameInstance.StopGameTimer();
+            
         }
 
     }

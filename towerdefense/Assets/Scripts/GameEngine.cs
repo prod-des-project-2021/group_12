@@ -6,6 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class GameEngine : MonoBehaviour
 {
+    public static bool GameIsPaused = false;
+    public GameObject pauseMenuUI;
+    public GameObject shopMenuUI;
+    public GameObject playerUI;
+    public GameObject endScreenUI;
     public int playerHealth = 100;
     public int money = 1000;
     public float score = 0;
@@ -20,6 +25,8 @@ public class GameEngine : MonoBehaviour
     public float bossWaveDifficulty = 2.0f;
     public float gameTime = 0f;
     private bool gameRunning = false;
+    public bool gameWon = false;
+    public bool gameLost = false;
 
     public int minigunPrice, missileLauncherPrice, tankPrice, sentryPrice, zapTowerPrice, buffTowerPrice;
 
@@ -47,10 +54,10 @@ public class GameEngine : MonoBehaviour
             SaveData();
             LoadData();
         }
-        if (Map1Score != null) Map1Score.text = map1HighScore.ToString();
-        if (Map1Level != null) Map1Level.text = map1HighLevel.ToString();
-        if (Map2Score != null) Map2Score.text = sampleHighScore.ToString();
-        if (Map2Level != null) Map2Level.text = sampleHighLevel.ToString();
+        if (Map1Score != null) Map2Score.text = map1HighScore.ToString();
+        if (Map1Level != null) Map2Level.text = map1HighLevel.ToString();
+        if (Map2Score != null) Map1Score.text = sampleHighScore.ToString();
+        if (Map2Level != null) Map1Level.text = sampleHighLevel.ToString();
         gameInstance = this;
     }
 
@@ -68,19 +75,33 @@ public class GameEngine : MonoBehaviour
     {
         if (gameRunning)
         {
-            score = score * (3600 / gameTime);
+            if (gameWon) {
+                score = score * (3600 / gameTime);
+            }
+            
         }
-        gameRunning = false;
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(currentHealth != null) currentHealth.text = playerHealth.ToString();
-        if(currentMoney != null) currentMoney.text = money.ToString();
-        if(currentScore != null) currentScore.text = score.ToString();
-        if(score > map1HighScore && SceneManager.GetActiveScene().name == "FirstMap")
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (GameIsPaused == true)
+            {
+                if (endScreenUI.activeSelf) endScreenUI.SetActive(false);
+                else if (gameWon || gameLost) endScreenUI.SetActive(true);
+                else Resume();         
+            }
+            else Pause();
+
+        }
+
+        if (currentHealth != null) currentHealth.text = playerHealth.ToString();
+        if (currentMoney != null) currentMoney.text = money.ToString();
+        if (currentScore != null) currentScore.text = score.ToString();
+        if (score > map1HighScore && SceneManager.GetActiveScene().name == "FirstMap")
         {
             SaveData();
             LoadData();
@@ -94,7 +115,11 @@ public class GameEngine : MonoBehaviour
         {
             gameTime += Time.deltaTime;
         }
-        
+
+        if (playerHealth <= 0 && gameRunning) GameLost();
+        if (gameWon && gameRunning) GameWon();
+
+
     }
 
     public void DamagePlayer(int damage)
@@ -161,28 +186,78 @@ public class GameEngine : MonoBehaviour
         
         level += 1;
         difficulty = (level * 0.25f) + 0.75f;
-        /*LoadData();
-        if (SceneManager.GetActiveScene().name == "FirstMap")
-        {
-            if(data.map1Score <= score)
-            {
-                SaveData();
-            }
-        }
-        else if (SceneManager.GetActiveScene().name == "SampleScene")
-        {
-            if (data.sampleScore <= score)
-            {
-                SaveData();
-            }
-        }*/
-        
-        
+
     }
 
     public void IncreaseScore(float amount)
     {
         score += amount* difficulty;
         
+    }
+
+    public void Resume()
+    {
+        shopMenuUI.SetActive(true);
+        pauseMenuUI.SetActive(false);
+        playerUI.SetActive(true);
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+    }
+
+    public void LookAround()
+    {
+        Debug.Log("backtomap");
+        endScreenUI.SetActive(false);
+    }
+
+    public void Menu()
+    {
+        shopMenuUI.SetActive(false);
+        pauseMenuUI.SetActive(false);
+        playerUI.SetActive(false);
+        endScreenUI.SetActive(false);
+    }
+    void Pause()
+    {
+        shopMenuUI.SetActive(false);
+        pauseMenuUI.SetActive(true);
+        playerUI.SetActive(false);
+        Time.timeScale = 0f;
+        GameIsPaused = true;
+    }
+
+
+    public void QuitGame()
+    {
+        Debug.Log("Quitting..");
+        Application.Quit();
+    }
+
+    public void GameWon()
+    {
+        gameRunning = false;
+        shopMenuUI.SetActive(false);
+        endScreenUI.SetActive(true);
+        endScreenUI.transform.Find("EndMenu").transform.Find("Results").transform.Find("WinTXT").gameObject.SetActive(true);
+        endScreenUI.transform.Find("EndMenu").transform.Find("Results").transform.Find("Score").transform.Find("ScoreTXT").gameObject.GetComponent<UnityEngine.UI.Text>().text = score.ToString();
+        endScreenUI.transform.Find("EndMenu").transform.Find("Results").transform.Find("Level").transform.Find("LevelTXT").gameObject.GetComponent<UnityEngine.UI.Text>().text = level.ToString();
+        playerUI.SetActive(false);
+        Time.timeScale = 0f;
+        GameIsPaused = true;
+    }
+
+    public void GameLost()
+    {
+        gameRunning = false;
+        gameLost = true;
+        StopGameTimer();
+        shopMenuUI.SetActive(false);
+        endScreenUI.SetActive(true);
+        endScreenUI.transform.Find("EndMenu").transform.Find("Results").transform.Find("LoseTXT").gameObject.SetActive(true);
+        endScreenUI.transform.Find("EndMenu").transform.Find("Results").transform.Find("Score").transform.Find("ScoreTXT").gameObject.GetComponent<UnityEngine.UI.Text>().text = score.ToString();
+        endScreenUI.transform.Find("EndMenu").transform.Find("Results").transform.Find("Level").transform.Find("LevelTXT").gameObject.GetComponent<UnityEngine.UI.Text>().text = level.ToString();
+        playerUI.SetActive(false);
+        Time.timeScale = 0f;
+        GameIsPaused = true;
     }
 }

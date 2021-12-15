@@ -65,27 +65,27 @@ public class attackEnemy : MonoBehaviour
                 nearestEnemy = enemy;
                 
                  }
-                //turrettia lähinnä
-                if (attackNearestEnemy)
-                {
+            //turrettia lähinnä
+            if (attackNearestEnemy)
+            {
 
-                   // Debug.Log("attack nearest enemy");
-                     if (nearestEnemy != null && shortestDistance <= attackRange && nearestEnemy.GetComponent<MeshRenderer>().enabled)
-                {                
-                    Debug.Log("derpaderp");  
-                         target = nearestEnemy.transform; 
-                }                        
-                if(nearestEnemy!= null && !nearestEnemy.GetComponent<MeshRenderer>().enabled &&
-                 enemy.GetComponent<MeshRenderer>().enabled && 
-                 distanceToEnemy <= attackRange){
-                     Debug.Log("höhööö");
+                // Debug.Log("attack nearest enemy");
+                if (nearestEnemy != null && shortestDistance <= attackRange && nearestEnemy.GetComponent<MeshRenderer>().enabled)
+                {
+                    target = nearestEnemy.transform;
+                }
+                if (nearestEnemy != null && !nearestEnemy.GetComponent<MeshRenderer>().enabled &&
+                    enemy.GetComponent<MeshRenderer>().enabled &&
+                    distanceToEnemy <= attackRange)
+                {
                     target = enemy.transform;
+
                 }
-               
-                }
-                
-                 // hp:n määrän mukaan target
-                 if(attackStrongestEnemy){
+
+            }
+
+            // hp:n määrän mukaan target
+            if (attackStrongestEnemy){
                      Debug.Log("stronk valittu");
 
                 if(maxHpEnemy < enemy.GetComponent<EnemyParams>().startHealth){
@@ -147,19 +147,20 @@ public class attackEnemy : MonoBehaviour
             SpinUpTimer + Time.deltaTime,
             0, SpinUpTime);
 
-            if(rotatingPart != null)
+            if (rotatingPart != null)
             {
-               
-                Vector3 direction = target.position - transform.position;
-                float range = Vector3.Distance(transform.position,target.transform.position);
-                Quaternion lookRotation = Quaternion.LookRotation(direction);
 
-                 if(range <= attackRange){
-                Vector3 rotation = Quaternion.Lerp(rotatingPart.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
-                rotatingPart.rotation = Quaternion.Euler(0f, rotation.y, 0f);
-                 }
+                Vector3 direction = target.position - transform.position;
+
+                float range = Vector3.Distance(transform.position,target.transform.position);
+
+                Quaternion lookRotation = Quaternion.LookRotation(direction);
+                if (range <= attackRange)
+                {
+                    Vector3 rotation = Quaternion.Lerp(rotatingPart.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
+                    rotatingPart.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+                }
             }
-            
         }
         
         if (fireCountdown <= 0f)

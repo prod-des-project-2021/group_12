@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SpawnEnemy : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class SpawnEnemy : MonoBehaviour
     private GameObject findShopMenu;
      [HideInInspector] public bool startGameButtonClicked = false;
 
-public bool gameHasStarted = false;
+    public bool gameHasStarted = false;
     int vuoro = 0;
     int bossTurn = 0;
     private bool enemiesDead;
@@ -32,8 +33,7 @@ public bool gameHasStarted = false;
     Coroutine ws, ld;
     void Start()
     {
-       
-       spawnEnemyInstance = this;
+        spawnEnemyInstance = this;
         spawnPoints[0] = GameObject.Find("Spawn 1");
         spawnPoints[1] = GameObject.Find("Spawn 2");
         spawnPoints[2] = GameObject.Find("Spawn 3");
@@ -43,6 +43,7 @@ public bool gameHasStarted = false;
  
     void Update()
     {
+
         if (startGameButtonClicked && !enemiesHaveSpawned)
         {
 
@@ -70,7 +71,9 @@ public bool gameHasStarted = false;
         }
         if(enemiesDead && gameOver)
         {
-            GameEngine.gameInstance.StopGameTimer();      
+            GameEngine.gameInstance.gameWon = true;
+            GameEngine.gameInstance.StopGameTimer();
+            
         }
 
     }
@@ -147,7 +150,7 @@ public bool gameHasStarted = false;
         {
             for (int i = 0; i < enemiesPerLevel; i++)
             {
-         SpawnSingleEnemy(vuoro);
+                SpawnSingleEnemy(vuoro);
                 if (vuoro == 0) vuoro++;
                 else if (vuoro == 1) vuoro++;
                 else if (vuoro == 2) vuoro++;
@@ -169,7 +172,7 @@ public bool gameHasStarted = false;
          
          if(enemy.name.Contains("Enemy 4")){
              enemy.GetComponent<MeshRenderer>().enabled = false;
-           enemy.transform.GetChild(0).GetComponent<Canvas>().enabled = false;
+            enemy.transform.GetChild(0).GetComponent<Canvas>().enabled = false;
           
          }
         }  

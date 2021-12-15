@@ -22,7 +22,7 @@ public AudioSource enemyDeathSound;
 public AudioSource mainMenuBackgroundMusic;
 public AudioSource firstmapBackgroundMusic;
 
-SceneSwitcher switcher;
+
 public void playTankFireSound()
 {
 tankFireSound.Play();
@@ -54,13 +54,11 @@ public void playEnemyDeathSound()
 {
     enemyDeathSound.Play();
 }
-//IEnumerator fadeOutMainmenuMusic;
+int count = 0;
+IEnumerator fadeInMainmenuMusic;
 private void Start() {
 
  soundInstance = this;
-
-
-
 }
 
     
@@ -68,8 +66,10 @@ private void Start() {
 public static IEnumerator fadeOut ( AudioSource audioSource, float fadeTime) {
     {
         float startVolume = audioSource.volume;
+        Debug.Log("vola " +audioSource.volume);
         while (audioSource.volume > 0){
             audioSource.volume -= startVolume * Time.deltaTime /fadeTime;
+             Debug.Log("vola2 " +audioSource.volume);
             yield return null;
         }
         audioSource.Stop();
@@ -79,39 +79,46 @@ public static IEnumerator fadeOut ( AudioSource audioSource, float fadeTime) {
 public static IEnumerator fadeIn ( AudioSource audioSource, float fadeTime) {
     {
         audioSource.Play();
-        Debug.Log("vola " +audioSource.volume);
+        
         float startVolume = audioSource.volume;
         while (audioSource.volume < 1){
             
             audioSource.volume += startVolume + Time.deltaTime /fadeTime;
-             Debug.Log("vola2 " +audioSource.volume);
+            
             yield return null;
         }
         
        // audioSource.volume = startVolume;
     }
 }
- private void Awake() 
+ private void Update() 
     {
         if(SceneManager.GetActiveScene().name == "MainMenu"){
            
-           IEnumerator fadeInMainmenuMusic = fadeIn(mainMenuBackgroundMusic, 3f);
+           if(!mainMenuBackgroundMusic.isPlaying){
+               Debug.Log("ppööö");
+           fadeInMainmenuMusic = fadeIn(mainMenuBackgroundMusic, 3f);
            StartCoroutine(fadeInMainmenuMusic);
-           if(SceneSwitcher.switcherInstance.fadeToNextLevelStarted)
+           }
+           Debug.Log("started "+ SceneSwitcher.switcherInstance.fadeToNextLevelStarted);
+           if(SceneSwitcher.switcherInstance.fadeToNextLevelStarted && count == 0)
     {
- IEnumerator fadeOutMainmenuMusic = fadeOut(mainMenuBackgroundMusic, 5f);
-         StartCoroutine(fadeOutMainmenuMusic);
+        StopCoroutine(fadeInMainmenuMusic);
+        IEnumerator fadeOutMainmenuMusic = fadeOut(mainMenuBackgroundMusic, 1f);
+        StartCoroutine(fadeOutMainmenuMusic);
+         count++;
     }
+           
         }
         
         if(SceneManager.GetActiveScene().name == "FirstMap"){
-               
-          
-           
+
+               if(!firstmapBackgroundMusic.isPlaying)
+               {  
             IEnumerator fadeInFirstMapMusic = fadeIn(firstmapBackgroundMusic, 3f);
-            Debug.Log("biisi "+ firstmapBackgroundMusic);
-            StartCoroutine(fadeInFirstMapMusic);
             
+            StartCoroutine(fadeInFirstMapMusic);
+               }
             
         }
 

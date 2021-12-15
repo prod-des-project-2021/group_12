@@ -151,7 +151,9 @@ public class attackEnemy : MonoBehaviour
             {
 
                 Vector3 direction = target.position - transform.position;
-                float range = Vector3.Distance(transform.position, target.transform.position);
+
+                float range = Vector3.Distance(transform.position,target.transform.position);
+
                 Quaternion lookRotation = Quaternion.LookRotation(direction);
                 if (range <= attackRange)
                 {

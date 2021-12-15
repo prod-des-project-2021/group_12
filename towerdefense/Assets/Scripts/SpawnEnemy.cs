@@ -16,9 +16,7 @@ public class SpawnEnemy : MonoBehaviour
 
     private Button startGameButton;
     private GameObject findShopMenu;
-    public bool startGameButtonClicked = false;
-
-
+     [HideInInspector] public bool startGameButtonClicked = false;
 
 public bool gameHasStarted = false;
     int vuoro = 0;
@@ -32,7 +30,6 @@ public bool gameHasStarted = false;
     bool enemiesHaveSpawned = false;
     bool timeForNewRound = false;
     Coroutine ws, ld;
-
     void Start()
     {
        

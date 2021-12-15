@@ -8,17 +8,20 @@ public class SceneSwitcher : MonoBehaviour
 {
     public static SceneSwitcher switcherInstance;
    private int levelToLoad;
-   public bool fadeToNextLevelStarted = false;
+    [HideInInspector] public bool fadeToNextLevelStarted = false;
  public Animator animator;
     // Start is called before the first frame update
-   private void Start() {
-   switcherInstance = this;    
-   }
+  private void Awake() {
+      switcherInstance = this; 
+  }
+      
+   
  public void fadeToLevel (int levelIndex)
     {
+        fadeToNextLevelStarted = true;
          levelToLoad = levelIndex;
          animator.SetTrigger("fadeOut");
-         fadeToNextLevelStarted = true;
+         
        
     }
 

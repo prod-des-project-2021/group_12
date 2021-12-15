@@ -26,6 +26,11 @@ public class GameEngine : MonoBehaviour
     public Text currentHealth;
     public Text currentMoney;
     public Text currentScore;
+
+    public Text pauseGameText;
+
+private GameObject findShopMenu;
+
     SaveData data;
 
     public static GameEngine gameInstance;
@@ -49,8 +54,40 @@ public class GameEngine : MonoBehaviour
     private void Start()
     {
         
+       findShopMenu = GameObject.Find("Shopmenu");
+        findShopMenu.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(doubleSpeedButtonClicked);
+        findShopMenu.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(StartGameButtonClicked);
     }
 
+private void StartGameButtonClicked()
+{
+    if(findShopMenu.transform.GetChild(1).GetComponentInChildren<Text>().text == "Start game")
+     {
+         Time.timeScale = 1f;    
+        SpawnEnemy.spawnEnemyInstance.startGameButtonClicked = true;
+        Debug.Log("booli "+ SpawnEnemy.spawnEnemyInstance.startGameButtonClicked);
+         findShopMenu.transform.GetChild(1).GetComponentInChildren<Text>().text = "Pause";        
+     }else
+     {
+        
+         Time.timeScale = 0f;
+         findShopMenu.transform.GetChild(1).GetComponentInChildren<Text>().text = "Start game";
+     }
+   
+}
+    private void doubleSpeedButtonClicked()
+    {
+        if(findShopMenu.transform.GetChild(2).GetComponentInChildren<Text>().text == "2x speed")
+        {
+        Time.timeScale = 2f;
+        findShopMenu.transform.GetChild(2).GetComponentInChildren<Text>().text = "Normal speed";
+        }
+        else 
+        {
+        Time.timeScale = 1f;
+        findShopMenu.transform.GetChild(2).GetComponentInChildren<Text>().text = "2x speed";
+        }
+    }
     public void StartGameTimer()
     {
         gameRunning = true;

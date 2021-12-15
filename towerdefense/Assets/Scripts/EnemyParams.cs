@@ -17,6 +17,7 @@ public class EnemyParams : MonoBehaviour
     {
         enemyParamsInstance = this;
         health = startHealth * GameEngine.gameInstance.difficulty;
+        startHealth = startHealth * GameEngine.gameInstance.difficulty;
         if (startSpeed * GameEngine.gameInstance.difficulty < maxSpeed)
         {
             speed = startSpeed * GameEngine.gameInstance.difficulty;

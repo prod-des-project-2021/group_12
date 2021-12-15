@@ -334,7 +334,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'Back
-
 '
 --- !u!222 &187307081
 CanvasRenderer:
@@ -1378,7 +1377,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'Quit
-
 '
 --- !u!222 &1183522256
 CanvasRenderer:
@@ -1988,7 +1986,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'Select a level
-
 '
 --- !u!222 &2065506476
 CanvasRenderer:

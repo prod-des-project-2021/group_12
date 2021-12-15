@@ -29,7 +29,7 @@ public class Waypoints : MonoBehaviour
             waypoints[6] = GameObject.Find("Finish 1");
             waypoints[7] = GameObject.Find("Finish 2");
             waypoints[8] = GameObject.Find("Finish 3");
-        }else if (sceneName == "FirstMap")
+        }else if (sceneName == "FirstMap" || sceneName == "MainMenu")
         {
             waypoints[0] = GameObject.Find("Turn 1 1");
             waypoints[1] = GameObject.Find("Turn 1 2");

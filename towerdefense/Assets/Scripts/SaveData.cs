@@ -18,11 +18,9 @@ public class SaveData
             map1Level = gameEngine.level;
             sampleScore = gameEngine.sampleHighScore;
             sampleLevel = gameEngine.sampleHighLevel;
-            Debug.Log("FirstMap saved!");
             
         }else if(SceneManager.GetActiveScene().name == "SampleScene")
         {
-            Debug.Log("SampleScore Saved!");
             map1Score = gameEngine.map1HighScore;
             map1Level = gameEngine.map1HighLevel;
             sampleScore = gameEngine.score;

@@ -20,7 +20,11 @@ TagManager:
   - tankSound
   - turretSounds
   - startGameButton
+<<<<<<< HEAD
   - buffTower
+=======
+  - shopMenu
+>>>>>>> main
   layers:
   - Default
   - TransparentFX

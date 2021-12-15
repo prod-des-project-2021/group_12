@@ -51,3 +51,5 @@ MonoBehaviour:
   sniperFireSound: {fileID: 0}
   zapTowerSound: {fileID: 0}
   enemyDeathSound: {fileID: 0}
+  mainMenuBackgroundMusic: {fileID: 0}
+  firstmapBackgroundMusic: {fileID: 0}

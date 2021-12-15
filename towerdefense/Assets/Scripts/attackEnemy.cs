@@ -75,10 +75,11 @@ public class attackEnemy : MonoBehaviour
                     target = nearestEnemy.transform;
                 }
                 if (nearestEnemy != null && !nearestEnemy.GetComponent<MeshRenderer>().enabled &&
-                 enemy.GetComponent<MeshRenderer>().enabled &&
-                 distanceToEnemy <= attackRange)
+                    enemy.GetComponent<MeshRenderer>().enabled &&
+                    distanceToEnemy <= attackRange)
                 {
                     target = enemy.transform;
+
                 }
 
             }
@@ -99,6 +100,7 @@ public class attackEnemy : MonoBehaviour
                     target = nearestEnemy.transform;
                 }              
              }
+             
             
                                                             
         }
@@ -123,8 +125,7 @@ public class attackEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);  
-         
+          
         if(spinner != null)
         {
             SpinBarrel();
@@ -156,10 +157,10 @@ public class attackEnemy : MonoBehaviour
                 {
                     Vector3 rotation = Quaternion.Lerp(rotatingPart.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
                     rotatingPart.rotation = Quaternion.Euler(0f, rotation.y, 0f);
-
                 }
             }
         }
+        
         if (fireCountdown <= 0f)
         {
 

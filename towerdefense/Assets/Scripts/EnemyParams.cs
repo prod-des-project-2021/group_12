@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyParams : MonoBehaviour
 {
     
-    [HideInInspector] public float health;
+    public float health;
     [HideInInspector] public float speed;
     public float startHealth;
     public float startSpeed;

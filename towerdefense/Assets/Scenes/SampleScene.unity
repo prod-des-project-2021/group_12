@@ -1249,10 +1249,6 @@ PrefabInstance:
       value: Shopmenu
       objectReference: {fileID: 0}
     - target: {fileID: 4127092524466587565, guid: 76c911762a5172f4ebc432f869f89b8e, type: 3}
-<<<<<<< HEAD
-      propertyPath: m_IsActive
-      value: 1
-=======
       propertyPath: m_TagString
       value: shopMenu
       objectReference: {fileID: 0}
@@ -1267,7 +1263,6 @@ PrefabInstance:
     - target: {fileID: 8260192206270399542, guid: 76c911762a5172f4ebc432f869f89b8e, type: 3}
       propertyPath: m_Text
       value: Start game
->>>>>>> main
       objectReference: {fileID: 0}
     - target: {fileID: 8321252292915688545, guid: 76c911762a5172f4ebc432f869f89b8e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target

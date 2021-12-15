@@ -21,7 +21,7 @@ public class SpawnEnemy : MonoBehaviour
 
 
 
-public bool gameHasStarted = false;
+    public bool gameHasStarted = false;
     int vuoro = 0;
     int bossTurn = 0;
     private bool enemiesDead;
@@ -36,23 +36,8 @@ public bool gameHasStarted = false;
 
     void Start()
     {
-<<<<<<< HEAD
-        findShopMenu = GameObject.Find("Shopmenu");
-        if(findShopMenu != null)
-        {
-            findShopMenu.transform.GetChild(0).GetChild(0).GetComponent<Button>().onClick.AddListener(StartGameButtonClicked);
-        }
-        if (SceneManager.GetActiveScene().name == "MainMenu")
-        {
-            startGameButtonClicked = true;
-        }
-
-            spawnPoints[0] = GameObject.Find("Spawn 1");
-=======
-       
-       spawnEnemyInstance = this;
+        spawnEnemyInstance = this;
         spawnPoints[0] = GameObject.Find("Spawn 1");
->>>>>>> main
         spawnPoints[1] = GameObject.Find("Spawn 2");
         spawnPoints[2] = GameObject.Find("Spawn 3");
         
@@ -61,12 +46,8 @@ public bool gameHasStarted = false;
  
     void Update()
     {
-<<<<<<< HEAD
-        
-        if (startGameButtonClicked && enemiesHaveSpawned)
-=======
+
         if (startGameButtonClicked && !enemiesHaveSpawned)
->>>>>>> main
         {
 
              if (!gameHasStarted)
@@ -172,7 +153,7 @@ public bool gameHasStarted = false;
         {
             for (int i = 0; i < enemiesPerLevel; i++)
             {
-         SpawnSingleEnemy(vuoro);
+                SpawnSingleEnemy(vuoro);
                 if (vuoro == 0) vuoro++;
                 else if (vuoro == 1) vuoro++;
                 else if (vuoro == 2) vuoro++;
@@ -194,7 +175,7 @@ public bool gameHasStarted = false;
          
          if(enemy.name.Contains("Enemy 4")){
              enemy.GetComponent<MeshRenderer>().enabled = false;
-           enemy.transform.GetChild(0).GetComponent<Canvas>().enabled = false;
+            enemy.transform.GetChild(0).GetComponent<Canvas>().enabled = false;
           
          }
         }  

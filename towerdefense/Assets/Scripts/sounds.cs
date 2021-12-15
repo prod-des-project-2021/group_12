@@ -19,6 +19,7 @@ public class sounds : MonoBehaviour
 public AudioSource enemyDeathSound;
 
     public AudioSource buildingSound;
+    public AudioSource sellingSound;
 
     public void playTankFireSound()
 {
@@ -56,6 +57,9 @@ public void playBuildingSound()
         buildingSound.Play();
     }
 
-
+public void playSellingSound()
+    {
+        sellingSound.Play();
+    }
 
 }

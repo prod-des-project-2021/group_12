@@ -23,6 +23,8 @@ public class UpgradeUI : MonoBehaviour
     public GameObject upgradedMinigun;
     public GameObject upgradedZap;
 
+    
+
 
     // Start is called before the first frame update
     void Start()
@@ -220,6 +222,11 @@ public class UpgradeUI : MonoBehaviour
     public void sellTurret()
     {
         attackEnemy lvl = selectedTower.GetComponent<attackEnemy>();
+        GameObject sellSound = GameObject.FindGameObjectWithTag("turretSounds");
+
+        GameObject sellingEffect = Instantiate(BuildManager.buildInstance.sellEffect, selectedTower.transform.position, Quaternion.Euler(new Vector3(selectedTower.transform.rotation.x - 90.0f, selectedTower.transform.rotation.y, selectedTower.transform.rotation.z)));
+        Destroy(sellingEffect, 2f);
+        sellSound.GetComponent<sounds>().playSellingSound();
 
         turretTag = selectedTower.transform.tag;
         switch (turretTag)

@@ -55,7 +55,7 @@ public class SpawnTurrets : MonoBehaviour
             {
                 Debug.Log(hit.transform.tag);
                 turret = Instantiate(turretToBuild, new Vector3(hit.point.x, hit.point.y + turret.transform.position.y, hit.point.z), Quaternion.identity);
-                GameObject buildingEffect = (GameObject)Instantiate(buildManager.buildEffect, turret.transform.position, turret.transform.rotation);
+                GameObject buildingEffect = (GameObject)Instantiate(buildManager.buildEffect, turret.transform.position,Quaternion.Euler(new Vector3(turret.transform.rotation.x - 90.0f, turret.transform.rotation.y, turret.transform.rotation.z)));
                 Destroy(buildingEffect, 2f);
                 buildingSound.GetComponent<sounds>().playBuildingSound();
                 BuildManager.buildInstance.SetTurretToBuild(null);

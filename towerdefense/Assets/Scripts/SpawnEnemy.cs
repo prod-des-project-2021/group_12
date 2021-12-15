@@ -16,9 +16,11 @@ public class SpawnEnemy : MonoBehaviour
 
     private Button startGameButton;
     private GameObject findShopMenu;
-    bool startGameButtonClicked = false;
+    public bool startGameButtonClicked = false;
 
-bool gameHasStarted = false;
+
+
+public bool gameHasStarted = false;
     int vuoro = 0;
     int bossTurn = 0;
     private bool enemiesDead;
@@ -27,37 +29,38 @@ bool gameHasStarted = false;
 
     private int enemiesPerLevel = 5;
     
-    bool enemiesHaveSpawned = true;
+    bool enemiesHaveSpawned = false;
     bool timeForNewRound = false;
     Coroutine ws, ld;
 
     void Start()
     {
-        findShopMenu = GameObject.Find("Shopmenu");
-        findShopMenu.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(StartGameButtonClicked);
        
+       spawnEnemyInstance = this;
         spawnPoints[0] = GameObject.Find("Spawn 1");
         spawnPoints[1] = GameObject.Find("Spawn 2");
         spawnPoints[2] = GameObject.Find("Spawn 3");
-        //StartGame();
+        
     }
 
  
     void Update()
     {
-        if (startGameButtonClicked && enemiesHaveSpawned)
+        if (startGameButtonClicked && !enemiesHaveSpawned)
         {
+
              if (!gameHasStarted)
             {
                 StartGame();
                 gameHasStarted = true;
                 GameEngine.gameInstance.StartGameTimer();
+                 startGameButtonClicked = false;
             }
             else
             {
                 timeForNewRound = true;
             }
-            startGameButtonClicked = false;
+           
             
         }
         if (GameObject.FindGameObjectsWithTag("mob") == null || GameObject.FindGameObjectsWithTag("mob").Length == 0)
@@ -73,9 +76,6 @@ bool gameHasStarted = false;
             GameEngine.gameInstance.StopGameTimer();      
         }
 
-    }
-    public void StartGameButtonClicked(){
-      startGameButtonClicked = true;
     }
     void StartGame()
     {
@@ -129,7 +129,7 @@ bool gameHasStarted = false;
        // Debug.Log("level: "+ GameEngine.gameInstance.level);
        // Debug.Log("difficulty: " + GameEngine.gameInstance.difficulty);
         
-        enemiesHaveSpawned = false;
+        enemiesHaveSpawned = true;
          if (GameEngine.gameInstance.level % 10 == 0)
         {
             float normalDifficulty = GameEngine.gameInstance.difficulty;
@@ -159,7 +159,7 @@ bool gameHasStarted = false;
 
             }
         }
-        enemiesHaveSpawned = true;
+        //enemiesHaveSpawned = true;
         ws = StartCoroutine(WaveStarter());
 
 

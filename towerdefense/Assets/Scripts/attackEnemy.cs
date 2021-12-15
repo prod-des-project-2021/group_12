@@ -71,14 +71,17 @@ public class attackEnemy : MonoBehaviour
 
                    // Debug.Log("attack nearest enemy");
                      if (nearestEnemy != null && shortestDistance <= attackRange && nearestEnemy.GetComponent<MeshRenderer>().enabled)
-                {                  
+                {                
+                    Debug.Log("derpaderp");  
                          target = nearestEnemy.transform; 
-                                          
-                }if(nearestEnemy != null && shortestDistance> attackRange){
-                    target =null;
-                }if(nearestEnemy!= null && !nearestEnemy.GetComponent<MeshRenderer>().enabled && enemy.GetComponent<MeshRenderer>().enabled){
+                }                        
+                if(nearestEnemy!= null && !nearestEnemy.GetComponent<MeshRenderer>().enabled &&
+                 enemy.GetComponent<MeshRenderer>().enabled && 
+                 distanceToEnemy <= attackRange){
+                     Debug.Log("höhööö");
                     target = enemy.transform;
                 }
+               
                 }
                 
                  // hp:n määrän mukaan target
@@ -97,6 +100,7 @@ public class attackEnemy : MonoBehaviour
                     target = nearestEnemy.transform;
                 }              
              }
+             
             
                                                             
         }
@@ -121,8 +125,7 @@ public class attackEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);  
-         
+          
         if(spinner != null)
         {
             SpinBarrel();
@@ -148,13 +151,17 @@ public class attackEnemy : MonoBehaviour
             {
                
                 Vector3 direction = target.position - transform.position;
+                float range = Vector3.Distance( transform.position,target.transform.position);
                 Quaternion lookRotation = Quaternion.LookRotation(direction);
+
+                 if(range <= attackRange){
                 Vector3 rotation = Quaternion.Lerp(rotatingPart.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
                 rotatingPart.rotation = Quaternion.Euler(0f, rotation.y, 0f);
-               
+                 }
             }
             
         }
+        
         if (fireCountdown <= 0f)
         {
 

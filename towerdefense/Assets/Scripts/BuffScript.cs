@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 public class BuffScript : MonoBehaviour
 {
     public float buffTowerRange = 50f;
@@ -6,7 +7,7 @@ public class BuffScript : MonoBehaviour
     public float rangeBuffPercent = 1.1f;
 
     Collider[] exColliders;
-    int collidersLenght;
+    List<GameObject> turretsInRange = new List<GameObject>();
 
     private void OnDrawGizmosSelected()
     {
@@ -15,48 +16,42 @@ public class BuffScript : MonoBehaviour
 
     void Update()
     {
-        
         exColliders = Physics.OverlapSphere(transform.position, buffTowerRange);
-        if (exColliders.Length > collidersLenght)
+        for (int i = 0; i < exColliders.Length; i++)
         {
-            BuffTowers(exColliders.Length-1);
+            if (exColliders[i].name == "Tank(Clone)" || 
+                exColliders[i].name == "Minigun(Clone)" || 
+                exColliders[i].name == "MissileLauncher(Clone)" || 
+                exColliders[i].name == "ZapTower(Clone)")
+            {
+                if (turretsInRange.Count == 0)
+                {
+                    turretsInRange.Add(exColliders[i].gameObject);
+                    BuffTowers(exColliders[i].gameObject);
+                }
+                else
+                {
+                    if (!turretsInRange.Contains(exColliders[i].gameObject))
+                    {
+                        turretsInRange.Add(exColliders[i].gameObject);
+                        BuffTowers(exColliders[i].gameObject);
+                    }
+                }
+            }
         }
     }
-    void BuffTowers(int lenght)
+
+    void BuffTowers(GameObject tower)
     {
-        exColliders = Physics.OverlapSphere(transform.position, buffTowerRange);
-        collidersLenght = exColliders.Length;
-        for (int i = lenght; i < exColliders.Length; i++)
+        if (!tower.name.Contains("ZapTower(Clone)"))
         {
-            
-            if (exColliders[i].name.Contains("Minigun(Clone)"))
-            {
-                exColliders[i].gameObject.GetComponent<attackEnemy>().damage *= damageBuffPercent;
-                exColliders[i].gameObject.GetComponent<attackEnemy>().attackRange *= rangeBuffPercent;
-
-            }
-            if (exColliders[i].name.Contains("Tank(Clone)"))
-            {
-                exColliders[i].gameObject.GetComponent<attackEnemy>().damage *= damageBuffPercent;
-                exColliders[i].gameObject.GetComponent<attackEnemy>().attackRange *= rangeBuffPercent;
-            }
-            if (exColliders[i].name.Contains("MissileLauncher(Clone)"))
-            {
-                exColliders[i].gameObject.GetComponent<attackEnemy>().damage *= damageBuffPercent;
-                exColliders[i].gameObject.GetComponent<attackEnemy>().attackRange *= rangeBuffPercent;
-            }
-            if (exColliders[i].name.Contains("ZapTower(Clone)"))
-            {
-                exColliders[i].gameObject.GetComponent<attackEnemy>().damage *= damageBuffPercent;
-            }
+            tower.GetComponent<attackEnemy>().damage *= damageBuffPercent;
+            tower.GetComponent<attackEnemy>().attackRange *= rangeBuffPercent;
         }
-
-
-    }
-
-    void Awake()
-    {
-        BuffTowers(0);
+        else
+        {
+            tower.GetComponent<attackEnemy>().damage *= damageBuffPercent;
+        }
     }
 
 }

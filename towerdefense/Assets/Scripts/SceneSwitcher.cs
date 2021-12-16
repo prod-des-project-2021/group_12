@@ -18,10 +18,14 @@ public class SceneSwitcher : MonoBehaviour
    
  public void fadeToLevel (int levelIndex)
     {
+        Time.timeScale = 1f;
         fadeToNextLevelStarted = true;
          levelToLoad = levelIndex;
+         if(animator != null && animator.isActiveAndEnabled){
+             Debug.Log(levelToLoad);
          animator.SetTrigger("fadeOut");
-         
+         Debug.Log("fadettamassa");
+         }
        
     }
 
@@ -29,15 +33,21 @@ public class SceneSwitcher : MonoBehaviour
     public void fadeToNextLevel()
     {
         fadeToLevel(SceneManager.GetActiveScene().buildIndex + 1);
+        
     }
 
     public void onFadeComplete()
     {
+        Debug.Log("fadecomplete");
+
+        Debug.Log(levelToLoad);
         SceneManager.LoadScene(levelToLoad);
         fadeToNextLevelStarted = false;
+        
     }
     public void QuitGame()
     {
+         Time.timeScale = 1f;
         Application.Quit();
         Debug.Log("Quit");
     }

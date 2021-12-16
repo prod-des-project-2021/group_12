@@ -8,7 +8,6 @@ public class GameEngine : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
-    public GameObject shopMenuUI;
     public GameObject playerUI;
     public GameObject endScreenUI;
     public int playerHealth = 100;
@@ -66,10 +65,15 @@ public class GameEngine : MonoBehaviour
 
     private void Start()
     {
+
+        findShopMenu = GameObject.Find("Shopmenu");
+
+        if (findShopMenu != null)
+        {
+            findShopMenu.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(doubleSpeedButtonClicked);
+            findShopMenu.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(StartGameButtonClicked);
+        }
         
-       findShopMenu = GameObject.Find("Shopmenu");
-        findShopMenu.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(doubleSpeedButtonClicked);
-        findShopMenu.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(StartGameButtonClicked);
     }
 
 	private void StartGameButtonClicked()
@@ -78,7 +82,6 @@ public class GameEngine : MonoBehaviour
 		 {
 			 Time.timeScale = 1f;    
 			SpawnEnemy.spawnEnemyInstance.startGameButtonClicked = true;
-			Debug.Log("booli "+ SpawnEnemy.spawnEnemyInstance.startGameButtonClicked);
 			 findShopMenu.transform.GetChild(1).GetComponentInChildren<Text>().text = "Pause";        
 		 }else
 		 {
@@ -232,7 +235,7 @@ public class GameEngine : MonoBehaviour
 
     public void Resume()
     {
-        shopMenuUI.SetActive(true);
+        findShopMenu.SetActive(true);
         pauseMenuUI.SetActive(false);
         playerUI.SetActive(true);
         Time.timeScale = 1f;
@@ -247,14 +250,14 @@ public class GameEngine : MonoBehaviour
 
     public void Menu()
     {
-        shopMenuUI.SetActive(false);
+        findShopMenu.SetActive(false);
         pauseMenuUI.SetActive(false);
         playerUI.SetActive(false);
         endScreenUI.SetActive(false);
     }
     void Pause()
     {
-        shopMenuUI.SetActive(false);
+        findShopMenu.SetActive(false);
         pauseMenuUI.SetActive(true);
         playerUI.SetActive(false);
         Time.timeScale = 0f;
@@ -271,7 +274,7 @@ public class GameEngine : MonoBehaviour
     public void GameWon()
     {
         gameRunning = false;
-        shopMenuUI.SetActive(false);
+        findShopMenu.SetActive(false);
         endScreenUI.SetActive(true);
         endScreenUI.transform.Find("EndMenu").transform.Find("Results").transform.Find("WinTXT").gameObject.SetActive(true);
         endScreenUI.transform.Find("EndMenu").transform.Find("Results").transform.Find("Score").transform.Find("ScoreTXT").gameObject.GetComponent<UnityEngine.UI.Text>().text = score.ToString();
@@ -286,7 +289,7 @@ public class GameEngine : MonoBehaviour
         gameRunning = false;
         gameLost = true;
         StopGameTimer();
-        shopMenuUI.SetActive(false);
+        findShopMenu.SetActive(false);
         endScreenUI.SetActive(true);
         endScreenUI.transform.Find("EndMenu").transform.Find("Results").transform.Find("LoseTXT").gameObject.SetActive(true);
         endScreenUI.transform.Find("EndMenu").transform.Find("Results").transform.Find("Score").transform.Find("ScoreTXT").gameObject.GetComponent<UnityEngine.UI.Text>().text = score.ToString();

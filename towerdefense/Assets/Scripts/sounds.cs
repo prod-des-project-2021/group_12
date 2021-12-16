@@ -96,11 +96,9 @@ public static IEnumerator fadeIn ( AudioSource audioSource, float fadeTime) {
         if(SceneManager.GetActiveScene().name == "MainMenu"){
            
            if(!mainMenuBackgroundMusic.isPlaying){
-               Debug.Log("ppööö");
            fadeInMainmenuMusic = fadeIn(mainMenuBackgroundMusic, 3f);
            StartCoroutine(fadeInMainmenuMusic);
            }
-           Debug.Log("started "+ SceneSwitcher.switcherInstance.fadeToNextLevelStarted);
            if(SceneSwitcher.switcherInstance.fadeToNextLevelStarted && count == 0)
     {
         StopCoroutine(fadeInMainmenuMusic);

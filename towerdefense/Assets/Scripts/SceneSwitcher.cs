@@ -19,7 +19,6 @@ public class SceneSwitcher : MonoBehaviour
    
     public void fadeToLevel (int levelIndex)
     {
-        Time.timeScale = 1f;
         fadeToNextLevelStarted = true;
          levelToLoad = levelIndex;
          if(animator != null && animator.isActiveAndEnabled){

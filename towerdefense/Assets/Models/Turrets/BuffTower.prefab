@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9097121170609456461}
   m_Layer: 0
   m_Name: Platform
-  m_TagString: Untagged
+  m_TagString: buff
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 7660381945639760957}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: buff
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -202,9 +202,10 @@ GameObject:
   - component: {fileID: 3541089593460349587}
   - component: {fileID: 814139642162792761}
   - component: {fileID: 4490996362996925263}
+  - component: {fileID: 6223673160954386439}
   m_Layer: 0
   m_Name: BuffTower
-  m_TagString: buffTower
+  m_TagString: buff
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -254,3 +255,16 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &6223673160954386439
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6662130691485510126}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 20.904932, y: 12.180104, z: 21.178932}
+  m_Center: {x: 0.08381176, y: 5.590051, z: 0.2082653}

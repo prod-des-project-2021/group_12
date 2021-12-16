@@ -1828,6 +1828,8 @@ MonoBehaviour:
   sentry: {fileID: 7075371863645137089, guid: 58a2f3dc1d84716b0884313675a2151f, type: 3}
   zapPrefab: {fileID: 1345896706979141856, guid: 3f34f35d4a904fb4c910c2ec5d2d0db6, type: 3}
   buffPrefab: {fileID: 6662130691485510126, guid: 85daf398404bc2641873fb257ecfbdd9, type: 3}
+  buildEffect: {fileID: 1282036799583891211, guid: 3a2ffa6c576ba9447bc1b3f060916e06, type: 3}
+  sellEffect: {fileID: 3995582325291694233, guid: 52cb3d03d09d87d468c229f31e0e18df, type: 3}
 --- !u!1 &4127092524594077003
 GameObject:
   m_ObjectHideFlags: 0
@@ -2314,7 +2316,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 829, y: 218}
+  m_AnchoredPosition: {x: 1704.6221, y: 218}
   m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2510004126071017392

@@ -6,12 +6,10 @@ using UnityEngine.EventSystems;
 public class SpawnTurrets : MonoBehaviour
 {
 
-    public GameObject turret;
+    public GameObject turret = null;
     private Camera cam = null;
     BuildManager buildManager;
     public static GameEngine spawnTurretInstance;
-    
-
 
     // Start is called before the first frame update
     void Start()
@@ -24,8 +22,9 @@ public class SpawnTurrets : MonoBehaviour
     void Update()
     {
         SpawnAtMousePos();
-        if(turret != null){
+        if (turret != null){
             turret = BuildManager.buildInstance.sentry;
+            
         }
     }
 
@@ -33,6 +32,7 @@ public class SpawnTurrets : MonoBehaviour
     private void SpawnAtMousePos()
     {
         GameObject turretToBuild = BuildManager.buildInstance.GetTurretToBuild();
+        GameObject buildingSound = GameObject.FindGameObjectWithTag("turretSounds");
 
         if (buildManager.GetTurretToBuild() == null)
         {
@@ -54,6 +54,9 @@ public class SpawnTurrets : MonoBehaviour
             if (Physics.Raycast(ray, out hit) && hit.transform.tag == "Spawn area")
             {
                 turret = Instantiate(turretToBuild, new Vector3(hit.point.x, hit.point.y + turret.transform.position.y, hit.point.z), Quaternion.identity);
+                GameObject buildingEffect = (GameObject)Instantiate(buildManager.buildEffect, turret.transform.position,Quaternion.Euler(new Vector3(turret.transform.rotation.x - 90.0f, turret.transform.rotation.y, turret.transform.rotation.z)));
+                Destroy(buildingEffect, 2f);
+                buildingSound.GetComponent<sounds>().playBuildingSound();
                 BuildManager.buildInstance.SetTurretToBuild(null);
             }
 

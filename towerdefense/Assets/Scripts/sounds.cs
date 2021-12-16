@@ -17,7 +17,12 @@ public class sounds : MonoBehaviour
     public AudioSource sniperFireSound;
     public AudioSource zapTowerSound;
 
+
+
 public AudioSource enemyDeathSound;
+
+    public AudioSource buildingSound;
+    public AudioSource sellingSound;
 
 public AudioSource mainMenuBackgroundMusic;
 public AudioSource firstmapBackgroundMusic;
@@ -54,6 +59,16 @@ public void playEnemyDeathSound()
 {
     enemyDeathSound.Play();
 }
+
+public void playBuildingSound()
+    {
+        buildingSound.Play();
+    }
+
+public void playSellingSound()
+    {
+        sellingSound.Play();
+    }
 int count = 0;
 IEnumerator fadeInMainmenuMusic;
 private void Start() {
@@ -119,8 +134,6 @@ public static IEnumerator fadeIn ( AudioSource audioSource, float fadeTime) {
                }
             
         }
-
     }
-
 
 }

@@ -262,6 +262,7 @@ MonoBehaviour:
   enemyPathSpawnTag: spawnLine
   sentryTag: sentry
   attackRange: 100
+  auraTurretLvl: 1
 --- !u!65 &5320106058282902552
 BoxCollider:
   m_ObjectHideFlags: 0

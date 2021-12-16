@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyParams : MonoBehaviour
 {
     
-    [HideInInspector] public float health;
+    public float health;
     [HideInInspector] public float speed;
     public float startHealth;
     public float startSpeed;
@@ -17,6 +17,7 @@ public class EnemyParams : MonoBehaviour
     {
         enemyParamsInstance = this;
         health = startHealth * GameEngine.gameInstance.difficulty;
+        startHealth = startHealth * GameEngine.gameInstance.difficulty;
         if (startSpeed * GameEngine.gameInstance.difficulty < maxSpeed)
         {
             speed = startSpeed * GameEngine.gameInstance.difficulty;

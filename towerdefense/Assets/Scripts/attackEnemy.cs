@@ -65,23 +65,27 @@ public class attackEnemy : MonoBehaviour
                 nearestEnemy = enemy;
                 
                  }
-                //turrettia lähinnä
-                if (attackNearestEnemy)
+            //turrettia lähinnä
+            if (attackNearestEnemy)
+            {
+
+                // Debug.Log("attack nearest enemy");
+                if (nearestEnemy != null && shortestDistance <= attackRange && nearestEnemy.GetComponent<MeshRenderer>().enabled)
                 {
-
-                   // Debug.Log("attack nearest enemy");
-                     if (nearestEnemy != null && shortestDistance <= attackRange && nearestEnemy.GetComponent<MeshRenderer>().enabled)
-                {                  
-                         target = nearestEnemy.transform; 
-                                          
-                }if(nearestEnemy != null && shortestDistance> attackRange){
-                    target =null;
+                    target = nearestEnemy.transform;
                 }
+                if (nearestEnemy != null && !nearestEnemy.GetComponent<MeshRenderer>().enabled &&
+                    enemy.GetComponent<MeshRenderer>().enabled &&
+                    distanceToEnemy <= attackRange)
+                {
+                    target = enemy.transform;
 
                 }
-                
-                 // hp:n määrän mukaan target
-                 if(attackStrongestEnemy){
+
+            }
+
+            // hp:n määrän mukaan target
+            if (attackStrongestEnemy){
                      Debug.Log("stronk valittu");
 
                 if(maxHpEnemy < enemy.GetComponent<EnemyParams>().startHealth){
@@ -96,6 +100,7 @@ public class attackEnemy : MonoBehaviour
                     target = nearestEnemy.transform;
                 }              
              }
+             
             
                                                             
         }
@@ -120,9 +125,8 @@ public class attackEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
-
-        if (spinner != null)
+          
+        if(spinner != null)
         {
             SpinBarrel();
         }
@@ -147,16 +151,18 @@ public class attackEnemy : MonoBehaviour
             {
 
                 Vector3 direction = target.position - transform.position;
-                float range = Vector3.Distance(transform.position, target.transform.position);
+
+                float range = Vector3.Distance(transform.position,target.transform.position);
+
                 Quaternion lookRotation = Quaternion.LookRotation(direction);
                 if (range <= attackRange)
                 {
                     Vector3 rotation = Quaternion.Lerp(rotatingPart.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
                     rotatingPart.rotation = Quaternion.Euler(0f, rotation.y, 0f);
-
                 }
             }
         }
+        
         if (fireCountdown <= 0f)
         {
 

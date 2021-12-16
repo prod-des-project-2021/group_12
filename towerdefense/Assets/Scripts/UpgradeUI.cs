@@ -322,7 +322,7 @@ public class UpgradeUI : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 turretTag = hit.transform.tag;
-
+                Debug.Log("mita painetaan " + turretTag);
                 switch (turretTag)
                 {
                     case "Tank":

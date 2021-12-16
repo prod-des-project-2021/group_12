@@ -284,11 +284,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tankUI: {fileID: 6279363770572691463}
-  upgradedTank: {fileID: 4312267498137206010, guid: c3ab0637397654d43beca50d22adb16e, type: 3}
   turretRange: {fileID: 0}
   selectedTower: {fileID: 0}
   upgradeCost: {fileID: 554379300144000820}
   sellAmount: {fileID: 4335315252952811176}
+  upgradeButton: {fileID: 6279363769738107922}
+  upgradedTank: {fileID: 4312267498137206010, guid: c3ab0637397654d43beca50d22adb16e, type: 3}
+  upgradedMissile: {fileID: 5233313142690846348, guid: fe904b91ffafeb24e97f9b6178cbdc71, type: 3}
+  upgradedMinigun: {fileID: 6985778404157880432, guid: 6b851384970e88e4fb753377532bda31, type: 3}
+  upgradedZap: {fileID: 5473193742079761416, guid: f9a2f33ea6a5215468e61f62fbcc03ec, type: 3}
 --- !u!1 &6279363769615692258
 GameObject:
   m_ObjectHideFlags: 0

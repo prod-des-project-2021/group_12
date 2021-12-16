@@ -18,43 +18,52 @@ public class sounds : MonoBehaviour
     public AudioSource zapTowerSound;
 
     public AudioSource enemyDeathSound;
-
+	public AudioSource buildingSound;
+    public AudioSource sellingSound;
     public AudioSource mainMenuBackgroundMusic;
     public AudioSource firstmapBackgroundMusic;
 
 
     public void playTankFireSound()
     {
-            if (tankFireSound != null) tankFireSound.Play();
+        if (tankFireSound != null) tankFireSound.Play();
     }
     public void playMissileFireSound()
     {
-            if (missileFireSound != null) missileFireSound.Play();
+        if (missileFireSound != null) missileFireSound.Play();
     }
     public void playMissileExplosionSound(){
-
-            if (missileHitSound != null) missileHitSound.Play();
+        if (missileHitSound != null) missileHitSound.Play();
     }
     public void playMinigunSpinSound(){
-            if (minigunSpinSound != null) minigunSpinSound.Play();
+        if (minigunSpinSound != null) minigunSpinSound.Play();
     }
     public void playMinigunFireSound()
     {
-            if (minigunFireSound != null) minigunFireSound.Play();
+        if (minigunFireSound != null) minigunFireSound.Play();
     }
     public void playSniperFireSound()
     {
-            if (sniperFireSound != null) sniperFireSound.Play();
+        if (sniperFireSound != null) sniperFireSound.Play();
     }
     public void playZapTowerFireSound()
     {
-            if (zapTowerSound != null) zapTowerSound.Play();
+        if (zapTowerSound != null) zapTowerSound.Play();
     }
     public void playEnemyDeathSound()
     {
-            if(enemyDeathSound != null) enemyDeathSound.Play();
+        if(enemyDeathSound != null) enemyDeathSound.Play();
 
-        }
+    }
+	public void playBuildingSound()
+    {
+        if(buildingSound != null) buildingSound.Play();
+    }
+
+	public void playSellingSound()
+    {
+        if(sellingSound != null) sellingSound.Play();
+    }
     int count = 0;
     IEnumerator fadeInMainmenuMusic;
     private void Start() {
@@ -96,32 +105,30 @@ public class sounds : MonoBehaviour
         {
             if(SceneManager.GetActiveScene().name == "MainMenu"){
            
-               if(!mainMenuBackgroundMusic.isPlaying){
+            if(!mainMenuBackgroundMusic.isPlaying){
                fadeInMainmenuMusic = fadeIn(mainMenuBackgroundMusic, 3f);
                StartCoroutine(fadeInMainmenuMusic);
-               }
-               if(SceneSwitcher.switcherInstance.fadeToNextLevelStarted && count == 0)
-        {
-            StopCoroutine(fadeInMainmenuMusic);
-            IEnumerator fadeOutMainmenuMusic = fadeOut(mainMenuBackgroundMusic, 1f);
-            StartCoroutine(fadeOutMainmenuMusic);
-             count++;
-        }
+            }
+            if(SceneSwitcher.switcherInstance.fadeToNextLevelStarted && count == 0)
+			{
+				StopCoroutine(fadeInMainmenuMusic);
+				IEnumerator fadeOutMainmenuMusic = fadeOut(mainMenuBackgroundMusic, 1f);
+				StartCoroutine(fadeOutMainmenuMusic);
+				 count++;
+			}
            
             }
         
             if(SceneManager.GetActiveScene().name == "FirstMap"){
 
-                   if(!firstmapBackgroundMusic.isPlaying)
-                   {  
-                IEnumerator fadeInFirstMapMusic = fadeIn(firstmapBackgroundMusic, 3f);
+                if(!firstmapBackgroundMusic.isPlaying)
+                {  
+					IEnumerator fadeInFirstMapMusic = fadeIn(firstmapBackgroundMusic, 3f);
+					StartCoroutine(fadeInFirstMapMusic);
+                }
             
-                StartCoroutine(fadeInFirstMapMusic);
-                   }
-            
-            }
 
-        }
-
+			}
+		}
 
 }

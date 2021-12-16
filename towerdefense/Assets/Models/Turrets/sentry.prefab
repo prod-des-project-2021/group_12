@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6541429995364765182}
   m_Layer: 0
   m_Name: Eye
-  m_TagString: Untagged
+  m_TagString: sentry
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 7049486312977832359}
   - component: {fileID: -7706207840041349700}
   - component: {fileID: 1220988521229549325}
+  - component: {fileID: 5320106058282902552}
   m_Layer: 0
   m_Name: sentry
   m_TagString: sentry
@@ -261,6 +262,20 @@ MonoBehaviour:
   enemyPathSpawnTag: spawnLine
   sentryTag: sentry
   attackRange: 100
+  auraTurretLvl: 1
+--- !u!65 &5320106058282902552
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7075371863645137089}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.72222, y: 3.412895, z: 1.5275161}
+  m_Center: {x: -0.028894823, y: 0.7064484, z: -0.021071276}
 --- !u!1 &7281349956704086719
 GameObject:
   m_ObjectHideFlags: 0

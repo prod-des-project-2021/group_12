@@ -15,6 +15,9 @@ public class BuildManager : MonoBehaviour
     public GameObject buffPrefab;
     private GameObject turretToBuild;
 
+    public GameObject buildEffect;
+    public GameObject sellEffect;
+
     
     private void Awake()
     {

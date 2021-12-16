@@ -3,28 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - mob
-  - Tower
-  - Spawn area
-  - uiArea
-  - finishLine
-  - spawnLine
-  - Tank
-  - MissileLauncher
-  - Minigun
-  - sentry
-  - ZapTower
-  - sentry
-  - placeholder
-  - tankSound
-  - turretSounds
-  - startGameButton
-<<<<<<< HEAD
-  - buffTower
-=======
-  - shopMenu
->>>>>>> main
+  tags: []
   layers:
   - Default
   - TransparentFX

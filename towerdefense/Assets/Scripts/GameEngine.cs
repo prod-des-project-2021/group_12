@@ -78,7 +78,7 @@ public class GameEngine : MonoBehaviour
 		 {
 			 Time.timeScale = 1f;    
 			SpawnEnemy.spawnEnemyInstance.startGameButtonClicked = true;
-			Debug.Log("booli "+ SpawnEnemy.spawnEnemyInstance.startGameButtonClicked);
+			
 			 findShopMenu.transform.GetChild(1).GetComponentInChildren<Text>().text = "Pause";        
 		 }else
 		 {
@@ -92,13 +92,18 @@ public class GameEngine : MonoBehaviour
     {
         if(findShopMenu.transform.GetChild(2).GetComponentInChildren<Text>().text == "2x speed")
         {
+            if(findShopMenu.transform.GetChild(1).GetComponentInChildren<Text>().text == "Pause")
+            {
         Time.timeScale = 2f;
         findShopMenu.transform.GetChild(2).GetComponentInChildren<Text>().text = "Normal speed";
+            }       
         }
         else 
         {
+            if(findShopMenu.transform.GetChild(1).GetComponentInChildren<Text>().text == "Pause"){
         Time.timeScale = 1f;
         findShopMenu.transform.GetChild(2).GetComponentInChildren<Text>().text = "2x speed";
+            }
         }
     }
     public void StartGameTimer()

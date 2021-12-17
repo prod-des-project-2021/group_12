@@ -13,7 +13,7 @@ public class BuffScript : MonoBehaviour
     {
         Gizmos.DrawWireSphere(transform.position, buffTowerRange);
     }
-
+    
     void Update()
     {
         exColliders = Physics.OverlapSphere(transform.position, buffTowerRange);
@@ -22,7 +22,11 @@ public class BuffScript : MonoBehaviour
             if (exColliders[i].name == "Tank(Clone)" || 
                 exColliders[i].name == "Minigun(Clone)" || 
                 exColliders[i].name == "MissileLauncher(Clone)" || 
-                exColliders[i].name == "ZapTower(Clone)")
+                exColliders[i].name == "ZapTower(Clone)" ||
+                exColliders[i].name == "megatank(Clone)" ||
+                exColliders[i].name == "Mega Zap(Clone)" ||
+                exColliders[i].name == "Mega Missile(Clone)" ||
+                exColliders[i].name == "Mega Minigun(Clone)")
             {
                 if (turretsInRange.Count == 0)
                 {
@@ -43,7 +47,7 @@ public class BuffScript : MonoBehaviour
 
     void BuffTowers(GameObject tower)
     {
-        if (!tower.name.Contains("ZapTower(Clone)"))
+        if (!tower.name.Contains("ZapTower(Clone)") || !tower.name.Contains("Mega Zap(Clone)"))
         {
             tower.GetComponent<attackEnemy>().damage *= damageBuffPercent;
             tower.GetComponent<attackEnemy>().attackRange *= rangeBuffPercent;

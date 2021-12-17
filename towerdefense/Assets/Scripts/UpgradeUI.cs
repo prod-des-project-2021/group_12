@@ -213,11 +213,12 @@ public class UpgradeUI : MonoBehaviour
     }
 
     //buff amount and range
-    /*  public void BuffUpgrade()
-      {
+    public void BuffUpgrade()
+    {
 
-      }
-    */
+    }
+
+    
 
     public void sellTurret()
     {

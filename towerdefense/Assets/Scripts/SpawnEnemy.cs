@@ -43,6 +43,11 @@ public class SpawnEnemy : MonoBehaviour
  
     void Update()
     {
+        if (SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            startGameButtonClicked = true;
+        }
+
 
         if (startGameButtonClicked && !enemiesHaveSpawned)
         {

@@ -742,7 +742,7 @@ GameObject:
   - component: {fileID: 6279363770572691461}
   - component: {fileID: 7749337810870090384}
   m_Layer: 0
-  m_Name: TankUpgradeMenu
+  m_Name: UpgradeMenu
   m_TagString: uiArea
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

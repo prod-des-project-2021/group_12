@@ -133,9 +133,13 @@ public class GameEngine : MonoBehaviour
         {
             if (GameIsPaused == true)
             {
-                if (endScreenUI.activeSelf) endScreenUI.SetActive(false);
-                else if (gameWon || gameLost) endScreenUI.SetActive(true);
-                else Resume();         
+                if(endScreenUI != null)
+                {
+                    if (endScreenUI.activeSelf) endScreenUI.SetActive(false);
+                    else if (gameWon || gameLost) endScreenUI.SetActive(true);
+                    else Resume();
+                }
+                      
             }
             else Pause();
 

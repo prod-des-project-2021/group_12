@@ -333,8 +333,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Back
-'
+  m_Text: 'Back '
 --- !u!222 &187307081
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -440,7 +439,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -405, y: -25}
+  m_AnchoredPosition: {x: -405, y: -103}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &557412320
@@ -1376,8 +1375,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Quit
-'
+  m_Text: 'Quit '
 --- !u!222 &1183522256
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1422,7 +1420,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -405, y: 167}
+  m_AnchoredPosition: {x: -405, y: 93}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1230411903
@@ -1682,6 +1680,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac6b67f123284764eba674a4887deedf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseMenuUI: {fileID: 0}
+  playerUI: {fileID: 0}
+  endScreenUI: {fileID: 0}
   playerHealth: 100
   money: 1000
   score: 0
@@ -1697,6 +1698,8 @@ MonoBehaviour:
   timeBetweenEnemies: 0.5
   bossWaveDifficulty: 2
   gameTime: 0
+  gameWon: 0
+  gameLost: 0
   minigunPrice: 0
   missileLauncherPrice: 0
   tankPrice: 0
@@ -1706,6 +1709,10 @@ MonoBehaviour:
   currentHealth: {fileID: 0}
   currentMoney: {fileID: 0}
   currentScore: {fileID: 0}
+  Map1Score: {fileID: 0}
+  Map2Score: {fileID: 0}
+  Map1Level: {fileID: 0}
+  Map2Level: {fileID: 0}
   pauseGameText: {fileID: 0}
 --- !u!1 &1802330095
 GameObject:
@@ -1985,8 +1992,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Select a level
-'
+  m_Text: 'Select a level '
 --- !u!222 &2065506476
 CanvasRenderer:
   m_ObjectHideFlags: 0

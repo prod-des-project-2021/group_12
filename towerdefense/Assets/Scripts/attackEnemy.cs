@@ -32,8 +32,8 @@ public class attackEnemy : MonoBehaviour
     float MaxSpinRate = 360;
 
     public int turretLvl = 1;
-    
 
+    public static attackEnemy attackInstance;
     
 
     private void updateTarget()

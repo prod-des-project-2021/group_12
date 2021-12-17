@@ -23,7 +23,7 @@ public class UpgradeUI : MonoBehaviour
     public GameObject upgradedMinigun;
     public GameObject upgradedZap;
 
-    
+    bool buff, aura, attackenemyTurret = false;
 
 
     // Start is called before the first frame update
@@ -39,24 +39,45 @@ public class UpgradeUI : MonoBehaviour
 
         if(selectedTower !=null)
         {
-            if (selectedTower.tag == "buff" | selectedTower.tag == "sentry")
+            if (selectedTower.tag == "sentry")
             {
                 auraTowers auraUpgrade = selectedTower.GetComponent<auraTowers>();
                 turretRange.gameObject.transform.localScale = new Vector3(auraUpgrade.attackRange * 2, 0.2f, auraUpgrade.attackRange * 2);
+                if(selectedTower.GetComponent<auraTowers>().auraTurretLvl < 5)
+                {
+                    upgradeButton.interactable = true;
+                }
+                else
+                {
+                    upgradeButton.interactable = false;
+                }
+            }
+            else if (selectedTower.tag == "buffTower")
+            {
+                BuffScript buffUpgrade = selectedTower.GetComponent<BuffScript>();
+                turretRange.gameObject.transform.localScale = new Vector3(buffUpgrade.buffTowerRange * 2, 0.2f, buffUpgrade.buffTowerRange * 2);
+
+                if (selectedTower.GetComponent<BuffScript>().buffLvl < 5)
+                {
+                    upgradeButton.interactable = true;
+                }
+                else
+                {
+                    upgradeButton.interactable = false;
+                }
             }
             else
             {
                 attackEnemy upgrade = selectedTower.GetComponent<attackEnemy>();
                 turretRange.gameObject.transform.localScale = new Vector3(upgrade.attackRange * 2, 0.2f, upgrade.attackRange * 2);
-            }
-
-            if (selectedTower.GetComponent<attackEnemy>().turretLvl < 5)
-            {
-                upgradeButton.interactable = true;
-            }
-            else
-            {
-                upgradeButton.interactable = false;
+                if (selectedTower.GetComponent<attackEnemy>().turretLvl < 5)
+                {
+                    upgradeButton.interactable = true;
+                }
+                else
+                {
+                    upgradeButton.interactable = false;
+                }
             }
         }
     }
@@ -215,7 +236,25 @@ public class UpgradeUI : MonoBehaviour
     //buff amount and range
     public void BuffUpgrade()
     {
+        BuffScript buffUpgrade = selectedTower.GetComponent<BuffScript>();
 
+        if (GameEngine.gameInstance.SpendMoney(GameEngine.gameInstance.sentryPrice * buffUpgrade.buffLvl))
+        {
+            buffUpgrade.damageBuffPercent += 0.1f;
+            buffUpgrade.buffLvl += 1;
+            Debug.Log("upgraded buff range " + buffUpgrade);
+            upgradeCost.text = "<b>$" + (GameEngine.gameInstance.buffTowerPrice * buffUpgrade.buffLvl).ToString() + "</b>";
+
+            if (buffUpgrade.buffLvl == 5)
+            {
+                //Destroy(selectedTower);
+
+            }
+        }
+        else
+        {
+            Debug.Log("No enough money for upgrade :(");
+        }
     }
 
     
@@ -257,7 +296,7 @@ public class UpgradeUI : MonoBehaviour
                 break;
 
             case "sentry":
-                GameEngine.gameInstance.AddMoney(GameEngine.gameInstance.sentryPrice * lvl.turretLvl / 2);
+                GameEngine.gameInstance.AddMoney(GameEngine.gameInstance.sentryPrice * selectedTower.GetComponent<auraTowers>().auraTurretLvl / 2);
                 tankUI.SetActive(false);
                 turretRange.SetActive(false);
                 Destroy(selectedTower);
@@ -266,6 +305,14 @@ public class UpgradeUI : MonoBehaviour
 
             case "Minigun":
                 GameEngine.gameInstance.AddMoney(GameEngine.gameInstance.minigunPrice * lvl.turretLvl / 2);
+                tankUI.SetActive(false);
+                turretRange.SetActive(false);
+                Destroy(selectedTower);
+                selectedTower = null;
+                break;
+
+            case "buffTower":
+                GameEngine.gameInstance.AddMoney(GameEngine.gameInstance.buffTowerPrice * selectedTower.GetComponent<BuffScript>().buffLvl / 2);
                 tankUI.SetActive(false);
                 turretRange.SetActive(false);
                 Destroy(selectedTower);
@@ -298,7 +345,7 @@ public class UpgradeUI : MonoBehaviour
 
             case "sentry":
                 SentryUpgrade();
-                sellAmount.text = "<b>$" + (GameEngine.gameInstance.sentryPrice * lvl.turretLvl / 2).ToString() + "</b>";
+                sellAmount.text = "<b>$" + (GameEngine.gameInstance.sentryPrice * selectedTower.GetComponent<auraTowers>().auraTurretLvl).ToString() + "</b>";
                 break;
 
             case "Minigun":
@@ -306,8 +353,10 @@ public class UpgradeUI : MonoBehaviour
                 sellAmount.text = "<b>$" + (GameEngine.gameInstance.minigunPrice * lvl.turretLvl / 2).ToString() + "</b>";
                 break;
 
-            //case "buff":
-              //  break;
+            case "buffTower":
+                BuffUpgrade();
+                sellAmount.text = "<b>$" + (GameEngine.gameInstance.buffTowerPrice * selectedTower.GetComponent<BuffScript>().buffLvl / 2).ToString() + "</b>";
+                break;
 
         }
     }
@@ -374,8 +423,8 @@ public class UpgradeUI : MonoBehaviour
                         transform.position = hit.transform.position;
                         selectedTower = hit.transform.gameObject;
 
-                        upgradeCost.text = "<b>$" + (GameEngine.gameInstance.sentryPrice * selectedTower.GetComponent<attackEnemy>().turretLvl).ToString() + "</b>";
-                        sellAmount.text = "<b>$" + ((GameEngine.gameInstance.sentryPrice * selectedTower.GetComponent<attackEnemy>().turretLvl) / 2).ToString() + "</b>";
+                        upgradeCost.text = "<b>$" + (GameEngine.gameInstance.sentryPrice * selectedTower.GetComponent<auraTowers>().auraTurretLvl).ToString() + "</b>";
+                        sellAmount.text = "<b>$" + ((GameEngine.gameInstance.sentryPrice * selectedTower.GetComponent<auraTowers>().auraTurretLvl) / 2).ToString() + "</b>";
                         break;
 
                     case "Minigun":
@@ -391,7 +440,7 @@ public class UpgradeUI : MonoBehaviour
                         sellAmount.text = "<b>$" + ((GameEngine.gameInstance.minigunPrice * selectedTower.GetComponent<attackEnemy>().turretLvl) / 2).ToString() + "</b>";
                         break;
 
-                    case "buff":
+                    case "buffTower":
                         tankUI.SetActive(true);
 
                         turretRange.transform.position = hit.transform.position;
@@ -400,8 +449,8 @@ public class UpgradeUI : MonoBehaviour
                         transform.position = hit.transform.position;
                         selectedTower = hit.transform.gameObject;
 
-                        upgradeCost.text = "<b>$" + (GameEngine.gameInstance.buffTowerPrice * selectedTower.GetComponent<attackEnemy>().turretLvl).ToString() + "</b>";
-                        sellAmount.text = "<b>$" + ((GameEngine.gameInstance.buffTowerPrice * selectedTower.GetComponent<attackEnemy>().turretLvl) / 2).ToString() + "</b>";
+                        upgradeCost.text = "<b>$" + (GameEngine.gameInstance.buffTowerPrice * selectedTower.GetComponent<BuffScript>().buffLvl).ToString() + "</b>";
+                        sellAmount.text = "<b>$" + ((GameEngine.gameInstance.buffTowerPrice * selectedTower.GetComponent<BuffScript>().buffLvl) / 2).ToString() + "</b>";
                         break;
 
                     case "Spawn area":

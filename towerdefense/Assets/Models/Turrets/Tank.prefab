@@ -380,7 +380,7 @@ MonoBehaviour:
   attackNearestEnemy: 1
   attackStrongestEnemy: 0
   fireRate: 1
-  damage: 75
+  damage: 50
   attackRange: 50
   turnSpeed: 10
   slowEnemiesAmount: 0

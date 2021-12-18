@@ -23,9 +23,6 @@ public class UpgradeUI : MonoBehaviour
     public GameObject upgradedMinigun;
     public GameObject upgradedZap;
 
-    bool buff, aura, attackenemyTurret = false;
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -107,6 +104,7 @@ public class UpgradeUI : MonoBehaviour
             upgrade.turretLvl += 1;
             upgrade.fireRate += 1;
             upgrade.attackRange += 5;
+            upgrade.damage += 2;
             Debug.Log("tank upgraded");
             upgradeCost.text = "<b>$" + (GameEngine.gameInstance.tankPrice * upgrade.turretLvl).ToString() + "</b>";
 
@@ -221,11 +219,6 @@ public class UpgradeUI : MonoBehaviour
             Debug.Log("upgraded sentry range " + auraUpgrade);
             upgradeCost.text = "<b>$" + (GameEngine.gameInstance.missileLauncherPrice * auraUpgrade.auraTurretLvl).ToString() + "</b>";
 
-            if (auraUpgrade.auraTurretLvl == 5)
-            {
-                //Destroy(selectedTower);
-
-            }
         }
         else
         {
@@ -245,11 +238,6 @@ public class UpgradeUI : MonoBehaviour
             Debug.Log("upgraded buff range " + buffUpgrade);
             upgradeCost.text = "<b>$" + (GameEngine.gameInstance.buffTowerPrice * buffUpgrade.buffLvl).ToString() + "</b>";
 
-            if (buffUpgrade.buffLvl == 5)
-            {
-                //Destroy(selectedTower);
-
-            }
         }
         else
         {

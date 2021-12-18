@@ -41,7 +41,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5639519688344176122, guid: 36e19c6ea6f8e9e46bc591015f3c5c27, type: 3}
       propertyPath: fireRate
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5639519688344176122, guid: 36e19c6ea6f8e9e46bc591015f3c5c27, type: 3}
       propertyPath: turretLvl
@@ -49,7 +49,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5639519688344176122, guid: 36e19c6ea6f8e9e46bc591015f3c5c27, type: 3}
       propertyPath: attackRange
-      value: 75
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 5734400746974843224, guid: 36e19c6ea6f8e9e46bc591015f3c5c27, type: 3}
       propertyPath: m_Materials.Array.data[0]

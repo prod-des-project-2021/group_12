@@ -552,7 +552,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1818260680669328575, guid: d4e853bd388134e4985f7e1aad6925bb, type: 3}
       propertyPath: money
-      value: 10000
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 1818260680669328575, guid: d4e853bd388134e4985f7e1aad6925bb, type: 3}
       propertyPath: playerUI
@@ -596,11 +596,11 @@ PrefabInstance:
       objectReference: {fileID: 266712535}
     - target: {fileID: 1818260680669328575, guid: d4e853bd388134e4985f7e1aad6925bb, type: 3}
       propertyPath: zapTowerPrice
-      value: 300
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 1818260680669328575, guid: d4e853bd388134e4985f7e1aad6925bb, type: 3}
       propertyPath: buffTowerPrice
-      value: 500
+      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 1818260680669328575, guid: d4e853bd388134e4985f7e1aad6925bb, type: 3}
       propertyPath: timeBetweenWaves
@@ -612,7 +612,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1818260680669328575, guid: d4e853bd388134e4985f7e1aad6925bb, type: 3}
       propertyPath: missileLauncherPrice
-      value: 150
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 5401338602215926433, guid: d4e853bd388134e4985f7e1aad6925bb, type: 3}
       propertyPath: m_PlayOnAwake

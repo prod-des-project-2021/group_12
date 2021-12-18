@@ -68,8 +68,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 14f8e30cc2dc4240b92bf5eceadff67b, type: 2}
     - target: {fileID: 8339467528899597562, guid: 3f34f35d4a904fb4c910c2ec5d2d0db6, type: 3}
+      propertyPath: damage
+      value: 115
+      objectReference: {fileID: 0}
+    - target: {fileID: 8339467528899597562, guid: 3f34f35d4a904fb4c910c2ec5d2d0db6, type: 3}
+      propertyPath: fireRate
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8339467528899597562, guid: 3f34f35d4a904fb4c910c2ec5d2d0db6, type: 3}
       propertyPath: turretLvl
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8339467528899597562, guid: 3f34f35d4a904fb4c910c2ec5d2d0db6, type: 3}
+      propertyPath: attackRange
+      value: 80
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f34f35d4a904fb4c910c2ec5d2d0db6, type: 3}

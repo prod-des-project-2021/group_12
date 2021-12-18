@@ -21,11 +21,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5137925430654776974, guid: 946458e6439c16a40be4c47b673ec92e, type: 3}
       propertyPath: fireRate
-      value: 100
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5137925430654776974, guid: 946458e6439c16a40be4c47b673ec92e, type: 3}
+      propertyPath: slowTime
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5137925430654776974, guid: 946458e6439c16a40be4c47b673ec92e, type: 3}
       propertyPath: turretLvl
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5137925430654776974, guid: 946458e6439c16a40be4c47b673ec92e, type: 3}
+      propertyPath: slowEnemiesAmount
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6331067392944389412, guid: 946458e6439c16a40be4c47b673ec92e, type: 3}
       propertyPath: m_Name

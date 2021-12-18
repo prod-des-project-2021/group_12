@@ -2324,6 +2324,10 @@ PrefabInstance:
       propertyPath: mainMenuBackgroundMusic
       value: 
       objectReference: {fileID: 994987509}
+    - target: {fileID: 5520916332666070824, guid: d929db5e187633aefaa9505bbf04d17c, type: 3}
+      propertyPath: roundMapBackgroundMusic
+      value: 
+      objectReference: {fileID: 1769097496}
     - target: {fileID: 5520916332666070825, guid: d929db5e187633aefaa9505bbf04d17c, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -3031,7 +3035,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5930145434414639620, guid: 76c911762a5172f4ebc432f869f89b8e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 859
+      value: 1004.2
       objectReference: {fileID: 0}
     - target: {fileID: 8260192206270399542, guid: 76c911762a5172f4ebc432f869f89b8e, type: 3}
       propertyPath: m_Text
@@ -3051,7 +3055,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8899966577226886639, guid: 76c911762a5172f4ebc432f869f89b8e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1022
+      value: 1159.6
       objectReference: {fileID: 0}
     - target: {fileID: 8899966577226886639, guid: 76c911762a5172f4ebc432f869f89b8e, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -3661,6 +3665,11 @@ Transform:
   m_Father: {fileID: 1522030410}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1769097496 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8370523257107213790, guid: d4e853bd388134e4985f7e1aad6925bb, type: 3}
+  m_PrefabInstance: {fileID: 296880083}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1775064059
 PrefabInstance:
   m_ObjectHideFlags: 0

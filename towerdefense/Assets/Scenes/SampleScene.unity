@@ -1151,6 +1151,78 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6279363769229457673, guid: 440456cd8c4b9c5409a2cb09235c2c19, type: 3}
   m_PrefabInstance: {fileID: 104083066}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &850702576
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7355807078478881916, guid: c5f686500148fd098945ca92cba8f76c, type: 3}
+      propertyPath: m_UpdateMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7355807078478881918, guid: c5f686500148fd098945ca92cba8f76c, type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7355807078478881918, guid: c5f686500148fd098945ca92cba8f76c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 511.0112
+      objectReference: {fileID: 0}
+    - target: {fileID: 7355807078478881918, guid: c5f686500148fd098945ca92cba8f76c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 62.57422
+      objectReference: {fileID: 0}
+    - target: {fileID: 7355807078478881918, guid: c5f686500148fd098945ca92cba8f76c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 918.88995
+      objectReference: {fileID: 0}
+    - target: {fileID: 7355807078478881918, guid: c5f686500148fd098945ca92cba8f76c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7355807078478881918, guid: c5f686500148fd098945ca92cba8f76c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7355807078478881918, guid: c5f686500148fd098945ca92cba8f76c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7355807078478881918, guid: c5f686500148fd098945ca92cba8f76c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7355807078478881918, guid: c5f686500148fd098945ca92cba8f76c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7355807078478881918, guid: c5f686500148fd098945ca92cba8f76c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7355807078478881918, guid: c5f686500148fd098945ca92cba8f76c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7355807078478881919, guid: c5f686500148fd098945ca92cba8f76c, type: 3}
+      propertyPath: m_Name
+      value: levelChanger
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c5f686500148fd098945ca92cba8f76c, type: 3}
+--- !u!114 &850702577 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7355807078478881917, guid: c5f686500148fd098945ca92cba8f76c, type: 3}
+  m_PrefabInstance: {fileID: 850702576}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d42a352b42b95f348ad6c7539166199f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &906464987 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4729492768017707051, guid: cb2c96e54eac2d7479fde1057f0a966e, type: 3}
@@ -1471,6 +1543,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5731817516638961623, guid: be560c2ad38a4ad42829980d4eff4b4c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 458853871}
+    - target: {fileID: 5731817516638961623, guid: be560c2ad38a4ad42829980d4eff4b4c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: QuitGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 5731817516638961623, guid: be560c2ad38a4ad42829980d4eff4b4c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameEngine, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6045299218139844490, guid: be560c2ad38a4ad42829980d4eff4b4c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -1482,7 +1566,7 @@ PrefabInstance:
     - target: {fileID: 6045299218139844490, guid: be560c2ad38a4ad42829980d4eff4b4c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 850702577}
     - target: {fileID: 6045299218139844490, guid: be560c2ad38a4ad42829980d4eff4b4c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -1493,7 +1577,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6045299218139844490, guid: be560c2ad38a4ad42829980d4eff4b4c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ChangeScene
+      value: fadeToLevel
       objectReference: {fileID: 0}
     - target: {fileID: 6045299218139844490, guid: be560c2ad38a4ad42829980d4eff4b4c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -1637,7 +1721,7 @@ PrefabInstance:
     - target: {fileID: 5485021673319239746, guid: f91495d7fe2f9224099ff93cce287099, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 850702577}
     - target: {fileID: 5485021673319239746, guid: f91495d7fe2f9224099ff93cce287099, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
@@ -1648,7 +1732,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5485021673319239746, guid: f91495d7fe2f9224099ff93cce287099, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: ChangeScene
+      value: fadeToLevel
       objectReference: {fileID: 0}
     - target: {fileID: 5485021673319239746, guid: f91495d7fe2f9224099ff93cce287099, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName

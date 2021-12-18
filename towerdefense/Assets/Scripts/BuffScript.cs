@@ -58,5 +58,26 @@ public class BuffScript : MonoBehaviour
             tower.GetComponent<attackEnemy>().damage *= damageBuffPercent;
         }
     }
+    void DebuffTowers(GameObject tower)
+    {
+
+    }
+
+    void OnDestroy()
+    {
+        for (int i = 0; i < turretsInRange.Count; i++)
+        {
+            if (!turretsInRange[i].name.Contains("ZapTower(Clone)") || !turretsInRange[i].name.Contains("Mega Zap(Clone)"))
+            {
+                turretsInRange[i].GetComponent<attackEnemy>().damage /= damageBuffPercent;
+                turretsInRange[i].GetComponent<attackEnemy>().attackRange /= rangeBuffPercent;
+            }
+            else
+            {
+                turretsInRange[i].GetComponent<attackEnemy>().damage /= damageBuffPercent;
+            }
+           
+        }
+    }
 
 }

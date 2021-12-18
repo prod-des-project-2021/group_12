@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class auraTowers : MonoBehaviour
 {
@@ -36,8 +37,12 @@ public class auraTowers : MonoBehaviour
 
                 if (sentry != null && distanceToEnemy <= attackRange)
                 {
+                        
                     invisEnemy.GetComponent<Renderer>().enabled = true;
+                    if (SceneManager.GetActiveScene().name != "MainMenu")
+                    {
                     invisEnemy.transform.GetChild(0).GetComponent<Canvas>().enabled = true;
+                    }
 
                 }
                 if (sentry != null && distanceToEnemy > attackRange)

@@ -854,9 +854,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackNearestEnemy: 1
   attackStrongestEnemy: 0
-  fireRate: 50
-  damage: 5
-  attackRange: 100
+  fireRate: 20
+  damage: 7
+  attackRange: 50
   turnSpeed: 10
   slowEnemiesAmount: 0
   slowTime: 0

@@ -66,6 +66,63 @@ public class Waypoints : MonoBehaviour
             waypoints[24] = GameObject.Find("Finish 1");
             waypoints[25] = GameObject.Find("Finish 2");
             waypoints[26] = GameObject.Find("Finish 3");
+        }else if(sceneName == "SecondMap")
+        {
+            waypoints[0] = GameObject.Find("Turn 1 1");
+            waypoints[1] = GameObject.Find("Turn 1 2");
+            waypoints[2] = GameObject.Find("Turn 1 3");
+
+            waypoints[3] = GameObject.Find("Turn 2 1");
+            waypoints[4] = GameObject.Find("Turn 2 2");
+            waypoints[5] = GameObject.Find("Turn 2 3");
+
+            waypoints[6] = GameObject.Find("Turn 3 1");
+            waypoints[7] = GameObject.Find("Turn 3 2");
+            waypoints[8] = GameObject.Find("Turn 3 3");
+
+            waypoints[9] = GameObject.Find("Turn 4 1");
+            waypoints[10] = GameObject.Find("Turn 4 2");
+            waypoints[11] = GameObject.Find("Turn 4 3");
+
+            waypoints[12] = GameObject.Find("Turn 5 1");
+            waypoints[13] = GameObject.Find("Turn 5 2");
+            waypoints[14] = GameObject.Find("Turn 5 3");
+
+            waypoints[15] = GameObject.Find("Turn 6 1");
+            waypoints[16] = GameObject.Find("Turn 6 2");
+            waypoints[17] = GameObject.Find("Turn 6 3");
+
+            waypoints[18] = GameObject.Find("Turn 7 1");
+            waypoints[19] = GameObject.Find("Turn 7 2");
+            waypoints[20] = GameObject.Find("Turn 7 3");
+
+            waypoints[21] = GameObject.Find("Turn 8 1");
+            waypoints[22] = GameObject.Find("Turn 8 2");
+            waypoints[23] = GameObject.Find("Turn 8 3");
+
+            waypoints[24] = GameObject.Find("Turn 9 1");
+            waypoints[25] = GameObject.Find("Turn 9 2");
+            waypoints[26] = GameObject.Find("Turn 9 3");
+
+            waypoints[27] = GameObject.Find("Turn 10 1");
+            waypoints[28] = GameObject.Find("Turn 10 2");
+            waypoints[29] = GameObject.Find("Turn 10 3");
+
+            waypoints[30] = GameObject.Find("Turn 11 1");
+            waypoints[31] = GameObject.Find("Turn 11 2");
+            waypoints[32] = GameObject.Find("Turn 11 3");
+
+            waypoints[33] = GameObject.Find("Turn 12 1");
+            waypoints[34] = GameObject.Find("Turn 12 2");
+            waypoints[35] = GameObject.Find("Turn 12 3");
+
+            waypoints[36] = GameObject.Find("Turn 13 1");
+            waypoints[37] = GameObject.Find("Turn 13 2");
+            waypoints[38] = GameObject.Find("Turn 13 3");
+
+            waypoints[39] = GameObject.Find("Finish 1");
+            waypoints[40] = GameObject.Find("Finish 2");
+            waypoints[41] = GameObject.Find("Finish 3");
         }
         else if (sceneName == "RoundMap")
         {
@@ -120,14 +177,14 @@ public class Waypoints : MonoBehaviour
         wPInstanceBirth = this;
         current = Random.Range(0, 3);
         speed = EnemyParams.enemyParamsInstance.speed;
-
+        Debug.Log("waypointteja " + waypoints.Length);
         
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        Debug.Log("waypoints current " + current);
         if (Vector3.Distance(waypoints[current].transform.position, transform.position) < WPradius)
         {
             //seuraava kulma
@@ -138,7 +195,8 @@ public class Waypoints : MonoBehaviour
             else if ((current -1) % 3 == 0)
             {
                 current += Random.Range(2, 5);
-            }else
+            }
+            else
             {
                 current += Random.Range(1, 4);
             }

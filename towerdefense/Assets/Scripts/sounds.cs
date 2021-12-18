@@ -23,6 +23,12 @@ public class sounds : MonoBehaviour
     public AudioSource mainMenuBackgroundMusic;
     public AudioSource firstmapBackgroundMusic;
 
+    public AudioSource secondMapBackgroundMusic;
+
+    public AudioSource roundMapBackgroundMusic;
+
+    public AudioSource samplesceneBackgroundMusic;
+
 
     public void playTankFireSound()
     {
@@ -66,6 +72,11 @@ public class sounds : MonoBehaviour
     }
     int count = 0;
     IEnumerator fadeInMainmenuMusic;
+
+     IEnumerator fadeInFirstMapMusic;
+     IEnumerator fadeInSecondMapMusic;
+     IEnumerator fadeInRoundMapMusic;
+     IEnumerator fadeInSamplesceneMapMusic;
     private void Start() {
 
      soundInstance = this;
@@ -89,12 +100,12 @@ public class sounds : MonoBehaviour
     public static IEnumerator fadeIn ( AudioSource audioSource, float fadeTime) {
         {
             audioSource.Play();
-        
+         Debug.Log("vola " +audioSource.volume);
             float startVolume = audioSource.volume;
             while (audioSource.volume < 1){
             
                 audioSource.volume += startVolume + Time.deltaTime /fadeTime;
-            
+            Debug.Log("vola2 " +audioSource.volume);
                 yield return null;
             }
         
@@ -120,13 +131,68 @@ public class sounds : MonoBehaviour
             }
         
             if(SceneManager.GetActiveScene().name == "FirstMap"){
-
+               
                 if(!firstmapBackgroundMusic.isPlaying)
                 {  
-					IEnumerator fadeInFirstMapMusic = fadeIn(firstmapBackgroundMusic, 3f);
+					fadeInFirstMapMusic = fadeIn(firstmapBackgroundMusic, 3f);
 					StartCoroutine(fadeInFirstMapMusic);
                 }
+                if(SceneSwitcher.switcherInstance.fadeToNextLevelStarted)
+			{
+				StopCoroutine(fadeInFirstMapMusic);
+				IEnumerator fadeOutFirstMapMusic = fadeOut(firstmapBackgroundMusic, 1f);
+				StartCoroutine(fadeOutFirstMapMusic);
+				 
 			}
+			}
+            if(SceneManager.GetActiveScene().name == "SecondMap")
+            {
+                if(!secondMapBackgroundMusic.isPlaying)
+                {  
+					 fadeInSecondMapMusic = fadeIn(secondMapBackgroundMusic, 3f);
+					StartCoroutine(fadeInSecondMapMusic);
+                }
+            if(SceneSwitcher.switcherInstance.fadeToNextLevelStarted)
+			{
+				StopCoroutine(fadeInSecondMapMusic);
+				IEnumerator fadeOutSecondMapMusic = fadeOut(secondMapBackgroundMusic, 1f);
+				StartCoroutine(fadeOutSecondMapMusic);
+				 
+			}
+
+            }
+        if(SceneManager.GetActiveScene().name == "RoundMap")
+            {
+                if(!roundMapBackgroundMusic.isPlaying)
+                {  
+					 fadeInRoundMapMusic = fadeIn(roundMapBackgroundMusic, 3f);
+					StartCoroutine(fadeInRoundMapMusic);
+                }
+                 if(SceneSwitcher.switcherInstance.fadeToNextLevelStarted)
+			{
+				StopCoroutine(fadeInRoundMapMusic);
+				IEnumerator fadeOutRoundMapMusic = fadeOut(roundMapBackgroundMusic, 1f);
+				StartCoroutine(fadeOutRoundMapMusic);
+				 
+            }
+            }
+            if(SceneManager.GetActiveScene().name == "SampleScene")
+            {
+                if(!samplesceneBackgroundMusic.isPlaying)
+                {  
+					 fadeInSamplesceneMapMusic = fadeIn(samplesceneBackgroundMusic, 3f);
+					StartCoroutine(fadeInSamplesceneMapMusic);
+                }
+                 if(SceneSwitcher.switcherInstance.fadeToNextLevelStarted)
+			{
+				StopCoroutine(fadeInSamplesceneMapMusic);
+				IEnumerator fadeOutSamplesceneMapMusic = fadeOut(samplesceneBackgroundMusic, 1f);
+				StartCoroutine(fadeOutSamplesceneMapMusic);
+				 
+			}
+            }
+
+
 		}
 
 }

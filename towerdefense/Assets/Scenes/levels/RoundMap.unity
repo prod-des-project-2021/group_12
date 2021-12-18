@@ -3045,6 +3045,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: PlaceHolder
       objectReference: {fileID: 0}
+    - target: {fileID: 8899966577226886639, guid: 76c911762a5172f4ebc432f869f89b8e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 962.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8899966577226886639, guid: 76c911762a5172f4ebc432f869f89b8e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 217.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76c911762a5172f4ebc432f869f89b8e, type: 3}
 --- !u!1001 &1559215232

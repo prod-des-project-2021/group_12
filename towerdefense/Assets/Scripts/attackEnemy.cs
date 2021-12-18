@@ -211,14 +211,14 @@ public class attackEnemy : MonoBehaviour
                 {
                     paukku.chase(target, slowEnemiesAmount, slowTime, damage);
                   
-                   switch(transform.name)
+                   switch(transform.tag)
                    {
-                       case "Tank(Clone)":
+                       case "Tank":
                         
                          fireSound.GetComponent<sounds>().playTankFireSound();
                          break;
 
-                       case "Minigun(Clone)":
+                       case "Minigun":
                          if(!fireSound.GetComponent<sounds>().minigunFireSound.isPlaying){
                          fireSound.GetComponent<sounds>().playMinigunFireSound();
                          }

@@ -109,7 +109,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5149358349522632401, guid: 05050b1fa2d693562b5fb4d5478e2892, type: 3}
       propertyPath: fireRate
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5149358349522632401, guid: 05050b1fa2d693562b5fb4d5478e2892, type: 3}
       propertyPath: turnSpeed

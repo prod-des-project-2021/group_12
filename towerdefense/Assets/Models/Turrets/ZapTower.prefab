@@ -246,8 +246,8 @@ MonoBehaviour:
   damage: 75
   attackRange: 75
   turnSpeed: 10
-  slowEnemiesAmount: 0
-  slowTime: 0
+  slowEnemiesAmount: 200
+  slowTime: 2
   rotatingPart: {fileID: 0}
   enemyTag: mob
   enemyPathFinishTag: finishLine

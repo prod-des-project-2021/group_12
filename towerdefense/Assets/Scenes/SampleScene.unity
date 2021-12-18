@@ -2229,7 +2229,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1818260680669328575, guid: d4e853bd388134e4985f7e1aad6925bb, type: 3}
       propertyPath: money
-      value: 400
+      value: 4000
       objectReference: {fileID: 0}
     - target: {fileID: 1818260680669328575, guid: d4e853bd388134e4985f7e1aad6925bb, type: 3}
       propertyPath: playerUI

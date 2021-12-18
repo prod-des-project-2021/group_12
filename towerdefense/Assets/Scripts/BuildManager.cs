@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BuildManager : MonoBehaviour
 {
@@ -18,7 +19,8 @@ public class BuildManager : MonoBehaviour
     public GameObject buildEffect;
     public GameObject sellEffect;
 
-    
+    public Text minigunCost, missileCost, tankCost, sentryCost, zapCost, buffCost;
+
     private void Awake()
     {
 
@@ -28,6 +30,16 @@ public class BuildManager : MonoBehaviour
             return;
         }
         buildInstance = this;
+    }
+
+    private void Start()
+    {
+        minigunCost.text = "$ " +  GameEngine.gameInstance.minigunPrice.ToString();
+        missileCost.text = "$ " + GameEngine.gameInstance.missileLauncherPrice.ToString();
+        tankCost.text = "$ " + GameEngine.gameInstance.tankPrice.ToString();
+        sentryCost.text = "$ " + GameEngine.gameInstance.sentryPrice.ToString();
+        zapCost.text = "$ " + GameEngine.gameInstance.zapTowerPrice.ToString();
+        buffCost.text = "$ " + GameEngine.gameInstance.buffTowerPrice.ToString();
     }
 
     public GameObject GetTurretToBuild()

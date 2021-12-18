@@ -5,6 +5,7 @@ public class BuffScript : MonoBehaviour
     public float buffTowerRange = 50f;
     public float damageBuffPercent = 1.1f;
     public float rangeBuffPercent = 1.1f;
+    public int buffLvl = 1;
 
     Collider[] exColliders;
     List<GameObject> turretsInRange = new List<GameObject>();

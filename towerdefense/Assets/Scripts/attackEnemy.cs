@@ -129,14 +129,14 @@ public class attackEnemy : MonoBehaviour
         if(spinner != null)
         {
             SpinBarrel();
-        }       
+        }
         if (target == null)
         {
             SpinUpTimer = Mathf.Clamp(
             SpinUpTimer - Time.deltaTime,
             0, SpinUpTime);
             //tykki kääntyy default-asentoon
-            if(rotatingPart != null)
+            if (rotatingPart != null)
             {
                 rotatingPart.rotation = Quaternion.Lerp(rotatingPart.rotation, Quaternion.Euler(0f, 0f, 0f), Time.deltaTime * turnSpeed);
             }
@@ -167,23 +167,23 @@ public class attackEnemy : MonoBehaviour
         {
 
             if (spinner != null)
-            {   
-               
+            {
+
                 if (SpinUpTimer >= SpinUpTime)
                 {
-                   
+
                     shoot();
                     fireCountdown = 1f / fireRate;
                 }
-                
+
 
             }
             else
             {
-                
-                         shoot();
-             
-               
+
+                shoot();
+
+
                 fireCountdown = 1f / fireRate;
             }
 

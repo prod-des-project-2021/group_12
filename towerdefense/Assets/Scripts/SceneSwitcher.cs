@@ -21,7 +21,8 @@ public class SceneSwitcher : MonoBehaviour
     {
         fadeToNextLevelStarted = true;
          levelToLoad = levelIndex;
-         if(animator != null && animator.isActiveAndEnabled){
+         if(animator != null && animator.isActiveAndEnabled)
+         {
             
          animator.SetTrigger("fadeOut");
         

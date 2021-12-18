@@ -250,7 +250,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -180}
-  m_SizeDelta: {x: 141.23, y: 50.3112}
+  m_SizeDelta: {x: 350, y: 50.3112}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8356867380159702686
 CanvasRenderer:
@@ -506,7 +506,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Quit
+  m_Text: 'Quit to desktop
 
 '
 --- !u!114 &1577888137104562460
@@ -801,7 +801,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -100}
-  m_SizeDelta: {x: 141.2299, y: 53.9243}
+  m_SizeDelta: {x: 250, y: 53.9243}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1580428006585193642
 CanvasRenderer:
@@ -1237,7 +1237,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Menu
+  m_Text: Main menu
 --- !u!114 &9172386581149072687
 MonoBehaviour:
   m_ObjectHideFlags: 0

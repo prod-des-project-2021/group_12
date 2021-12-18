@@ -272,7 +272,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
-    m_HighlightedColor: {r: 0, g: 0, b: 0, a: 0.19215687}
+    m_HighlightedColor: {r: 0, g: 0, b: 0, a: 0.23529412}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0, g: 0, b: 0, a: 0.5176471}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -343,7 +343,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -30}
-  m_SizeDelta: {x: 141.23, y: 50.3112}
+  m_SizeDelta: {x: 350, y: 50.3112}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4573071258390718376
 CanvasRenderer:
@@ -576,7 +576,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 1.5643e-10, y: 26.962}
-  m_SizeDelta: {x: 141.2299, y: 53.9243}
+  m_SizeDelta: {x: 250, y: 53.9243}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4326121066474169032
 CanvasRenderer:
@@ -751,9 +751,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Quit
-
-'
+  m_Text: Quit to desktop
 --- !u!114 &264924627394000115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -848,7 +846,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Menu
+  m_Text: 'Quit to menu
+
+'
 --- !u!114 &5248988062102145577
 MonoBehaviour:
   m_ObjectHideFlags: 0

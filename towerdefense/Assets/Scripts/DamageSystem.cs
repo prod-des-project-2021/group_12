@@ -23,6 +23,7 @@ public class DamageSystem : MonoBehaviour
 
     private void Awake()
     {
+        damageInstance = this;
         gameEngine = gameObject.GetComponent<GameEngine>();
     }
 
@@ -67,9 +68,11 @@ public class DamageSystem : MonoBehaviour
 
         if (timeToDie)
         {
+            Destroy(gameObject);
             GameObject deathSound = GameObject.FindGameObjectWithTag("turretSounds");
             deathSound.GetComponent<sounds>().playEnemyDeathSound();
-            Destroy(gameObject);
+
+
         }
 
     }

@@ -126,8 +126,6 @@ public class sounds : MonoBehaviour
 					IEnumerator fadeInFirstMapMusic = fadeIn(firstmapBackgroundMusic, 3f);
 					StartCoroutine(fadeInFirstMapMusic);
                 }
-            
-
 			}
 		}
 

@@ -19,7 +19,7 @@ public class SceneSwitcher : MonoBehaviour
    
     public void fadeToLevel (int levelIndex)
     {
-        fadeToNextLevelStarted = true;
+         fadeToNextLevelStarted = true;
          levelToLoad = levelIndex;
          if(animator != null && animator.isActiveAndEnabled){
              Debug.Log(levelToLoad);

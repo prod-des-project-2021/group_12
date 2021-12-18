@@ -820,7 +820,7 @@ GameObject:
   - component: {fileID: 3749553060002561267}
   m_Layer: 0
   m_Name: Minigun
-  m_TagString: Tank
+  m_TagString: Minigun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

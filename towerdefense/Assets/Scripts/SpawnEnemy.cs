@@ -45,14 +45,21 @@ public class SpawnEnemy : MonoBehaviour
  
     void Update()
     {
+         foreach (GameObject enemy in spawnee){
         if (SceneManager.GetActiveScene().name == "MainMenu")
         {
             startGameButtonClicked = true;
-            foreach (GameObject enemy in spawnee){
+           
                
             enemy.transform.GetChild(0).GetComponent<Canvas>().enabled  = false;
+
+            }else {
+                 enemy.transform.GetChild(0).GetComponent<Canvas>().enabled  = true;
+
             }
         }
+           
+        
 
 
         if (startGameButtonClicked && !enemiesHaveSpawned)

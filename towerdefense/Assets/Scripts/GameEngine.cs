@@ -15,8 +15,8 @@ public class GameEngine : MonoBehaviour
     public float score = 0;
     public float highScore = 0;
     [HideInInspector] public float difficulty = 1.0f;
-    [HideInInspector] public float map1HighScore, sampleHighScore, roundMapHighScore;
-    [HideInInspector] public int map1HighLevel, sampleHighLevel, roundMapHighLevel;
+    [HideInInspector] public float map1HighScore, sampleHighScore, roundMapHighScore, secondMapHighScore;
+    [HideInInspector] public int map1HighLevel, sampleHighLevel, roundMapHighLevel, secondMapHighLevel;
     public int level = 1;
     public int maxLevels = 30;
     public float timeBetweenWaves = 10.0f;
@@ -33,8 +33,8 @@ public class GameEngine : MonoBehaviour
     public Text currentMoney;
     public Text currentScore;
 
-    public Text Map1Score, Map2Score, Map3Score;
-    public Text Map1Level, Map2Level, Map3Level;
+    public Text Map1Score, Map2Score, Map3Score, Map4Score;
+    public Text Map1Level, Map2Level, Map3Level, Map4Level;
     public Text pauseGameText;
 	private GameObject findShopMenu;
 
@@ -62,6 +62,8 @@ public class GameEngine : MonoBehaviour
         if (Map2Level != null) Map1Level.text = sampleHighLevel.ToString();
         if (Map3Score != null) Map3Score.text = roundMapHighScore.ToString();
         if (Map3Level != null) Map3Level.text = roundMapHighLevel.ToString();
+        if (Map4Score != null) Map4Score.text = secondMapHighScore.ToString();
+        if (Map4Level != null) Map4Level.text = secondMapHighLevel.ToString();
         gameInstance = this;
     }
 
@@ -162,7 +164,11 @@ public class GameEngine : MonoBehaviour
         }
         else if (score > roundMapHighScore && SceneManager.GetActiveScene().name == "RoundMap")
         {
-            Debug.Log("here");
+            SaveData();
+            LoadData();
+        }
+        else if (score > roundMapHighScore && SceneManager.GetActiveScene().name == "SecondMap")
+        {
             SaveData();
             LoadData();
         }
@@ -197,6 +203,8 @@ public class GameEngine : MonoBehaviour
         sampleHighLevel = data.sampleLevel;
         roundMapHighScore = data.roundMapScore;
         roundMapHighLevel = data.roundMapLevel;
+        secondMapHighScore = data.secondMapScore;
+        secondMapHighLevel = data.secondMapHighlevel;
 
         if (SceneManager.GetActiveScene().name == "FirstMap")
         {         

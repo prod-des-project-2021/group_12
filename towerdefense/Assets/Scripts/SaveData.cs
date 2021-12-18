@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 [System.Serializable]
 public class SaveData
 {
-    public float map1Score, sampleScore, roundMapScore;
-    public int map1Level, sampleLevel, roundMapLevel;
+    public float map1Score, sampleScore, roundMapScore, secondMapScore;
+    public int map1Level, sampleLevel, roundMapLevel, secondMapHighlevel;
 
     public SaveData(GameEngine gameEngine)
     {
@@ -40,6 +40,17 @@ public class SaveData
             sampleScore = gameEngine.sampleHighScore;
             sampleLevel = gameEngine.sampleHighLevel;
         }
-        
+        else if (SceneManager.GetActiveScene().name == "SecondMap")
+        {
+            secondMapScore = gameEngine.score;
+            secondMapHighlevel = gameEngine.level;
+            map1Score = gameEngine.map1HighScore;
+            map1Level = gameEngine.map1HighLevel;
+            sampleScore = gameEngine.sampleHighScore;
+            sampleLevel = gameEngine.sampleHighLevel;
+            roundMapScore = gameEngine.roundMapHighScore;
+            roundMapLevel = gameEngine.roundMapHighLevel;
+        }
+
     }
 }

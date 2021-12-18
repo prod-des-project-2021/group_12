@@ -99,8 +99,6 @@ public class DamageSystem : MonoBehaviour
             EnemyParams.enemyHitInstance.health -= attackDamage;
             
               healthBar.fillAmount =  EnemyParams.enemyHitInstance.health/EnemyParams.enemyHitInstance.startHealth;             
-              Debug.Log("enemy 1 healtti "+ EnemyParams.enemyHitInstance.health);
-              Debug.Log("enemy 1 start healtti " +EnemyParams.enemyHitInstance.startHealth);
             
             if (EnemyParams.enemyHitInstance.health <= 0.0f)
             {
@@ -129,8 +127,6 @@ public class DamageSystem : MonoBehaviour
 
           
             healthBar.fillAmount =  EnemyParams.enemyHitInstance.health/EnemyParams.enemyHitInstance.startHealth;
-            Debug.Log("enemy 2 healtti "+ EnemyParams.enemyHitInstance.health);
-              Debug.Log("enemy 2 start healtti " +EnemyParams.enemyHitInstance.startHealth);
             
             if (EnemyParams.enemyHitInstance.health <= 0.0f)
             {
@@ -156,8 +152,6 @@ public class DamageSystem : MonoBehaviour
           
             EnemyParams.enemyHitInstance.health -= attackDamage;            
              healthBar.fillAmount =  EnemyParams.enemyHitInstance.health/EnemyParams.enemyHitInstance.startHealth;
-            Debug.Log("enemy 3 healtti "+ EnemyParams.enemyHitInstance.health);
-              Debug.Log("enemy 3 start healtti " +EnemyParams.enemyHitInstance.startHealth);
             if (EnemyParams.enemyHitInstance.health <= 0.0f)
             {
                 wpInstance.NewWPInstance();
@@ -182,8 +176,6 @@ public class DamageSystem : MonoBehaviour
           
             EnemyParams.enemyHitInstance.health -= attackDamage;
               healthBar.fillAmount =  EnemyParams.enemyHitInstance.health/EnemyParams.enemyHitInstance.startHealth;
-               Debug.Log("enemy 4 healtti "+ EnemyParams.enemyHitInstance.health);
-              Debug.Log("enemy 4 start healtti " +EnemyParams.enemyHitInstance.startHealth);
             
             if (EnemyParams.enemyHitInstance.health <= 0.0f)
             {

@@ -124,7 +124,53 @@ public class Waypoints : MonoBehaviour
             waypoints[40] = GameObject.Find("Finish 2");
             waypoints[41] = GameObject.Find("Finish 3");
         }
-        
+        else if (sceneName == "RoundMap")
+        {
+            waypoints[0] = GameObject.Find("Turn 1 1");
+            waypoints[1] = GameObject.Find("Turn 1 2");
+            waypoints[2] = GameObject.Find("Turn 1 3");
+
+            waypoints[3] = GameObject.Find("Turn 2 1");
+            waypoints[4] = GameObject.Find("Turn 2 2");
+            waypoints[5] = GameObject.Find("Turn 2 3");
+
+            waypoints[6] = GameObject.Find("Turn 3 1");
+            waypoints[7] = GameObject.Find("Turn 3 2");
+            waypoints[8] = GameObject.Find("Turn 3 3");
+
+            waypoints[9] = GameObject.Find("Turn 4 1");
+            waypoints[10] = GameObject.Find("Turn 4 2");
+            waypoints[11] = GameObject.Find("Turn 4 3");
+
+            waypoints[12] = GameObject.Find("Turn 5 1");
+            waypoints[13] = GameObject.Find("Turn 5 2");
+            waypoints[14] = GameObject.Find("Turn 5 3");
+
+            waypoints[15] = GameObject.Find("Turn 6 1");
+            waypoints[16] = GameObject.Find("Turn 6 2");
+            waypoints[17] = GameObject.Find("Turn 6 3");
+
+            waypoints[18] = GameObject.Find("Turn 7 1");
+            waypoints[19] = GameObject.Find("Turn 7 2");
+            waypoints[20] = GameObject.Find("Turn 7 3");
+
+            waypoints[21] = GameObject.Find("Turn 8 1");
+            waypoints[22] = GameObject.Find("Turn 8 2");
+            waypoints[23] = GameObject.Find("Turn 8 3");
+
+            waypoints[24] = GameObject.Find("Turn 9 1");
+            waypoints[25] = GameObject.Find("Turn 9 1");
+            waypoints[26] = GameObject.Find("Turn 9 1");
+
+            waypoints[27] = GameObject.Find("Turn 10 1");
+            waypoints[28] = GameObject.Find("Turn 10 1");
+            waypoints[29] = GameObject.Find("Turn 10 1");
+
+            waypoints[30] = GameObject.Find("Finish 1");
+            waypoints[31] = GameObject.Find("Finish 2");
+            waypoints[32] = GameObject.Find("Finish 3");
+        }
+
     }
     void Start()
     {

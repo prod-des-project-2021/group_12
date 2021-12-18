@@ -21,10 +21,11 @@ public class SceneSwitcher : MonoBehaviour
     {
          fadeToNextLevelStarted = true;
          levelToLoad = levelIndex;
-         if(animator != null && animator.isActiveAndEnabled){
-             Debug.Log(levelToLoad);
+         if(animator != null && animator.isActiveAndEnabled)
+         {
+            
          animator.SetTrigger("fadeOut");
-         Debug.Log("fadettamassa");
+        
          }
        
     }
@@ -33,9 +34,7 @@ public class SceneSwitcher : MonoBehaviour
     public void fadeToNextLevel()
     {
         fadeToLevel(SceneManager.GetActiveScene().buildIndex + 1);
-        
     }
-
     public void onFadeComplete()
     {
         Debug.Log("fadecomplete");

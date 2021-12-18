@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class SpawnEnemy : MonoBehaviour
 {
 
+    DamageSystem dsInstance;
     public static SpawnEnemy spawnEnemyInstance;
     // Start is called before the first frame update
     private GameObject[] spawnPoints = new GameObject[3];
@@ -25,7 +26,7 @@ public class SpawnEnemy : MonoBehaviour
     private bool enemiesDead;
     private bool gameOver = false;
 
-
+    GameObject[] Enemies;
     private int enemiesPerLevel = 5;
     
     bool enemiesHaveSpawned = false;
@@ -33,6 +34,7 @@ public class SpawnEnemy : MonoBehaviour
     Coroutine ws, ld;
     void Start()
     {
+        
         spawnEnemyInstance = this;
         spawnPoints[0] = GameObject.Find("Spawn 1");
         spawnPoints[1] = GameObject.Find("Spawn 2");
@@ -43,10 +45,21 @@ public class SpawnEnemy : MonoBehaviour
  
     void Update()
     {
+         foreach (GameObject enemy in spawnee){
         if (SceneManager.GetActiveScene().name == "MainMenu")
         {
             startGameButtonClicked = true;
+           
+               
+            enemy.transform.GetChild(0).GetComponent<Canvas>().enabled  = false;
+
+            }else {
+                 enemy.transform.GetChild(0).GetComponent<Canvas>().enabled  = true;
+
+            }
         }
+           
+        
 
 
         if (startGameButtonClicked && !enemiesHaveSpawned)

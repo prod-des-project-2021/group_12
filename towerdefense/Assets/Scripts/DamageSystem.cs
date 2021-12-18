@@ -23,6 +23,7 @@ public class DamageSystem : MonoBehaviour
 
     private void Awake()
     {
+        damageInstance = this;
         gameEngine = gameObject.GetComponent<GameEngine>();
     }
 

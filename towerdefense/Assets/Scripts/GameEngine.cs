@@ -74,42 +74,42 @@ public class GameEngine : MonoBehaviour
 
         if (findShopMenu != null)
         {
-            findShopMenu.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(doubleSpeedButtonClicked);
-            findShopMenu.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(StartGameButtonClicked);
+            findShopMenu.transform.GetChild(0).transform.GetChild(2).GetComponent<Button>().onClick.AddListener(doubleSpeedButtonClicked);
+            findShopMenu.transform.GetChild(0).transform.GetChild(1).GetComponent<Button>().onClick.AddListener(StartGameButtonClicked);
         }
         
     }
 
 	private void StartGameButtonClicked()
 	{
-		if(findShopMenu.transform.GetChild(1).GetComponentInChildren<Text>().text == "Start game")
+		if(findShopMenu.transform.GetChild(0).transform.GetChild(1).GetComponentInChildren<Text>().text == "Start game")
 		 {
 			 Time.timeScale = 1f;    
 			SpawnEnemy.spawnEnemyInstance.startGameButtonClicked = true;
-			 findShopMenu.transform.GetChild(1).GetComponentInChildren<Text>().text = "Pause";        
+			 findShopMenu.transform.GetChild(0).transform.GetChild(1).GetComponentInChildren<Text>().text = "Pause";        
 		 }else
 		 {
 			
 			 Time.timeScale = 0f;
-			 findShopMenu.transform.GetChild(1).GetComponentInChildren<Text>().text = "Start game";
+			 findShopMenu.transform.GetChild(0).transform.GetChild(1).GetComponentInChildren<Text>().text = "Start game";
 		 }
 	   
 	}
     private void doubleSpeedButtonClicked()
     {
-        if(findShopMenu.transform.GetChild(2).GetComponentInChildren<Text>().text == "2x speed")
+        if(findShopMenu.transform.GetChild(0).transform.GetChild(2).GetComponentInChildren<Text>().text == "2x speed")
         {
-            if(findShopMenu.transform.GetChild(1).GetComponentInChildren<Text>().text == "Pause")
+            if(findShopMenu.transform.GetChild(0).transform.GetChild(1).GetComponentInChildren<Text>().text == "Pause")
             {
         Time.timeScale = 2f;
-        findShopMenu.transform.GetChild(2).GetComponentInChildren<Text>().text = "Normal speed";
+        findShopMenu.transform.GetChild(0).transform.GetChild(2).GetComponentInChildren<Text>().text = "Normal speed";
             }       
         }
         else 
         {
-            if(findShopMenu.transform.GetChild(1).GetComponentInChildren<Text>().text == "Pause"){
+            if(findShopMenu.transform.GetChild(0).transform.GetChild(1).GetComponentInChildren<Text>().text == "Pause"){
         Time.timeScale = 1f;
-        findShopMenu.transform.GetChild(2).GetComponentInChildren<Text>().text = "2x speed";
+        findShopMenu.transform.GetChild(0).transform.GetChild(2).GetComponentInChildren<Text>().text = "2x speed";
             }
         }
     }

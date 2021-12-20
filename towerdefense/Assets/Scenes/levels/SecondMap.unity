@@ -564,6 +564,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 284736090172681755, guid: d4e853bd388134e4985f7e1aad6925bb, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 284736090172681755, guid: d4e853bd388134e4985f7e1aad6925bb, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
@@ -679,9 +683,25 @@ PrefabInstance:
       propertyPath: missileLauncherPrice
       value: 250
       objectReference: {fileID: 0}
+    - target: {fileID: 2730383788260086566, guid: d4e853bd388134e4985f7e1aad6925bb, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5276637887932338189, guid: d4e853bd388134e4985f7e1aad6925bb, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5401338602215926433, guid: d4e853bd388134e4985f7e1aad6925bb, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5401338602215926433, guid: d4e853bd388134e4985f7e1aad6925bb, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7355256707168985422, guid: d4e853bd388134e4985f7e1aad6925bb, type: 3}
+      propertyPath: m_Volume
+      value: 0.305
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4e853bd388134e4985f7e1aad6925bb, type: 3}

@@ -46,7 +46,6 @@ public class GameEngine : MonoBehaviour
     {
         Time.timeScale = 1f;
         string path = Application.persistentDataPath + "/player.SaveData";
-
         if (System.IO.File.Exists(path))
         {
             LoadData();
@@ -56,10 +55,10 @@ public class GameEngine : MonoBehaviour
             SaveData();
             LoadData();
         }
-        if (Map1Score != null) Map2Score.text = map1HighScore.ToString();
-        if (Map1Level != null) Map2Level.text = map1HighLevel.ToString();
-        if (Map2Score != null) Map1Score.text = sampleHighScore.ToString();
-        if (Map2Level != null) Map1Level.text = sampleHighLevel.ToString();
+        if (Map1Score != null) Map1Score.text = map1HighScore.ToString();
+        if (Map1Level != null) Map1Level.text = map1HighLevel.ToString();
+        if (Map2Score != null) Map2Score.text = sampleHighScore.ToString();
+        if (Map2Level != null) Map2Level.text = sampleHighLevel.ToString();
         if (Map3Score != null) Map3Score.text = roundMapHighScore.ToString();
         if (Map3Level != null) Map3Level.text = roundMapHighLevel.ToString();
         if (Map4Score != null) Map4Score.text = secondMapHighScore.ToString();
@@ -205,6 +204,7 @@ public class GameEngine : MonoBehaviour
         roundMapHighLevel = data.roundMapLevel;
         secondMapHighScore = data.secondMapScore;
         secondMapHighLevel = data.secondMapHighlevel;
+        
 
         if (SceneManager.GetActiveScene().name == "FirstMap")
         {         

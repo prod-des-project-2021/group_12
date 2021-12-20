@@ -4335,7 +4335,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 200
+  orthographic size: 100
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -4952,7 +4952,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Select a level '
+  m_Text: 'Select level '
 --- !u!222 &2065506476
 CanvasRenderer:
   m_ObjectHideFlags: 0
